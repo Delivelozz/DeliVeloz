@@ -41,6 +41,11 @@ const { Categorias, Direccion, Inventario, Metodopago, Pedido, Producto, Restaur
 Pedido.belongsToMany(Producto, { through: 'PedidoProducto', timestamps: false });
 Producto.belongsToMany(Pedido, { through: 'PedidoProducto', timestamps: false });
 
+Metodopago.hasMany(Pedido, {
+  foreignKey: 'idMetododePago'
+});
+Pedido.belongsTo(Metodopago);
+
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize, 
