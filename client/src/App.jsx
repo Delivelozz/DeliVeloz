@@ -17,7 +17,7 @@ function App() {
   const navigate = useNavigate();
   return (
     <main className="bg-alabaster-50 min-h-screen">
-      <Header />
+      {pathname !== "/login" && pathname !== "/register" && <Header />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Home" element={<Home />} />
@@ -27,7 +27,7 @@ function App() {
         <Route path="/detail" element={<Detail />} />
         <Route path="/products" element={<Products />} />
       </Routes>
-      <Footer />
+      {pathname !== "/login" && pathname !== "/register" && <Footer />}
     </main>
   );
 }
