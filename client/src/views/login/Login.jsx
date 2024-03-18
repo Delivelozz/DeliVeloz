@@ -2,7 +2,7 @@ import FormLogin from "../../components/formLogin/FormLogin";
 
 export default function Login() {
   return (
-    <section className="container min-h-screen">
+    <section className="flex items-center justify-center min-h-screen bg-sundown-500">
       <FormLogin />
     </section>
   );
