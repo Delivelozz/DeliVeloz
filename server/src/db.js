@@ -40,19 +40,19 @@ const { Categorias, Direccion, Inventario, Metodopago, Pedido, Producto, Restaur
 Pedido.belongsToMany(Producto, { through: 'PedidoProducto', timestamps: false });
 Producto.belongsToMany(Pedido, { through: 'PedidoProducto', timestamps: false });
 
-// Metodopago.hasMany(Pedido, {foreignKey: 'clubId'});
+// Metodopago.hasMany(Pedido, {});
 // Pedido.belongsTo(Metodopago);
 
-Pedido.belongsTo(Metodopago, {
-  foreignKey: 'metodoPagoId', // Asegúrate de que este nombre coincida con el nombre de tu clave foránea en la tabla de Pedido
-  as: 'metodoPago' // Esto es opcional, pero te permite acceder a la relación como pedido.metodoPago
- });
+// Pedido.belongsTo(Metodopago, {
+//   foreignKey: 'metodoPagoId', // Asegúrate de que este nombre coincida con el nombre de tu clave foránea en la tabla de Pedido
+//   as: 'metodoPago' // Esto es opcional, pero te permite acceder a la relación como pedido.metodoPago
+//  });
  
- // Y en tu modelo MetodoPago, agrega la relación inversa:
- Metodopago.hasMany(Pedido, {
-  foreignKey: 'metodoPagoId', // Asegúrate de que este nombre coincida con el nombre de tu clave foránea en la tabla de Pedido
-  as: 'pedidos' // Esto es opcional, pero te permite acceder a todos los pedidos asociados a un metodo de pago como metodoPago.pedidos
- });
+//  // Y en tu modelo MetodoPago, agrega la relación inversa:
+//  Metodopago.hasMany(Pedido, {
+//   foreignKey: 'metodoPagoId', // Asegúrate de que este nombre coincida con el nombre de tu clave foránea en la tabla de Pedido
+//   as: 'pedidos' // Esto es opcional, pero te permite acceder a todos los pedidos asociados a un metodo de pago como metodoPago.pedidos
+//  });
 
 // Pedido.belongsTo(Restaurante);
 // Restaurante.hasMany(Pedido);
