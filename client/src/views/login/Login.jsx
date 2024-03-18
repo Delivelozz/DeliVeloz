@@ -1,7 +1,9 @@
+import FormLogin from "../../components/formLogin/FormLogin";
+
 export default function Login() {
   return (
-    <section className="container">
-      <h1>Login</h1>
+    <section className="container min-h-screen">
+      <FormLogin />
     </section>
   );
 }
