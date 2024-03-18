@@ -6,6 +6,7 @@ const {
   DB_USER, DB_PASSWORD, DB_HOST, DB_PORT
 } = process.env;
 
+//° CONEXION A LA BASE DE DATOS
 const sequelize = new Sequelize(`mysql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/deliveloz`, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
@@ -39,23 +40,6 @@ const { Categorias, Direccion, Inventario, Metodopago, Pedido, Producto, Restaur
 
 Pedido.belongsToMany(Producto, { through: 'PedidoProducto', timestamps: false });
 Producto.belongsToMany(Pedido, { through: 'PedidoProducto', timestamps: false });
-
-// Metodopago.hasMany(Pedido, {});
-// Pedido.belongsTo(Metodopago);
-
-// Pedido.belongsTo(Metodopago, {
-//   foreignKey: 'metodoPagoId', // Asegúrate de que este nombre coincida con el nombre de tu clave foránea en la tabla de Pedido
-//   as: 'metodoPago' // Esto es opcional, pero te permite acceder a la relación como pedido.metodoPago
-//  });
- 
-//  // Y en tu modelo MetodoPago, agrega la relación inversa:
-//  Metodopago.hasMany(Pedido, {
-//   foreignKey: 'metodoPagoId', // Asegúrate de que este nombre coincida con el nombre de tu clave foránea en la tabla de Pedido
-//   as: 'pedidos' // Esto es opcional, pero te permite acceder a todos los pedidos asociados a un metodo de pago como metodoPago.pedidos
-//  });
-
-// Pedido.belongsTo(Restaurante);
-// Restaurante.hasMany(Pedido);
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
