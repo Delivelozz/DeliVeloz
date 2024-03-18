@@ -33,18 +33,40 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Categorias, Direccion, Inventario, Metodopago, Pedido, Producto, Restaurante, Usuario, Valoracion  } = sequelize.models;
+const { Categoria, Direccion, Inventario, Metodopago, Pedido, Producto, Restaurante, Usuario, Valoracion  } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
+// PEDIDO - PRUDUCTO (muchos a muchos)
 Pedido.belongsToMany(Producto, { through: 'PedidoProducto', timestamps: false });
 Producto.belongsToMany(Pedido, { through: 'PedidoProducto', timestamps: false });
-
-Metodopago.hasMany(Pedido, {
-  foreignKey: 'idMetododePago'
-});
+// METODO DE PAGO - PEDIDO (uno a muchos)
+Metodopago.hasMany(Pedido);
 Pedido.belongsTo(Metodopago);
+// USUARIO - PEDIDO (uno a muchos)
+Usuario.hasMany(Pedido);
+Pedido.belongsTo(Usuario);
+// RESTAURANTE - PEDIDO (uno a muchos)
+Restaurante.hasMany(Pedido);
+Pedido.belongsTo(Restaurante);
+// RESTAURANTE - INVENTARIO (uno a uno)
+Restaurante.hasOne(Inventario);
+Inventario.belongsTo(Restaurante);
+// INVENTARIO - PRUDUCTO (uno a muchos)
+Inventario.hasMany(Producto);
+Producto.belongsTo(Inventario);
+// CATEGORIA - PRUDUCTO (uno a muchos)
+Categoria.hasMany(Producto);
+Producto.belongsTo(Categoria);
+// DIRECCION - USUARIO (uno a muchos)
+Direccion.hasMany(Usuario);
+Usuario.belongsTo(Direccion);
+// VALORACION - USUARIO (uno a muchos)
+Valoracion.hasMany(Usuario);
+Usuario.belongsTo(Valoracion);
+// Pedido.belongsTo(Metodopago, { foreignKey: 'metodopagoId' });
+// Metodopago.hasMany(Pedido, { foreignKey: 'metodopagoId' });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

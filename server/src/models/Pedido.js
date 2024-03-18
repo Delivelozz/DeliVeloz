@@ -16,7 +16,15 @@ module.exports = (sequelize) => {
     estado_pedidio: {
       type: DataTypes.ENUM('pendiente', 'en preparacion', 'entregado'),
       allowNull: false,
-    }
+    },
+    // metodopagoId: { // Nueva columna para la clave foránea
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: 'metodopago', // nombre del modelo al que hace referencia
+    //     key: 'id',
+    //   },
+    //   allowNull: false,
+    // }
   }, 
   {timestamps: false});
 };
