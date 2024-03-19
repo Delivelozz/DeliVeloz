@@ -1,0 +1,95 @@
+{
+  "products": [
+     {
+       "id": 1,
+       "name": "Hamburguesa Clásica",
+       "description": "Hamburguesa de carne de res con queso cheddar, tomate, lechuga y salsa especial.",
+       "price": "15.99",
+       "category": "Comida",
+       "image": "https://example.com/images/hamburguesa_clasica.jpg",
+       "availability": true
+     },
+     {
+       "id": 2,
+       "name": "Pizza Margherita",
+       "description": "Pizza con salsa de tomate, mozzarella y albahaca fresca.",
+       "price": "12.99",
+       "category": "Comida",
+       "image": "https://example.com/images/pizza_margherita.jpg",
+       "availability": true
+     },
+     {
+       "id": 3,
+       "name": "Coca-Cola",
+       "description": "Refresco de cola clásico en botella de 350ml.",
+       "price": "3.99",
+       "category": "Bebida",
+       "image": "https://example.com/images/coca_cola.jpg",
+       "availability": true
+     },
+     {
+       "id": 4,
+       "name": "Café Americano",
+       "description": "Café espresso con dos chorros de agua caliente.",
+       "price": "4.99",
+       "category": "Bebida",
+       "image": "https://example.com/images/cafe_americano.jpg",
+       "availability": true
+     },
+     {
+       "id": 5,
+       "name": "Taco de Carne Asada",
+       "description": "Taco de carne asada con queso, cebolla y aguacate.",
+       "price": "8.99",
+       "category": "Comida",
+       "image": "https://example.com/images/taco_carne_asada.jpg",
+       "availability": true
+     },
+     {
+       "id": 6,
+       "name": "Sandwich de Pollo",
+       "description": "Sandwich de pollo con mayonesa, lechuga y tomate.",
+       "price": "7.99",
+       "category": "Comida",
+       "image": "https://example.com/images/sandwich_pollo.jpg",
+       "availability": true
+     },
+     {
+       "id": 7,
+       "name": "Sprite",
+       "description": "Refresco de cola con sabor a limón en botella de 350ml.",
+       "price": "3.99",
+       "category": "Bebida",
+       "image": "https://example.com/images/sprite.jpg",
+       "availability": true
+     },
+     {
+       "id": 8,
+       "name": "Papas Fritas",
+       "description": "Papas fritas crujientes y saladas.",
+       "price": "5.99",
+       "category": "Comida",
+       "image": "https://example.com/images/papas_fritas.jpg",
+       "availability": true
+     },
+     {
+       "id": 9,
+       "name": "Café Latte",
+       "description": "Café espresso con leche caliente y espuma.",
+       "price": "5.99",
+       "category": "Bebida",
+       "image": "https://example.com/images/cafe_latte.jpg",
+       "availability": true
+     },
+     {
+       "id": 10,
+       "name": "Hamburguesa Vegetariana",
+       "description": "Hamburguesa de patatas, tomate, lechuga y salsa especial.",
+       "price": "14.99",
+       "category": "Comida",
+       "image": "https://example.com/images/hamburguesa_vegetariana.jpg",
+       "availability": true
+     }
+  ]
+}
+ 
