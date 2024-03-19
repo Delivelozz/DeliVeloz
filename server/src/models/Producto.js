@@ -21,11 +21,8 @@ module.exports = (sequelize) => {
       allowNull: true
     },
     imagen: {
-      type: DataTypes.STRING,
+      type: DataTypes.JSON,
       allowNull: true,
-      validate: {
-        isUrl: true
-      }
     },
     disponibilidad: {
       type: DataTypes.BOOLEAN,
@@ -36,3 +33,4 @@ module.exports = (sequelize) => {
     timestamps: false,
   });
 };
+

@@ -1,0 +1,244 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Hamburguesa Clásica",
+      "description": "Hamburguesa de carne de res con queso cheddar, tomate, lechuga y salsa especial.",
+      "price": "15.99",
+      "category": "Comida",
+      "image": {
+        "jpg": "https://example.com/images/hamburguesa_especial.jpg",
+        "png": "https://example.com/images/hamburguesa_especial.png"
+      },
+      "availability": true
+    },
+    {
+      "id": 2,
+      "name": "Pizza Margherita",
+      "description": "Pizza con salsa de tomate, mozzarella y albahaca fresca.",
+      "price": "12.99",
+      "category": "Comida",
+      "image": {
+        "jpg": "https://example.com/images/pizza_margherita.jpg",
+        "png": "https://example.com/images/pizza_margherita.png"
+      },
+      "availability": true
+    },
+    {
+      "id": 3,
+      "name": "Coca-Cola",
+      "description": "Refresco de cola clásico en botella de 350ml.",
+      "price": "3.99",
+      "category": "Bebida",
+      "image": {
+        "jpg": "https://example.com/images/coca_cola.jpg",
+        "png": "https://example.com/images/coca_cola.png"
+      },
+      "availability": true
+    },
+    {
+      "id": 4,
+      "name": "Café Americano",
+      "description": "Café espresso con dos chorros de agua caliente.",
+      "price": "4.99",
+      "category": "Bebida",
+      "image": {
+        "jpg": "https://example.com/images/cafe_americano.jpg",
+        "png": "https://example.com/images/cafe_americano.png"
+      },
+      "availability": true
+    },
+    {
+      "id": 5,
+      "name": "Taco de Carne Asada",
+      "description": "Taco de carne asada con queso, cebolla y aguacate.",
+      "price": "8.99",
+      "category": "Comida",
+      "image": {
+        "jpg": "https://example.com/images/taco_carne_asada.jpg",
+        "png": "https://example.com/images/taco_carne_asada.png"
+      },
+      "availability": false
+    },
+    {
+      "id": 6,
+      "name": "Sandwich de Pollo",
+      "description": "Sandwich de pollo con mayonesa, lechuga y tomate.",
+      "price": "7.99",
+      "category": "Comida",
+      "image": {
+        "jpg": "https://example.com/images/sandwich_pollo.jpg",
+        "png": "https://example.com/images/sandwich_pollo.png"
+      },
+      "availability": true
+    },
+    {
+      "id": 7,
+      "name": "Sprite",
+      "description": "Refresco de cola con sabor a limón en botella de 350ml.",
+      "price": "3.99",
+      "category": "Bebida",
+      "image": {
+        "jpg": "https://example.com/images/sprite.jpg",
+        "png": "https://example.com/images/sprite.png"
+      },
+      "availability": true
+    },
+    {
+      "id": 8,
+      "name": "Papas Fritas",
+      "description": "Papas fritas crujientes y saladas.",
+      "price": "5.99",
+      "category": "Comida",
+      "image": {
+        "jpg": "https://example.com/images/papas_fritas.jpg",
+        "png": "https://example.com/images/papas_fritas.png"
+      },
+      "availability": true
+    },
+    {
+      "id": 9,
+      "name": "Café Latte",
+      "description": "Café espresso con leche caliente y espuma.",
+      "price": "5.99",
+      "category": "Bebida",
+      "image": {
+        "jpg": "https://example.com/images/cafe_latte.jpg",
+        "png": "https://example.com/images/cafe_latte.png"
+      },
+      "availability": true
+    },
+    {
+      "id": 10,
+      "name": "Hamburguesa Vegetariana",
+      "description": "Hamburguesa de patatas, tomate, lechuga y salsa especial.",
+      "price": "14.99",
+      "category": "Comida",
+      "image": {
+        "jpg": "https://example.com/images/hamburguesa_vegetariana.jpg",
+        "png": "https://example.com/images/hamburguesa_vegetariana.png"
+      },
+      "availability": true
+    },
+    {
+      "id": 11,
+      "name": "Tostada de Pollo",
+      "description": "Tostada de pollo con queso, aguacate y tomate.",
+      "price": "9.99",
+      "category": "Comida",
+      "image": {
+        "jpg": "https://example.com/images/tostada_pollo.jpg",
+        "png": "https://example.com/images/tostada_pollo.png"
+      },
+      "availability": true
+    },
+    {
+      "id": 12,
+      "name": "Cerveza Lager",
+      "description": "Cerveza lager en botella de 350ml.",
+      "price": "6.99",
+      "category": "Bebida",
+      "image": {
+        "jpg": "https://example.com/images/cerveza_lager.jpg",
+        "png": "https://example.com/images/cerveza_lager.png"
+      },
+      "availability": true
+    },
+    {
+      "id": 13,
+      "name": "Pizza Hawaiana",
+      "description": "Pizza con salsa de tomate, mozzarella, jamón, piña y queso cheddar.",
+      "price": "13.99",
+      "category": "Comida",
+      "image": {
+        "jpg": "https://example.com/images/pizza_hawaiana.jpg",
+        "png": "https://example.com/images/pizza_hawaiana.png"
+      },
+      "availability": false
+    },
+    {
+      "id": 14,
+      "name": "Café Mocha",
+      "description": "Café espresso con chocolate caliente y espuma.",
+      "price": "6.99",
+      "category": "Bebida",
+      "image": {
+        "jpg": "https://example.com/images/cafe_mocha.jpg",
+        "png": "https://example.com/images/cafe_mocha.png"
+      },
+      "availability": true
+    },
+    {
+      "id": 15,
+      "name": "Taco de Pescado",
+      "description": "Taco de pescado con mayonesa, cebolla y tomate.",
+      "price": "9.99",
+      "category": "Comida",
+      "image": {
+        "jpg": "https://example.com/images/taco_pescado.jpg",
+        "png": "https://example.com/images/taco_pescado.png"
+      },
+      "availability": true
+    },
+    {
+      "id": 16,
+      "name": "Sandwich de Queso",
+      "description": "Sandwich de mozzarella con jamón y queso cheddar.",
+      "price": "8.99",
+      "category": "Comida",
+      "image": {
+        "jpg": "https://example.com/images/sandwich_queso.jpg",
+        "png": "https://example.com/images/sandwich_queso.png"
+      },
+      "availability": true
+    },
+    {
+      "id": 17,
+      "name": "Fanta",
+      "description": "Refresco de naranja con sabor a frutas en botella de 350ml.",
+      "price": "3.99",
+      "category": "Bebida",
+      "image": {
+        "jpg": "https://example.com/images/fanta.jpg",
+        "png": "https://example.com/images/fanta.png"
+      },
+      "availability": true
+    },
+    {
+      "id": 18,
+      "name": "Papas Arrugadas",
+      "description": "Papas fritas con un toque de arrugas crujientes.",
+      "price": "6.99",
+      "category": "Comida",
+      "image": {
+        "jpg": "https://example.com/images/papas_arrugadas.jpg",
+        "png": "https://example.com/images/papas_arrugadas.png"
+      },
+      "availability": true
+    },
+    {
+      "id": 19,
+      "name": "Café Espresso",
+      "description": "Café espresso sin aditivos ni azúcar.",
+      "price": "4.99",
+      "category": "Bebida",
+      "image": {
+        "jpg": "https://example.com/images/cafe_espresso.jpg",
+        "png": "https://example.com/images/cafe_espresso.png"
+      },
+      "availability": true
+    },
+    {
+      "id": 20,
+      "name": "Hamburguesa de Soya",
+      "description": "Hamburguesa de soya con queso cheddar, tomate, lechuga y salsa especial.",
+      "price": "16.99",
+      "category": "Comida",
+      "image": {
+        "jpg": "https://example.com/images/hamburguesa_soya.jpg",
+        "png": "https://example.com/images/hamburguesa_soya.png"
+      },
+      "availability": true
+    }
+  ]
+}
