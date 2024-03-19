@@ -1,14 +1,13 @@
 const axios = require("axios");
 const { Producto } = require("../db.js")
 
-const startDatabase = async (req, res) =>{
+const startDatabase = async () => {
   try {
-    const { data } = await axios.get("http://localhost:5000/products")
+    const { data } = await axios.get("http://localhost:5000/products");
 
     const products = data.map(product => {
       try {
         return{
-          id: product.id || Math.floor(Math.random() * 101) + 100,
           nombre: product.name || "undefined",
           descripcion: product.description || "undefined",
           precio: product.price || "undefined",
@@ -20,7 +19,7 @@ const startDatabase = async (req, res) =>{
         console.error("Error en el producto: ", product);
         throw error;
       }
-    }) 
+    });
 
     for (const product of products) {
       const existingProduct = await Producto.findOne({ where: { nombre: product.nombre } });
@@ -29,11 +28,10 @@ const startDatabase = async (req, res) =>{
       }
     }
 
-    res.status(200).json("Datos guardados correctamente")
+    console.log("Datos guardados correctamente");
   } catch (error) {
     console.error("Error al hacer la peticion o guardar los datos: ", error);
-    res.status(500).json({ error: "Internal server error" });
   }
-}
+};
 
-module.exports = startDatabase
+module.exports = startDatabase;

@@ -10,7 +10,7 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 router.get("/products", getAllProducts)
-router.get("/", startDatabase)
+// router.get("/", startDatabase)
 
 
 
