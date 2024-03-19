@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setDishes } from "../../redux/actions/actions.js";
 import { getDishes } from "../../data/index.js";
+import Promos from "../../components/promos/Promos.jsx";
 
 export default function Home() {
   const dishes = useSelector((state) => state.dishes);
@@ -20,7 +21,7 @@ export default function Home() {
   //console.log(dishes);
   return (
     <section className="container">
-      <h1>Home</h1>
+      <Promos dishes={dishes} />
     </section>
   );
 }
