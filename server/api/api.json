@@ -89,7 +89,97 @@
        "category": "Comida",
        "image": "https://example.com/images/hamburguesa_vegetariana.jpg",
        "availability": true
-     }
+     },
+     {
+      "id": 11,
+      "name": "Tostada de Pollo",
+      "description": "Tostada de pollo con queso, aguacate y tomate.",
+      "price": "9.99",
+      "category": "Comida",
+      "image": "https://example.com/images/tostada_pollo.jpg",
+      "availability": true
+    },
+    {
+      "id": 12,
+      "name": "Cerveza Lager",
+      "description": "Cerveza lager en botella de 350ml.",
+      "price": "6.99",
+      "category": "Bebida",
+      "image": "https://example.com/images/cerveza_lager.jpg",
+      "availability": true
+    },
+    {
+      "id": 13,
+      "name": "Pizza Hawaiana",
+      "description": "Pizza con salsa de tomate, mozzarella, jamón, piña y queso cheddar.",
+      "price": "13.99",
+      "category": "Comida",
+      "image": "https://example.com/images/pizza_hawaiana.jpg",
+      "availability": true
+    },
+    {
+      "id": 14,
+      "name": "Café Mocha",
+      "description": "Café espresso con chocolate caliente y espuma.",
+      "price": "6.99",
+      "category": "Bebida",
+      "image": "https://example.com/images/cafe_mocha.jpg",
+      "availability": true
+    },
+    {
+      "id": 15,
+      "name": "Taco de Pescado",
+      "description": "Taco de pescado con mayonesa, cebolla y tomate.",
+      "price": "9.99",
+      "category": "Comida",
+      "image": "https://example.com/images/taco_pescado.jpg",
+      "availability": true
+    },
+    {
+      "id": 16,
+      "name": "Sandwich de Queso",
+      "description": "Sandwich de mozzarella con jamón y queso cheddar.",
+      "price": "8.99",
+      "category": "Comida",
+      "image": "https://example.com/images/sandwich_queso.jpg",
+      "availability": true
+    },
+    {
+      "id": 17,
+      "name": "Fanta",
+      "description": "Refresco de naranja con sabor a frutas en botella de 350ml.",
+      "price": "3.99",
+      "category": "Bebida",
+      "image": "https://example.com/images/fanta.jpg",
+      "availability": true
+    },
+    {
+      "id": 18,
+      "name": "Papas Arrugadas",
+      "description": "Papas fritas con un toque de arrugas crujientes.",
+      "price": "6.99",
+      "category": "Comida",
+      "image": "https://example.com/images/papas_arrugadas.jpg",
+      "availability": true
+    },
+    {
+      "id": 19,
+      "name": "Café Espresso",
+      "description": "Café espresso sin aditivos ni azúcar.",
+      "price": "4.99",
+      "category": "Bebida",
+      "image": "https://example.com/images/cafe_espresso.jpg",
+      "availability": true
+    },
+    {
+      "id": 20,
+      "name": "Hamburguesa de Soya",
+      "description": "Hamburguesa de soya con queso cheddar, tomate, lechuga y salsa especial.",
+      "price": "16.99",
+      "category": "Comida",
+      "image": "https://example.com/images/hamburguesa_soya.jpg",
+      "availability": true
+    }
   ]
 }
  
