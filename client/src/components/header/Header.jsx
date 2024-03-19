@@ -13,7 +13,7 @@ export default function Header() {
         </div>
         <div className="flex items-center gap-6 font-medium">
           <Link to={"/home"}>
-            <button className="btn-tr">Inicio</button>
+            <button className="btn-bg">Inicio</button>
           </Link>
           <Link to={"/products"}>
             <p>Productos</p>
