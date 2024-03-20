@@ -12,11 +12,11 @@ export default function Card(props) {
   }, [shoppingCart, dispatch]);
 
   const addToCart = (id) => {
-    const dataItem = { id, name, price };
+    const dataItem = { id, name, price, image };
     const addRes = [...shoppingCart];
     addRes.push(dataItem);
     dispatch(setShoppingCart(addRes));
-    console.log(shoppingCart);
+    //console.log(shoppingCart);
   };
 
   return (
