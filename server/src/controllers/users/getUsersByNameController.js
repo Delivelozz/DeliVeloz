@@ -6,7 +6,7 @@ const getUsersByNameController = async (name) => {
     // Obtiene el usuario de la BDD por nombre
     const allUsersByNameDB = await Usuario.findAll({
         where: {
-            nombre: {
+            name: {
                 [Op.like]: Sequelize.literal(`LOWER('%${name}%')`) 
             }
         }
@@ -14,7 +14,7 @@ const getUsersByNameController = async (name) => {
     // Obtiene el usuario de la BDD por apellido
     const allUsersByLastnameDB = await Usuario.findAll({
         where: {
-            apellido: {
+            lastName: {
                 [Op.like]: Sequelize.literal(`LOWER('%${name}%')`) 
             }
         }

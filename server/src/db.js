@@ -33,14 +33,14 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Categoria, Direccion, Inventario, Metodopago, Pedido, Producto, Restaurante, Usuario, Valoracion  } = sequelize.models;
+const { Categoria, Direccion, Inventario, Metodopago, Pedido, Product, Restaurante, Usuario, Valoracion  } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
 // PEDIDO - PRUDUCTO (muchos a muchos)
-Pedido.belongsToMany(Producto, { through: 'PedidoProducto', timestamps: false });
-Producto.belongsToMany(Pedido, { through: 'PedidoProducto', timestamps: false });
+Pedido.belongsToMany(Product, { through: 'PedidoProduct', timestamps: false });
+Product.belongsToMany(Pedido, { through: 'PedidoProduct', timestamps: false });
 // METODO DE PAGO - PEDIDO (uno a muchos)
 Metodopago.hasMany(Pedido);
 Pedido.belongsTo(Metodopago);
@@ -54,11 +54,11 @@ Pedido.belongsTo(Restaurante);
 Restaurante.hasOne(Inventario);
 Inventario.belongsTo(Restaurante);
 // INVENTARIO - PRUDUCTO (uno a muchos)
-Inventario.hasMany(Producto);
-Producto.belongsTo(Inventario);
+Inventario.hasMany(Product);
+Product.belongsTo(Inventario);
 // CATEGORIA - PRUDUCTO (uno a muchos)
-Categoria.hasMany(Producto);
-Producto.belongsTo(Categoria);
+Categoria.hasMany(Product);
+Product.belongsTo(Categoria);
 // DIRECCION - USUARIO (uno a muchos)
 Direccion.hasMany(Usuario);
 Usuario.belongsTo(Direccion);

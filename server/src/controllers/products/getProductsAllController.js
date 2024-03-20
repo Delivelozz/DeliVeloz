@@ -1,7 +1,7 @@
-const { Producto } = require("../../db.js");
+const { Product } = require("../../db.js");
 
 const getProductsAllController = async () =>{
-  const data = await Producto.findAll();
+  const data = await Product.findAll();
   return data;
 }
 

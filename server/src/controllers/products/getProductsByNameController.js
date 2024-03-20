@@ -1,10 +1,10 @@
-const { Producto } = require('../../db');
+const { Product } = require('../../db');
 const { Op, Sequelize } = require('sequelize');
 
 const getProductsByNameController = async (name) => {
-  const allProductsByName = await Producto.findAll({
+  const allProductsByName = await Product.findAll({
     where: {
-      nombre: {
+      name: {
           [Op.like]: Sequelize.literal(`LOWER('%${name}%')`) 
       }
     }

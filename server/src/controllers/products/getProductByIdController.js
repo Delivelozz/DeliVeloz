@@ -1,7 +1,7 @@
-const { Producto } = require("../../db.js");
+const { Product } = require("../../db.js");
 
 const getProductByIdController = async (id) =>{
-  const product = await Producto.findByPk(id);
+  const product = await Product.findByPk(id);
   return product;
 }
 
