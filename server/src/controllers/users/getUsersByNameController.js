@@ -1,13 +1,28 @@
 const {Usuario} = require('../../db');
+const { Op, Sequelize } = require('sequelize');
 
 const getUsersByNameController = async (name) => {
 
     // Obtiene el usuario de la BDD por nombre
-    const allUsersByNameDB = await Usuario.findAll();
-    // Filtramos para que sea indistino a Mayuscula o Minuscula
-    const allUsersByNameDBFilter = allUsersByNameDB.length !== 0 ? allUsersByNameDB.filter((user)=>user.name.toLowerCase().includes(name.toLowerCase())) : [];
+    const allUsersByNameDB = await Usuario.findAll({
+        where: {
+            nombre: {
+                [Op.like]: Sequelize.literal(`LOWER('%${name}%')`) 
+            }
+        }
+    });
+    // Obtiene el usuario de la BDD por apellido
+    const allUsersByLastnameDB = await Usuario.findAll({
+        where: {
+            apellido: {
+                [Op.like]: Sequelize.literal(`LOWER('%${name}%')`) 
+            }
+        }
+    });
 
-    return allUsersByNameDBFilter;
+
+
+    return [...allUsersByNameDB , ...allUsersByLastnameDB];
 }
 
 module.exports = getUsersByNameController;

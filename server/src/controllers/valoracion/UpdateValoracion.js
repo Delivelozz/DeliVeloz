@@ -1,4 +1,4 @@
-const {Valoracion} = require ('../db')
+const {Valoracion} = require ('../../db')
 
 const updateValoracion = async (req, res)=> {
     try {

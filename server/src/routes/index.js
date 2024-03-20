@@ -13,9 +13,9 @@ router.use("/users", usersRouter);
 
 
 //! Requiere cambios!
-const postValoracion = require('../controllers/postValoracion')
-const updateValoracion= require('../controllers/UpdateValoracion')
-const deleteValoracion= require('../controllers/deleteValoracion')
+const postValoracion = require('../controllers/valoracion/postValoracion')
+const updateValoracion= require('../controllers/valoracion/UpdateValoracion')
+const deleteValoracion= require('../controllers/valoracion/deleteValoracion')
 router.post("/valoracion", postValoracion)
 router.put("/valoracion/:id", updateValoracion)
 router.delete("/valoracion/:id", deleteValoracion)
