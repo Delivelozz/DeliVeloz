@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Carrito from "../icons/Carrito";
+import Cart from "../icons/Cart";
 
 export default function Header() {
   return (
@@ -30,9 +30,9 @@ export default function Header() {
           <Link to={"/register"}>
             <button className="btn-tr">Registrarse</button>
           </Link>
-          <Link to={"/cart"}>
+          <Link to={"/carrito"}>
             <div className="bg-sundown-500 rounded-full p-2 hover:bg-sundown-600">
-              <Carrito />
+              <Cart />
             </div>
           </Link>
         </div>
