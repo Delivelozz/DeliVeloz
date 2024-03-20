@@ -18,7 +18,7 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
-const startDatabase = require('./src/controllers/startDatabase.js');
+const startDatabase = require('./src/functions/startDatabase.js');
 const { conn } = require('./src/db.js');
 
 // Syncing all the models at once.
