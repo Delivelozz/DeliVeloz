@@ -7,8 +7,8 @@ const editUserHandler = async (req, res) => {
     //obtenemos los nuevos datos del usuario por body
     const dataUser = req.body;
     try {
-        const userById = await editUserController(id, dataUser);
-        res.status(200).json(userById);
+        const response = await editUserController(id, dataUser);
+        res.status(200).json(response);
     } catch (error) {
         res.status(500).json({error: error.message});
     }

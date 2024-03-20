@@ -1,6 +1,6 @@
 const {Usuario} = require('../../db');
 
-const editUserController = async (id, {nombre, apellido, email, direccion_usuario, telefono, password}) => {
+const editUserController = async ({id}, {nombre, apellido, email, direccion_usuario, telefono, password}) => {
     const editUser = await Usuario.update({
         nombre,
         apellido,
@@ -14,7 +14,11 @@ const editUserController = async (id, {nombre, apellido, email, direccion_usuari
         }
     });
 
-    return editUser;
+    if (editUser) {
+        return { message: 'Usuario actualizado exitosamente' };
+    } else {
+        return { message: 'Usuario no encontrado o no se realizaron cambios' };
+    }
     }
 
 module.exports = editUserController;
