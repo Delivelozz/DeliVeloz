@@ -10,23 +10,25 @@ const Promos = (props) => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    slidesToShow: 3,
+    slidesToScroll: 3,
   };
   return (
-    <Slider {...settings}>
-      {props.dishes?.meals?.map(
-        ({ strMeal, idMeal, strMealThumb, strInstructions }) => (
-          <Promo
-            key={strMeal}
-            id={idMeal}
-            name={strMeal}
-            image={strMealThumb}
-            description={strInstructions}
-          />
-        )
-      )}
-    </Slider>
+    <div className="carrousel">
+      <Slider {...settings}>
+        {props.dishes?.meals?.map(
+          ({ strMeal, idMeal, strMealThumb, strInstructions }) => (
+            <Promo
+              key={strMeal}
+              id={idMeal}
+              name={strMeal}
+              image={strMealThumb}
+              description={strInstructions}
+            />
+          )
+        )}
+      </Slider>
+    </div>
   );
 };
 
