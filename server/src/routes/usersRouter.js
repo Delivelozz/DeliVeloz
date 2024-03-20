@@ -16,7 +16,7 @@ usersRouter.get("/:id", getUserByIDHandler);
 // Crear Usuario
 usersRouter.post("/", createUserHandler);
 // Editar Usuario
-usersRouter.put("/", editUserHandler);
+usersRouter.patch("/:id", editUserHandler);
 // Desactivar Usuario
 usersRouter.delete("/", desactUserHandler);
 
