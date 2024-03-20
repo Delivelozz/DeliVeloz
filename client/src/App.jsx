@@ -7,6 +7,8 @@ import Register from "./views/register/Register";
 import Products from "./views/products/Products";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
+import Blog from "./views/blog/Blog";
+import Carrito from "./views/carrito/Carrito";
 
 // ? Hooks
 import { useState, useEffect } from "react";
@@ -26,6 +28,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/detail" element={<Detail />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/carrito" element={<Carrito />} />
       </Routes>
       {pathname !== "/login" && pathname !== "/register" && <Footer />}
     </main>

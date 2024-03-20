@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import Cart from "../icons/Cart";
 
 export default function Header() {
   return (
-    <div className="w-full shadow-xl mb-16">
+    <div className="w-full shadow-xl mb-16 sticky top-0 z-50 bg-white">
       <div className="container flex py-4 items-center justify-between">
         <div>
           <Link to={"/home"}>
@@ -28,6 +29,11 @@ export default function Header() {
           </Link>
           <Link to={"/register"}>
             <button className="btn-tr">Registrarse</button>
+          </Link>
+          <Link to={"/carrito"}>
+            <div className="bg-sundown-500 rounded-full p-2 hover:bg-sundown-600">
+              <Cart />
+            </div>
           </Link>
         </div>
       </div>
