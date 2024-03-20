@@ -22,6 +22,4 @@ const updateValoracion = async (id, puntuacion, comentario)=> {
         return valoracion
     }
 
-module.exports= {
-    updateValoracion
-}
+module.exports = updateValoracion

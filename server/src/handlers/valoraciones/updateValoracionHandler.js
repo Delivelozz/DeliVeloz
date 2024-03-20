@@ -1,4 +1,4 @@
-const updateValoracionController= require("../../controllers/valoracion/updateValoracionController")
+const updateValoracionController = require("../../controllers/valoracion/updateValoracionController");
 
 const updateValoracionHandler = async (req, res) => {
   try {
@@ -10,11 +10,12 @@ const updateValoracionHandler = async (req, res) => {
       puntuacion,
       comentario
     );
-    res.status(200).json({ message: "Valoración actualizada corectamente", valoracion });
+    res
+      .status(200)
+      .json({ message: "Valoración actualizada corectamente", valoracion });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 };
 
-module.exports = 
-  updateValoracionHandler;
+module.exports = updateValoracionHandler;

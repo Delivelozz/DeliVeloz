@@ -12,5 +12,4 @@ const deleteValoracionHandler = async (req, res)=>{
     }
 }
 
-module.exports= 
-    deleteValoracionHandler
+module.exports = deleteValoracionHandler

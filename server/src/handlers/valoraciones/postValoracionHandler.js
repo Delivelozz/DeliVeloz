@@ -3,6 +3,4 @@ const valoracionController = require("../../controllers/valoracion/valoracionCon
 const postValoracionHandler = async (req, res) => {
   await valoracionController.postValoracion(req, res);
 };
- module.exports=
-    postValoracionHandler
- 
+ module.exports = postValoracionHandler
