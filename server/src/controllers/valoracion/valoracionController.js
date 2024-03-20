@@ -20,6 +20,4 @@ const postValoracion = async (req, res) => {
     }
 }
 
-module.exports= {
-    postValoracion
-}
+module.exports = postValoracion

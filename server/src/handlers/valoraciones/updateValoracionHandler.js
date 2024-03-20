@@ -16,6 +16,4 @@ const updateValoracionHandler = async (req, res) => {
   }
 };
 
-module.exports = {
-  updateValoracionHandler,
-};
+module.exports = updateValoracionHandler
