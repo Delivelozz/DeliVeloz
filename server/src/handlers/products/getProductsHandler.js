@@ -7,7 +7,7 @@ const getProductsHandler = async (req, res) => {
         if(name){
             const allProductsByName = await getProductsByNameController(name);
             if(allProductsByName.length === 0){
-                throw new Error(`No se encontro ningun usuario con nombre: ${name}`)
+                throw new Error(`No se encontro ningun producto con nombre: ${name}`)
             }
             res.status(200).json(allProductsByName);
         }else{
