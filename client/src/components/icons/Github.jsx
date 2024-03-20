@@ -3,11 +3,11 @@ export default function GithubIcon() {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       className="icon icon-tabler icon-tabler-brand-github"
-      width="24"
-      height="24"
+      width="30"
+      height="30"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
-      stroke="#ffffff"
+      stroke="#222"
       fill="none"
       strokeLinecap="round"
       strokeLinejoin="round"
