@@ -1,8 +1,10 @@
-const axios = require("axios");
+// import { Product } from "../db.js";
+const { Producto } = require("../db.js");
+// const axios = require("axios");
 
 const getAllProducts = async (req, res) =>{
   try {
-    const { data } = await axios.get("http://localhost:5000/products")
+    const data = await Producto.findAll();
     res.status(200).json(data)
   } catch (error) {
     console.error(error);
