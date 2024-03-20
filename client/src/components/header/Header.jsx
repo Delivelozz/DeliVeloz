@@ -3,7 +3,7 @@ import Carrito from "../icons/Carrito";
 
 export default function Header() {
   return (
-    <div className="w-full shadow-xl mb-16">
+    <div className="w-full shadow-xl mb-16 sticky top-0 z-50 bg-white">
       <div className="container flex py-4 items-center justify-between">
         <div>
           <Link to={"/home"}>
@@ -30,7 +30,11 @@ export default function Header() {
           <Link to={"/register"}>
             <button className="btn-tr">Registrarse</button>
           </Link>
-          <Carrito />
+          <Link to={"/cart"}>
+            <div className="bg-sundown-500 rounded-full p-2 hover:bg-sundown-600">
+              <Carrito />
+            </div>
+          </Link>
         </div>
       </div>
     </div>

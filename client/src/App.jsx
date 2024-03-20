@@ -7,6 +7,7 @@ import Register from "./views/register/Register";
 import Products from "./views/products/Products";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
+import Cart from "./views/cart/Cart";
 
 // ? Hooks
 import { useState, useEffect } from "react";
@@ -26,6 +27,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/detail" element={<Detail />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
       {pathname !== "/login" && pathname !== "/register" && <Footer />}
     </main>
