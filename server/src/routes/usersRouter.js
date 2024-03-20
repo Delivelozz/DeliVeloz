@@ -18,6 +18,6 @@ usersRouter.post("/", createUserHandler);
 // Editar Usuario
 usersRouter.patch("/:id", editUserHandler);
 // Desactivar Usuario
-usersRouter.delete("/", desactUserHandler);
+usersRouter.delete("/:id/:value", desactUserHandler);
 
 module.exports = usersRouter;

@@ -1,12 +1,12 @@
 const {Usuario} = require('../../db');
 
-const editUserController = async ({id}, {nombre, apellido, email, direccion_usuario, telefono, password}) => {
+const editUserController = async ({id}, {name, lastName, email, userAddress, phone, password}) => {
     const editUser = await Usuario.update({
-        nombre,
-        apellido,
+        name,
+        lastName,
         email,
-        direccion_usuario,
-        telefono,
+        userAddress,
+        phone,
         password
     },{ 
         where: {
