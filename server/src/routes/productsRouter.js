@@ -13,11 +13,11 @@ const desactProductHandler = require('../handlers/products/desactProductHandler'
 productsRouter.get("/", getProductsHandler);
 // Obtener Producto Por ID
 productsRouter.get("/:id", getProductByIdHandler);
-// Crear Producto
-productsRouter.post("/", createProductHandler);
-// Editar Producto
-productsRouter.put("/", editProductHandler);
-// Desactivar Producto
-productsRouter.delete("/", desactProductHandler);
+// // Crear Producto
+// productsRouter.post("/", createProductHandler);
+// // Editar Producto
+// productsRouter.put("/", editProductHandler);
+// // Desactivar Producto
+// productsRouter.delete("/", desactProductHandler);
 
 module.exports = productsRouter;
