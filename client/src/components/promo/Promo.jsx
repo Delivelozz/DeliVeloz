@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Promo(props) {
   const { id, name, image, description } = props;
   return (
@@ -17,7 +19,9 @@ export default function Promo(props) {
               <p className="line-clamp-3 lg:line-clamp-4">{description}</p>
             </div>
             <div className="flex justify-center mt-4">
-              <button className="btn-bg">Check it!</button>
+              <Link to={"/blog"}>
+                <button className="btn-bg">Check it!</button>
+              </Link>
             </div>
           </div>
         </div>
