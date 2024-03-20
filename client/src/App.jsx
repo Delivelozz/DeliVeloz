@@ -8,7 +8,7 @@ import Products from "./views/products/Products";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Blog from "./views/blog/Blog";
-import Carrito from "./components/icons/Cart";
+import Carrito from "./views/carrito/Carrito";
 
 // ? Hooks
 import { useState, useEffect } from "react";
