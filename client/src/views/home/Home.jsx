@@ -27,8 +27,8 @@ export default function Home() {
         <h1 className="text-center text-xl">
           Nuestras <span className="text-sundown-500">Novedades</span>
         </h1>
+        <Promos dishes={dishes} />
       </div>
-      <Promos dishes={dishes} />
     </section>
   );
 }
