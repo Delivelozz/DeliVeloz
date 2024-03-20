@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Carrito from "../icons/Carrito";
 
 export default function Header() {
   return (
@@ -29,6 +30,7 @@ export default function Header() {
           <Link to={"/register"}>
             <button className="btn-tr">Registrarse</button>
           </Link>
+          <Carrito />
         </div>
       </div>
     </div>
