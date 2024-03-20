@@ -6,6 +6,7 @@ body {
   /* font-size: .9rem; */
   font-family: "DM Sans", sans-serif;
   font-optical-sizing: auto;
+  overflow-x: hidden;
 }
 
 * {
@@ -52,7 +53,29 @@ input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 1000px white inset !important;
   -webkit-text-fill-color: black !important;
 }
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  -webkit-text-fill-color: black !important;
+}
 
+input:-moz-autofill {
+  box-shadow: 0 0 0 1000px white inset !important;
+  -moz-text-fill-color: black !important;
+}
+
+.slick-slider {
+  position: relative;
+}
+
+.slider .slick-dots {
+  position: absolute;
+  bottom: 30px;
+}
+
+.slider .slick-dots li button:before {
+  color: #fff;
+  font-size: 20px;
+}
 input:-moz-autofill {
   box-shadow: 0 0 0 1000px white inset !important;
   -moz-text-fill-color: black !important;
