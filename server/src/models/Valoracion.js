@@ -14,11 +14,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     comentario: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    fecha_hora: {
-      type: DataTypes.DATE,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
   });
