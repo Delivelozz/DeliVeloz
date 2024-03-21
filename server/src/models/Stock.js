@@ -3,20 +3,19 @@ const { DataTypes } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('inventario', {
+  sequelize.define('stock', {
     id:{
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
-    cantidad: {
+    amount: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    fecha_actualizacion: {
+    dateUpdate: {
       type: DataTypes.DATEONLY,
       allowNull: false,
     }
-  }, 
-  {timestamps: false});
+  },{timestamps: false});
 };

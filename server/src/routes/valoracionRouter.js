@@ -2,13 +2,13 @@ const { Router } = require("express");
 
 const valoracionRouter = Router();
 
-const postValoracionHandler = require("../handlers/valoraciones/postValoracionHandler");
-const updateValoracionHandler = require("../handlers/valoraciones/updateValoracionHandler")
-const deleteValoracionHandler = require("../handlers/valoraciones/deleteValoracionHandler");
+const postAssessmentHandler = require("../handlers/valoraciones/postAssessmentHandler");
+const updateAssessmentHandler = require("../handlers/valoraciones/updateAssessmentHandler")
+const deleteAssessmentHandler = require("../handlers/valoraciones/deleteAssessmentHandler");
 
 
-valoracionRouter.post("/", postValoracionHandler);
-valoracionRouter.put("/:id", updateValoracionHandler);
-valoracionRouter.delete("/:id", deleteValoracionHandler);
+valoracionRouter.post("/", postAssessmentHandler);
+valoracionRouter.put("/:id", updateAssessmentHandler);
+valoracionRouter.delete("/:id", deleteAssessmentHandler);
 
 module.exports = valoracionRouter;
