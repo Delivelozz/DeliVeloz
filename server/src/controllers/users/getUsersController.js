@@ -1,8 +1,8 @@
-const {Usuario} = require('../../db');
+const {User} = require('../../db');
 
 const getUsersController = async () => {
     //Obtiene todos los videogames de la BDD
-    const allUsersBDD = await Usuario.findAll();
+    const allUsersBDD = await User.findAll();
       
       return allUsersBDD;
 }

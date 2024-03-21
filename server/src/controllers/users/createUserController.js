@@ -1,7 +1,7 @@
-const {Usuario} = require('../../db');
+const {User} = require('../../db');
 
 const createUserController = async ({name, lastName, email, userAddress, phone, password}) => {
-    const newUsuario = await Usuario.create({
+    const newUser = await User.create({
         name,
         lastName,
         email,
@@ -10,7 +10,7 @@ const createUserController = async ({name, lastName, email, userAddress, phone, 
         password
     });
 
-    return newUsuario;
+    return newUser;
     }
 
 module.exports = createUserController;
