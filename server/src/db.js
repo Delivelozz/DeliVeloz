@@ -32,7 +32,7 @@ let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].s
 sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
-// Para relacionarlos hacemos un destructuring
+// Para relacionarlos hacemos un destructuring cambio
 const { CategoryProduct, Address, Stock, PaymentMethod, Order, Product, User, Assessment  } = sequelize.models;
 
 // Aca vendrian las relaciones
