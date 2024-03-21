@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../node_modules/redux-thunk/dist/redux-thunk.mjs"],
+  "sourcesContent": ["// src/index.ts\nfunction createThunkMiddleware(extraArgument) {\n  const middleware = ({ dispatch, getState }) => (next) => (action) => {\n    if (typeof action === \"function\") {\n      return action(dispatch, getState, extraArgument);\n    }\n    return next(action);\n  };\n  return middleware;\n}\nvar thunk = createThunkMiddleware();\nvar withExtraArgument = createThunkMiddleware;\nexport {\n  thunk,\n  withExtraArgument\n};\n"],
+  "mappings": ";;;AACA,SAAS,sBAAsB,eAAe;AAC5C,QAAM,aAAa,CAAC,EAAE,UAAU,SAAS,MAAM,CAAC,SAAS,CAAC,WAAW;AACnE,QAAI,OAAO,WAAW,YAAY;AAChC,aAAO,OAAO,UAAU,UAAU,aAAa;AAAA,IACjD;AACA,WAAO,KAAK,MAAM;AAAA,EACpB;AACA,SAAO;AACT;AACA,IAAI,QAAQ,sBAAsB;AAClC,IAAI,oBAAoB;",
+  "names": []
+}
