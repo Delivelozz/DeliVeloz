@@ -20,7 +20,7 @@ export default function Promo(props) {
             </div>
             <div className="flex justify-center mt-4">
               <Link to={"/blog"}>
-                <button className="btn-bg">Check it!</button>
+                <button className="btn-bg">¡Míralo aquí!</button>
               </Link>
             </div>
           </div>
