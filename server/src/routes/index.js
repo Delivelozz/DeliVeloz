@@ -1,17 +1,18 @@
 const { Router } = require('express');
-const getAllProducts = require('../controllers/getAllProducts');
-const startDatabase = require('../controllers/startDatabase');
-// Importar todos los routers;
-// Ejemplo: const authRouter = require('./auth.js');
-
-
 const router = Router();
 
-// Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
-router.get("/products", getAllProducts)
-// router.get("/", startDatabase)
+const usersRouter = require('./usersRouter');
+const productsRouter = require("./productsRouter");
+const valoracionRouter = require("./valoracionRouter");
+const filterRouter = require("./filterRouter");
 
-
+// router PRODUCTOS
+router.use("/products", productsRouter);
+// Router USUARIOS
+router.use("/users", usersRouter);
+// Router VALORACIONES
+router.use("/valoracion", valoracionRouter);
+// Router FILTROS
+router.use("/filter", filterRouter);
 
 module.exports = router;

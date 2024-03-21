@@ -3,19 +3,19 @@ const { DataTypes } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('metodopago', {
+  sequelize.define('categoryProduct', {
     id:{
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
-    tipo:{
-      type: DataTypes.INTEGER,
+    name: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
-    number:{
-        type: DataTypes.INTEGER,
-        allowNull: false,
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
     }
-  });
+  },{timestamps: false});
 };

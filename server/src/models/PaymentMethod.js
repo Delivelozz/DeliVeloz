@@ -3,27 +3,19 @@ const { DataTypes } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('Restaurante', {
+  sequelize.define('paymentMethod', {
     id:{
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
-    name: {
-      type: DataTypes.STRING,
+    type:{
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
-    direccion: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    horario: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    image: {
-      type: DataTypes.STRING,
-      allowNull: false,
+    number:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
     }
   });
 };

@@ -4,7 +4,7 @@
       "name": "Picada Deliveloz",
       "description": "Trozos de costilla, pollo acompañado de papas, salchicha, chorizo, patacón, arepa, crispeta",
       "price": "12.34",
-      "category": "Platos combinados",
+      "category": "platos-combinados",
       "image": {
         "jpg": "./img/jpg/picada deliveloz.jpg",
         "png": "./img/png/picada_deliveloz.png"
@@ -15,7 +15,7 @@
       "name": "Pollo a la plancha",
       "description": "250 gr. de Pechuga marinada acompañada de ensalada, miel, mostaza y papa a la francesa",
       "price": "5.91",
-      "category": "Platos combinados",
+      "category": "platos-combinados",
       "image": {
         "jpg": "./img/jpg/pollo a la plancha.jpg",
         "png": "./img/png/pollo_a_la_plancha.png"
@@ -26,7 +26,7 @@
       "name": "Costillas en salsa BBQ",
       "description": "250 gr. de Costilla en salsa BBQ acompañada de papa a la francesa y ensalada",
       "price": "6.68",
-      "category": "Platos combinados",
+      "category": "platos-combinados",
       "image": {
         "jpg": "./img/jpg/costillas bbq.jpg",
         "png": "./img/png/costillas_bbq.png"
@@ -37,7 +37,7 @@
       "name": "Alitas BBQ",
       "description": "Trozos de Alitas acompañadas de papa a la francesa y ensalada",
       "price": "6.17",
-      "category": "Platos combinados",
+      "category": "platos-combinados",
       "image": {
         "jpg": "./img/jpg/alitas bbq.jpg",
         "png": "./img/png/alitas_bbq.png"
@@ -48,7 +48,7 @@
       "name": "Crispeta de pollo",
       "description": "200 gr. deTrozos de Pechuga adobados y apanados, acompañados en miel Mostaza y papa a la francesa",
       "price": "5.14",
-      "category": "Platos combinados",
+      "category": "platos-combinados",
       "image": {
         "jpg": "./img/jpg/crispetas de pollo.jpg",
         "png": "./img/png/crispetas_de_pollo.png"
@@ -59,7 +59,7 @@
       "name": "Sandwich Deliveloz",
       "description": "Pollo, jamón y champiñones en salsa bechamel, acompañado de queso, lechuga, tomate, salsa y papa francesa",
       "price": "4.63",
-      "category": "Sandwich",
+      "category": "sandwich",
       "image": {
         "jpg": "./img/jpg/sandwich deliveloz.jpg",
         "png": "./img/png/sandwich_deliveloz.png"
@@ -70,7 +70,7 @@
       "name": "Sandwich cubano",
       "description": "Pollo, jamón y tocineta en salsa negra, acompañado con queso, lechuga, tomate, salsa y papa francesa",
       "price": "4.63",
-      "category": "Sandwich",
+      "category": "sandwich",
       "image": {
         "jpg": "./img/jpg/sandwich cubano.jpg",
         "png": "./img/png/sandwich_cubano.png"
@@ -81,7 +81,7 @@
       "name": "Sandwich mixto",
       "description": "Trozos de carne de cerdo con tocineta en salsa negra , cebolla y pimientos, acompañado de queso, lechuga, tomate, salsa y papa francesa)",
       "price": "4.63",
-      "category": "Sandwich",
+      "category": "sandwich",
       "image": {
         "jpg": "./img/jpg/sandwich mixto.jpg",
         "png": "./img/png/sandwich_mixto.png"
@@ -92,7 +92,7 @@
       "name": "Pizza Sa-Fre",
       "description": "Salichicha, Jamón, Tocineta, Orégano, Salsa BBQ.",
       "price": "13.50",
-      "category": "Pizzas",
+      "category": "pizzas",
       "image": {
         "jpg": "./img/jpg/Pizza Sa-Fre.jpg",
         "png": "./img/png/Pizza_Sa-Fre.png"
@@ -103,7 +103,7 @@
       "name": "Pizza Tropical",
       "description": "Piña, Durazno, Cerezas, Pasas.",
       "price": "14.00",
-      "category": "Pizzas",
+      "category": "pizzas",
       "image": {
         "jpg": "./img/jpg/Pizza Tropical.jpg",
         "png": "./img/png/Pizza_Tropical.png"
@@ -114,7 +114,7 @@
       "name": "Pizza Hawaiana",
       "description": "Jamón, Piña.",
       "price": "14.50",
-      "category": "Pizzas",
+      "category": "pizzas",
       "image": {
         "jpg": "./img/jpg/Pizza Hawaiana.jpg",
         "png": "./img/png/Pizza_Hawaiana.png"
@@ -125,7 +125,7 @@
       "name": "Pizza Especial",
       "description": "Pollo, Jamón, Champignones, Pimientos, Orégano.",
       "price": "14.00",
-      "category": "Pizzas",
+      "category": "pizzas",
       "image": {
         "jpg": "./img/jpg/Pizza Especial.jpg",
         "png": "./img/png/Pizza_Especial.png"
@@ -136,7 +136,7 @@
       "name": "Pizza Ranchera",
       "description": "Carne molida, Salchicha, Pimentón, Cebolla, Orégano, Salsa BBQ.",
       "price": "15.00",
-      "category": "Pizzas",
+      "category": "pizzas",
       "image": {
         "jpg": "./img/jpg/Pizza Ranchera.jpg",
         "png": "./img/png/Pizza_Ranchera.png"
@@ -147,7 +147,7 @@
       "name": "Pizza Mexicana",
       "description": "Carne molida, Tomate, Jalapeños, Cebolla, Pimentón.",
       "price": "15.50",
-      "category": "Pizzas",
+      "category": "pizzas",
       "image": {
         "jpg": "./img/jpg/Pizza Mexicana.jpg",
         "png": "./img/png/Pizza_Mexicana.png"
@@ -158,7 +158,7 @@
       "name": "Pizza de Vegetales",
       "description": "Tomate, Cebolla, Pimentón, Champignones.",
       "price": "14.00",
-      "category": "Pizzas",
+      "category": "pizzas",
       "image": {
         "jpg": "./img/jpg/Pizza de Vegetales.jpg",
         "png": "./img/png/Pizza_de_Vegetales.png"
@@ -169,7 +169,7 @@
       "name": "Pizza Andina",
       "description": "Maíz Tierno, Champignones, Albaca, Perejil, Tocineta.",
       "price": "14.50",
-      "category": "Pizzas",
+      "category": "pizzas",
       "image": {
         "jpg": "./img/jpg/Pizza Andina.jpg",
         "png": "./img/png/Pizza_Andina.png"
@@ -180,7 +180,7 @@
       "name": "Lasagna Sa-fre",
       "description": "Pollo, champiñones, camarones, queso y salsa bechamel",
       "price": "7.71",
-      "category": "Lasagnas",
+      "category": "lasagna",
       "image": {
         "jpg": "./img/jpg/lasagnaSafre.jpg",
         "png": "./img/png/lasagnaSafre.png"
@@ -191,7 +191,7 @@
       "name": "Lasagna Pollo Jamón",
       "description": "Pollo, jamón, salsa bbq ó salsa bechamel y queso",
       "price": "7.20",
-      "category": "Lasagnas",
+      "category": "lasagna",
       "image": {
         "jpg": "./img/jpg/lasagnaPolloJamon.jpg",
         "png": "./img/png/lasagnaPolloJamon.png"
@@ -202,7 +202,7 @@
       "name": "Lasagna Mexicana",
       "description": "Carne molida, pimentón, cebolla, jalapeños, salsa BBQ, queso",
       "price": "7.20",
-      "category": "Lasagnas",
+      "category": "lasagna",
       "image": {
         "jpg": "./img/jpg/lasagnaMexicana.jpg",
         "png": "./img/png/lasagnaMexicana.png"
@@ -213,7 +213,7 @@
       "name": "Lasagna Pollo con Champiñones",
       "description": "Pollo, champiñones, salsa bechamel, pimentón, queso",
       "price": 7.20,
-      "category": "Lasagnas",
+      "category": "lasagna",
       "image": {
         "jpg": "./img/jpg/lasagnaPolloConChampiñones.jpg",
         "png": "./img/png/lasagnaPolloConChampiñones.png"
@@ -224,7 +224,7 @@
       "name": "Lasagna Bolognesa",
       "description": "Carne molida en salsa bolognesa, tomate y salsa bechamel",
       "price": 7.20,
-      "category": "Lasagnas",
+      "category": "lasagna",
       "image": {
         "jpg": "./img/jpg/lasagnaBolognesa.jpg",
         "png": "./img/png/lasagnaBolognesa.png"
@@ -235,7 +235,7 @@
       "name": "Malteada Carnaval",
       "description": "Helado de vainilla, Fresas frescas y Crema batida.",
       "price": "4.29",
-      "category": "Bebida Fría",
+      "category": "bebidas-frias",
       "image": {
         "jpg": "./img/jpg/malteada carnaval.jpg",
         "png": "./img/png/malteada_carnaval.png"
@@ -246,7 +246,7 @@
       "name": "Malteada SA-Fré",
       "description": "Café, Helado de vainilla y Licor Baileys.",
       "price": "2.71",
-      "category": "Bebida Fría",
+      "category": "bebidas-frias",
       "image": {
         "jpg": "./img/jpg/malfeada beylis.jpg",
         "png": "./img/png/malfeada_beylis.png"
@@ -257,7 +257,7 @@
       "name": "Soda de Frutas Rojas",
       "description": "Refrescante soda sabor a Frutos rojos.",
       "price": "2.14",
-      "category": "Bebida Fría",
+      "category": "bebidas-frias",
       "image": {
         "jpg": "./img/jpg/soda frutos rojos.jpg",
         "png": "./img/png/soda_frutos_rojos.png"
@@ -268,7 +268,7 @@
       "name": "Malteada de Helado",
       "description": "Deliciosa malteada hecha con helado de vainilla y leche.",
       "price": "1.86",
-      "category": "Bebida Fría",
+      "category": "bebidas-frias",
       "image": {
         "jpg": "./img/jpg/malteda de helado.jpg",
         "png": "./img/png/malteda_de_helado.png"
@@ -279,7 +279,7 @@
       "name": "Jugos en Leche",
       "description": "Variedad de jugos mezclados con leche para una experiencia cremosa.",
       "price": "3.71",
-      "category": "Bebida Fría",
+      "category": "bebidas-frias",
       "image": {
         "jpg": "./img/jpg/jugo en leche.jpg",
         "png": "./img/png/jugo_en_leche.png"
@@ -290,7 +290,7 @@
       "name": "Jugos en Agua",
       "description": "Variedad de jugos mezclados con agua para una experiencia refrescante.",
       "price": "2.00",
-      "category": "Bebida Fría",
+      "category": "bebidas-frias",
       "image": {
         "jpg": "./img/jpg/jugosDeAgua.jpg",
         "png": "./img/png/jugosDeAgua.png"
@@ -301,7 +301,7 @@
       "name": "Frapé Oreo ",
       "description": "Frapé refrescante con sabor a oreo, perfecto para los amantes del chocolate.",
       "price": "4.29 ",
-      "category": "Bebida Fría",
+      "category": "bebidas-frias",
       "image": {
         "jpg": "./img/jpg/frapeeOreo.jpg",
         "png": "./img/png/frapeeOreo.png"
@@ -312,7 +312,7 @@
       "name": "Milo Frio ",
       "description": "Frapé refrescante con sabor a  milo.",
       "price": "2.57",
-      "category": "Bebida Fría",
+      "category": "bebidas-frias",
       "image": {
         "jpg": "./img/jpg/miloFrio.jpg",
         "png": "./img/png/miloFrio.png"
@@ -323,7 +323,7 @@
       "name": "Granizado de Coco",
       "description": "Refrescante granizado con sabor a coco, perfecto para los amantes de esta fruta tropical.",
       "price": "1.43",
-      "category": "Bebida Fría",
+      "category": "bebidas-frias",
       "image": {
         "jpg": "./img/jpg/granizadoDeCoco.jpg",
         "png": "./img/png/granizadoDeCoco.png"
@@ -334,7 +334,7 @@
       "name": "Granizado de Té con Limón",
       "description": "Granizado con sabor a té y un toque de limón, una opción refrescante y deliciosa.",
       "price": "2.00",
-      "category": "Bebida Fría",
+      "category": "bebidas-frias",
       "image": {
         "jpg": "./img/jpg/granizadoDeTeConLimon.jpg",
         "png": "./img/png/granizadoDeTeConLimon.png"
@@ -345,7 +345,7 @@
       "name": "Granizado de Frutas",
       "description": "Granizado con una mezcla refrescante de varias frutas, para un sabor único y delicioso.",
       "price": "4.29",
-      "category": "Bebida Fría",
+      "category": "bebidas-frias",
       "image": {
         "jpg": "./img/jpg/grnizadoDeFrutas.jpg",
         "png": "./img/png/grnizadoDeFrutas.png"
@@ -356,7 +356,7 @@
       "name": "Limonada Natural",
       "description": "Refrescante limonada hecha con limones frescos y agua.",
       "price": "7.00",
-      "category": "Bebida Fría",
+      "category": "bebidas-frias",
       "image": {
         "jpg": "./img/jpg/limonadaNatural.jpg",
         "png": "./img/png/limonadaNatural.png"
@@ -367,7 +367,7 @@
       "name": "Limonada Cerezada",
       "description": "Limonada con un toque de cereza para un sabor dulce y refrescante.",
       "price": "3.49",
-      "category": "Bebida Fría",
+      "category": "bebidas-frias",
       "image": {
         "jpg": "./img/jpg/limonadaCerezada.jpg",
         "png": "./img/png/limonadaCerezada.png"
@@ -378,7 +378,7 @@
       "name": "Limonada de Yerbabuena",
       "description": "Limonada con un toque de yerbabuena para una experiencia refrescante y herbal.",
       "price": "3.99",
-      "category": "Bebida Fría",
+      "category": "bebidas-frias",
       "image": {
         "jpg": "./img/jpg/limonada-hiervabuena.jpeg",
         "png": "./img/png/limonada-hiervabuena.png"
@@ -389,7 +389,7 @@
       "name": "Jarra de Limonada Natural",
       "description": "Una jarra grande de limonada natural para compartir con amigos y familiares.",
       "price": "8.99",
-      "category": "Bebida Fría",
+      "category": "bebidas-frias",
       "image": {
         "jpg": "./img/jpg/jarra limonada.jpg",
         "png": "./img/png/jarra_limonada.png"
@@ -400,7 +400,7 @@
       "name": "Capuchino Baileys",
       "description": "Capuchino con licor Baileys para un toque indulgente",
       "price": "2.83",
-      "category": "Bebida Caliente",
+      "category": "bebida-caliente",
       "image": {
         "jpg": "./img/jpg/capuccino-bailyes.jpg",
         "png": "./img/png/capuccino-bailyes.png"
@@ -411,7 +411,7 @@
       "name": "Capuchino Amareto",
       "description": "Deliciosa variante del capuchino tradicional",
       "price": "2.83",
-      "category": "Bebida Caliente",
+      "category": "bebida-caliente",
       "image": {
         "jpg": "./img/jpg/capuccino amaretto.jpg",
         "png": "./img/png/capuccino_amaretto.png"
@@ -422,7 +422,7 @@
       "name": "Capuchino Aromatizado",
       "description": "Escoge entre Canela, Vainilla o Naranja",
       "price": "2.06",
-      "category": "Bebida Caliente",
+      "category": "bebida-caliente",
       "image": {
         "jpg": "./img/jpg/cappucino-aromatizado.jpg",
         "png": "./img/png/cappucino.png"
@@ -433,7 +433,7 @@
       "name": "Café con Leche",
       "description": "Bebida clásica que combina café expreso con leche caliente",
       "price": "1.16",
-      "category": "Bebida Caliente",
+      "category": "bebida-caliente",
       "image": {
         "jpg": "./img/jpg/cafe-con-leche.jpg",
         "png": "./img/png/cafe-con-leche.png"
@@ -444,7 +444,7 @@
       "name": "Café Campesino",
       "description": " Variante rústica y reconfortante de café preparada con granos tostados y agua caliente",
       "price": "0.90",
-      "category": "Bebida Caliente",
+      "category": "bebida-caliente",
       "image": {
         "jpg": "./img/jpg/Cafe-Campesinoo.jpg",
         "png": "./img/png/Cafe-Campesino.png"
@@ -455,7 +455,7 @@
       "name": "Café Americano",
       "description": "Bebida caliente y clásica preparada con café expreso y agua caliente",
       "price": "1.00",
-      "category": "Bebida Caliente",
+      "category": "bebida-caliente",
       "image": {
         "jpg": "./img/jpg/cafeamericano.jpg",
         "png": "./img/png/cafeamericano.png"
@@ -466,7 +466,7 @@
       "name": "Chocolate Caliente",
       "description": " Bebida caliente y reconfortante elaborada con chocolate derretido y leche",
       "price": "1.5",
-      "category": "Bebida Caliente",
+      "category": "bebida-caliente",
       "image": {
         "jpg": "./img/jpg/chocolate-caliente.jpg",
         "png": "./img/png/chocolate-caliente.png"
@@ -477,7 +477,7 @@
       "name": "Milo Caliente",
       "description": "Bebida caliente preparada con Milo, ofreciendo un sabor reconfortante y delicioso.",
       "price": "1.80",
-      "category": "Bebida Caliente",
+      "category": "bebida-caliente",
       "image": {
         "jpg": "./img/jpg/milo.jpg",
         "png": "./img/png/milo.png"
@@ -488,7 +488,7 @@
       "name": "Té Caliente",
       "description": "Infusión caliente de hojas de té",
       "price": "0.77",
-      "category": "Bebida Caliente",
+      "category": "bebida-caliente",
       "image": {
         "jpg": "./img/jpg/te.jpg",
         "png": "./img/png/tee.png"
@@ -499,7 +499,7 @@
       "name": "Aromática de Sobre",
       "description": "Infusión de hierbas en sobre",
       "price": "0.77",
-      "category": "Bebida Caliente",
+      "category": "bebida-caliente",
       "image": {
         "jpg": "./img/jpg/aromatica.jpg",
         "png": "./img/png/aromaticaa.png"
@@ -510,7 +510,7 @@
       "name": "Aromática con Fruta",
       "description": "Infusión de hierbas aromáticas con trozos frescos de frutas",
       "price": "1.80",
-      "category": "Bebida Caliente",
+      "category": "bebida-caliente",
       "image": {
         "jpg": "./img/jpg/agua-aromatica-de-frutas.jpg",
         "png": "./img/png/agua-aromaticas.png"
@@ -521,7 +521,7 @@
       "name": "Agua Panela con Queso Doble Crema",
       "description": "Bebida caliente de panela disuelta en agua, con la adición de queso doble crema",
       "price": "1.30",
-      "category": "Bebida Caliente",
+      "category": "bebida-caliente",
       "image": {
         "jpg": "./img/jpg/aguapanela.jpg",
         "png": "./img/png/aguapanela.png"
@@ -532,7 +532,7 @@
       "name": "Perro Caliente Tradicional",
       "description": "Tocineta, salchicha, pan, queso, papa ripio y salsas",
       "price": "2.57",
-      "category": "Comida rápida",
+      "category": "comida-rapida",
       "image": {
         "jpg": "./img/jpg/perroCalienteTradicional.jpg",
         "png": "./img/png/perroCalienteTradicional.png"
@@ -543,7 +543,7 @@
       "name": "Perro Caliente Mexicano",
       "description": "Salchipapa, salsa chimichurry con jalapeños, pan, queso, papa ripio y salsas",
       "price": "3.08",
-      "category": "Comida rápida",
+      "category": "comida-rapida",
       "image": {
         "jpg": "./img/jpg/perroCalienteMexicano.jpg",
         "png": "./img/png/perroCalienteMexicano.png"
@@ -554,7 +554,7 @@
       "name": "Perro Caliente Hawaiano",
       "description": "Salchipapa, piña calada, tocineta, pan, papa ripio, salsas",
       "price": "3.08",
-      "category": "Comida rápida",
+      "category": "comida-rapida",
       "image": {
         "jpg": "./img/jpg/perroCalienteHawaiano.jpg",
         "png": "./img/png/perroCalienteHawaiano.png"
@@ -565,7 +565,7 @@
       "name": "Salchipapa Mixta",
       "description": "Salchipapa, chorizo, papa, ripio, queso gratinado, maiz tierno",
       "price": "5.14",
-      "category": "Comida rápida",
+      "category": "comida-rapida",
       "image": {
         "jpg": "./img/jpg/salchipapaMixta.jpg",
         "png": "./img/png/salchipapaMixta.png"
@@ -575,8 +575,8 @@
     {
       "name": "Salchipapa Junior",
       "description": "Salchicha, papa",
-      "price": "2.57",
-      "category": "Comida rápida",
+      "price": "2.",
+      "category": "comida-rapida",
       "image": {
         "jpg": "./img/jpg/salchipapaJunior.jpg",
         "png": "./img/png/salchipapaJunior.png"
@@ -587,7 +587,7 @@
       "name": "Hamburguesa Sa-Fre",
       "description": "Pan, Carne de res artesanal, tocineta, queso.",
       "price": "7.50",
-      "category": "Comida rápida",
+      "category": "comida-rapida",
       "image": {
         "jpg": "./img/jpg/Hamburguesa Sa-Fre.jpg",
         "png": "./img/png/Hamburguesa_Sa-Fre.png"
@@ -598,7 +598,7 @@
       "name": "Hamburguesa Mexicana",
       "description": "Pan, carne de res artesanal, salsa guacamole con jalapeños, cebollas, queso, salsas",
       "price": "7.00",
-      "category": "Comida rápida",
+      "category": "comida-rapida",
       "image": {
         "jpg": "./img/jpg/Hamburguesa Mexicana.jpg",
         "png": "./img/png/Hamburguesa_Mexicana.png"
@@ -609,7 +609,7 @@
       "name": "Hamburguesa Hawaiana",
       "description": "Pan, Carne de res artesanal, tocineta, piña calada, jamón, queso, salsa.",
       "price": "6.50",
-      "category": "Comida rápida",
+      "category": "comida-rapida",
       "image": {
         "jpg": "./img/jpg/Hamburguesa Hawaiana.jpg",
         "png": "./img/png/Hamburguesa_Hawaiana.png"
@@ -620,7 +620,7 @@
       "name": "Hamburguesa Clásica",
       "description": "Pan, Carne de res artesanal, tocineta, jamón, queso , cebollas, tomate, lechuga, salsas y papas a la francesa",
       "price": "6.00",
-      "category": "Comida rápida",
+      "category": "comida-rapida",
       "image": {
         "jpg": "./img/jpg/Hamburguesa Clásica.jpg",
         "png": "./img/png/Hamburguesa_Clásica.png"
