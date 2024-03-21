@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function Promo(props) {
   const { id, name, image, description } = props;
   return (
-    <section className="mx-2 mt-4 lg:mx-4">
+    <section className=" mt-4 mb-4">
       <article id={id} className="w-full relative">
         <div className="w-full h-[24rem] bg-white rounded-lg border p-4 lg:h-[28rem]">
           <figure className="w-full h-1/2 rounded-md ">
@@ -20,7 +20,7 @@ export default function Promo(props) {
             </div>
             <div className="flex justify-center mt-4">
               <Link to={"/blog"}>
-                <button className="btn-bg">Check it!</button>
+                <button className="btn-bg">¡Míralo aquí!</button>
               </Link>
             </div>
           </div>

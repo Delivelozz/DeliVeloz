@@ -85,4 +85,19 @@ input:-moz-autofill {
   color: #d32f2f;
   font-size: 20px;
 }
+.carrousel .slick-track {
+  display: flex;
+  gap: 2rem;
+}
 
+.active {
+  @apply flex justify-center items-center rounded-full border border-sundown-500 bg-sundown-500 text-white w-8 h-8 hover:bg-white hover:border hover:text-sundown-500 hover:border-sundown-500;
+}
+
+.disabled {
+  @apply flex justify-center items-center rounded-full border bg-gray-200 text-white w-8 h-8 cursor-not-allowed;
+}
+
+.current {
+  @apply flex justify-center items-center rounded-full border border-sundown-700 bg-sundown-700 text-white w-8 h-8;
+}
