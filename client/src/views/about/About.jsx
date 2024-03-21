@@ -2,8 +2,6 @@ import { NavLink } from "react-router-dom";
 import img1 from "../../assents/images/delivery.png"
 import LinkedInIcon from "../../components/icons/LinkedIn";
 import GithubIcon from "..//../components/icons/Github"
-import iconGithub from "../../assents/github.png"
-import iconLinkedin from "../../assents/linkedin.png"
 import imgMaria from "../../assents/Maria.jpg"
 import imgJose from "../../assents/Jose.jpg"
 import imgSonia from "../../assents/Sonia.jpg"
