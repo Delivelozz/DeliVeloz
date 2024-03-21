@@ -32,39 +32,33 @@ let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].s
 sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
-// Para relacionarlos hacemos un destructuring
-const { Categoria, Direccion, Inventario, Metodopago, Pedido, Producto, Restaurante, Usuario, Valoracion  } = sequelize.models;
+// Para relacionarlos hacemos un destructuring cambio
+const { CategoryProduct, Address, Stock, PaymentMethod, Order, Product, User, Assessment  } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
-// PEDIDO - PRUDUCTO (muchos a muchos)
-Pedido.belongsToMany(Producto, { through: 'PedidoProducto', timestamps: false });
-Producto.belongsToMany(Pedido, { through: 'PedidoProducto', timestamps: false });
-// METODO DE PAGO - PEDIDO (uno a muchos)
-Metodopago.hasMany(Pedido);
-Pedido.belongsTo(Metodopago);
-// USUARIO - PEDIDO (uno a muchos)
-Usuario.hasMany(Pedido);
-Pedido.belongsTo(Usuario);
-// RESTAURANTE - PEDIDO (uno a muchos)
-Restaurante.hasMany(Pedido);
-Pedido.belongsTo(Restaurante);
-// RESTAURANTE - INVENTARIO (uno a uno)
-Restaurante.hasOne(Inventario);
-Inventario.belongsTo(Restaurante);
-// INVENTARIO - PRUDUCTO (uno a muchos)
-Inventario.hasMany(Producto);
-Producto.belongsTo(Inventario);
-// CATEGORIA - PRUDUCTO (uno a muchos)
-Categoria.hasMany(Producto);
-Producto.belongsTo(Categoria);
-// DIRECCION - USUARIO (uno a muchos)
-Direccion.hasMany(Usuario);
-Usuario.belongsTo(Direccion);
-// VALORACION - USUARIO (uno a muchos)
-Valoracion.hasMany(Usuario);
-Usuario.belongsTo(Valoracion);
+// Order - PRUDUCTO (muchos a muchos)
+Order.belongsToMany(Product, { through: 'OrderProduct', timestamps: false });
+Product.belongsToMany(Order, { through: 'OrderProduct', timestamps: false });
+// METODO DE PAGO - Order (uno a muchos)
+PaymentMethod.hasMany(Order);
+Order.belongsTo(PaymentMethod);
+// User - Order (uno a muchos)
+User.hasMany(Order);
+Order.belongsTo(User);
+// Stock - PRUDUCTO (uno a muchos)
+Stock.hasMany(Product);
+Product.belongsTo(Stock);
+// CategoryProduct - PRUDUCTO (uno a muchos)
+CategoryProduct.hasMany(Product);
+Product.belongsTo(CategoryProduct);
+// Address - User (uno a muchos)
+Address.hasMany(User);
+User.belongsTo(Address);
+// Assessment - User (uno a muchos)
+Assessment.hasMany(User);
+User.belongsTo(Assessment);
 // Pedido.belongsTo(Metodopago, { foreignKey: 'metodopagoId' });
 // Metodopago.hasMany(Pedido, { foreignKey: 'metodopagoId' });
 
