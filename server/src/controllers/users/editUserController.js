@@ -1,7 +1,7 @@
-const {Usuario} = require('../../db');
+const {User} = require('../../db');
 
 const editUserController = async ({id}, {name, lastName, email, userAddress, phone, password}) => {
-    const editUser = await Usuario.update({
+    const editUser = await User.update({
         name,
         lastName,
         email,

@@ -1,7 +1,7 @@
-const {Usuario} = require('../../db');
+const {User} = require('../../db');
 
 const desactUserController = async (id, value) =>{
-  const user = await Usuario.findOne({ where: { id: parseInt(id, 10) } });
+  const user = await User.findOne({ where: { id: parseInt(id, 10) } });
   user.active = value;
   await user.save();
   return { message: 'Usuario actualizado exitosamente' };

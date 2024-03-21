@@ -1,7 +1,7 @@
-const {Usuario} = require('../../db');
+const {User} = require('../../db');
 
 const getUserByIDController = async (id) => {
-const userById = await Usuario.findOne({ // Buscamos el Usuario en la BDD
+const userById = await User.findOne({ // Buscamos el Usuario en la BDD
     where: { id: id }
 });
 
