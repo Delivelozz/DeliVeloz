@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setDishes } from "../../redux/actions/actions.js";
 import { getDishes } from "../../data/index.js";
 import Cards from "../../components/cards/Cards.jsx";
+import Filters from "../../components/filters/Filters.jsx";
 
 export default function Products() {
   const dishes = useSelector((state) => state.dishes);
@@ -20,6 +21,8 @@ export default function Products() {
 
   return (
     <section className="container">
+      <Filters />
+
       <Cards dishes={dishes} />
     </section>
   );
