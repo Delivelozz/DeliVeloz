@@ -7,8 +7,8 @@ const updateValoracionHandler = require("../handlers/valoraciones/updateValoraci
 const deleteValoracionHandler = require("../handlers/valoraciones/deleteValoracionHandler");
 
 
-valoracionRouter.post("/valoracion", postValoracionHandler);
-/* valoracionRouter.put("/valoracion/:id", updateValoracionHandler); */
-valoracionRouter.delete("/valoracion/:id", deleteValoracionHandler);
+valoracionRouter.post("/", postValoracionHandler);
+valoracionRouter.put("/:id", updateValoracionHandler);
+valoracionRouter.delete("/:id", deleteValoracionHandler);
 
 module.exports = valoracionRouter;

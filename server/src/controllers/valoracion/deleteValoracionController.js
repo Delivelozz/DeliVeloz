@@ -9,4 +9,4 @@ const deleteValoracion = async (id) =>{
         
     return valoracion
 }
-module.exports = deleteValoracion;
+module.exports = {deleteValoracion};
