@@ -1,6 +1,6 @@
 const {Valoracion} = require('../../db')
 
-const postValoracion = async (req, res) => {
+const valoracionController = async (req, res) => {
     try { 
         const {puntuacion, comentario}= req.body;
 
@@ -20,4 +20,4 @@ const postValoracion = async (req, res) => {
     }
 }
 
-module.exports = {postValoracion}
+module.exports = valoracionController;

@@ -1,6 +1,6 @@
 const {Valoracion} = require('../../db')
 
-const deleteValoracion = async (id) =>{
+const deleteValoracionController = async (id) =>{
     const valoracion = await Valoracion.findByPk(id);    
         if(!valoracion){
             throw new Error ("No se encontró la valoración especificada")
@@ -9,4 +9,4 @@ const deleteValoracion = async (id) =>{
         
     return valoracion
 }
-module.exports = {deleteValoracion};
+module.exports = deleteValoracionController;

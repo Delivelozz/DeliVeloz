@@ -3,7 +3,7 @@ const deleteValoracionController= require ("../../controllers/valoracion/deleteV
 const deleteValoracionHandler = async (req, res)=>{
     try {
         const {id} =req.params;
-        await deleteValoracionController.deleteValoracion(id)
+        await deleteValoracionController(id)
 
         res.status(200).json({message: "Valoración eliminada correctamente"});
 

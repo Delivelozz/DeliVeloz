@@ -1,6 +1,6 @@
 const {Valoracion} = require ('../../db')
 
-const updateValoracion = async (id, puntuacion, comentario)=> {
+const updateValoracionController = async (id, puntuacion, comentario)=> {
     const valoracion = await Valoracion.findByPk(id)      
 
         if(!valoracion){
@@ -22,4 +22,4 @@ const updateValoracion = async (id, puntuacion, comentario)=> {
         return valoracion
     }
 
-module.exports = {updateValoracion}
+module.exports = updateValoracionController

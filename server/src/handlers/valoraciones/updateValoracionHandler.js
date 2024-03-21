@@ -5,7 +5,7 @@ const updateValoracionHandler = async (req, res) => {
     const { id } = req.params;
     const { puntuacion, comentario } = req.body;
 
-    const valoracion = await updateValoracionController.updateValoracion(
+    const valoracion = await updateValoracionController(
       id,
       puntuacion,
       comentario
