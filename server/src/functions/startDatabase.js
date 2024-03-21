@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { Producto } = require("../db.js")
+const { Product } = require("../db.js")
 
 const startDatabase = async () => {
   try {
@@ -8,12 +8,12 @@ const startDatabase = async () => {
     const products = data.map(product => {
       try {
         return{
-          nombre: product.name || "undefined",
-          descripcion: product.description || "undefined",
-          precio: product.price || "undefined",
-          categoria: product.category || "undefined",
-          imagen: product.image || "undefined",
-          disponibilidad: product.availability || false,
+          name: product.name || "undefined",
+          description: product.description || "undefined",
+          price: product.price || "undefined",
+          category: product.category || "undefined",
+          image: product.image || {},
+          availability: product.availability || false,
         }
       } catch (error) {
         console.error("Error en el producto: ", product);
@@ -22,9 +22,9 @@ const startDatabase = async () => {
     });
 
     for (const product of products) {
-      const existingProduct = await Producto.findOne({ where: { nombre: product.nombre } });
+      const existingProduct = await Product.findOne({ where: { name: product.name } });
       if (!existingProduct) {
-        await Producto.create(product);
+        await Product.create(product);
       }
     }
 
