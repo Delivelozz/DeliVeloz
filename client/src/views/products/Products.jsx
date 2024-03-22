@@ -14,7 +14,8 @@ export default function Products() {
     dispatch(setDishes());
   }, [dispatch]);
 
-  console.log("Estos son los filtros:", filteredDishes);
+  console.log("Estos son los filtros:", dishes);
+  // console.log("Estos son los filtros:", filteredDishes);
 
   // ? -------------------------------- Paginate
 
@@ -29,7 +30,6 @@ export default function Products() {
       ? filteredDishes.slice(firstPostIndex, lastPostIndex)
       : dishes.slice(firstPostIndex, lastPostIndex);
 
-  console.log(dishes);
   return (
     <section className="container">
       <Filters setCurrentPage={setCurrentPage} />

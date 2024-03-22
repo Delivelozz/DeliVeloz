@@ -2,6 +2,7 @@ import { useState } from "react";
 import Card from "../../components/card/Card.jsx";
 
 export default function Cards(props) {
+  // console.log("esto", props);
   const { dishes } = props;
   return (
     <section>

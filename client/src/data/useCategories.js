@@ -12,7 +12,7 @@ const useCategories = () => {
   useEffect(() => {
     dispatch(setCategories());
   }, [dispatch]);
-console.log(categories)
+// console.log(categories)
 
   useEffect(() => {
     const fetchCategories = async () => {
