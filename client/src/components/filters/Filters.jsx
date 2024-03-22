@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getByName, filterBy, resetDishes } from "../../redux/actions/actions";
+import {
+  getByName,
+  filterBy,
+  resetDishes,
+  setFiltering,
+} from "../../redux/actions/actions";
 import useCategories from "../../data/useCategories";
 
 export default function Filters({ setCurrentPage }) {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const categoryArray = useCategories();
-  console.log(categoryArray);
+  const filtering = useSelector((state) => state.filtering);
 
   //estado de filtro
   const [filter, setFilter] = useState("");
@@ -16,9 +21,22 @@ export default function Filters({ setCurrentPage }) {
   const handleFilterBy = (e) => {
     e.preventDefault();
     const selectedValue = e.target.value;
-    setFilter(selectedValue);
-    dispatch(filterBy(selectedValue));
+    filterBy(selectedValue);
+    dispatch(setFilter(selectedValue));
+    //console.log(dispatch);
   };
+
+  // ?--------------------------------------- Filtrar por categoría
+
+  const handleFilterCategory = (e) => {
+    //e.preventDefault();
+    const selectedValue = e.target.value;
+    console.log(selectedValue);
+    dispatch(setFiltering(selectedValue));
+    setCurrentPage(1);
+  };
+
+  console.log(filtering);
 
   // ?--------------------------------------- Filtrar por Nombre
 
@@ -48,6 +66,7 @@ export default function Filters({ setCurrentPage }) {
           defaultValue="placeholder"
           placeholder="Categorías"
           className="py-2 px-4 border border-sundown-500 rounded-lg text-sm focus:outline-sundown-500 font-semibold"
+          onChange={handleFilterCategory}
         >
           <option value="placeholder" disabled={true}>
             Categoría
