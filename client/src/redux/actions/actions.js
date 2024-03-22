@@ -1,4 +1,13 @@
-import { SET_DISHES, SET_PROMOS, SET_SHOPPING_CART, SET_CATEGORIES, FILTER_BY, GET_NAME, RESET } from "./types";
+import {
+  SET_DISHES,
+  SET_PROMOS,
+  SET_SHOPPING_CART,
+  SET_CATEGORIES,
+  SET_FILTERING,
+  FILTER_BY,
+  GET_NAME,
+  RESET,
+} from "./types";
 import axios from "axios";
 
 // ? ----------------------------- Set Dishes
@@ -11,15 +20,14 @@ export function setDishes() {
       dispatch({
         type: SET_DISHES,
         payload: data,
-      })
+      });
     } catch (error) {
-      console.error("Error fetching dishes: ", error)
+      console.error("Error fetching dishes: ", error);
     }
-  }
+  };
 }
 
 // ? ----------------------------- Set Promos
-
 
 export const setPromos = (payload) => ({
   type: SET_PROMOS,
@@ -36,46 +44,51 @@ export const setShoppingCart = (payload) => ({
 // ? ----------------------------- Filter By
 
 export const filterBy = (payload) => {
-  const endpoint = 'http://localhost:3001/filter/category/price'
-    return async (dispatch) => {
-        try{
-            const { data } = await axios.get(endpoint,payload);
-            return dispatch({
-                type: FILTER_BY,
-                payload: data
-            })
-        }catch(error){
-            alert(error.messaje);
-        }
-        }
-}
+  return async (dispatch) => {
+    try {
+      // const { data } = await axios.get(endpoint, payload);
+      const response = await fetch(
+        `http://localhost:3001/filter/default/${payload}`
+      );
+      const data = await response.json();
+      return dispatch({
+        type: FILTER_BY,
+        payload: data,
+      });
+    } catch (error) {
+      alert(error.messaje);
+    }
+  };
+};
 
 // ? ----------------------------- Filter By
 
- export function getByName(name) {
+export function getByName(name) {
   return async (dispatch) => {
     try {
-      const response = await fetch(`http://localhost:3001/products?name=${name}`);
+      const response = await fetch(
+        `http://localhost:3001/products?name=${name}`
+      );
       if (!response.ok) {
-        throw new Error("No hay ningún plato en el menu con ese nombre")
+        throw new Error("No hay ningún plato en el menu con ese nombre");
       }
       const data = await response.json();
       dispatch({
         type: GET_NAME,
         payload: data,
-      })
+      });
     } catch (error) {
-      alert(error.message)
+      alert(error.message);
     }
-  }
+  };
 }
 
 // ? ---------------------------------------------- Reset
 
 export const resetDishes = () => {
-	return {
-		type: RESET,
-	};
+  return {
+    type: RESET,
+  };
 };
 
 // ? ----------------------------- Set Categories
@@ -83,14 +96,35 @@ export const resetDishes = () => {
 export function setCategories() {
   return async (dispatch) => {
     try {
-      const response = await fetch("http://localhost:3001/filter/default/default");
+      const response = await fetch(
+        "http://localhost:3001/filter/default/default"
+      );
       const data = await response.json();
       dispatch({
         type: SET_CATEGORIES,
         payload: data,
-      })
+      });
     } catch (error) {
-      console.error("Error fetching categories: ", error)
+      console.error("Error fetching categories: ", error);
     }
-  }
+  };
+}
+
+// ? ----------------------------- Set filtering
+
+export function setFiltering(category) {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(
+        `http://localhost:3001/filter/${category}/default`
+      );
+      const data = await response.json();
+      dispatch({
+        type: SET_FILTERING,
+        payload: data,
+      });
+    } catch (error) {
+      console.error("Error fetching categories: ", error);
+    }
+  };
 }

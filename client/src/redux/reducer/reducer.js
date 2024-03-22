@@ -1,11 +1,21 @@
-import { SET_DISHES, SET_PROMOS, SET_SHOPPING_CART, SET_CATEGORIES, GET_NAME, FILTER_BY, RESET } from "../actions/types";
+import {
+  SET_DISHES,
+  SET_PROMOS,
+  SET_SHOPPING_CART,
+  SET_CATEGORIES,
+  SET_FILTERING,
+  GET_NAME,
+  FILTER_BY,
+  RESET,
+} from "../actions/types";
 
 const initialState = {
   dishes: [],
   filteredDishes: [],
-  promos:[],
+  promos: [],
   shoppingCart: [],
-  categories:[],
+  categories: [],
+  filtering: [],
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -33,36 +43,55 @@ export default function reducer(state = initialState, { type, payload }) {
         shoppingCart: payload,
       };
 
-  // ? ----------------------------- Set categories
+    // ? ----------------------------- Set categories
 
     case SET_CATEGORIES:
       return {
         ...state,
         categories: payload,
       };
-      
-// ? ----------------------------- Set filter
-    case FILTER_BY:
-      const filterPrice = [...state.filteredDishes]
 
-      if(payload === "PriceAscendente") return {...state, filteredDishes: filterPrice.sort((a, b) => parseInt(a.price, 16 ) - parseInt(b.price, 16))}
-      if(payload === "PriceDescendente") return {...state, filteredDishes: filterPrice.sort((a, b) => parseInt(b.price, 16 ) - parseInt(a.price, 16))}
+    // ? ----------------------------- Set filtering
+    case SET_FILTERING:
+      return {
+        ...state,
+        filtering: payload,
+      };
+
+    // ? ----------------------------- Set filter
+    case FILTER_BY:
+      const filterPrice = [...state.filteredDishes];
+      if (payload === "PriceAscendente")
+        return {
+          ...state,
+          filteredDishes: filterPrice.sort(
+            (a, b) => parseInt(a.price, 16) - parseInt(b.price, 16)
+          ),
+        };
+      if (payload === "PriceDescendente")
+        return {
+          ...state,
+          filteredDishes: filterPrice.sort(
+            (a, b) => parseInt(b.price, 16) - parseInt(a.price, 16)
+          ),
+        };
 
     // ? ----------------------------- Get by Name
-    
-    case GET_NAME:
-			return {
-				...state,
-				filteredDishes: payload,
-			};
 
-      // ? ----------------------------- Reset
+    case GET_NAME:
+      return {
+        ...state,
+        filteredDishes: payload,
+      };
+
+    // ? ----------------------------- Reset
 
     case RESET:
-			return {
-				...state,
-				filteredDishes: [],
-			};
+      return {
+        ...state,
+        filteredDishes: [],
+        filtering: [],
+      };
 
     // ? ----------------------------- Default
 
@@ -72,6 +101,3 @@ export default function reducer(state = initialState, { type, payload }) {
       };
   }
 }
-
-
-

@@ -117,7 +117,7 @@
       "category": "pizzas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058585/jpg/Pizza_Hawaiana_jnxtfj.jpg",
-        "png": ".https://res.cloudinary.com/derot8znd/image/upload/v1711058321/png/Pizza_Hawaiana_l1rnzg.png"
+        "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711058321/png/Pizza_Hawaiana_l1rnzg.png"
       },
       "availability": true
     },

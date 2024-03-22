@@ -12,6 +12,8 @@ export default function Detail() {
       .then((data) => setProduct(data));
   }, []);
 
+  console.log(product);
+
   if (!product) {
     return <div>Loading...</div>;
   }
@@ -20,9 +22,9 @@ export default function Detail() {
     <div className="container flex gap-10">
       <div className="max-w-md min-w-md">
         <img
-          src="../../../img/hamburguesa.jpg"
+          src={product.image.jpg}
           alt=""
-          className="w-full rounded-md object-cover"
+          className="w-full rounded-md object-cover max-h-80 min-h-80"
         />
       </div>
       <div className="flex flex-col">
@@ -30,7 +32,7 @@ export default function Detail() {
 
         <div className="flex flex-col gap-2">
           <p>
-            <span className="text-sundown-500 font-bold">Descripción: </span>
+            <span className="text-sundown-500 font-bold">Ingredientes: </span>
             {product.description}
           </p>
 
@@ -52,32 +54,3 @@ export default function Detail() {
     </div>
   );
 }
-
-//   useEffect(() => {
-//     const fetchProduct = async () => {
-//       try {
-//         const response = await axios.get(`http://localhost:3001/products/${id}`);
-//         setProduct(response.data);
-//       } catch (error) {
-//         console.error('Error fetching product:', error);
-//       }
-
-//     fetchProduct();
-//   }, [id]);
-
-//   if (!product) {
-//     return <div>Loading...</div>;
-//   }
-
-//   return (
-//     <div>
-//       <div></div>
-//       <h2>{product.name}</h2>
-//       <p>Descripción: {product.description}</p>
-//       <p>Precio: {product.price}</p>
-//       <p>Categoría: {product.category}</p>
-//       <p>Imagen: {product.image}</p>
-//       <p>Disponibilidad: {product.availlability ? 'Disponible' : 'No disponible'}</p>
-//     </div>
-//   );
-// }
