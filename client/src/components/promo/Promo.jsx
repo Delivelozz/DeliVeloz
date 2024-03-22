@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { smoothScrollToTop } from "../../functions/SmoothScroll";
 
 export default function Promo(props) {
   const { id, name, image, description } = props;
@@ -20,7 +21,14 @@ export default function Promo(props) {
             </div>
             <div className="flex justify-center mt-4">
               <Link to={"/blog"}>
-                <button className="btn-bg">¡Míralo aquí!</button>
+                <button
+                  className="btn-bg"
+                  onClick={() => {
+                    smoothScrollToTop();
+                  }}
+                >
+                  ¡Míralo aquí!
+                </button>
               </Link>
             </div>
           </div>

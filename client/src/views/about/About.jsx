@@ -32,7 +32,7 @@ function About() {
           Brindar alimentos de alta calidad en un ambiente familiar y cálido.
           Prestar un servicio líder de delivery para llegar a los hogares en
           buen tiempo, manteniendo altos estándares de calidad a nuestros
-          clientes, cuidando el talento humano
+          clientes, cuidando el talento humano.
         </p>
       </div>
 
