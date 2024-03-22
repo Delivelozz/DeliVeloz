@@ -1,5 +1,6 @@
 import PaginationPrev from "../icons/PaginationPrev";
 import PaginationNext from "../icons/PaginationNext";
+import { smoothScrollToTop } from "../../functions/SmoothScroll";
 
 export default function Pagination({
   totalPosts,
@@ -20,13 +21,20 @@ export default function Pagination({
   const handlePrevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
+      smoothScrollToTop();
     }
   };
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
+      smoothScrollToTop();
     }
+  };
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    smoothScrollToTop();
   };
 
   return (
@@ -34,15 +42,15 @@ export default function Pagination({
       <button
         onClick={handlePrevPage}
         disabled={currentPage === 1}
-        className={currentPage === 1 ? "disabled" : "active"}
+        className={currentPage === 1 ? "disabled text-xl" : "active text-xl"}
       >
-        <PaginationPrev />
+        &lt;
       </button>
       {pages.map((page, index) => {
         return (
           <button
             key={index}
-            onClick={() => setCurrentPage(page)}
+            onClick={() => handlePageChange(page)}
             className={currentPage === page ? "current" : "active"}
           >
             {page}
@@ -50,11 +58,13 @@ export default function Pagination({
         );
       })}
       <button
-        className={currentPage === totalPages ? "disabled" : "active"}
+        className={
+          currentPage === totalPages ? "disabled text-xl" : "active text-xl"
+        }
         disabled={currentPage === totalPages}
         onClick={handleNextPage}
       >
-        <PaginationNext />
+        &gt;
       </button>
     </div>
   );

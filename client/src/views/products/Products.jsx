@@ -7,11 +7,15 @@ import Pagination from "../../components/pagination/Pagination.jsx";
 
 export default function Products() {
   const dishes = useSelector((state) => state.dishes);
+  const filteredDishes = useSelector((state) => state.filteredDishes);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(setDishes());
   }, [dispatch]);
+
+  console.log("Estos son los filtros:", dishes);
+  // console.log("Estos son los filtros:", filteredDishes);
 
   // ? -------------------------------- Paginate
 
@@ -20,14 +24,20 @@ export default function Products() {
 
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
-  const currentPosts = dishes.slice(firstPostIndex, lastPostIndex);
+
+  const currentPosts =
+    filteredDishes.length >= 1
+      ? filteredDishes.slice(firstPostIndex, lastPostIndex)
+      : dishes.slice(firstPostIndex, lastPostIndex);
 
   return (
     <section className="container">
-      <Filters />
+      <Filters setCurrentPage={setCurrentPage} />
       <Cards dishes={currentPosts} />
       <Pagination
-        totalPosts={dishes.length}
+        totalPosts={
+          filteredDishes.length >= 1 ? filteredDishes.length : dishes.length
+        }
         postsPerPage={postsPerPage}
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
