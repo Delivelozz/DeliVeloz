@@ -21,8 +21,9 @@ export default function Filters({ setCurrentPage }) {
   const handleFilterBy = (e) => {
     e.preventDefault();
     const selectedValue = e.target.value;
-    setFilter(selectedValue);
-    dispatch(filterBy(selectedValue));
+    filterBy(selectedValue);
+    dispatch(setFilter(selectedValue));
+    //console.log(dispatch);
   };
 
   // ?--------------------------------------- Filtrar por categoría
@@ -35,7 +36,7 @@ export default function Filters({ setCurrentPage }) {
     setCurrentPage(1);
   };
 
-  // console.log(filtering);
+  console.log(filtering);
 
   // ?--------------------------------------- Filtrar por Nombre
 

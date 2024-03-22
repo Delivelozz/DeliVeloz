@@ -61,7 +61,6 @@ export default function reducer(state = initialState, { type, payload }) {
     // ? ----------------------------- Set filter
     case FILTER_BY:
       const filterPrice = [...state.filteredDishes];
-
       if (payload === "PriceAscendente")
         return {
           ...state,
@@ -91,6 +90,7 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         filteredDishes: [],
+        filtering: [],
       };
 
     // ? ----------------------------- Default

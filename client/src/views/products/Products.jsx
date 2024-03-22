@@ -27,10 +27,16 @@ export default function Products() {
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
 
-  const currentPosts =
-    filteredDishes.length >= 1
-      ? filteredDishes.slice(firstPostIndex, lastPostIndex)
-      : dishes.slice(firstPostIndex, lastPostIndex);
+  console.log(filtering);
+  const currentPosts = () => {
+    if (filteredDishes.length >= 1) {
+      return filteredDishes.slice(firstPostIndex, lastPostIndex);
+    } else if (filtering.length >= 1) {
+      return filtering.slice(firstPostIndex, lastPostIndex);
+    } else {
+      return dishes.slice(firstPostIndex, lastPostIndex);
+    }
+  };
 
   console.log(dishes);
   return (
