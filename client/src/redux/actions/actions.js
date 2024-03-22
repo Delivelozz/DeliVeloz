@@ -80,17 +80,17 @@ export const resetDishes = () => {
 
 // ? ----------------------------- Set Categories
 
-// export function setCategories() {
-//   return async (dispatch) => {
-//     try {
-//       const response = await axios.get("http://localhost:3001/filter/category/price");
-//       const data = await response.json();
-//       dispatch({
-//         type: SET_CATEGORIES,
-//         payload: data,
-//       })
-//     } catch (error) {
-//       console.error("Error fetching categories: ", error)
-//     }
-//   }
-// }
+export function setCategories() {
+  return async (dispatch) => {
+    try {
+      const response = await fetch("http://localhost:3001/filter/default/default");
+      const data = await response.json();
+      dispatch({
+        type: SET_CATEGORIES,
+        payload: data,
+      })
+    } catch (error) {
+      console.error("Error fetching categories: ", error)
+    }
+  }
+}

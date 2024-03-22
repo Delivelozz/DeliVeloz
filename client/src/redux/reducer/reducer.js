@@ -35,11 +35,11 @@ export default function reducer(state = initialState, { type, payload }) {
 
   // ? ----------------------------- Set categories
 
-    // case SET_CATEGORIES:
-    //   return {
-    //     ...state,
-    //     categories: payload,
-    //   };
+    case SET_CATEGORIES:
+      return {
+        ...state,
+        categories: payload,
+      };
       
 // ? ----------------------------- Set filter
     case FILTER_BY:
