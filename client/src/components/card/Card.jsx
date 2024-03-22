@@ -25,9 +25,9 @@ export default function Card(props) {
       <div className="bg-white rounded-lg border p-4">
         <figure className="w-full h-3/5 rounded-md ">
           <img
-            src="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-            alt=""
-            className="w-full rounded-md object-cover"
+            src={image}
+            alt={name}
+            className="w-full mx-auto rounded-md object-cover max-h-32 min-h-32"
           />
         </figure>
         <div className="w-full flex justify-between my-2">
