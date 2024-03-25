@@ -1,12 +1,12 @@
 {
-  "products": [
+ "products": [
     {
       "name": "Picada Deliveloz",
       "description": "Trozos de costilla, pollo acompañado de papas, salchicha, chorizo, patacón, arepa, crispeta",
       "price": "12.34",
       "category": "platos-combinados",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058607/jpg/picada_deliveloz_swepgm.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387819/jpg/picada_deliveloz_swepgm-min_qop4sr.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711058316/png/picada_deliveloz_aeigxb.png"
       },
       "availability": true
@@ -17,7 +17,7 @@
       "price": "5.91",
       "category": "platos-combinados",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058630/jpg/pollo_a_la_plancha_wqjocj.png",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387870/jpg/pollo_a_la_plancha_wqjocj-min_ujrunk.png",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711058330/png/pollo_a_la_plancha_cemx43.png"
       },
       "availability": true
@@ -28,7 +28,7 @@
       "price": "6.68",
       "category": "platos-combinados",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058548/jpg/costillas_bbq_k33xo1.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387502/jpg/costillas_bbq_k33xo1-min_x8cqur.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057799/png/costillas_bbq_y6u7jt.png"
       },
       "availability": true
@@ -39,7 +39,7 @@
       "price": "6.17",
       "category": "platos-combinados",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058566/jpg/alitas_bbq_vjcvo8.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387447/jpg/alitas_bbq_vjcvo8-min_rkuw3z.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057442/png/alitas_bbq_vnc3mr.png"
       },
       "availability": true
@@ -50,7 +50,7 @@
       "price": "5.14",
       "category": "platos-combinados",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058604/jpg/crispetas_de_pollo_xjmn43.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387507/jpg/crispetas_de_pollo_xjmn43-min_xoteha.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057901/png/crispetas_de_pollo_gaxm1v.png"
       },
       "availability": true
@@ -61,7 +61,7 @@
       "price": "4.63",
       "category": "sandwich",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058622/jpg/sandwich_deliveloz_vmkppr.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387892/jpg/sandwich_deliveloz_vmkppr-min_gjb6et.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711058336/png/sandwich_deliveloz_dwsbtx.png"
       },
       "availability": true
@@ -72,7 +72,7 @@
       "price": "4.63",
       "category": "sandwich",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058600/jpg/sandwich_cubano_jrarbu.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387886/jpg/sandwich_cubano_jrarbu-min_ghqw7i.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711058334/png/sandwich_cubano_jgxfw0.png"
       },
       "availability": true
@@ -83,7 +83,7 @@
       "price": "4.63",
       "category": "sandwich",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058612/jpg/sandwich_mixto_vpok8r.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387898/jpg/sandwich_mixto_vpok8r-min_jdalus.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711058338/png/sandwich_mixto_gfrp3v.png"
       },
       "availability": true
@@ -94,7 +94,7 @@
       "price": "13.50",
       "category": "pizzas",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058572/jpg/Pizza_Sa-Fre_j6vzsb.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387859/jpg/Pizza_Sa-Fre_j6vzsb-min_jopfk7.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711058326/png/Pizza_Sa-Fre_hyjxpc.png"
       },
       "availability": true
@@ -105,7 +105,7 @@
       "price": "14.00",
       "category": "pizzas",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058589/jpg/Pizza_Tropical_oj0c6d.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387864/jpg/Pizza_Tropical_oj0c6d-min_kbakqr.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711058327/png/Pizza_Tropical_ynq8vq.png"
       },
       "availability": true
@@ -116,7 +116,7 @@
       "price": "14.50",
       "category": "pizzas",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058585/jpg/Pizza_Hawaiana_jnxtfj.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387841/jpg/Pizza_Hawaiana_jnxtfj-min_ajviir.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711058321/png/Pizza_Hawaiana_l1rnzg.png"
       },
       "availability": true
@@ -127,7 +127,7 @@
       "price": "14.00",
       "category": "pizzas",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058574/jpg/Pizza_Especial_cchpba.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387836/jpg/Pizza_Especial_cchpba-min_wys9jl.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711058320/png/Pizza_Especial_heiaxc.png"
       },
       "availability": true
@@ -138,7 +138,7 @@
       "price": "15.00",
       "category": "pizzas",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058567/jpg/Pizza_Ranchera_hsegjs.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387853/jpg/Pizza_Ranchera_hsegjs-min_d7rusa.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711058326/png/Pizza_Ranchera_gjp9o8.png"
       },
       "availability": true
@@ -149,7 +149,7 @@
       "price": "15.50",
       "category": "pizzas",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058570/jpg/Pizza_Mexicana_blv5r3.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387847/jpg/Pizza_Mexicana_blv5r3-min_aawu3q.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711058638/jpg/lasagnaMexicana_xq8sn8.png"
       },
       "availability": true
@@ -160,7 +160,7 @@
       "price": "14.00",
       "category": "pizzas",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058593/jpg/Pizza_de_Vegetales_u8vm7a.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387830/jpg/Pizza_de_Vegetales_u8vm7a-min_fokyeq.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711058318/png/Pizza_de_Vegetales_nbpm5i.png"
       },
       "availability": true
@@ -171,7 +171,7 @@
       "price": "14.50",
       "category": "pizzas",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058539/jpg/Pizza_Andina_ylfnsf.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387824/jpg/Pizza_Andina_ylfnsf-min_xkjrub.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711058317/png/Pizza_Andina_ya1say.png"
       },
       "availability": true
@@ -182,7 +182,7 @@
       "price": "7.71",
       "category": "lasagna",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058598/jpg/lasagnaSaFre_ztzhja.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387596/jpg/lasagnaSaFre_ztzhja-min_kymgcg.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057928/png/lasagnaSaFre_s6jhpv.png"
       },
       "availability": true
@@ -193,7 +193,7 @@
       "price": "7.20",
       "category": "lasagna",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058544/jpg/lasagnaPolloJamon_pced4d.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387590/jpg/lasagnaPolloJamon_pced4d-min_wjrse8.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057926/png/lasagnaPolloJamon_my1bcj.png"
       },
       "availability": true
@@ -204,7 +204,7 @@
       "price": "7.20",
       "category": "lasagna",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058638/jpg/lasagnaMexicana_xq8sn8.png",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387579/jpg/lasagnaMexicana_xq8sn8-min_r4ujyh.png",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057923/png/lasagnaMexicana_vsz8fp.png"
       },
       "availability": true
@@ -215,7 +215,7 @@
       "price": 7.20,
       "category": "lasagna",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058538/jpg/lasagnaPolloConChampi%C3%B1ones_urtgyk.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387585/jpg/lasagnaPolloConChampi%C3%B1ones_urtgyk-min_d6mrbl.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057924/png/lasagnaPolloConChampi%C3%B1ones_zai2ph.png"
       },
       "availability": true
@@ -226,7 +226,7 @@
       "price": 7.20,
       "category": "lasagna",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058623/jpg/lasagnaBolognesa_o2u7fm.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387573/jpg/lasagnaBolognesa_o2u7fm-min_rcgf9g.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057921/png/lasagnaBolognesa_asoule.png"
       },
       "availability": true
@@ -237,7 +237,7 @@
       "price": "4.29",
       "category": "bebidas-frias",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058632/jpg/malteada_carnaval_n2zhyr.png",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387632/jpg/malteada_carnaval_n2zhyr-min_qdz5uj.png",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057938/png/malteada_carnaval_dusn4s.png"
       },
       "availability": true
@@ -248,7 +248,7 @@
       "price": "2.71",
       "category": "bebidas-frias",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058632/jpg/malteada_carnaval_n2zhyr.png",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387626/jpg/malfeada_beylis_zs80sm-min_k2ytwi.png",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057936/png/malfeada_beylis_u2nfcs.png"
       },
       "availability": true
@@ -259,7 +259,7 @@
       "price": "2.14",
       "category": "bebidas-frias",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058557/jpg/soda_frutos_rojos_mzvcau.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387903/jpg/soda_frutos_rojos_mzvcau-min_im5ryj.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711058339/png/soda_frutos_rojos_qiqwfr.png"
       },
       "availability": true
@@ -270,7 +270,7 @@
       "price": "1.86",
       "category": "bebidas-frias",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058609/jpg/malteda_de_helado_gtlvd6.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387637/jpg/malteda_de_helado_gtlvd6-min_rsjce8.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057939/png/malteda_de_helado_u7rw87.png"
       },
       "availability": true
@@ -281,7 +281,7 @@
       "price": "3.71",
       "category": "bebidas-frias",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058578/jpg/jugo_en_leche_xzskzk.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387562/jpg/jugo_en_leche_xzskzk-min_zncj1s.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057917/png/jugo_en_leche_vg1w5u.png"
       },
       "availability": true
@@ -292,7 +292,7 @@
       "price": "2.00",
       "category": "bebidas-frias",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058528/jpg/jugosDeAgua_pmgkvf.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387568/jpg/jugosDeAgua_pmgkvf-min_ymvisq.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057919/png/jugosDeAgua_iytp4e.png"
       },
       "availability": true
@@ -303,7 +303,7 @@
       "price": "4.29 ",
       "category": "bebidas-frias",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058617/jpg/frapeeOreo_vojapq.png",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387513/jpg/frapeeOreo_vojapq-min_w2upng.png",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057902/png/frapeeOreo_tby5pb.png"
       },
       "availability": true
@@ -314,7 +314,7 @@
       "price": "2.57",
       "category": "bebidas-frias",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058550/jpg/miloFrio_fjgjk1.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387796/jpg/miloFrio_fjgjk1-min_mdmbsf.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057950/png/miloFrio_p77qde.png"
       },
       "availability": true
@@ -325,7 +325,7 @@
       "price": "1.43",
       "category": "bebidas-frias",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058532/jpg/granizadoDeCoco_jzkbbb.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387518/jpg/granizadoDeCoco_jzkbbb-min_cgp1at.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057903/png/granizadoDeCoco_faqv0o.png"
       },
       "availability": true
@@ -336,7 +336,7 @@
       "price": "2.00",
       "category": "bebidas-frias",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058522/jpg/granizadoDeTeConLimon_vgsgxq.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387524/jpg/granizadoDeTeConLimon_vgsgxq-min_k1pvyp.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057905/png/granizadoDeTeConLimon_pnpf34.png"
       },
       "availability": true
@@ -347,7 +347,7 @@
       "price": "4.29",
       "category": "bebidas-frias",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058576/jpg/grnizadoDeFrutas_a4kwhr.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387529/jpg/grnizadoDeFrutas_a4kwhr-min_i82shl.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057907/png/grnizadoDeFrutas_rj6idn.png"
       },
       "availability": true
@@ -358,7 +358,7 @@
       "price": "7.00",
       "category": "bebidas-frias",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058583/jpg/limonadaNatural_jv098w.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387620/jpg/limonadaNatural_jv098w-min_gpu3bc.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057934/png/limonadaNatural_sy0bp7.png"
       },
       "availability": true
@@ -369,7 +369,7 @@
       "price": "3.49",
       "category": "bebidas-frias",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058563/jpg/limonadaCerezada_jovdxv.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387602/jpg/limonadaCerezada_jovdxv-min_vecppd.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057931/png/limonadaCerezada_osxjki.png"
       },
       "availability": true
@@ -380,7 +380,7 @@
       "price": "3.99",
       "category": "bebidas-frias",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058587/jpg/limonada-hiervabuena_f6nlma.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387608/jpg/limonada-hiervabuena_f6nlma-min_ndmjvw.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057932/png/limonada-hiervabuena_icxqke.png"
       },
       "availability": true
@@ -391,7 +391,7 @@
       "price": "8.99",
       "category": "bebidas-frias",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058523/jpg/jarra_limonada_nbmac4.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387556/jpg/jarra_limonada_nbmac4-min_b8gpvj.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057916/png/jarra_limonada_nva0kd.png"
       },
       "availability": true
@@ -402,7 +402,7 @@
       "price": "2.83",
       "category": "bebida-caliente",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058634/jpg/Baileys_k0ocmw.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387457/jpg/Baileys_k0ocmw-min_sorxun.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057795/png/capuccino-bailyes_iohk1y.png"
       },
       "availability": true
@@ -413,7 +413,7 @@
       "price": "2.83",
       "category": "bebida-caliente",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058561/jpg/capuccino_amaretto_ol0g7m.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387487/jpg/capuccino_amaretto_ol0g7m-min_uzwazt.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057767/png/capuccino_amaretto_npymgv.png"
       },
       "availability": true
@@ -424,7 +424,7 @@
       "price": "2.06",
       "category": "bebida-caliente",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058542/jpg/cappucino-aromatizado_cxo0lv.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387482/jpg/cappucino-aromatizado_cxo0lv-min_dgzy8k.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711058345/png/tee_a5dvoi.png"
       },
       "availability": true
@@ -435,7 +435,7 @@
       "price": "1.16",
       "category": "bebida-caliente",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058536/jpg/cafe-con-leche_mp1anb.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387471/jpg/cafe-con-leche_mp1anb-min_hvcewq.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057572/png/cafe-con-leche_wbheph.png"
       },
       "availability": true
@@ -446,7 +446,7 @@
       "price": "0.90",
       "category": "bebida-caliente",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058552/jpg/Cafe-Campesinoo_duc0qc.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387466/jpg/Cafe-Campesinoo_duc0qc-min_fizkub.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057541/png/Cafe-Campesino_xtedfw.png"
       },
       "availability": true
@@ -457,7 +457,7 @@
       "price": "1.00",
       "category": "bebida-caliente",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058602/jpg/cafeamericano_efqdgr.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387466/jpg/Cafe-Campesinoo_duc0qc-min_fizkub.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057524/png/cafeamericano_r6i2t5.png"
       },
       "availability": true
@@ -468,7 +468,7 @@
       "price": "1.5",
       "category": "bebida-caliente",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058555/jpg/chocolate-caliente_vltnl0.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387498/jpg/chocolate-caliente_vltnl0-min_pg8hxu.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057797/png/chocolate-caliente_daopqi.png"
       },
       "availability": true
@@ -479,7 +479,7 @@
       "price": "1.80",
       "category": "bebida-caliente",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058546/jpg/milo_nt6xmh.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387790/jpg/milo_nt6xmh-min_krzodq.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057940/png/milo_nqc42g.png"
       },
       "availability": true
@@ -490,7 +490,7 @@
       "price": "0.77",
       "category": "bebida-caliente",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058558/jpg/te_d1dcd8.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387909/jpg/te_d1dcd8-min_fo8lri.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711058345/png/tee_a5dvoi.png"
       },
       "availability": true
@@ -501,7 +501,7 @@
       "price": "0.77",
       "category": "bebida-caliente",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058519/jpg/aromatica_r0izlb.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387452/jpg/aromatica_r0izlb-min_z45vpm.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057443/png/aromaticaa_a1rkqh.png"
       },
       "availability": true
@@ -512,7 +512,7 @@
       "price": "1.80",
       "category": "bebida-caliente",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058516/jpg/agua-aromatica-de-frutas_qef5fk.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387438/jpg/agua-aromatica-de-frutas_qef5fk-min_lqqn1q.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057440/png/agua-aromaticas_ldinrj.png"
       },
       "availability": true
@@ -523,7 +523,7 @@
       "price": "1.30",
       "category": "bebida-caliente",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058517/jpg/aguapanela_ov47u7.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387442/jpg/aguapanela_ov47u7-min_nzaokj.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057441/png/aguapanela_eqeglk.png"
       },
       "availability": true
@@ -534,7 +534,7 @@
       "price": "2.57",
       "category": "comida-rapida",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058525/jpg/perroCalienteTradicional_j1nwnj.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387813/jpg/perroCalienteTradicional_j1nwnj-min_btyxoh.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057976/png/perroCalienteTradicional_zqrvq4.png"
       },
       "availability": true
@@ -545,7 +545,7 @@
       "price": "3.08",
       "category": "comida-rapida",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058531/jpg/perroCalienteMexicano_uongjv.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387808/jpg/perroCalienteMexicano_uongjv-min_cwzw8u.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057953/png/perroCalienteMexicano_gomk69.png"
       },
       "availability": true
@@ -556,7 +556,7 @@
       "price": "3.08",
       "category": "comida-rapida",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058626/jpg/perroCalienteHawaiano_exxrvk.png",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387802/jpg/perroCalienteHawaiano_exxrvk-min_slv0ok.png",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057952/png/perroCalienteHawaiano_yixdkq.png"
       },
       "availability": true
@@ -567,7 +567,7 @@
       "price": "5.14",
       "category": "comida-rapida",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058596/jpg/salchipapaMixta_vi0znd.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387881/jpg/salchipapaMixta_vi0znd-min_knvinj.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711058334/png/salchipapaMixta_o2nxds.png"
       },
       "availability": true
@@ -578,7 +578,7 @@
       "price": "2.",
       "category": "comida-rapida",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058581/jpg/salchipapaJunior_r19zuo.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387875/jpg/salchipapaJunior_r19zuo-min_pfistx.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711058331/png/salchipapaJunior_ug2qqp.png"
       },
       "availability": true
@@ -589,7 +589,7 @@
       "price": "7.50",
       "category": "comida-rapida",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058527/jpg/Hamburguesa_Sa-Fre_sthbed.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387551/jpg/Hamburguesa_Sa-Fre_sthbed-min_zb4dxw.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057913/png/Hamburguesa_Sa-Fre_vcqh1s.png"
       },
       "availability": true
@@ -600,7 +600,7 @@
       "price": "7.00",
       "category": "comida-rapida",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058520/jpg/Hamburguesa_Mexicana_rdwwfz.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387545/jpg/Hamburguesa_Mexicana_rdwwfz-min_bgnyvi.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057912/png/Hamburguesa_Mexicana_ytscw7.png"
       },
       "availability": true
@@ -611,7 +611,7 @@
       "price": "6.50",
       "category": "comida-rapida",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058591/jpg/Hamburguesa_Hawaiana_ngd3bi.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387540/jpg/Hamburguesa_Hawaiana_ngd3bi-min_lbhrhq.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057910/png/Hamburguesa_Hawaiana_jk4cpa.png"
       },
       "availability": true
@@ -622,7 +622,7 @@
       "price": "6.00",
       "category": "comida-rapida",
       "image": {
-        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711058534/jpg/Hamburguesa_Cl%C3%A1sica_zertf9.jpg",
+        "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387534/jpg/Hamburguesa_Cl%C3%A1sica_zertf9-min_kpzmya.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711057909/png/Hamburguesa_Cl%C3%A1sica_gwfqug.png"
       },
       "availability": true
