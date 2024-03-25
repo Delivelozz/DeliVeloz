@@ -1,4 +1,4 @@
-const deleteAssessmentController= require ("../../controllers/valoracion/deleteAssessmentController")
+const deleteAssessmentController= require ("../../controllers/assessments/deleteAssessmentController")
 
 const deleteAssessmentHandler = async (req, res)=>{
     try {

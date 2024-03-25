@@ -3,7 +3,7 @@ const router = Router();
 
 const usersRouter = require("./usersRouter");
 const productsRouter = require("./productsRouter");
-const valoracionRouter = require("./valoracionRouter");
+const assessmentRouter = require("./assessmentRouter");
 const filterRouter = require("./filterRouter");
 const addressRouter = require("./addressRouter");
 
@@ -12,7 +12,7 @@ router.use("/products", productsRouter);
 // Router USUARIOS
 router.use("/users", usersRouter);
 // Router VALORACIONES
-router.use("/valoracion", valoracionRouter);
+router.use("/assessment", assessmentRouter);
 // Router FILTROS
 router.use("/filter", filterRouter);
 // Router ADDRESS
