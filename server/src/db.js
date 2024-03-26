@@ -33,7 +33,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring cambio
-const { CategoryProduct, Address, Stock, PaymentMethod, Order, Product, User, Assessment  } = sequelize.models;
+const { CategoryProduct, Address, Stock, PaymentMethod, Order, Product, User, Assessment, Administrator, Role  } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
@@ -59,6 +59,9 @@ User.belongsTo(Address);
 // Assessment - User (uno a muchos)
 Assessment.hasMany(User);
 User.belongsTo(Assessment);
+// Administrator / role (uno a uno)
+Administrator.hasOne(Role)
+Role.belongsTo(Administrator)
 // Pedido.belongsTo(Metodopago, { foreignKey: 'metodopagoId' });
 // Metodopago.hasMany(Pedido, { foreignKey: 'metodopagoId' });
 
