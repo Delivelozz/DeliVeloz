@@ -1,6 +1,6 @@
 const { Product, SubCategoryProduct} = require('../../db');
 
-const editProductController = async ({id}, {name, description, price, subCategory, image}) => {
+const editProductController = async ({id}, {name, description, price, category, subCategory, image}) => {
 
   const subcategory = await SubCategoryProduct.findOne({ where: { name: subCategory } });
 
@@ -8,6 +8,7 @@ const editProductController = async ({id}, {name, description, price, subCategor
     name,
     description,
     price,
+    category,
     subCategory,
     image,
     subCategoryProductId: subcategory.id
