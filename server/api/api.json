@@ -1,7 +1,7 @@
 {
   "category":[
     {
-      "name": "Comidas Rápidas",
+      "name": "Comidas Rapidas",
       "subcategories": [
         "Hamburguesas",
         "Perros Calientes",
@@ -18,7 +18,7 @@
       ]
     },
     {
-      "name": "Acompañamientos",
+      "name": "Acompanamientos",
       "subcategories":[
         "Papas fritas",
         "Ensaladas"
