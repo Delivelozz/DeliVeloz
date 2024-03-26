@@ -1,10 +1,58 @@
 {
+ "categoryProducts":[
+  "Comidas Rápidas",
+  "Comidas Elaboradas",
+  "Acompañamientos",
+  "Bebidas",
+  "Promociones"
+ ],
+ "subCategoryProducts":[
+  {
+    "name":"Hamburguesas",
+    "categoryProductId": "1"
+  },
+  {
+    "name":"Perros Calientes",
+    "categoryProductId": "1"
+  },
+  {
+    "name":"Pizzas",
+    "categoryProductId": "1"
+  },
+  {
+    "name":"Papas Fritas",
+    "categoryProductId": "1"
+  },
+  {
+    "name":"Cafes",
+    "categoryProductId": "1"
+  },
+  {
+    "name":"Capuchinos",
+    "categoryProductId": "1"
+  },
+  {
+    "name":"Pizzas",
+    "categoryProductId": "1"
+  },
+  "Papas Fritas",
+  "",
+  "",
+  "Malteadas",
+  "Lasagnas",
+  "Picadas",
+  "Platos Gourmet",
+  "Sandwiches",
+  "Jugos",
+  "Licuados",
+  "Infusiones"
+ ],
  "products": [
     {
       "name": "Picada Deliveloz",
       "description": "Trozos de costilla, pollo acompañado de papas, salchicha, chorizo, patacón, arepa, crispeta",
       "price": "12.34",
-      "categoryProductId": "1",
+      "subCategoryProductId": "1",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387819/jpg/picada_deliveloz_swepgm-min_qop4sr.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394630/png/picada_deliveloz_swepgm-min-removebg-preview-min_p4fj06.png"
