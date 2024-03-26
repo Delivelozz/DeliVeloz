@@ -54,8 +54,8 @@ Product.belongsTo(Stock);
 SubCategoryProduct.hasMany(Product);
 Product.belongsTo(SubCategoryProduct);
 // CategoryProduct - CategoryProduct (uno a muchos)
-SubCategoryProduct.hasMany(CategoryProduct);
-CategoryProduct.belongsTo(SubCategoryProduct);
+CategoryProduct.hasMany(SubCategoryProduct);
+SubCategoryProduct.belongsTo(CategoryProduct);
 // Address - User (uno a muchos)
 Address.hasMany(User);
 User.belongsTo(Address);
