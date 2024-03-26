@@ -9,6 +9,7 @@ export default function Products() {
   const dishes = useSelector((state) => state.dishes);
   const filteredDishes = useSelector((state) => state.filteredDishes);
   const dispatch = useDispatch();
+  const filtering = useSelector((state) => state.filtering);
 
   useEffect(() => {
     dispatch(setDishes());
@@ -16,6 +17,7 @@ export default function Products() {
 
   console.log("Estos son los filtros:", dishes);
   // console.log("Estos son los filtros:", filteredDishes);
+  //console.log("Estos son los filtros:", filteredDishes);
 
   // ? -------------------------------- Paginate
 
@@ -25,15 +27,22 @@ export default function Products() {
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
 
-  const currentPosts =
-    filteredDishes.length >= 1
-      ? filteredDishes.slice(firstPostIndex, lastPostIndex)
-      : dishes.slice(firstPostIndex, lastPostIndex);
+  console.log(filtering);
+  const currentPosts = () => {
+    if (filteredDishes.length >= 1) {
+      return filteredDishes.slice(firstPostIndex, lastPostIndex);
+    } else if (filtering.length >= 1) {
+      return filtering.slice(firstPostIndex, lastPostIndex);
+    } else {
+      return dishes.slice(firstPostIndex, lastPostIndex);
+    }
+  };
 
+  console.log(dishes);
   return (
     <section className="container">
       <Filters setCurrentPage={setCurrentPage} />
-      <Cards dishes={currentPosts} />
+      <Cards dishes={currentPosts()} />
       <Pagination
         totalPosts={
           filteredDishes.length >= 1 ? filteredDishes.length : dishes.length

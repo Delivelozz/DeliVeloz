@@ -1,27 +1,14 @@
 import { useState, useEffect, useMemo } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { setCategories } from "../redux/actions/actions";
+import { useSelector } from "react-redux";
 
 const useCategories = () => {
-//   const dishes = useSelector((state) => state.dishes);
   const categories = useSelector((state) => state.categories);
   const [categoryList, setCategoryList] = useState([]);
-  
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(setCategories());
-  }, [dispatch]);
-// console.log(categories)
 
   useEffect(() => {
     const fetchCategories = async () => {
       const categoriesArray = [
-        ...new Set(
-          categories?.flatMap((element) =>
-            element.category
-          )
-        ),
+        ...new Set(categories?.flatMap((element) => element.category)),
       ];
 
       setCategoryList(

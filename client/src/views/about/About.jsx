@@ -24,7 +24,7 @@ function About() {
         alt="imagen circular"
       />
 
-      <div className="rounded-xl px-1 py-1 text-center text-sm focus:outline-sundown-500 rounded mt-10">
+      <div className="rounded-xl px-1 py-1 text-center text-sm focus:outline-sundown-500 mt-10">
         <h1 className="pb-6 text-center text-xl font-semibold">
           Nuestro <span className="text-sundown-500">objetivo</span>
         </h1>
