@@ -44,22 +44,12 @@ export const setShoppingCart = (payload) => ({
 // ? ----------------------------- Filter By
 
 export const filterBy = (payload) => {
-  return async (dispatch) => {
-    try {
-      // const { data } = await axios.get(endpoint, payload);
-      const response = await fetch(
-        `http://localhost:3001/filter/default/${payload}`
-      );
-      const data = await response.json();
-      return dispatch({
-        type: FILTER_BY,
-        payload: data,
-      });
-    } catch (error) {
-      alert(error.messaje);
-    }
-  };
+  return {
+    type: FILTER_BY,
+    payload
+}
 };
+
 
 // ? ----------------------------- Filter By
 

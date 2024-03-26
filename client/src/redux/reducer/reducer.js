@@ -12,6 +12,7 @@ import {
 const initialState = {
   dishes: [],
   filteredDishes: [],
+  orderPrice: [],
   promos: [],
   shoppingCart: [],
   categories: [],
@@ -60,21 +61,15 @@ export default function reducer(state = initialState, { type, payload }) {
 
     // ? ----------------------------- Set filter
     case FILTER_BY:
+      // eslint-disable-next-line no-case-declarations
       const filterPrice = [...state.filteredDishes];
-      if (payload === "PriceAscendente")
-        return {
-          ...state,
-          filteredDishes: filterPrice.sort(
-            (a, b) => parseInt(a.price, 16) - parseInt(b.price, 16)
-          ),
-        };
-      if (payload === "PriceDescendente")
-        return {
-          ...state,
-          filteredDishes: filterPrice.sort(
-            (a, b) => parseInt(b.price, 16) - parseInt(a.price, 16)
-          ),
-        };
+
+      if(payload === "NombreAscendente")  return {...state,filteredDishes: filterPrice.sort((a, b) => a.name.localeCompare(b.name))}
+      if(payload === "NombreDescendente")  return {...state,filteredDishes: filterPrice.sort((a, b) => b.name.localeCompare(a.name))}
+      if(payload === "asc")  return {...state,filteredDishes: filterPrice.sort((a, b) => parseFloat(a.price) - parseFloat(b.price))}
+      if(payload === "desc")  return {...state,filteredDishes: filterPrice.sort((a, b) => parseFloat(b.price) - parseFloat(a.price))}
+      break;
+      
 
     // ? ----------------------------- Get by Name
 

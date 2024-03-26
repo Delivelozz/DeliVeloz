@@ -8,10 +8,11 @@ import {
 } from "../../redux/actions/actions";
 import useCategories from "../../data/useCategories";
 
-export default function Filters({ setCurrentPage }) {
+ function Filters({ setCurrentPage }) {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const categoryArray = useCategories();
+  const order = useSelector(state => state.orderPrice);
   const filtering = useSelector((state) => state.filtering);
 
   //estado de filtro
@@ -21,10 +22,12 @@ export default function Filters({ setCurrentPage }) {
   const handleFilterBy = (e) => {
     e.preventDefault();
     const selectedValue = e.target.value;
-    filterBy(selectedValue);
-    dispatch(setFilter(selectedValue));
-    //console.log(dispatch);
+    setFilter(selectedValue);
+    dispatch(filterBy(selectedValue));
+    setCurrentPage(1)
+    
   };
+  console.log(order);
 
   // ?--------------------------------------- Filtrar por categoría
 
@@ -89,8 +92,10 @@ export default function Filters({ setCurrentPage }) {
           <option value="placeholder" disabled={true}>
             Por Precio
           </option>
-          <option value="PriceAscendente">Ascendente</option>
-          <option value="PriceDescendente">Descendentemente</option>
+          <option value="NombreAscendente">Nombre A - Z</option>
+          <option value="NombreDescendente">Nombre Z - A</option>
+          <option value="asc">Ascendente</option>
+          <option value="desc">Descendentemente</option>
         </select>
         <button onClick={handleClick} className="btn-bg">
           Reset
@@ -111,3 +116,5 @@ export default function Filters({ setCurrentPage }) {
     </div>
   );
 }
+
+export default Filters;
