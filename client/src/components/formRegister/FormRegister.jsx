@@ -3,7 +3,7 @@ import HomeIcon from "../icons/HomeIcon";
 export default function FormRegister() {
   return (
     <form className="flex bg-white shadow-2xl rounded-md max-w-xl min-w-xl relative">
-      {/* ------------------ Boton de Home --------------------- */}
+      {/* ------------------ Boton de Home -------------------- */}
 
       <a
         href="/home"
