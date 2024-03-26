@@ -16,6 +16,10 @@ module.exports = (sequelize) => {
       type: DataTypes.FLOAT,
       allowNull: false
     },
+    category: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     subCategory: {
       type: DataTypes.STRING,
       allowNull: false,

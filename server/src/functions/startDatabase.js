@@ -33,11 +33,13 @@ const startDatabase = async () => {
       if (!existingProduct) {
         // Buscar la subcategoría por nombre
         const subcategory = await SubCategoryProduct.findOne({ where: { name: product.subCategory } });
+        const category = await CategoryProduct.findOne({ where: { id: subcategory.categoryProductId } });
         if (subcategory) {
           await Product.create({
             name: product.name || "undefined",
             description: product.description || "undefined",
             price: product.price || "undefined",
+            category: category.name || "undefined",
             subCategory: product.subCategory || "undefined", // Utiliza el nombre de la subcategoría encontrada
             subCategoryProductId: subcategory.id, // Utiliza el ID de la subcategoría encontrada
             image: product.image || {},
