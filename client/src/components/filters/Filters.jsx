@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   getByName,
-  filterBy,
+  orderBy,
   resetDishes,
   setFiltering,
 } from "../../redux/actions/actions";
@@ -12,22 +12,26 @@ import useCategories from "../../data/useCategories";
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const categoryArray = useCategories();
-  const order = useSelector(state => state.orderPrice);
+ 
   const filtering = useSelector((state) => state.filtering);
 
   //estado de filtro
-  const [filter, setFilter] = useState("");
+  const [order, setOrder] = useState("");
 
   //por precio
-  const handleFilterBy = (e) => {
+  const  handleFilterBy  = (e) => {
     e.preventDefault();
     const selectedValue = e.target.value;
-    setFilter(selectedValue);
-    dispatch(filterBy(selectedValue));
-    setCurrentPage(1)
-    
+    setOrder(selectedValue);
+    dispatch(orderBy(selectedValue));
+    setCurrentPage(1);
+
+
   };
-  console.log(order);
+
+
+  
+
 
   // ?--------------------------------------- Filtrar por categoría
 
@@ -83,7 +87,7 @@ import useCategories from "../../data/useCategories";
 
         <select
           onChange={handleFilterBy}
-          value={filter}
+          value={order}
           name=""
           defaultValue="placeholder"
           placeholder="Precio"

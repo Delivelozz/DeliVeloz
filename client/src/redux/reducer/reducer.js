@@ -5,14 +5,13 @@ import {
   SET_CATEGORIES,
   SET_FILTERING,
   GET_NAME,
-  FILTER_BY,
+  ORDER_BY,
   RESET,
 } from "../actions/types";
 
 const initialState = {
   dishes: [],
   filteredDishes: [],
-  orderPrice: [],
   promos: [],
   shoppingCart: [],
   categories: [],
@@ -60,18 +59,31 @@ export default function reducer(state = initialState, { type, payload }) {
       };
 
     // ? ----------------------------- Set filter
-    case FILTER_BY:
-      // eslint-disable-next-line no-case-declarations
-      const filterPrice = [...state.filteredDishes];
-
-      if(payload === "NombreAscendente")  return {...state,filteredDishes: filterPrice.sort((a, b) => a.name.localeCompare(b.name))}
-      if(payload === "NombreDescendente")  return {...state,filteredDishes: filterPrice.sort((a, b) => b.name.localeCompare(a.name))}
-      if(payload === "asc")  return {...state,filteredDishes: filterPrice.sort((a, b) => parseFloat(a.price) - parseFloat(b.price))}
-      if(payload === "desc")  return {...state,filteredDishes: filterPrice.sort((a, b) => parseFloat(b.price) - parseFloat(a.price))}
-      break;
-      
-
-    // ? ----------------------------- Get by Name
+    case ORDER_BY:
+          // eslint-disable-next-line no-case-declarations
+          let orderedDishes;
+          // eslint-disable-next-line no-case-declarations
+          const { filteredDishes, dishes } = state;
+          // eslint-disable-next-line no-case-declarations
+          const sourceArray = filteredDishes.length > 0 ? filteredDishes : dishes;
+        
+          if (payload === "NombreAscendente") {
+            orderedDishes = sourceArray.slice().sort((a, b) => a.name.localeCompare(b.name));
+          } else if (payload === "NombreDescendente") {
+            orderedDishes = sourceArray.slice().sort((a, b) => b.name.localeCompare(a.name));
+          } else if (payload === "asc") {
+            orderedDishes = sourceArray.slice().sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+          } else if (payload === "desc") {
+            orderedDishes = sourceArray.slice().sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+          }
+        
+          return {
+            ...state,
+            filteredDishes: orderedDishes
+          };
+    
+  
+   // ? ----------------------------- Get by Name
 
     case GET_NAME:
       return {

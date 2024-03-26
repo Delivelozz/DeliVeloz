@@ -4,7 +4,7 @@ import {
   SET_SHOPPING_CART,
   SET_CATEGORIES,
   SET_FILTERING,
-  FILTER_BY,
+  ORDER_BY,
   GET_NAME,
   RESET,
 } from "./types";
@@ -43,12 +43,14 @@ export const setShoppingCart = (payload) => ({
 
 // ? ----------------------------- Filter By
 
-export const filterBy = (payload) => {
+export const orderBy = (payload) => {
   return {
-    type: FILTER_BY,
+    type: ORDER_BY,
     payload
 }
 };
+
+
 
 
 // ? ----------------------------- Filter By
