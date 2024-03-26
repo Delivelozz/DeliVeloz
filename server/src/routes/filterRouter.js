@@ -5,6 +5,6 @@ const filterRouter = Router();
 const getFilterHandler = require('../handlers/filters/getFilterHandler');
 
 // use handlers
-filterRouter.get('/:category/:price', getFilterHandler);
+filterRouter.get('/:category/:subcategory/:price', getFilterHandler);
 
 module.exports = filterRouter;
