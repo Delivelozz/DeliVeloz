@@ -1,8 +1,70 @@
+// ?---------------------------Importaciones
+
 import HomeIcon from "../icons/HomeIcon";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { postUsers } from "../../redux/actions/actions";
 
 export default function FormRegister() {
+  // ?------------------------------------ useSelector y UseEffect
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(postUsers());
+  }, [dispatch]);
+
+  // ? ---------------------------------------- Estado del usuario
+
+  const [user, setUser] = useState({
+    name: "",
+    lastName: "",
+    email: "",
+    userAddress: "",
+    phone: "",
+    password: "",
+  });
+
+  // ? ---------------------------------------- onChange
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
+    console.log(value);
+  };
+
+  // ? ---------------------------------------- onSubmit
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    if (
+      !user.name ||
+      !user.lastName ||
+      !user.email ||
+      !user.userAddress ||
+      !user.phone ||
+      !user.password
+    ) {
+      alert("Ningún campo puede estar vacío");
+    } else {
+      await dispatch(postUsers(user));
+      setUser({
+        name: "",
+        lastName: "",
+        email: "",
+        userAddress: "",
+        phone: "",
+        password: "",
+      });
+      alert("¡El usuario fue creado exitosamente!");
+    }
+  };
+
   return (
-    <form className="flex bg-white shadow-2xl rounded-md max-w-xl min-w-xl relative">
+    <form
+      className="flex bg-white shadow-2xl rounded-md max-w-xl min-w-xl relative"
+      onSubmit={onSubmit}
+    >
       {/* ------------------ Boton de Home -------------------- */}
 
       <a
@@ -24,14 +86,16 @@ export default function FormRegister() {
 
             <div className="flex-1">
               <label
-                htmlFor="nombre"
+                htmlFor="name"
                 className="text-sm font-medium text-sundown-500"
               >
                 *Nombre:
               </label>
               <input
                 type="text"
-                name="nombre"
+                value={user.name}
+                onChange={onChange}
+                name="name"
                 placeholder="Ingrese su nombre"
                 className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-5"
               />
@@ -45,27 +109,54 @@ export default function FormRegister() {
               </label>
               <input
                 type="text"
-                name="apellido"
+                value={user.lastName}
+                onChange={onChange}
+                name="lastName"
                 placeholder="Ingrese su apellido"
                 className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-5"
               />
             </div>
           </div>
 
-          {/* ------------------ Email --------------------- */}
+          <div className="flex gap-10">
+            {/* ------------------ Email --------------------- */}
 
-          <label
-            htmlFor="email"
-            className="text-sm font-medium text-sundown-500"
-          >
-            *Correo:
-          </label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Ingresar correo"
-            className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-5"
-          />
+            <div className="flex-1">
+              <label
+                htmlFor="email"
+                className="text-sm font-medium text-sundown-500"
+              >
+                *Correo:
+              </label>
+              <input
+                type="email"
+                value={user.email}
+                onChange={onChange}
+                name="email"
+                placeholder="Ingresar correo"
+                className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-5"
+              />
+            </div>
+
+            {/* ------------------ Dirección --------------------- */}
+
+            <div className="flex-1">
+              <label
+                htmlFor="adress"
+                className="text-sm font-medium text-sundown-500"
+              >
+                *Dirección:
+              </label>
+              <input
+                type="text"
+                value={user.userAddress}
+                onChange={onChange}
+                name="userAddress"
+                placeholder="Ingresar Dirección"
+                className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-5"
+              />
+            </div>
+          </div>
 
           {/* ------------------ Número de telefono --------------------- */}
 
@@ -77,6 +168,9 @@ export default function FormRegister() {
           </label>
           <input
             type="phone"
+            value={user.phone}
+            onChange={onChange}
+            name="phone"
             placeholder="Ingrese su número de teléfono:"
             className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-5"
           />
@@ -92,13 +186,15 @@ export default function FormRegister() {
                 *Contraseña:
               </label>
               <input
-                name="password"
                 type="password"
+                value={user.password}
+                onChange={onChange}
+                name="password"
                 placeholder="Ingresar contraseña"
                 className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-5"
               />
             </div>
-            <div className="flex-1">
+            {/* <div className="flex-1">
               <label
                 htmlFor="password"
                 className="text-sm font-medium text-sundown-500"
@@ -111,7 +207,7 @@ export default function FormRegister() {
                 placeholder="Volver a ingresar la contraseña"
                 className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full"
               />
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -123,7 +219,9 @@ export default function FormRegister() {
         >
           ¿Ya tienes una cuenta?
         </a>
-        <button className="btn-bg mx-auto">Registrarse</button>
+        <button className="btn-bg mx-auto" type="submit">
+          Registrarse
+        </button>
       </div>
     </form>
   );

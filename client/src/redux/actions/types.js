@@ -5,4 +5,5 @@ export const SET_SHOPPING_CART = `SET_SHOPPING_CART`;
 export const FILTER_BY = `FILTER_BY`;
 export const SET_CATEGORIES = `SET_CATEGORIES`;
 export const SET_FILTERING = `FILTERING`;
+export const POST_USER = `POST_USER`;
 export const RESET = `RESET`;

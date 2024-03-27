@@ -6,6 +6,7 @@ import {
   SET_FILTERING,
   GET_NAME,
   FILTER_BY,
+  POST_USER,
   RESET,
 } from "../actions/types";
 
@@ -16,6 +17,7 @@ const initialState = {
   shoppingCart: [],
   categories: [],
   filtering: [],
+  users: [],
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -91,6 +93,14 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         filteredDishes: [],
         filtering: [],
+      };
+
+    // ? ----------------------------- Post
+
+    case POST_USER:
+      return {
+        ...state,
+        users: [...state.users, payload],
       };
 
     // ? ----------------------------- Default

@@ -6,6 +6,7 @@ import {
   SET_FILTERING,
   FILTER_BY,
   GET_NAME,
+  POST_USER,
   RESET,
 } from "./types";
 import axios from "axios";
@@ -127,4 +128,24 @@ export function setFiltering(category) {
       console.error("Error fetching categories: ", error);
     }
   };
+}
+
+// ? ----------------------------- Post Users
+
+export function postUsers(payload) {
+	return async function (dispatch) {
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/users",
+				payload
+        );
+        dispatch({
+          type: POST_USER,
+          payload: response.data,
+        });
+        console.log(payload)
+		} catch (error) {
+			console.error("Tienes un error en: ", error);
+		}
+	};
 }
