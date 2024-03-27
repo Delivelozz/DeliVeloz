@@ -11,7 +11,7 @@ import {
 export default function Filters({ setCurrentPage, categoryArray }) {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
-  const categoryArray = useCategories();
+  //const categoryArray = useCategories();
   const filtering = useSelector((state) => state.filtering);
   //console.log(categoryArray);
 
