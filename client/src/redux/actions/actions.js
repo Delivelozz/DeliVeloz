@@ -46,12 +46,9 @@ export const setShoppingCart = (payload) => ({
 export const orderBy = (payload) => {
   return {
     type: ORDER_BY,
-    payload
-}
+    payload,
+  };
 };
-
-
-
 
 // ? ----------------------------- Filter By
 
@@ -89,7 +86,7 @@ export function setCategories() {
   return async (dispatch) => {
     try {
       const response = await fetch(
-        "http://localhost:3001/filter/default/default"
+        "http://localhost:3001/filter/default/default/default"
       );
       const data = await response.json();
       dispatch({
@@ -108,7 +105,7 @@ export function setFiltering(category) {
   return async (dispatch) => {
     try {
       const response = await fetch(
-        `http://localhost:3001/filter/${category}/default`
+        `http://localhost:3001/filter/${category}/default/default`
       );
       const data = await response.json();
       dispatch({

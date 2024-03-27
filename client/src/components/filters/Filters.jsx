@@ -6,32 +6,26 @@ import {
   resetDishes,
   setFiltering,
 } from "../../redux/actions/actions";
-import useCategories from "../../data/useCategories";
+//import useCategories from "../../data/useCategories";
 
- function Filters({ setCurrentPage }) {
+export default function Filters({ setCurrentPage, categoryArray }) {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
-  const categoryArray = useCategories();
- 
+  //const categoryArray = useCategories();
   const filtering = useSelector((state) => state.filtering);
+  //console.log(categoryArray);
 
   //estado de filtro
   const [order, setOrder] = useState("");
 
   //por precio
-  const  handleFilterBy  = (e) => {
+  const handleFilterBy = (e) => {
     e.preventDefault();
     const selectedValue = e.target.value;
     setOrder(selectedValue);
     dispatch(orderBy(selectedValue));
     setCurrentPage(1);
-
-
   };
-
-
-  
-
 
   // ?--------------------------------------- Filtrar por categoría
 
@@ -43,7 +37,7 @@ import useCategories from "../../data/useCategories";
     setCurrentPage(1);
   };
 
-  console.log(filtering);
+  //console.log(filtering);
 
   // ?--------------------------------------- Filtrar por Nombre
 
@@ -120,5 +114,3 @@ import useCategories from "../../data/useCategories";
     </div>
   );
 }
-
-export default Filters;
