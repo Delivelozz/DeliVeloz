@@ -6,7 +6,8 @@ module.exports = (sequelize) => {
   sequelize.define('product', {
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
     description: {
       type: DataTypes.TEXT,
@@ -15,6 +16,14 @@ module.exports = (sequelize) => {
     price: {
       type: DataTypes.FLOAT,
       allowNull: false
+    },
+    category: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    subCategory: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     image: {
       type: DataTypes.JSON,

@@ -1,10 +1,48 @@
 {
+  "category":[
+    {
+      "name": "Comidas Rapidas",
+      "subcategories": [
+        "Hamburguesas",
+        "Perros Calientes",
+        "Pizzas",
+        "Sandwiches"
+      ]
+    },
+    {
+      "name": "Comidas Elaboradas",
+      "subcategories":[
+        "Lasagnas",
+        "Picadas",
+        "Platos Gourmet"
+      ]
+    },
+    {
+      "name": "Acompanamientos",
+      "subcategories":[
+        "Papas fritas",
+        "Ensaladas"
+      ]
+    },
+    {
+      "name": "Bebidas",
+      "subcategories":[
+        "Cafes",
+        "Capuchinos",
+        "Jugos",
+        "Licuados",
+        "Infusiones",
+        "Malteadas"
+      ]
+    }
+  ],
+
  "products": [
     {
       "name": "Picada Deliveloz",
       "description": "Trozos de costilla, pollo acompañado de papas, salchicha, chorizo, patacón, arepa, crispeta",
       "price": "12.34",
-      "categoryProductId": "1",
+      "subCategory": "Picadas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387819/jpg/picada_deliveloz_swepgm-min_qop4sr.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394630/png/picada_deliveloz_swepgm-min-removebg-preview-min_p4fj06.png"
@@ -15,7 +53,7 @@
       "name": "Pollo a la plancha",
       "description": "250 gr. de Pechuga marinada acompañada de ensalada, miel, mostaza y papa a la francesa",
       "price": "5.91",
-      "categoryProductId": "1",
+      "subCategory": "Platos Gourmet",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387870/jpg/pollo_a_la_plancha_wqjocj-min_ujrunk.png",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394696/png/pollo_a_la_plancha_wqjocj-min_ujrunk_c_pad_b_gen_fill_w_700_h_500-removebg-preview-min_yajpjw.png"
@@ -26,7 +64,7 @@
       "name": "Costillas en salsa BBQ",
       "description": "250 gr. de Costilla en salsa BBQ acompañada de papa a la francesa y ensalada",
       "price": "6.68",
-      "categoryProductId": "1",
+      "subCategory": "Platos Gourmet",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387502/jpg/costillas_bbq_k33xo1-min_x8cqur.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394412/png/costillas_bbq_k33xo1-min-removebg-preview-min_iq4blg.png"
@@ -37,7 +75,7 @@
       "name": "Alitas BBQ",
       "description": "Trozos de Alitas acompañadas de papa a la francesa y ensalada",
       "price": "6.17",
-      "categoryProductId": "1",
+      "subCategory": "Platos Gourmet",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387447/jpg/alitas_bbq_vjcvo8-min_rkuw3z.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394338/png/alitas_bbq_vjcvo8-min-removebg-preview-min_bwhj7l.png"
@@ -48,7 +86,7 @@
       "name": "Crispeta de pollo",
       "description": "200 gr. deTrozos de Pechuga adobados y apanados, acompañados en miel Mostaza y papa a la francesa",
       "price": "5.14",
-      "categoryProductId": "1",
+      "subCategory": "Platos Gourmet",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387507/jpg/crispetas_de_pollo_xjmn43-min_xoteha.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394535/png/lasagnaSaFre_ztzhja-min-removebg-preview-min_wjdysl.png"
@@ -59,7 +97,7 @@
       "name": "Sandwich Deliveloz",
       "description": "Pollo, jamón y champiñones en salsa bechamel, acompañado de queso, lechuga, tomate, salsa y papa francesa",
       "price": "4.63",
-      "categoryProductId": "2",
+      "subCategory": "Sandwiches",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387892/jpg/sandwich_deliveloz_vmkppr-min_gjb6et.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394725/png/sandwich_deliveloz_vmkppr-min-removebg-preview-min_wzqvwc.png"
@@ -70,7 +108,7 @@
       "name": "Sandwich cubano",
       "description": "Pollo, jamón y tocineta en salsa negra, acompañado con queso, lechuga, tomate, salsa y papa francesa",
       "price": "4.63",
-      "categoryProductId": "2",
+      "subCategory": "Sandwiches",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387886/jpg/sandwich_cubano_jrarbu-min_ghqw7i.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394718/png/sandwich_cubano_jrarbu-min-removebg-preview-min_khkvi1.png"
@@ -81,7 +119,7 @@
       "name": "Sandwich mixto",
       "description": "Trozos de carne de cerdo con tocineta en salsa negra , cebolla y pimientos, acompañado de queso, lechuga, tomate, salsa y papa francesa)",
       "price": "4.63",
-      "categoryProductId": "2",
+      "subCategory": "Sandwiches",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387898/jpg/sandwich_mixto_vpok8r-min_jdalus.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394733/png/sandwich_mixto_vpok8r-min-removebg-preview-min_ohrjrp.png"
@@ -92,7 +130,7 @@
       "name": "Pizza Sa-Fre",
       "description": "Salichicha, Jamón, Tocineta, Orégano, Salsa BBQ.",
       "price": "13.50",
-      "categoryProductId": "3",
+      "subCategory": "Pizzas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387859/jpg/Pizza_Sa-Fre_j6vzsb-min_jopfk7.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394682/png/Pizza_Sa-Fre_j6vzsb-min-removebg-preview-min_ozant5.png"
@@ -103,7 +141,7 @@
       "name": "Pizza Tropical",
       "description": "Piña, Durazno, Cerezas, Pasas.",
       "price": "14.00",
-      "categoryProductId": "3",
+      "subCategory": "Pizzas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387864/jpg/Pizza_Tropical_oj0c6d-min_kbakqr.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394689/png/Pizza_Tropical_oj0c6d-min-removebg-preview-min_jdetgq.png"
@@ -114,7 +152,7 @@
       "name": "Pizza Hawaiana",
       "description": "Jamón, Piña.",
       "price": "14.50",
-      "categoryProductId": "3",
+      "subCategory": "Pizzas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387841/jpg/Pizza_Hawaiana_jnxtfj-min_ajviir.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394660/png/Pizza_Hawaiana_jnxtfj-min-removebg-preview-min_kectmc.png"
@@ -125,7 +163,7 @@
       "name": "Pizza Especial",
       "description": "Pollo, Jamón, Champignones, Pimientos, Orégano.",
       "price": "14.00",
-      "categoryProductId": "3",
+      "subCategory": "Pizzas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387836/jpg/Pizza_Especial_cchpba-min_wys9jl.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394653/png/Pizza_Especial_cchpba-min-removebg-preview-min_btcrdv.png"
@@ -136,7 +174,7 @@
       "name": "Pizza Ranchera",
       "description": "Carne molida, Salchicha, Pimentón, Cebolla, Orégano, Salsa BBQ.",
       "price": "15.00",
-      "categoryProductId": "3",
+      "subCategory": "Pizzas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387853/jpg/Pizza_Ranchera_hsegjs-min_d7rusa.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394675/png/Pizza_Ranchera_hsegjs-min-removebg-preview-min_fw01wp.png"
@@ -147,7 +185,7 @@
       "name": "Pizza Mexicana",
       "description": "Carne molida, Tomate, Jalapeños, Cebolla, Pimentón.",
       "price": "15.50",
-      "categoryProductId": "3",
+      "subCategory": "Pizzas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387847/jpg/Pizza_Mexicana_blv5r3-min_aawu3q.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394667/png/Pizza_Mexicana_blv5r3-min-removebg-preview-min_rxjtwz.png"
@@ -158,7 +196,7 @@
       "name": "Pizza de Vegetales",
       "description": "Tomate, Cebolla, Pimentón, Champignones.",
       "price": "14.00",
-      "categoryProductId": "3",
+      "subCategory": "Pizzas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387830/jpg/Pizza_de_Vegetales_u8vm7a-min_fokyeq.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394645/png/Pizza_de_Vegetales_u8vm7a-min-removebg-preview-min_skmeje.png"
@@ -169,7 +207,7 @@
       "name": "Pizza Andina",
       "description": "Maíz Tierno, Champignones, Albaca, Perejil, Tocineta.",
       "price": "14.50",
-      "categoryProductId": "3",
+      "subCategory": "Pizzas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387824/jpg/Pizza_Andina_ylfnsf-min_xkjrub.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394637/png/Pizza_Andina_ylfnsf-min-removebg-preview-min_vtqrg4.png"
@@ -180,7 +218,7 @@
       "name": "Lasagna Sa-fre",
       "description": "Pollo, champiñones, camarones, queso y salsa bechamel",
       "price": "7.71",
-      "categoryProductId": "4",
+      "subCategory": "Lasagnas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387596/jpg/lasagnaSaFre_ztzhja-min_kymgcg.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394535/png/lasagnaSaFre_ztzhja-min-removebg-preview-min_wjdysl.png"
@@ -191,7 +229,7 @@
       "name": "Lasagna Pollo Jamón",
       "description": "Pollo, jamón, salsa bbq ó salsa bechamel y queso",
       "price": "7.20",
-      "categoryProductId": "4",
+      "subCategory": "Lasagnas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387590/jpg/lasagnaPolloJamon_pced4d-min_wjrse8.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394528/png/lasagnaPolloJamon_pced4d-min-removebg-preview-min_u1isst.png"
@@ -202,7 +240,7 @@
       "name": "Lasagna Mexicana",
       "description": "Carne molida, pimentón, cebolla, jalapeños, salsa BBQ, queso",
       "price": "7.20",
-      "categoryProductId": "4",
+      "subCategory": "Lasagnas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387579/jpg/lasagnaMexicana_xq8sn8-min_r4ujyh.png",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394513/png/lasagnaMexicana_xq8sn8-min-removebg-preview-min_sxrnwk.png"
@@ -213,7 +251,7 @@
       "name": "Lasagna Pollo con Champiñones",
       "description": "Pollo, champiñones, salsa bechamel, pimentón, queso",
       "price": 7.20,
-      "categoryProductId": "4",
+      "subCategory": "Lasagnas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387585/jpg/lasagnaPolloConChampi%C3%B1ones_urtgyk-min_d6mrbl.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394520/png/lasagnaPolloConChampi%C3%B1ones_urtgyk-min-removebg-preview-min_vorayg.png"
@@ -224,7 +262,7 @@
       "name": "Lasagna Bolognesa",
       "description": "Carne molida en salsa bolognesa, tomate y salsa bechamel",
       "price": 7.20,
-      "categoryProductId": "4",
+      "subCategory": "Lasagnas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387573/jpg/lasagnaBolognesa_o2u7fm-min_rcgf9g.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394506/png/lasagnaBolognesa_o2u7fm-min-removebg-preview_1_-min_rlx2ny.png"
@@ -235,7 +273,7 @@
       "name": "Malteada Carnaval",
       "description": "Helado de vainilla, Fresas frescas y Crema batida.",
       "price": "4.29",
-      "categoryProductId": "5",
+      "subCategory": "Malteadas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387632/jpg/malteada_carnaval_n2zhyr-min_qdz5uj.png",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394579/png/malteada_carnaval_n2zhyr-min-removebg-preview-min_uvmow2.png"
@@ -246,7 +284,7 @@
       "name": "Malteada SA-Fré",
       "description": "Café, Helado de vainilla y Licor Baileys.",
       "price": "2.71",
-      "categoryProductId": "5",
+      "subCategory": "Malteadas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387626/jpg/malfeada_beylis_zs80sm-min_k2ytwi.png",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394571/png/malfeada_beylis_zs80sm-min-removebg-preview-min_rociqg.png"
@@ -257,7 +295,7 @@
       "name": "Soda de Frutas Rojas",
       "description": "Refrescante soda sabor a Frutos rojos.",
       "price": "2.14",
-      "categoryProductId": "5",
+      "subCategory": "Jugos",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387903/jpg/soda_frutos_rojos_mzvcau-min_im5ryj.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394740/png/soda_frutos_rojos_mzvcau-min-removebg-preview-min_ynkbd3.png"
@@ -268,7 +306,7 @@
       "name": "Malteada de Helado",
       "description": "Deliciosa malteada hecha con helado de vainilla y leche.",
       "price": "1.86",
-      "categoryProductId": "5",
+      "subCategory": "Malteadas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387637/jpg/malteda_de_helado_gtlvd6-min_rsjce8.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394586/png/malteda_de_helado_gtlvd6-min-removebg-preview-min_drb3lm.png"
@@ -279,7 +317,7 @@
       "name": "Jugos en Leche",
       "description": "Variedad de jugos mezclados con leche para una experiencia cremosa.",
       "price": "3.71",
-      "categoryProductId": "5",
+      "subCategory": "Jugos",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387562/jpg/jugo_en_leche_xzskzk-min_zncj1s.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394491/png/jugo_en_leche_xzskzk-min-removebg-preview-min_pzfdwu.png"
@@ -290,7 +328,7 @@
       "name": "Jugos en Agua",
       "description": "Variedad de jugos mezclados con agua para una experiencia refrescante.",
       "price": "2.00",
-      "categoryProductId": "5",
+      "subCategory": "Jugos",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387568/jpg/jugosDeAgua_pmgkvf-min_ymvisq.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394498/png/jugosDeAgua_pmgkvf-min-removebg-preview-min_cukzux.png"
@@ -301,7 +339,7 @@
       "name": "Frapé Oreo ",
       "description": "Frapé refrescante con sabor a oreo, perfecto para los amantes del chocolate.",
       "price": "4.29 ",
-      "categoryProductId": "5",
+      "subCategory": "Licuados",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387513/jpg/frapeeOreo_vojapq-min_w2upng.png",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394426/png/frapeeOreo_vojapq-min-removebg-preview-min_thk5dz.png"
@@ -312,7 +350,7 @@
       "name": "Milo Frio ",
       "description": "Frapé refrescante con sabor a  milo.",
       "price": "2.57",
-      "categoryProductId": "5",
+      "subCategory": "Licuados",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387796/jpg/miloFrio_fjgjk1-min_mdmbsf.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394601/png/miloFrio_fjgjk1-min-removebg-preview-min_zfy6ro.png"
@@ -323,7 +361,7 @@
       "name": "Granizado de Coco",
       "description": "Refrescante granizado con sabor a coco, perfecto para los amantes de esta fruta tropical.",
       "price": "1.43",
-      "categoryProductId": "5",
+      "subCategory": "Licuados",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387518/jpg/granizadoDeCoco_jzkbbb-min_cgp1at.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394433/png/granizadoDeCoco_jzkbbb-min-removebg-preview-min_mdpvu0.png"
@@ -334,7 +372,7 @@
       "name": "Granizado de Té con Limón",
       "description": "Granizado con sabor a té y un toque de limón, una opción refrescante y deliciosa.",
       "price": "2.00",
-      "categoryProductId": "5",
+      "subCategory": "Licuados",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387524/jpg/granizadoDeTeConLimon_vgsgxq-min_k1pvyp.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394440/png/granizadoDeTeConLimon_vgsgxq-min-removebg-preview-min_vlzeip.png"
@@ -345,7 +383,7 @@
       "name": "Granizado de Frutas",
       "description": "Granizado con una mezcla refrescante de varias frutas, para un sabor único y delicioso.",
       "price": "4.29",
-      "categoryProductId": "5",
+      "subCategory": "Licuados",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387529/jpg/grnizadoDeFrutas_a4kwhr-min_i82shl.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394447/png/grnizadoDeFrutas_a4kwhr-min-removebg-preview-min_x2yc3a.png"
@@ -356,7 +394,7 @@
       "name": "Limonada Natural",
       "description": "Refrescante limonada hecha con limones frescos y agua.",
       "price": "7.00",
-      "categoryProductId": "5",
+      "subCategory": "Jugos",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387620/jpg/limonadaNatural_jv098w-min_gpu3bc.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394564/png/limonadaNatural_jv098w-min-removebg-preview-min_lr3o6o.png"
@@ -367,7 +405,7 @@
       "name": "Limonada Cerezada",
       "description": "Limonada con un toque de cereza para un sabor dulce y refrescante.",
       "price": "3.49",
-      "categoryProductId": "5",
+      "subCategory": "Jugos",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387602/jpg/limonadaCerezada_jovdxv-min_vecppd.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394542/png/limonadaCerezada_jovdxv-min-removebg-preview-min_ptjiy7.png"
@@ -378,7 +416,7 @@
       "name": "Limonada de Yerbabuena",
       "description": "Limonada con un toque de yerbabuena para una experiencia refrescante y herbal.",
       "price": "3.99",
-      "categoryProductId": "5",
+      "subCategory": "Jugos",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387608/jpg/limonada-hiervabuena_f6nlma-min_ndmjvw.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394549/png/limonada-hiervabuena_f6nlma-min-removebg-preview-min_zfvbi6.png"
@@ -389,7 +427,7 @@
       "name": "Jarra de Limonada Natural",
       "description": "Una jarra grande de limonada natural para compartir con amigos y familiares.",
       "price": "8.99",
-      "categoryProductId": "5",
+      "subCategory": "Jugos",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387556/jpg/jarra_limonada_nbmac4-min_b8gpvj.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394483/png/jarra_limonada_nbmac4-min-removebg-preview-min_ozqgjv.png"
@@ -400,7 +438,7 @@
       "name": "Capuchino Baileys",
       "description": "Capuchino con licor Baileys para un toque indulgente",
       "price": "2.83",
-      "categoryProductId": "6",
+      "subCategory": "Capuchinos",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387457/jpg/Baileys_k0ocmw-min_sorxun.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394398/png/capuccino-bailyes_gsnuvz-min-removebg-preview-min_tbj2bl.png"
@@ -411,7 +449,7 @@
       "name": "Capuchino Amareto",
       "description": "Deliciosa variante del capuchino tradicional",
       "price": "2.83",
-      "categoryProductId": "6",
+      "subCategory": "Capuchinos",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387487/jpg/capuccino_amaretto_ol0g7m-min_uzwazt.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394392/png/capuccino_amaretto_ol0g7m-min-removebg-preview-min_ihor0v.png"
@@ -422,7 +460,7 @@
       "name": "Capuchino Aromatizado",
       "description": "Escoge entre Canela, Vainilla o Naranja",
       "price": "2.06",
-      "categoryProductId": "6",
+      "subCategory": "Capuchinos",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387482/jpg/cappucino-aromatizado_cxo0lv-min_dgzy8k.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394385/png/cappucino-aromatizado_cxo0lv-min-removebg-preview-min_llaqhi.png"
@@ -433,7 +471,7 @@
       "name": "Café con Leche",
       "description": "Bebida clásica que combina café expreso con leche caliente",
       "price": "1.16",
-      "categoryProductId": "6",
+      "subCategory": "Cafes",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387471/jpg/cafe-con-leche_mp1anb-min_hvcewq.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394371/png/cafe-con-leche_mp1anb-min-removebg-preview-min_zklxgb.png"
@@ -444,7 +482,7 @@
       "name": "Café Campesino",
       "description": " Variante rústica y reconfortante de café preparada con granos tostados y agua caliente",
       "price": "0.90",
-      "categoryProductId": "6",
+      "subCategory": "Cafes",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387466/jpg/Cafe-Campesinoo_duc0qc-min_fizkub.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394365/png/Cafe-Campesinoo_duc0qc-min-removebg-preview-min_twtjxy.png"
@@ -455,7 +493,7 @@
       "name": "Café Americano",
       "description": "Bebida caliente y clásica preparada con café expreso y agua caliente",
       "price": "1.00",
-      "categoryProductId": "6",
+      "subCategory": "Cafes",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387466/jpg/Cafe-Campesinoo_duc0qc-min_fizkub.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394358/png/cafeamericano_efqdgr-min-removebg-preview-min_aebbhy.png"
@@ -466,7 +504,7 @@
       "name": "Chocolate Caliente",
       "description": " Bebida caliente y reconfortante elaborada con chocolate derretido y leche",
       "price": "1.5",
-      "categoryProductId": "6",
+      "subCategory": "Cafes",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387498/jpg/chocolate-caliente_vltnl0-min_pg8hxu.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394405/png/chocolate-caliente_vltnl0-min-removebg-preview-min_iatwac.png"
@@ -477,7 +515,7 @@
       "name": "Milo Caliente",
       "description": "Bebida caliente preparada con Milo, ofreciendo un sabor reconfortante y delicioso.",
       "price": "1.80",
-      "categoryProductId": "6",
+      "subCategory": "Infusiones",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387790/jpg/milo_nt6xmh-min_krzodq.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394593/png/milo_nt6xmh-min-removebg-preview-min_g1y6x5.png"
@@ -488,7 +526,7 @@
       "name": "Té Caliente",
       "description": "Infusión caliente de hojas de té",
       "price": "0.77",
-      "categoryProductId": "6",
+      "subCategory": "Infusiones",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387909/jpg/te_d1dcd8-min_fo8lri.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394747/png/te_d1dcd8-min-removebg-preview-min_obmbxf.png"
@@ -499,7 +537,7 @@
       "name": "Aromática de Sobre",
       "description": "Infusión de hierbas en sobre",
       "price": "0.77",
-      "categoryProductId": "6",
+      "subCategory": "Infusiones",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387452/jpg/aromatica_r0izlb-min_z45vpm.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394345/png/aromatica_r0izlb-min-removebg-preview-min_lgbtup.png"
@@ -510,7 +548,7 @@
       "name": "Aromática con Fruta",
       "description": "Infusión de hierbas aromáticas con trozos frescos de frutas",
       "price": "1.80",
-      "categoryProductId": "6",
+      "subCategory": "Infusiones",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387438/jpg/agua-aromatica-de-frutas_qef5fk-min_lqqn1q.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394326/png/agua-aromatica-de-frutas_qef5fk-min-removebg-preview-min_qxqwrg.png"
@@ -521,7 +559,7 @@
       "name": "Agua Panela con Queso Doble Crema",
       "description": "Bebida caliente de panela disuelta en agua, con la adición de queso doble crema",
       "price": "1.30",
-      "categoryProductId": "6",
+      "subCategory": "Infusiones",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387442/jpg/aguapanela_ov47u7-min_nzaokj.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394332/png/aguapanela_ov47u7-min-removebg-preview-min_xqynle.png"
@@ -532,7 +570,7 @@
       "name": "Perro Caliente Tradicional",
       "description": "Tocineta, salchicha, pan, queso, papa ripio y salsas",
       "price": "2.57",
-      "categoryProductId": "7",
+      "subCategory": "Perros Calientes",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387813/jpg/perroCalienteTradicional_j1nwnj-min_btyxoh.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394623/png/perroCalienteTradicional_j1nwnj-min-removebg-preview-min_xbvlfa.png"
@@ -543,7 +581,7 @@
       "name": "Perro Caliente Mexicano",
       "description": "Salchipapa, salsa chimichurry con jalapeños, pan, queso, papa ripio y salsas",
       "price": "3.08",
-      "categoryProductId": "7",
+      "subCategory": "Perros Calientes",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387808/jpg/perroCalienteMexicano_uongjv-min_cwzw8u.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394615/png/perroCalienteMexicano_uongjv-min-removebg-preview-min_wbasri.png"
@@ -554,7 +592,7 @@
       "name": "Perro Caliente Hawaiano",
       "description": "Salchipapa, piña calada, tocineta, pan, papa ripio, salsas",
       "price": "3.08",
-      "categoryProductId": "7",
+      "subCategory": "Perros Calientes",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387802/jpg/perroCalienteHawaiano_exxrvk-min_slv0ok.png",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394608/png/perroCalienteHawaiano_exxrvk-min-removebg-preview-min_bkksiy.png"
@@ -565,7 +603,7 @@
       "name": "Salchipapa Mixta",
       "description": "Salchipapa, chorizo, papa, ripio, queso gratinado, maiz tierno",
       "price": "5.14",
-      "categoryProductId": "7",
+      "subCategory": "Papas fritas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387881/jpg/salchipapaMixta_vi0znd-min_knvinj.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394711/png/salchipapaMixta_vi0znd-min-removebg-preview-min_j3vwso.png"
@@ -576,7 +614,7 @@
       "name": "Salchipapa Junior",
       "description": "Salchicha, papa",
       "price": "2.",
-      "categoryProductId": "7",
+      "subCategory": "Papas fritas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387875/jpg/salchipapaJunior_r19zuo-min_pfistx.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394703/png/salchipapaJunior_r19zuo-min-removebg-preview-min_tqgxbt.png"
@@ -587,7 +625,7 @@
       "name": "Hamburguesa Sa-Fre",
       "description": "Pan, Carne de res artesanal, tocineta, queso.",
       "price": "7.50",
-      "categoryProductId": "7",
+      "subCategory": "Hamburguesas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387551/jpg/Hamburguesa_Sa-Fre_sthbed-min_zb4dxw.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394476/png/Hamburguesa_Sa-Fre_sthbed-min-removebg-preview-min_siynch.png"
@@ -598,7 +636,7 @@
       "name": "Hamburguesa Mexicana",
       "description": "Pan, carne de res artesanal, salsa guacamole con jalapeños, cebollas, queso, salsas",
       "price": "7.00",
-      "categoryProductId": "7",
+      "subCategory": "Hamburguesas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387545/jpg/Hamburguesa_Mexicana_rdwwfz-min_bgnyvi.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394469/png/Hamburguesa_Mexicana_rdwwfz-min-removebg-preview-min_mhws40.png"
@@ -609,7 +647,7 @@
       "name": "Hamburguesa Hawaiana",
       "description": "Pan, Carne de res artesanal, tocineta, piña calada, jamón, queso, salsa.",
       "price": "6.50",
-      "categoryProductId": "7",
+      "subCategory": "Hamburguesas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387540/jpg/Hamburguesa_Hawaiana_ngd3bi-min_lbhrhq.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394462/png/Hamburguesa_Hawaiana_ngd3bi-min-removebg-preview-min_i1fq1y.png"
@@ -620,7 +658,7 @@
       "name": "Hamburguesa Clásica",
       "description": "Pan, Carne de res artesanal, tocineta, jamón, queso , cebollas, tomate, lechuga, salsas y papas a la francesa",
       "price": "6.00",
-      "categoryProductId": "7",
+      "subCategory": "Hamburguesas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711387534/jpg/Hamburguesa_Cl%C3%A1sica_zertf9-min_kpzmya.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711394454/png/Hamburguesa_Cl%C3%A1sica_zertf9-min-removebg-preview-min_xnt0zr.png"
