@@ -1,6 +1,7 @@
 const {Administrator} = require ('../../db')
 
 const editAdministratorController = async ({id}, {name, lastName, email, password }) =>{
+    
     const editAdministrator =await Administrator.update({
         name, 
         lastName,

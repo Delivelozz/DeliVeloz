@@ -9,7 +9,7 @@ const getAdministratorByName = async (name) => {
       },
     },
   });
-  const allAdministratorByLastname = await User.findAll({
+  const allAdministratorByLastname = await Administrator.findAll({
     where: {
       lastName: {
         [Op.like]: Sequelize.literal(`LOWER('%${name}%')`),
