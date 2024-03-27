@@ -6,13 +6,14 @@ import {
   resetDishes,
   setFiltering,
 } from "../../redux/actions/actions";
-import useCategories from "../../data/useCategories";
+//import useCategories from "../../data/useCategories";
 
-export default function Filters({ setCurrentPage }) {
+export default function Filters({ setCurrentPage, categoryArray }) {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
-  const categoryArray = useCategories();
+  // const categoryArray = useCategories();
   const filtering = useSelector((state) => state.filtering);
+  //console.log(categoryArray);
 
   //estado de filtro
   const [filter, setFilter] = useState("");
@@ -36,7 +37,7 @@ export default function Filters({ setCurrentPage }) {
     setCurrentPage(1);
   };
 
-  console.log(filtering);
+  //console.log(filtering);
 
   // ?--------------------------------------- Filtrar por Nombre
 
