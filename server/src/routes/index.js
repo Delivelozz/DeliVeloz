@@ -3,6 +3,7 @@ const router = Router();
 
 const productsRouter = require("./productsRouter");
 const categoriesRouter = require("./categoriesRouter");
+const subcategoriesRouter = require("./subcategoriesRouter");
 const usersRouter = require("./usersRouter");
 const assessmentRouter = require("./assessmentRouter");
 const filterRouter = require("./filterRouter");
@@ -14,6 +15,8 @@ const administratorRouter = require("./administratorRouter");
 router.use("/products", productsRouter);
 // router CATEGORIAS
 router.use("/categories", categoriesRouter);
+// router SUBCATEGORIAS
+router.use("/subcategories", subcategoriesRouter);
 // Router USUARIOS
 router.use("/users", usersRouter);
 // Router VALORACIONES
