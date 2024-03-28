@@ -9,7 +9,8 @@ const assessmentRouter = require("./assessmentRouter");
 const filterRouter = require("./filterRouter");
 const addressRouter = require("./addressRouter");
 const administratorRouter = require("./administratorRouter");
-
+const orderRouter = require("./orderRouter");
+const paymentMethodRouter = require("./paymentMethodRouter");
 
 // router PRODUCTOS
 router.use("/products", productsRouter);
@@ -26,6 +27,9 @@ router.use("/filter", filterRouter);
 // Router ADDRESS
 router.use("/address", addressRouter);
 // Router ADMINISTRATOR
-router.use("/administrator", administratorRouter)
-
+router.use("/administrator", administratorRouter);
+// Router ORDERS
+router.use("/order", orderRouter);
+//Router payment-method
+router.use("/payment", paymentMethodRouter);
 module.exports = router;
