@@ -38,6 +38,16 @@ const getFilterHandler = async (req, res) => {
     if (subcategory !== "default") {
       results = await filterSubCategoryController(results, subcategory);
     }
+
+    //+ PRICE
+    const availablePrices = ["asc", "desc"]
+
+    if (!availablePrices.includes(price) && price !== "default") {
+      // Si la subcategoría no está disponible, envía un error
+      return res.status(400).json({ 
+        error: `El ordenamiento solicitado ${price} no está disponible.` 
+      });
+    }
     // Aplicar el filtro de precio si se especifica y si hay resultados previos
     if (price !== "default" && results) {
       results = orderingPriceController(results, price);
