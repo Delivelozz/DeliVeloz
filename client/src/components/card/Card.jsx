@@ -21,14 +21,14 @@ export default function Card(props) {
   };
 
   return (
-    <article id={id} className="w-full ">
-      <div className="bg-white rounded-lg border flex flex-col gap-2 p-4">
-        <Link to={`/detail/${id}`}>
-          <figure className="w-full h-3/5 rounded-md cursor-pointer hover:text-black relative">
+    <article id={id} className="w-full h-80">
+      <div className="bg-white rounded-lg border flex flex-col gap-2 p-4 h-80">
+        <Link to={`/detail/${id}`} className="h-48 mb-3">
+          <figure className="w-full h-48 rounded-md cursor-pointer hover:text-black relative">
             <img
               src={image}
               alt={name}
-              className="w-full mx-auto rounded-md object-cover max-h-32 min-h-32"
+              className="w-full h-48 mx-auto rounded-md object-cover"
             />
             <div className="text-sm ml-1 mb-1 absolute bottom-0 left-0 ">
               <p className="bg-white/70 rounded-full px-1 mb-1">

@@ -1,30 +1,18 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  setDishes,
-  setCategories,
-  getSubCategories,
-} from "../../redux/actions/actions.js";
+import { setDishes } from "../../redux/actions/actions.js";
 import Cards from "../../components/cards/Cards.jsx";
 import Filters from "../../components/filters/Filters.jsx";
 import Pagination from "../../components/pagination/Pagination.jsx";
-import useCategories from "../../data/useCategories";
-import useSubCategories from "../../data/useSubCategories.js";
 
 export default function Products() {
   const dishes = useSelector((state) => state.dishes);
   const filteredDishes = useSelector((state) => state.filteredDishes);
   const dispatch = useDispatch();
-  const categories = useSelector((state) => state.categories);
-  const subcategories = useSelector((state) => state.subcategories);
 
   useEffect(() => {
     dispatch(setDishes());
-    dispatch(setCategories());
-    dispatch(getSubCategories());
   }, [dispatch]);
-  const categoryArray = useCategories();
-  const subCategoryArray = useSubCategories();
 
   // ? -------------------------------- Paginate
 
@@ -42,11 +30,7 @@ export default function Products() {
 
   return (
     <section className="container">
-      <Filters
-        setCurrentPage={setCurrentPage}
-        categoryArray={categoryArray}
-        subCategoryArray={subCategoryArray}
-      />
+      <Filters setCurrentPage={setCurrentPage} />
       <Cards dishes={currentPosts()} />
       <Pagination
         totalPosts={

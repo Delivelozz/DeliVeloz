@@ -1,17 +1,28 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getByName, orderBy, resetDishes } from "../../redux/actions/actions";
+import {
+  getByName,
+  orderBy,
+  resetDishes,
+  setCategories,
+  getSubCategories,
+} from "../../redux/actions/actions";
+import useCategories from "../../data/useCategories";
+import useSubCategories from "../../data/useSubCategories.js";
 
-export default function Filters({
-  setCurrentPage,
-  categoryArray,
-  subCategoryArray,
-}) {
+export default function Filters({ setCurrentPage }) {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [category, setCategory] = useState("default");
   const [subCategory, setSubCategory] = useState("default");
   const [price, setPrice] = useState("default");
+
+  useEffect(() => {
+    dispatch(setCategories());
+    dispatch(getSubCategories());
+  }, [dispatch]);
+  const categoryArray = useCategories();
+  const subCategoryArray = useSubCategories(category);
 
   //por precio
   const handleFilterBy = (e) => {
@@ -103,10 +114,15 @@ export default function Filters({
           name=""
           defaultValue="placeholder"
           placeholder="Subcategorías"
-          className="py-2 px-4 border border-sundown-500 rounded-lg text-sm focus:outline-sundown-500 font-semibold"
+          className={`py-2 px-4 border ${
+            category === "default" ? "border-gray-500" : "border-sundown-500"
+          } rounded-lg text-sm focus:outline-sundown-500 font-semibold`}
           onChange={handleFilterSubCategory}
+          disabled={category === "default"}
         >
-          <option value="default">Subcategorías</option>
+          <option value="default" disabled={true}>
+            Subcategorías
+          </option>
           {subCategoryArray.map((item, index) => (
             <option key={index} value={item}>
               {item}
@@ -116,13 +132,14 @@ export default function Filters({
 
         <select
           onChange={handleFilterBy}
-          // value={order}
           name=""
           defaultValue="placeholder"
           placeholder="Precio"
           className="py-2 px-4 border border-sundown-500 rounded-lg text-sm focus:outline-sundown-500 font-semibold"
         >
-          <option value="default">Por Precio</option>
+          <option value="default" disabled={true}>
+            Por Precio
+          </option>
           <option value="asc">$ ↓</option>
           <option value="desc">$ ↑</option>
         </select>
