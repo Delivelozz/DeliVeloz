@@ -5,5 +5,6 @@ export const SET_SHOPPING_CART = `SET_SHOPPING_CART`;
 export const ORDER_BY = `ORDER_BY`;
 export const SET_CATEGORIES = `SET_CATEGORIES`;
 export const SET_SUBCATEGORIES = `SET_SUBCATEGORIES`;
+export const GET_SUBCATEGORIES = `GET_SUBCATEGORIES`;
 export const SET_FILTERING = `FILTERING`;
 export const RESET = `RESET`;

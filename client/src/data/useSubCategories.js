@@ -2,12 +2,12 @@ import { useState, useEffect, useMemo } from "react";
 import { useSelector } from "react-redux";
 
 const useSubCategories = () => {
-  const categories = useSelector((state) => state.categories);
+  const subcategories = useSelector((state) => state.subcategories);
   const [subCategoryList, setSupCategoryList] = useState([]);
   useEffect(() => {
     const fetchSubCategories = async () => {
       const subCategoriesArray = [
-        ...new Set(categories?.flatMap((element) => element?.subCategory)),
+        ...new Set(subcategories?.flatMap((element) => element?.name)),
       ];
 
       setSupCategoryList(
@@ -16,7 +16,7 @@ const useSubCategories = () => {
     };
 
     fetchSubCategories();
-  }, [categories]);
+  }, [subcategories]);
 
   // Utilizamos useMemo para memoizar la lista de Categories
   const memoizedSubCategories = useMemo(

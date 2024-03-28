@@ -5,6 +5,7 @@ import {
   SET_CATEGORIES,
   SET_FILTERING,
   SET_SUBCATEGORIES,
+  GET_SUBCATEGORIES,
   GET_NAME,
   ORDER_BY,
   RESET,
@@ -16,6 +17,7 @@ const initialState = {
   promos: [], // Arreglo de promociones
   shoppingCart: [], // Arreglo de carrito de compras
   categories: [], // Arreglo de categorías
+  subcategories: [], // Arreglo de categorías
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -42,6 +44,12 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         categories: payload, // Actualiza el arreglo de categorías
+      };
+
+    case GET_SUBCATEGORIES:
+      return {
+        ...state,
+        subcategories: payload,
       };
 
     case SET_FILTERING:

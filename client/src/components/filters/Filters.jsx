@@ -28,6 +28,7 @@ export default function Filters({
     e.preventDefault();
     const selectedValue = e.target.value;
     setCategory(selectedValue);
+    console.log(selectedValue);
     setCurrentPage(1);
     return selectedValue;
   };
@@ -122,8 +123,8 @@ export default function Filters({
           className="py-2 px-4 border border-sundown-500 rounded-lg text-sm focus:outline-sundown-500 font-semibold"
         >
           <option value="default">Por Precio</option>
-          <option value="asc">Ascendente</option>
-          <option value="desc">Descendentemente</option>
+          <option value="asc">$ ↓</option>
+          <option value="desc">$ ↑</option>
         </select>
         <button onClick={handleClick} className="btn-bg">
           Reset

@@ -7,7 +7,7 @@ const useCategories = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       const categoriesArray = [
-        ...new Set(categories?.flatMap((element) => element?.category)),
+        ...new Set(categories?.flatMap((element) => element?.name)),
       ];
 
       setCategoryList(

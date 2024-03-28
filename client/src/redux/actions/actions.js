@@ -5,6 +5,7 @@ import {
   SET_CATEGORIES,
   SET_FILTERING,
   SET_SUBCATEGORIES,
+  GET_SUBCATEGORIES,
   ORDER_BY,
   GET_NAME,
   RESET,
@@ -92,12 +93,27 @@ export const resetDishes = () => {
 export function setCategories() {
   return async (dispatch) => {
     try {
-      const response = await fetch(
-        "http://localhost:3001/filter/default/default/default"
-      );
+      const response = await fetch("http://localhost:3001/categories");
       const data = await response.json();
       dispatch({
         type: SET_CATEGORIES,
+        payload: data,
+      });
+    } catch (error) {
+      console.error("Error fetching categories: ", error);
+    }
+  };
+}
+
+// ? ----------------------------- Set subcategories
+
+export function getSubCategories() {
+  return async (dispatch) => {
+    try {
+      const response = await fetch("http://localhost:3001/subcategories");
+      const data = await response.json();
+      dispatch({
+        type: GET_SUBCATEGORIES,
         payload: data,
       });
     } catch (error) {
