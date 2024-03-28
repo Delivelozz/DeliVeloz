@@ -1,43 +1,58 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  getByName,
-  orderBy,
-  resetDishes,
-  setFiltering,
-} from "../../redux/actions/actions";
-//import useCategories from "../../data/useCategories";
+import { getByName, orderBy, resetDishes } from "../../redux/actions/actions";
 
-export default function Filters({ setCurrentPage, categoryArray }) {
+export default function Filters({
+  setCurrentPage,
+  categoryArray,
+  subCategoryArray,
+}) {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
-  //const categoryArray = useCategories();
-  const filtering = useSelector((state) => state.filtering);
-  //console.log(categoryArray);
-
-  //estado de filtro
-  const [order, setOrder] = useState("");
+  const [category, setCategory] = useState("default");
+  const [subCategory, setSubCategory] = useState("default");
+  const [price, setPrice] = useState("default");
 
   //por precio
   const handleFilterBy = (e) => {
     e.preventDefault();
     const selectedValue = e.target.value;
-    setOrder(selectedValue);
-    dispatch(orderBy(selectedValue));
+    setPrice(selectedValue);
     setCurrentPage(1);
+    return selectedValue;
   };
 
   // ?--------------------------------------- Filtrar por categoría
 
   const handleFilterCategory = (e) => {
-    //e.preventDefault();
+    e.preventDefault();
     const selectedValue = e.target.value;
-    console.log(selectedValue);
-    dispatch(setFiltering(selectedValue));
+    setCategory(selectedValue);
     setCurrentPage(1);
+    return selectedValue;
   };
 
-  //console.log(filtering);
+  // ?--------------------------------------- Filtrar por subcategoría
+
+  const handleFilterSubCategory = (e) => {
+    e.preventDefault();
+    const selectedValue = e.target.value;
+    setSubCategory(selectedValue);
+    setCurrentPage(1);
+    console.log(selectedValue);
+    return selectedValue;
+  };
+
+  // ?--------------------------------------- Filtrar por categoría && precio
+
+  const handleFilterCategoryPrice = () => {
+    dispatch(orderBy(category, subCategory, price));
+  };
+
+  useEffect(() => {
+    handleFilterCategoryPrice();
+    console.log(category, subCategory, price);
+  }, [category, subCategory, price]);
 
   // ?--------------------------------------- Filtrar por Nombre
 
@@ -46,7 +61,8 @@ export default function Filters({ setCurrentPage, categoryArray }) {
     setName(value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     dispatch(getByName(name));
     console.log(name);
     setCurrentPage(1);
@@ -56,6 +72,9 @@ export default function Filters({ setCurrentPage, categoryArray }) {
 
   const handleClick = () => {
     dispatch(resetDishes());
+    setCategory("default");
+    setSubCategory("default");
+    setPrice("default");
     setCurrentPage(1);
   };
 
@@ -80,18 +99,29 @@ export default function Filters({ setCurrentPage, categoryArray }) {
         </select>
 
         <select
+          name=""
+          defaultValue="placeholder"
+          placeholder="Subcategorías"
+          className="py-2 px-4 border border-sundown-500 rounded-lg text-sm focus:outline-sundown-500 font-semibold"
+          onChange={handleFilterSubCategory}
+        >
+          <option value="default">Subcategorías</option>
+          {subCategoryArray.map((item, index) => (
+            <option key={index} value={item}>
+              {item}
+            </option>
+          ))}
+        </select>
+
+        <select
           onChange={handleFilterBy}
-          value={order}
+          // value={order}
           name=""
           defaultValue="placeholder"
           placeholder="Precio"
           className="py-2 px-4 border border-sundown-500 rounded-lg text-sm focus:outline-sundown-500 font-semibold"
         >
-          <option value="placeholder" disabled={true}>
-            Por Precio
-          </option>
-          <option value="NombreAscendente">Nombre A - Z</option>
-          <option value="NombreDescendente">Nombre Z - A</option>
+          <option value="default">Por Precio</option>
           <option value="asc">Ascendente</option>
           <option value="desc">Descendentemente</option>
         </select>
@@ -100,16 +130,18 @@ export default function Filters({ setCurrentPage, categoryArray }) {
         </button>
       </div>
 
-      <div className="font-semibold flex gap-3">
-        <input
-          type="search"
-          placeholder="Buscar..."
-          onChange={search}
-          className="w-48 bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
-        />
-        <button onClick={handleSubmit} className="btn-bg">
-          Buscar
-        </button>
+      <div className="font-semibold">
+        <form onSubmit={handleSubmit} className="flex gap-3">
+          <input
+            type="search"
+            placeholder="Buscar..."
+            onChange={search}
+            className="w-48 bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+          />
+          <button type="submit" className="btn-bg">
+            Buscar
+          </button>
+        </form>
       </div>
     </div>
   );

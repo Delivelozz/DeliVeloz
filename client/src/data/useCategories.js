@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 const useCategories = () => {
   const categories = useSelector((state) => state.categories);
   const [categoryList, setCategoryList] = useState([]);
-  console.log(categories);
   useEffect(() => {
     const fetchCategories = async () => {
       const categoriesArray = [
@@ -21,7 +20,6 @@ const useCategories = () => {
 
   // Utilizamos useMemo para memoizar la lista de Categories
   const memoizedCategories = useMemo(() => categoryList, [categoryList]);
-  console.log(memoizedCategories);
   return memoizedCategories;
 };
 
