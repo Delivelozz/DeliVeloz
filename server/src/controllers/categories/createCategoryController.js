@@ -1,10 +1,9 @@
 const {CategoryProduct} = require('../../db');
-
-const createCategoryController = async ({name, subcategory}) => {
+// subcategoria?
+const createCategoryController = async ({name}) => {
     //Crea una nueva categoria en la BDD
     const newCategory = await CategoryProduct.create({
-      name,
-      subcategory
+      name
   });
 
   return newCategory;

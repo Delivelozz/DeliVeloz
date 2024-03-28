@@ -2,28 +2,29 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   getByName,
-  filterBy,
+  orderBy,
   resetDishes,
   setFiltering,
 } from "../../redux/actions/actions";
-import useCategories from "../../data/useCategories";
+//import useCategories from "../../data/useCategories";
 
-export default function Filters({ setCurrentPage }) {
+export default function Filters({ setCurrentPage, categoryArray }) {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
-  const categoryArray = useCategories();
+  //const categoryArray = useCategories();
   const filtering = useSelector((state) => state.filtering);
+  //console.log(categoryArray);
 
   //estado de filtro
-  const [filter, setFilter] = useState("");
+  const [order, setOrder] = useState("");
 
   //por precio
   const handleFilterBy = (e) => {
     e.preventDefault();
     const selectedValue = e.target.value;
-    filterBy(selectedValue);
-    dispatch(setFilter(selectedValue));
-    //console.log(dispatch);
+    setOrder(selectedValue);
+    dispatch(orderBy(selectedValue));
+    setCurrentPage(1);
   };
 
   // ?--------------------------------------- Filtrar por categoría
@@ -36,7 +37,7 @@ export default function Filters({ setCurrentPage }) {
     setCurrentPage(1);
   };
 
-  console.log(filtering);
+  //console.log(filtering);
 
   // ?--------------------------------------- Filtrar por Nombre
 
@@ -80,7 +81,7 @@ export default function Filters({ setCurrentPage }) {
 
         <select
           onChange={handleFilterBy}
-          value={filter}
+          value={order}
           name=""
           defaultValue="placeholder"
           placeholder="Precio"
@@ -89,8 +90,10 @@ export default function Filters({ setCurrentPage }) {
           <option value="placeholder" disabled={true}>
             Por Precio
           </option>
-          <option value="PriceAscendente">Ascendente</option>
-          <option value="PriceDescendente">Descendentemente</option>
+          <option value="NombreAscendente">Nombre A - Z</option>
+          <option value="NombreDescendente">Nombre Z - A</option>
+          <option value="asc">Ascendente</option>
+          <option value="desc">Descendentemente</option>
         </select>
         <button onClick={handleClick} className="btn-bg">
           Reset

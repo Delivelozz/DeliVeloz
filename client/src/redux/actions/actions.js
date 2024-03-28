@@ -4,7 +4,7 @@ import {
   SET_SHOPPING_CART,
   SET_CATEGORIES,
   SET_FILTERING,
-  FILTER_BY,
+  ORDER_BY,
   GET_NAME,
   POST_USER,
   RESET,
@@ -44,21 +44,10 @@ export const setShoppingCart = (payload) => ({
 
 // ? ----------------------------- Filter By
 
-export const filterBy = (payload) => {
-  return async (dispatch) => {
-    try {
-      // const { data } = await axios.get(endpoint, payload);
-      const response = await fetch(
-        `http://localhost:3001/filter/default/${payload}`
-      );
-      const data = await response.json();
-      return dispatch({
-        type: FILTER_BY,
-        payload: data,
-      });
-    } catch (error) {
-      alert(error.messaje);
-    }
+export const orderBy = (payload) => {
+  return {
+    type: ORDER_BY,
+    payload,
   };
 };
 
@@ -98,7 +87,7 @@ export function setCategories() {
   return async (dispatch) => {
     try {
       const response = await fetch(
-        "http://localhost:3001/filter/default/default"
+        "http://localhost:3001/filter/default/default/default"
       );
       const data = await response.json();
       dispatch({
@@ -117,7 +106,7 @@ export function setFiltering(category) {
   return async (dispatch) => {
     try {
       const response = await fetch(
-        `http://localhost:3001/filter/${category}/default`
+        `http://localhost:3001/filter/${category}/default/default`
       );
       const data = await response.json();
       dispatch({

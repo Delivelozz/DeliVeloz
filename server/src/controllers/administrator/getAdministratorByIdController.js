@@ -1,9 +1,11 @@
 const {Administrator}= require ('../../db')
 
 const getAdministratorByIdController = async (id)=>{
+    
     const administratorId= await Administrator.findOne({
-        where: {id: id}
+        where: {id:id}
     })
+    
     return administratorId
 }
 

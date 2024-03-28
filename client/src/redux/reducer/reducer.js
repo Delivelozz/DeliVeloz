@@ -5,7 +5,7 @@ import {
   SET_CATEGORIES,
   SET_FILTERING,
   GET_NAME,
-  FILTER_BY,
+  ORDER_BY,
   POST_USER,
   RESET,
 } from "../actions/types";
@@ -61,24 +61,31 @@ export default function reducer(state = initialState, { type, payload }) {
       };
 
     // ? ----------------------------- Set filter
-    case FILTER_BY:
-      const filterPrice = [...state.filteredDishes];
-      if (payload === "PriceAscendente")
-        return {
-          ...state,
-          filteredDishes: filterPrice.sort(
-            (a, b) => parseInt(a.price, 16) - parseInt(b.price, 16)
-          ),
-        };
-      if (payload === "PriceDescendente")
-        return {
-          ...state,
-          filteredDishes: filterPrice.sort(
-            (a, b) => parseInt(b.price, 16) - parseInt(a.price, 16)
-          ),
-        };
-
-    // ? ----------------------------- Get by Name
+    case ORDER_BY:
+          // eslint-disable-next-line no-case-declarations
+          let orderedDishes;
+          // eslint-disable-next-line no-case-declarations
+          const { filteredDishes, dishes } = state;
+          // eslint-disable-next-line no-case-declarations
+          const sourceArray = filteredDishes.length > 0 ? filteredDishes : dishes;
+        
+          if (payload === "NombreAscendente") {
+            orderedDishes = sourceArray.slice().sort((a, b) => a.name.localeCompare(b.name));
+          } else if (payload === "NombreDescendente") {
+            orderedDishes = sourceArray.slice().sort((a, b) => b.name.localeCompare(a.name));
+          } else if (payload === "asc") {
+            orderedDishes = sourceArray.slice().sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+          } else if (payload === "desc") {
+            orderedDishes = sourceArray.slice().sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+          }
+        
+          return {
+            ...state,
+            filteredDishes: orderedDishes
+          };
+    
+  
+   // ? ----------------------------- Get by Name
 
     case GET_NAME:
       return {

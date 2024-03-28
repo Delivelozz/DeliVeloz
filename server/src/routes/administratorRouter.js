@@ -18,7 +18,7 @@ administratorRouter.post("/", createAdministratorHandler)
 //editar admins
 administratorRouter.patch("/:id", editAdministratorHandler)
 // desactivar administrador
-administratorRouter.delete("/:id", desactAdministratorHandler)
+administratorRouter.delete("/:id/:value", desactAdministratorHandler)
 //login de adminstrador
 administratorRouter.post("/login", loginAdministratorHandler)
 
