@@ -4,6 +4,8 @@ import {
   SET_SHOPPING_CART,
   SET_CATEGORIES,
   SET_FILTERING,
+  SET_SUBCATEGORIES,
+  GET_SUBCATEGORIES,
   ORDER_BY,
   GET_NAME,
   RESET,
@@ -43,14 +45,20 @@ export const setShoppingCart = (payload) => ({
 
 // ? ----------------------------- Filter By
 
-export const orderBy = (payload) => {
-  return {
-    type: ORDER_BY,
-    payload,
+export const orderBy = (category, subCategory, orderType) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:3001/filter/${category}/${subCategory}/${orderType}`
+      );
+      dispatch({ type: ORDER_BY, payload: response.data });
+    } catch (error) {
+      console.error("Error ordering dishes:", error);
+    }
   };
 };
 
-// ? ----------------------------- Filter By
+// ? ----------------------------- Filter By name
 
 export function getByName(name) {
   return async (dispatch) => {
@@ -85,9 +93,7 @@ export const resetDishes = () => {
 export function setCategories() {
   return async (dispatch) => {
     try {
-      const response = await fetch(
-        "http://localhost:3001/filter/default/default/default"
-      );
+      const response = await fetch("http://localhost:3001/categories");
       const data = await response.json();
       dispatch({
         type: SET_CATEGORIES,
@@ -99,17 +105,15 @@ export function setCategories() {
   };
 }
 
-// ? ----------------------------- Set filtering
+// ? ----------------------------- Set subcategories
 
-export function setFiltering(category) {
+export function getSubCategories() {
   return async (dispatch) => {
     try {
-      const response = await fetch(
-        `http://localhost:3001/filter/${category}/default/default`
-      );
+      const response = await fetch("http://localhost:3001/subcategories");
       const data = await response.json();
       dispatch({
-        type: SET_FILTERING,
+        type: GET_SUBCATEGORIES,
         payload: data,
       });
     } catch (error) {
@@ -117,3 +121,15 @@ export function setFiltering(category) {
     }
   };
 }
+
+// ? ----------------------------- Set filtering
+
+export const setFiltering = (payload) => ({
+  type: SET_FILTERING,
+  payload,
+});
+
+export const setFilteringSubCategory = (payload) => ({
+  type: SET_SUBCATEGORIES,
+  payload,
+});
