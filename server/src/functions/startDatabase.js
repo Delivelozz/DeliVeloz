@@ -3,9 +3,9 @@ const { Product, CategoryProduct, SubCategoryProduct} = require("../db.js")
 
 const startDatabase = async () => {
   try {
-    //+ GUARDAR CATEGORIAS EN LA BASE DE DATOS
-    const endPointCategoy = "http://localhost:5000/category"
-    const { data: categoriesData } = await axios.get(endPointCategoy);
+    //+ GUARDAR CATEGORIAS Y SUBCATEGORIAS DE PRODUCTOS EN LA BASE DE DATOS
+    const endPointCategory = "http://localhost:5000/category"
+    const { data: categoriesData } = await axios.get(endPointCategory);
     // Iteramos sobre cada categoría y sus subcategorías
     // Iteamos primero sobre las categorias
     for (const category of categoriesData) {
@@ -40,6 +40,7 @@ const startDatabase = async () => {
         }
       }
     }
+    console.log("Categorias y subcategorias creadas correctamente");
     //+ GUARDAR PRODUCTOS EN LA BASE DE DATOS
     const endPointProducts = "http://localhost:5000/products" 
     const { data: productsData } = await axios.get(endPointProducts);
