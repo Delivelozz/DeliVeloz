@@ -4,100 +4,85 @@ import {
   SET_SHOPPING_CART,
   SET_CATEGORIES,
   SET_FILTERING,
+  SET_SUBCATEGORIES,
+  GET_SUBCATEGORIES,
   GET_NAME,
-  FILTER_BY,
+  ORDER_BY,
   RESET,
 } from "../actions/types";
 
 const initialState = {
-  dishes: [],
-  filteredDishes: [],
-  promos: [],
-  shoppingCart: [],
-  categories: [],
-  filtering: [],
+  dishes: [], // Arreglo de platos original
+  filteredDishes: [], // Arreglo de platos filtrados
+  promos: [], // Arreglo de promociones
+  shoppingCart: [], // Arreglo de carrito de compras
+  categories: [], // Arreglo de categorías
+  subcategories: [], // Arreglo de categorías
 };
 
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
-    // ? ----------------------------- Set Dishes
-
     case SET_DISHES:
       return {
         ...state,
-        dishes: payload,
+        dishes: payload, // Actualiza el arreglo de platos original
       };
-
-    // ? ----------------------------- Set Promos
 
     case SET_PROMOS:
       return {
         ...state,
-        promos: payload,
+        promos: payload, // Actualiza el arreglo de promociones
       };
-    // ? ----------------------------- Set Shopping Cart
 
     case SET_SHOPPING_CART:
       return {
         ...state,
-        shoppingCart: payload,
+        shoppingCart: payload, // Actualiza el arreglo del carrito de compras
       };
-
-    // ? ----------------------------- Set categories
 
     case SET_CATEGORIES:
       return {
         ...state,
-        categories: payload,
+        categories: payload, // Actualiza el arreglo de categorías
       };
 
-    // ? ----------------------------- Set filtering
+    case GET_SUBCATEGORIES:
+      return {
+        ...state,
+        subcategories: payload,
+      };
+
     case SET_FILTERING:
       return {
         ...state,
-        filtering: payload,
+        filteredDishes: payload, // Actualiza el arreglo de platos filtrados
       };
 
-    // ? ----------------------------- Set filter
-    case FILTER_BY:
-      const filterPrice = [...state.filteredDishes];
-      if (payload === "PriceAscendente")
-        return {
-          ...state,
-          filteredDishes: filterPrice.sort(
-            (a, b) => parseInt(a.price, 16) - parseInt(b.price, 16)
-          ),
-        };
-      if (payload === "PriceDescendente")
-        return {
-          ...state,
-          filteredDishes: filterPrice.sort(
-            (a, b) => parseInt(b.price, 16) - parseInt(a.price, 16)
-          ),
-        };
+    case SET_SUBCATEGORIES:
+      return {
+        ...state,
+        filteredDishes: payload, // Actualiza el arreglo de platos filtrados
+      };
 
-    // ? ----------------------------- Get by Name
+    case ORDER_BY:
+      return {
+        ...state,
+        filteredDishes: payload, // Actualiza el arreglo de platos filtrados
+      };
 
     case GET_NAME:
       return {
         ...state,
-        filteredDishes: payload,
+        filteredDishes: payload, // Actualiza el arreglo de platos filtrados
       };
-
-    // ? ----------------------------- Reset
 
     case RESET:
       return {
         ...state,
-        filteredDishes: [],
-        filtering: [],
+        filteredDishes: [], // Limpiamos solo los resultados filtrados
       };
-
-    // ? ----------------------------- Default
 
     default:
-      return {
-        ...state,
-      };
+      return state;
   }
 }
