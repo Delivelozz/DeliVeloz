@@ -9,9 +9,9 @@ export default function Home() {
   const promos = useSelector((state) => state.promos);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(setCategories());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(setCategories());
+  // }, [dispatch]);
 
   //Function that calls data
   useEffect(() => {
