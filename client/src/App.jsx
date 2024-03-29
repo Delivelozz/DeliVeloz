@@ -10,13 +10,31 @@ import Footer from "./components/footer/Footer";
 import Blog from "./views/blog/Blog";
 import Carrito from "./views/carrito/Carrito";
 
-// ? Hooks
+// ? ---------------- Hooks
+
+import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 
 function App() {
+  // ? ---------------- Hooks y estados
+
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const login = useSelector((state) => state.login);
+
+  // ? ---------------- Comprobación de sesión
+
+  useEffect(() => {
+    const currentPath = pathname.toLowerCase();
+    const isLogin = currentPath === "/login";
+    const isRegister = currentPath === "/register";
+
+    if (login && (isLogin || isRegister)) {
+      navigate("/home");
+    }
+  }, [login, pathname, navigate]);
+
   return (
     <main className="bg-alabaster-50 min-h-screen">
       {pathname !== "/login" && pathname !== "/register" && <Header />}

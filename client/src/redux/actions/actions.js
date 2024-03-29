@@ -8,6 +8,7 @@ import {
   GET_NAME,
   POST_USER,
   RESET,
+  LOGIN_USER,
 } from "./types";
 import axios from "axios";
 
@@ -137,4 +138,22 @@ export function postUsers(payload) {
 			console.error("Tienes un error en: ", error);
 		}
 	};
+}
+
+// ? ----------------------------- Login
+
+export function loginUser(payload) {
+  return async function (dispatch) {
+    console.log(payload)
+    try {
+      const response = await axios.post("http://localhost:3001/users/login", payload);
+      console.log(response.data)
+      dispatch({
+        type: LOGIN_USER,
+        payload: response.data,
+      })
+    } catch (error) {
+      console.error("Error al intentar iniciar sesión: ", error)
+    }
+  }
 }

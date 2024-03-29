@@ -8,6 +8,7 @@ import {
   ORDER_BY,
   POST_USER,
   RESET,
+  LOGIN_USER,
 } from "../actions/types";
 
 const initialState = {
@@ -18,6 +19,8 @@ const initialState = {
   categories: [],
   filtering: [],
   users: [],
+  login: false,
+  user: {},
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -109,6 +112,16 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         users: [...state.users, payload],
       };
+
+    // ? ----------------------------- Login
+
+    case LOGIN_USER:
+      return {
+        ...state,
+        login: true,
+        user: payload,
+        // user: [...state.user, payload],
+      }
 
     // ? ----------------------------- Default
 

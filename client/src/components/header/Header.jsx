@@ -1,7 +1,11 @@
-import { Link } from "react-router-dom";
 import Cart from "../icons/Cart";
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 export default function Header() {
+  const login = useSelector((state) => state.login);
+
   return (
     <div className="w-full shadow-xl mb-16 sticky top-0 z-50 bg-white">
       <div className="container flex py-4 items-center justify-between">
@@ -22,19 +26,32 @@ export default function Header() {
           <Link to={"/about"}>
             <p>Nosotros</p>
           </Link>
-          <Link to={"/login"}>
-            <p className="text-sundown-500 hover:text-sundown-400 transition">
-              Ingresar
-            </p>
-          </Link>
-          <Link to={"/register"}>
-            <button className="btn-tr">Registrarse</button>
-          </Link>
-          <Link to={"/carrito"}>
-            <div className="bg-sundown-500 rounded-full p-2 hover:bg-sundown-600">
-              <Cart />
-            </div>
-          </Link>
+
+          {/* Header cuando login es false */}
+
+          {!login && (
+            <>
+              <Link to={"/login"}>
+                <p className="text-sundown-500 hover:text-sundown-400 transition">
+                  Ingresar
+                </p>
+              </Link>
+              <Link to={"/register"}>
+                <button className="btn-tr">Registrarse</button>
+              </Link>
+            </>
+          )}
+
+          {/* Header cuando login es true */}
+
+          {/* {login && (
+            <Link to={"/carrito"}>
+              <div className="bg-sundown-500 rounded-full p-2 hover:bg-sundown-600">
+                <Cart />
+              </div>
+            </Link>
+          )} */}
+          <button className="btn-tr">Cerrar Sesión</button>
         </div>
       </div>
     </div>
