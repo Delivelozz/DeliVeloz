@@ -4,11 +4,14 @@ import {
   SET_SHOPPING_CART,
   SET_CATEGORIES,
   SET_FILTERING,
+  SET_SUBCATEGORIES,
+  GET_SUBCATEGORIES,
   GET_NAME,
   ORDER_BY,
   POST_USER,
   RESET,
   LOGIN_USER,
+  LOGOUT_USER
 } from "../actions/types";
 
 const initialState = {
@@ -17,7 +20,7 @@ const initialState = {
   promos: [],
   shoppingCart: [],
   categories: [],
-  filtering: [],
+  subcategories: [], // Arreglo de categorías
   users: [],
   login: false,
   user: {},
@@ -25,84 +28,64 @@ const initialState = {
 
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
-    // ? ----------------------------- Set Dishes
-
     case SET_DISHES:
       return {
         ...state,
-        dishes: payload,
+        dishes: payload, // Actualiza el arreglo de platos original
       };
-
-    // ? ----------------------------- Set Promos
 
     case SET_PROMOS:
       return {
         ...state,
-        promos: payload,
+        promos: payload, // Actualiza el arreglo de promociones
       };
-    // ? ----------------------------- Set Shopping Cart
 
     case SET_SHOPPING_CART:
       return {
         ...state,
-        shoppingCart: payload,
+        shoppingCart: payload, // Actualiza el arreglo del carrito de compras
       };
-
-    // ? ----------------------------- Set categories
 
     case SET_CATEGORIES:
       return {
         ...state,
-        categories: payload,
+        categories: payload, // Actualiza el arreglo de categorías
       };
 
-    // ? ----------------------------- Set filtering
+    case GET_SUBCATEGORIES:
+      return {
+        ...state,
+        subcategories: payload,
+      };
+
     case SET_FILTERING:
       return {
         ...state,
-        filtering: payload,
+        filteredDishes: payload, // Actualiza el arreglo de platos filtrados
       };
 
-    // ? ----------------------------- Set filter
+    case SET_SUBCATEGORIES:
+      return {
+        ...state,
+        filteredDishes: payload, // Actualiza el arreglo de platos filtrados
+      };
+
     case ORDER_BY:
-          // eslint-disable-next-line no-case-declarations
-          let orderedDishes;
-          // eslint-disable-next-line no-case-declarations
-          const { filteredDishes, dishes } = state;
-          // eslint-disable-next-line no-case-declarations
-          const sourceArray = filteredDishes.length > 0 ? filteredDishes : dishes;
-        
-          if (payload === "NombreAscendente") {
-            orderedDishes = sourceArray.slice().sort((a, b) => a.name.localeCompare(b.name));
-          } else if (payload === "NombreDescendente") {
-            orderedDishes = sourceArray.slice().sort((a, b) => b.name.localeCompare(a.name));
-          } else if (payload === "asc") {
-            orderedDishes = sourceArray.slice().sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-          } else if (payload === "desc") {
-            orderedDishes = sourceArray.slice().sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
-          }
-        
-          return {
-            ...state,
-            filteredDishes: orderedDishes
-          };
-    
-  
-   // ? ----------------------------- Get by Name
+      return {
+        ...state,
+        filteredDishes: payload, // Actualiza el arreglo de platos filtrados
+      };
 
     case GET_NAME:
       return {
         ...state,
-        filteredDishes: payload,
+        filteredDishes: payload, // Actualiza el arreglo de platos filtrados
       };
-
-    // ? ----------------------------- Reset
 
     case RESET:
       return {
         ...state,
-        filteredDishes: [],
-        filtering: [],
+        filteredDishes: [], // Limpiamos solo los resultados filtrados
       };
 
     // ? ----------------------------- Post
@@ -120,14 +103,20 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         login: true,
         user: payload,
-        // user: [...state.user, payload],
       }
+
+    // ? ----------------------------- Logout
+
+    case LOGOUT_USER:
+      return {
+        ...state,
+        login: false,
+        user: {},
+      };
 
     // ? ----------------------------- Default
 
     default:
-      return {
-        ...state,
-      };
+      return state;
   }
 }

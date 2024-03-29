@@ -1,7 +1,8 @@
-// ?--------------------------- Exports Icons
+// ?--------------------------- imports Icons y validation.js
 
 import ArrowLeft from "../icons/ArrowLeft";
 import HomeIcon from "../icons/HomeIcon";
+import validation from "./validation";
 
 // ?-------------------------- Imports Hooks
 
@@ -20,11 +21,17 @@ export default function FormLogin() {
     password: "",
   });
 
+  const [errors, setErrors] = useState({
+    email: "",
+    password: "",
+  });
+
   // ?------------------------------------ OnChange
 
   const onChange = (e) => {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
+    setErrors(validation({ ...userData, [name]: value }));
   };
 
   // ?------------------------------------ OnSubmit
@@ -74,6 +81,7 @@ export default function FormLogin() {
             onChange={onChange}
             className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-5"
           />
+          {errors.email && <p className="error">{errors.email}</p>}
 
           <input
             type="password"
@@ -82,6 +90,7 @@ export default function FormLogin() {
             placeholder="Contraseña"
             className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full"
           />
+          {errors.password && <p className="error">{errors.password}</p>}
         </div>
 
         {/* --------------------- ¿Olvidaste tu contraseña? --------------------------- */}

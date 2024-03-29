@@ -4,7 +4,7 @@ import { setShoppingCart } from "../../redux/actions/actions.js";
 import { Link } from "react-router-dom";
 
 export default function Card(props) {
-  const { id, name, image, price } = props;
+  const { id, name, image, price, category, subCategory } = props;
   const dispatch = useDispatch();
   const shoppingCart = useSelector((state) => state.shoppingCart);
 
@@ -21,24 +21,31 @@ export default function Card(props) {
   };
 
   return (
-    <article id={id} className="w-full relative">
-      <div className="bg-white rounded-lg border p-4">
-        <figure className="w-full h-3/5 rounded-md ">
-          <img
-            src={image}
-            alt={name}
-            className="w-full mx-auto rounded-md object-cover max-h-32 min-h-32"
-          />
-        </figure>
-        <div className="w-full flex justify-between my-2">
+    <article id={id} className="w-full h-80">
+      <div className="bg-white rounded-lg border flex flex-col gap-2 p-4 h-80">
+        <Link to={`/detail/${id}`} className="h-48 mb-3">
+          <figure className="w-full h-48 rounded-md cursor-pointer hover:text-black relative">
+            <img
+              src={image}
+              alt={name}
+              className="w-full h-48 mx-auto rounded-md object-cover"
+            />
+            <div className="text-sm ml-1 mb-1 absolute bottom-0 left-0 ">
+              <p className="bg-white/70 rounded-full px-1 mb-1">
+                <span>Categoría: </span>
+                {category}
+              </p>
+              <p className="bg-white/70 rounded-full px-1">
+                <span>Subcategoría: </span>
+                {subCategory}
+              </p>
+            </div>
+          </figure>
+        </Link>
+        <div className="w-full flex justify-between ">
           <p className="w-4/6 truncate font-bold">{name}</p>
           <p className="text-sundown-500 font-bold ">$ {price}</p>
         </div>
-        <Link to={`/detail/${id}`}>
-          <button className="cursor-pointer absolute top-0 right-0 flex justify-center items-center bg-sundown-500 w-8 h-8 rounded-full text-white font-semibold -mr-3 -mt-3">
-            i
-          </button>
-        </Link>
         <div className="flex justify-center" onClick={() => addToCart(id)}>
           <button className="btn-bg ">Agregar</button>
         </div>

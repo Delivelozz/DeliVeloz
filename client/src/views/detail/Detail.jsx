@@ -19,37 +19,32 @@ export default function Detail() {
   }
 
   return (
-    <div className="container flex gap-10">
-      <div className="max-w-md min-w-md">
+    <div className="container flex gap-10 lg:w-3/5 lg:mb-80">
+      <div className="w-1/2">
         <img
           src={product.image.jpg}
           alt=""
           className="w-full rounded-md object-cover max-h-80 min-h-80"
         />
       </div>
-      <div className="flex flex-col">
-        <h1 className="text-xl mb-6 text-sundown-500">{product.name}</h1>
-
-        <div className="flex flex-col gap-2">
+      <div className="w-1/2 flex flex-col justify-between ">
+        <div className="flex flex-col justify-center gap-4">
+          <h1 className="text-xl mb-6 text-sundown-500">{product.name}</h1>
           <p>
             <span className="text-sundown-500 font-bold">Ingredientes: </span>
             {product.description}
           </p>
-
           <p>
             <span className="text-sundown-500 font-bold">Categoría: </span>
             {product.category}
           </p>
-
-          <p>
-            <span className="text-sundown-500 font-bold">Id: </span>
-            {product.id}
+          <p className="text-sundown-500 font-bold text-xl ">
+            $ {product.price}
           </p>
         </div>
-
-        <p className="text-sundown-500 font-bold text-xl mt-6">
-          $ {product.price}
-        </p>
+        <div className="flex ">
+          <button className="btn-bg ">Agregar</button>
+        </div>
       </div>
     </div>
   );

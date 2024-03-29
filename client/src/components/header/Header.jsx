@@ -1,10 +1,18 @@
 import Cart from "../icons/Cart";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { logoutUser } from "../../redux/actions/actions";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const login = useSelector((state) => state.login);
+
+  const onClick = () => {
+    dispatch(logoutUser());
+    navigate("/home");
+  };
 
   return (
     <div className="w-full shadow-xl mb-16 sticky top-0 z-50 bg-white">
@@ -44,14 +52,18 @@ export default function Header() {
 
           {/* Header cuando login es true */}
 
-          {/* {login && (
-            <Link to={"/carrito"}>
-              <div className="bg-sundown-500 rounded-full p-2 hover:bg-sundown-600">
-                <Cart />
-              </div>
-            </Link>
-          )} */}
-          <button className="btn-tr">Cerrar Sesión</button>
+          {login && (
+            <div>
+              {/* <Link to={"/carrito"}>
+                <div className="bg-sundown-500 rounded-full p-2 hover:bg-sundown-600">
+                  <Cart />
+                </div>
+              </Link> */}
+              <button onClick={onClick} className="btn-tr">
+                Cerrar Sesión
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

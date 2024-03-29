@@ -102,3 +102,9 @@ h1 {
 .current {
   @apply flex justify-center items-center rounded-full border border-sundown-700 bg-sundown-700 text-white w-8 h-8;
 }
+
+/* ?--------------------------------- Validaciones ------------------------------------ */
+
+.error {
+    @apply bg-wild-watermelon-100 border border-wild-watermelon-400 text-wild-watermelon-400 text-sm px-2 py-1 rounded-sm;
+}
