@@ -17,4 +17,5 @@ function validation({ email, password }) {
 
     return errors;
   }
+  
   export default validation;

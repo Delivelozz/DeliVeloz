@@ -69,6 +69,5 @@ export default function validation ({name,lastName,email,userAddress,phone,passw
 
   // ? ---------------------------------------- Return
 
-
   return errors;
 };
