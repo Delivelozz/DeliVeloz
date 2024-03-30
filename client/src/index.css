@@ -106,5 +106,5 @@ h1 {
 /* ?--------------------------------- Validaciones ------------------------------------ */
 
 .error {
-    @apply bg-wild-watermelon-100 border border-wild-watermelon-400 text-wild-watermelon-400 text-sm px-2 py-1 rounded-sm;
+  @apply bg-wild-watermelon-100 border border-wild-watermelon-400 text-wild-watermelon-400 text-sm px-2 py-1 rounded-sm;
 }

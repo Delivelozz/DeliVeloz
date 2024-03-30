@@ -11,7 +11,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { loginUser } from "../../redux/actions/actions";
 
 export default function FormLogin() {
-  // ?------------------------------------ useSelector y UseEffect
+  // ?------------------------------------ useSelector y estado
 
   const dispatch = useDispatch();
   const login = useSelector((state) => state.login);
@@ -20,6 +20,8 @@ export default function FormLogin() {
     email: "",
     password: "",
   });
+
+  // ?------------------------------------ estado de error
 
   const [errors, setErrors] = useState({
     email: "",
