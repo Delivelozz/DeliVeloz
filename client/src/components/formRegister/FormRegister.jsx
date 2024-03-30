@@ -5,6 +5,7 @@ import validation from "./validation";
 
 // ?-------------------------- Imports Hooks
 
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { postUsers } from "../../redux/actions/actions";
@@ -12,6 +13,7 @@ import { postUsers } from "../../redux/actions/actions";
 export default function FormRegister() {
   // ?------------------------------------ useSelector y UseEffect
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,11 +31,11 @@ export default function FormRegister() {
     password: "",
   });
 
+  const [repeatPassword, setRepeatPassword] = useState("");
+
   // ? ---------------------------------------- Estado del error
 
   const [errors, setErrors] = useState({
-    email: "",
-    password: "",
     name: "",
     lastName: "",
     email: "",
@@ -55,7 +57,7 @@ export default function FormRegister() {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    const errors = validation(user);
+    const errors = validation({ ...user, repeatPassword }); // Utilizar repeatPassword en la llamada a la función de validación
 
     if (Object.keys(errors).length > 0) {
       setErrors(errors);
@@ -69,7 +71,9 @@ export default function FormRegister() {
         phone: "",
         password: "",
       });
+      setRepeatPassword(""); // Limpiar el campo de repetir contraseña
       alert("¡El usuario fue creado exitosamente!");
+      navigate("/login");
     }
   };
 
@@ -185,18 +189,19 @@ export default function FormRegister() {
                 placeholder="Contraseña"
                 className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
               />
-              {errors.password && <p className="error">{errors.password}</p>}
             </div>
             <div className="flex-1">
               <input
                 type="password"
-                name="password"
+                value={repeatPassword}
+                onChange={(e) => setRepeatPassword(e.target.value)}
+                name="repeatPassword"
                 placeholder="Repetir contraseña"
                 className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
               />
-              {errors.password && <p className="error">{errors.password}</p>}
             </div>
           </div>
+          {errors.password && <p className="error">{errors.password}</p>}
         </div>
 
         {/* ------------------ Boton de Login --------------------- */}

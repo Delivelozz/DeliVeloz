@@ -14,7 +14,7 @@ export default function FormLogin() {
   // ?------------------------------------ useSelector y estado
 
   const dispatch = useDispatch();
-  const login = useSelector((state) => state.login);
+  // const login = useSelector((state) => state.login);
 
   const [userData, setUserData] = useState({
     email: "",
@@ -33,16 +33,20 @@ export default function FormLogin() {
   const onChange = (e) => {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
-    setErrors(validation({ ...userData, [name]: value }));
   };
 
   // ?------------------------------------ OnSubmit
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (!userData.email || !userData.password) {
-      alert("Ningún campo puede estar vacío");
-    } else {
+    const errors = validation(userData);
+    setErrors(errors);
+
+    if (
+      Object.keys(errors).length === 0 &&
+      userData.email &&
+      userData.password
+    ) {
       setUserData({
         email: "",
         password: "",
@@ -75,34 +79,37 @@ export default function FormLogin() {
 
         {/* --------------------- Usuario y Contraseña --------------------------- */}
 
-        <div className="">
-          <input
-            type="text"
-            placeholder="Email"
-            name="email"
-            onChange={onChange}
-            className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-5"
-          />
-          {errors.email && <p className="error">{errors.email}</p>}
-
-          <input
-            type="password"
-            name="password"
-            onChange={onChange}
-            placeholder="Contraseña"
-            className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full"
-          />
-          {errors.password && <p className="error">{errors.password}</p>}
+        <div className="flex flex-col gap-4">
+          <div>
+            <input
+              type="text"
+              placeholder="Email"
+              name="email"
+              onChange={onChange}
+              className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
+            />
+            {errors.email && <p className="error">{errors.email}</p>}
+          </div>
+          <div>
+            <input
+              type="password"
+              name="password"
+              onChange={onChange}
+              placeholder="Contraseña"
+              className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
+            />
+            {errors.password && <p className="error">{errors.password}</p>}
+          </div>
         </div>
 
         {/* --------------------- ¿Olvidaste tu contraseña? --------------------------- */}
 
-        <a
+        {/* <a
           href=""
           className="text-sundown-500 text-right text-sm font-semibold hover:text-sundown-600"
         >
           ¿Olvidaste tu contraseña?
-        </a>
+        </a> */}
 
         {/* --------------------- Ingresar --------------------------- */}
 
