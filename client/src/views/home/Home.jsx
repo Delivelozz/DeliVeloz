@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setPromos } from "../../redux/actions/actions.js";
+import { setPromos, setCategories } from "../../redux/actions/actions.js";
 import { getDishes } from "../../data/index.js";
 import Promos from "../../components/promos/Promos.jsx";
 import SliderHome from "../../components/sliderHome/Slider";
@@ -8,6 +8,10 @@ import SliderHome from "../../components/sliderHome/Slider";
 export default function Home() {
   const promos = useSelector((state) => state.promos);
   const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(setCategories());
+  // }, [dispatch]);
 
   //Function that calls data
   useEffect(() => {

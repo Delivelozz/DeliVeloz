@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "axios": "^1.6.8",
+    "bcrypt": "^5.1.1",
     "body-parser": "^1.19.0",
     "concurrently": "^8.2.2",
     "cookie-parser": "^1.4.5",
@@ -24,6 +25,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "json-server": "^1.0.0-alpha.23",
+    "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "mysql2": "^3.9.2",
@@ -31,6 +33,7 @@
     "sequelize": "^6.3.5"
   },
   "devDependencies": {
+    "@types/node": "^20.11.30",
     "chai": "^4.2.0",
     "mocha": "^10.3.0",
     "nodemon": "^2.0.6",

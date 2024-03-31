@@ -1,42 +1,165 @@
-export default function Filters() {
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  getByName,
+  orderBy,
+  resetDishes,
+  setCategories,
+  getSubCategories,
+} from "../../redux/actions/actions";
+import useCategories from "../../data/useCategories";
+import useSubCategories from "../../data/useSubCategories.js";
+
+export default function Filters({ setCurrentPage }) {
+  const dispatch = useDispatch();
+  const [name, setName] = useState("");
+  const [category, setCategory] = useState("default");
+  const [subCategory, setSubCategory] = useState("default");
+  const [price, setPrice] = useState("default");
+
+  useEffect(() => {
+    dispatch(setCategories());
+    dispatch(getSubCategories());
+  }, [dispatch]);
+  const categoryArray = useCategories();
+  const subCategoryArray = useSubCategories(category);
+
+  //por precio
+  const handleFilterBy = (e) => {
+    e.preventDefault();
+    const selectedValue = e.target.value;
+    setPrice(selectedValue);
+    setCurrentPage(1);
+    return selectedValue;
+  };
+
+  // ?--------------------------------------- Filtrar por categoría
+
+  const handleFilterCategory = (e) => {
+    e.preventDefault();
+    const selectedValue = e.target.value;
+    setCategory(selectedValue);
+    console.log(selectedValue);
+    setCurrentPage(1);
+    return selectedValue;
+  };
+
+  // ?--------------------------------------- Filtrar por subcategoría
+
+  const handleFilterSubCategory = (e) => {
+    e.preventDefault();
+    const selectedValue = e.target.value;
+    setSubCategory(selectedValue);
+    setCurrentPage(1);
+    console.log(selectedValue);
+    return selectedValue;
+  };
+
+  // ?--------------------------------------- Filtrar por categoría && precio
+
+  const handleFilterCategoryPrice = () => {
+    dispatch(orderBy(category, subCategory, price));
+  };
+
+  useEffect(() => {
+    handleFilterCategoryPrice();
+    console.log(category, subCategory, price);
+  }, [category, subCategory, price]);
+
+  // ?--------------------------------------- Filtrar por Nombre
+
+  const search = (e) => {
+    const { value } = e.target;
+    setName(value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(getByName(name));
+    console.log(name);
+    setCurrentPage(1);
+  };
+
+  // ? --------------------------------------- Reset
+
+  const handleClick = () => {
+    dispatch(resetDishes());
+    setCategory("default");
+    setSubCategory("default");
+    setPrice("default");
+    setCurrentPage(1);
+  };
+
   return (
     <div className="flex w-full justify-between mb-10">
       <div className="flex gap-2">
         <select
           name=""
-          placeholder="Ordenar Alfabéticamente"
-          className="py-2 px-4 border border-sundown-500 rounded-lg text-sm focus:outline-sundown-500 font-semibold"
-        >
-          <option value="Asc">Ascendente</option>
-          <option value="Desc">Descendentemente</option>
-        </select>
-
-        <select
-          name=""
+          defaultValue="placeholder"
           placeholder="Categorías"
           className="py-2 px-4 border border-sundown-500 rounded-lg text-sm focus:outline-sundown-500 font-semibold"
+          onChange={handleFilterCategory}
         >
-          <option value="Hamburguesas">Hamburguesas</option>
-          <option value="Pizza">Pizza</option>
-          <option value="Sandwitchs">Sandwitchs</option>
-          <option value="Gaseosas">Gaseosas</option>
+          <option value="placeholder" disabled={true}>
+            Categoría
+          </option>
+          {categoryArray.map((item, index) => (
+            <option key={index} value={item}>
+              {item}
+            </option>
+          ))}
         </select>
 
         <select
           name=""
-          placeholder="Ratings"
+          defaultValue="placeholder"
+          placeholder="Subcategorías"
+          className={`py-2 px-4 border ${
+            category === "default" ? "border-gray-500" : "border-sundown-500"
+          } rounded-lg text-sm focus:outline-sundown-500 font-semibold`}
+          onChange={handleFilterSubCategory}
+          disabled={category === "default"}
+        >
+          <option value="default" disabled={true}>
+            Subcategorías
+          </option>
+          {subCategoryArray.map((item, index) => (
+            <option key={index} value={item}>
+              {item}
+            </option>
+          ))}
+        </select>
+
+        <select
+          onChange={handleFilterBy}
+          name=""
+          defaultValue="placeholder"
+          placeholder="Precio"
           className="py-2 px-4 border border-sundown-500 rounded-lg text-sm focus:outline-sundown-500 font-semibold"
         >
-          <option value="AscR">Ascendente</option>
-          <option value="DescR">Descendentemente</option>
+          <option value="default" disabled={true}>
+            Por Precio
+          </option>
+          <option value="asc">$ ↓</option>
+          <option value="desc">$ ↑</option>
         </select>
+        <button onClick={handleClick} className="btn-bg">
+          Reset
+        </button>
       </div>
-      <div className="w-56 font-semibold">
-        <input
-          type="search"
-          placeholder="Buscar..."
-          className="w-56 bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
-        />
+
+      <div className="font-semibold">
+        <form onSubmit={handleSubmit} className="flex gap-3">
+          <input
+            type="search"
+            placeholder="Buscar..."
+            onChange={search}
+            className="w-48 bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+          />
+          <button type="submit" className="btn-bg">
+            Buscar
+          </button>
+        </form>
       </div>
     </div>
   );

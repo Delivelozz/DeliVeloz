@@ -1,4 +1,4 @@
-const updateAssessmentController = require("../../controllers/valoracion/updateAssessmentController");
+const updateAssessmentController = require("../../controllers/assessments/updateAssessmentController");
 
 const updateAssessmentHandler = async (req, res) => {
   try {
