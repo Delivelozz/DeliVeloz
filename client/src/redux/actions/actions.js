@@ -158,21 +158,28 @@ export function postUsers(payload) {
 
 // ? ----------------------------- Login
 
-export function loginUser(payload) {
-  return async function (dispatch) {
-    console.log(payload)
-    try {
-      const response = await axios.post("http://localhost:3001/users/login", payload);
-      console.log(response.data)
-      dispatch({
-        type: LOGIN_USER,
-        payload: response.data,
-      })
-    } catch (error) {
-      console.error("Error al intentar iniciar sesión: ", error)
-    }
+ export function loginUser(payload) {
+    return async function (dispatch) {
+      try {
+        const response = await axios.post(
+          "http://localhost:3001/users/login",
+          payload
+        );
+        dispatch({
+          type: LOGIN_USER,
+          payload: response.data,
+        });
+      } catch (error) {
+        if (error.response && error.response.status === 500) {
+          console.error("Usuario no encontrado");
+        } else {
+          console.error("Error al intentar iniciar sesión: ", error);
+        }
+        throw error;
+      }
+    };
   }
-}
+
 
 // ? ----------------------------- logout
 

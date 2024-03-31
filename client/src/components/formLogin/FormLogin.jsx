@@ -3,6 +3,7 @@
 import ArrowLeft from "../icons/ArrowLeft";
 import CloseIcon from "../icons/CloseIcon";
 import validation from "./validation";
+import axios from "axios";
 
 // ?-------------------------- Imports Hooks
 
@@ -56,12 +57,20 @@ export default function FormLogin({ closeModal }) {
       userData.email &&
       userData.password
     ) {
-      setUserData({
-        email: "",
-        password: "",
-      });
-      await dispatch(loginUser(userData));
-      closeModal();
+      try {
+        await dispatch(loginUser(userData));
+        setUserData({
+          email: "",
+          password: "",
+        });
+        closeModal();
+      } catch (error) {
+        if (error.response && error.response.status === 500) {
+          setErrors({ password: "El usuario o la contraseña es incorrecta." });
+        } else {
+          console.error("Error al intentar iniciar sesión: ", error);
+        }
+      }
     }
   };
 
