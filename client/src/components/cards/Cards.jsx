@@ -1,7 +1,24 @@
-export default function Cards() {
+import { useState } from "react";
+import Card from "../../components/card/Card.jsx";
+
+export default function Cards(props) {
+  // console.log("esto", props);
+  const { dishes } = props;
   return (
-    <div>
-      <div></div>
-    </div>
+    <section>
+      <article className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {dishes.map(({ id, name, image, price, category, subCategory }) => (
+          <Card
+            key={id}
+            id={id}
+            name={name}
+            image={image.jpg}
+            price={price}
+            category={category}
+            subCategory={subCategory}
+          />
+        ))}
+      </article>
+    </section>
   );
 }

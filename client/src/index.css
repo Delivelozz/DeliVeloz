@@ -2,10 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ?--------------------------------- General ------------------------------------ */
+
 body {
   /* font-size: .9rem; */
   font-family: "DM Sans", sans-serif;
   font-optical-sizing: auto;
+  overflow-x: hidden;
 }
 
 * {
@@ -20,21 +23,59 @@ body {
 }
 
 a:hover {
-  color: theme('colors.sundown.500');
-  transition: all .3s ease;
-  -webkit-transition: all .3s ease;
-  -moz-transition: all .3s ease;
-  -ms-transition: all .3s ease;
-  -o-transition: all .3s ease;
+  color: theme("colors.sundown.500");
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
 }
 
 button {
-  transition: all .3s ease;
-  -webkit-transition: all .3s ease;
-  -moz-transition: all .3s ease;
-  -ms-transition: all .3s ease;
-  -o-transition: all .3s ease;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
 }
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+}
+
+input, select {
+  background-color: #fff;
+}
+
+/* ?--------------------------------- Slider Header ------------------------------------ */
+
+.slick-slider {
+  position: relative;
+}
+
+.slider .slick-dots {
+  position: absolute;
+  bottom: 30px;
+}
+
+.slider .slick-dots li button:before {
+  color: #fff;
+  font-size: 20px;
+}
+
+/* ?--------------------------------- Slider Promos ------------------------------------ */
+
+.carrousel .slick-dots li button:before {
+  color: #d32f2f;
+  font-size: 20px;
+}
+
+.carrousel .slick-track {
+  display: flex;
+  gap: 2rem;
+}
+
+/* ?--------------------------------- Tailwind ------------------------------------ */
 
 h1 {
   @apply text-xl font-semibold;
@@ -48,12 +89,22 @@ h1 {
   @apply border bg-white font-medium border-sundown-500 py-2 text-sundown-500 rounded-md min-w-24 px-4 hover:bg-sundown-500 hover:text-white text-center;
 }
 
- input:-webkit-autofill {
-   -webkit-box-shadow: 0 0 0 1000px white inset !important;
-   -webkit-text-fill-color: black !important;
- }
+/* ?--------------------------------- Navegación ------------------------------------ */
 
- input:-moz-autofill {
-   box-shadow: 0 0 0 1000px white inset !important;
-   -moz-text-fill-color: black !important;
- }
+.active {
+  @apply flex justify-center items-center rounded-full border border-sundown-500 bg-sundown-500 text-white w-8 h-8 hover:bg-white hover:border hover:text-sundown-500 hover:border-sundown-500;
+}
+
+.disabled {
+  @apply flex justify-center items-center rounded-full border bg-gray-200 text-white w-8 h-8 cursor-not-allowed;
+}
+
+.current {
+  @apply flex justify-center items-center rounded-full border border-sundown-700 bg-sundown-700 text-white w-8 h-8;
+}
+
+/* ?--------------------------------- Validaciones ------------------------------------ */
+
+.error {
+  @apply bg-wild-watermelon-100 border border-wild-watermelon-400 text-wild-watermelon-400 text-sm px-2 py-1 rounded-sm;
+}
