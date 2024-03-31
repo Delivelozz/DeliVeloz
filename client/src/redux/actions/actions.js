@@ -150,7 +150,6 @@ export function postUsers(payload) {
           type: POST_USER,
           payload: response.data,
         });
-        console.log(payload)
 		} catch (error) {
 			console.error("Tienes un error en: ", error);
 		}

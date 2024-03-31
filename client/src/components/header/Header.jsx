@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
 
-export default function Header() {
+export default function Header({ openLoginModal, openRegisterModal }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const login = useSelector((state) => state.login);
@@ -15,7 +15,7 @@ export default function Header() {
   };
 
   return (
-    <div className="w-full shadow-xl mb-16 sticky top-0 z-50 bg-white">
+    <div className="w-full shadow-xl mb-16 sticky top-0 z-40 bg-white">
       <div className="container flex py-4 items-center justify-between">
         <div>
           <Link to={"/home"}>
@@ -39,14 +39,15 @@ export default function Header() {
 
           {!login && (
             <>
-              <Link to={"/login"}>
-                <p className="text-sundown-500 hover:text-sundown-400 transition">
-                  Ingresar
-                </p>
-              </Link>
-              <Link to={"/register"}>
-                <button className="btn-tr">Registrarse</button>
-              </Link>
+              <p
+                className="text-sundown-500 hover:text-sundown-400 transition cursor-pointer"
+                onClick={openLoginModal}
+              >
+                Ingresar
+              </p>
+              <p className="btn-tr cursor-pointer" onClick={openRegisterModal}>
+                Registrarse
+              </p>
             </>
           )}
 

@@ -9,6 +9,8 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Blog from "./views/blog/Blog";
 import Carrito from "./views/carrito/Carrito";
+import FormLogin from "./components/formLogin/FormLogin";
+import FormRegister from "./components/formRegister/FormRegister";
 
 // ? ---------------- Hooks
 
@@ -17,6 +19,44 @@ import { useState, useEffect } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 
 function App() {
+  //  ? ---------------- Modal
+
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+
+  const openLoginModal = () => {
+    setIsLoginModalOpen(true);
+  };
+
+  const closeLoginModal = () => {
+    setIsLoginModalOpen(false);
+  };
+
+  const openRegisterModal = () => {
+    setIsRegisterModalOpen(true);
+  };
+
+  const closeRegisterModal = () => {
+    setIsRegisterModalOpen(false);
+  };
+
+  // ? ---------------- UseEffect para cerrar modales con scape
+
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.key === "Escape") {
+        closeLoginModal();
+        closeRegisterModal();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyPress);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, []);
+
   // ? ---------------- Hooks y estados
 
   const { pathname } = useLocation();
@@ -36,8 +76,13 @@ function App() {
   }, [login, pathname, navigate]);
 
   return (
-    <main className="bg-alabaster-50 min-h-screen">
-      {pathname !== "/login" && pathname !== "/register" && <Header />}
+    <main className="bg-alabaster-50 min-h-screen overflow-x-hidden">
+      {pathname !== "/login" && pathname !== "/register" && (
+        <Header
+          openLoginModal={openLoginModal}
+          openRegisterModal={openRegisterModal}
+        />
+      )}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Home" element={<Home />} />
@@ -50,6 +95,8 @@ function App() {
         <Route path="/carrito" element={<Carrito />} />
       </Routes>
       {pathname !== "/login" && pathname !== "/register" && <Footer />}
+      {isLoginModalOpen && <FormLogin closeModal={closeLoginModal} />}
+      {isRegisterModalOpen && <FormRegister closeModal={closeRegisterModal} />}
     </main>
   );
 }
