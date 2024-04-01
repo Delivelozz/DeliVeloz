@@ -23,6 +23,12 @@ export default function Products() {
   const firstPostIndex = lastPostIndex - postsPerPage;
 
   const currentPosts = () => {
+    // console.log(
+    //   filteredDishes.length >= 1
+    //     ? "Renderizando filteredDishes"
+    //     : "Renderizando dishes"
+    // );
+
     return filteredDishes.length >= 1
       ? filteredDishes.slice(firstPostIndex, lastPostIndex)
       : dishes.slice(firstPostIndex, lastPostIndex);
