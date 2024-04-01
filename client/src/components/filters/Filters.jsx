@@ -95,12 +95,12 @@ export default function Filters({ setCurrentPage }) {
       <div className="flex gap-2">
         <select
           name=""
-          defaultValue="placeholder"
+          value={category}
           placeholder="Categorías"
           className="py-2 px-4 border border-sundown-500 rounded-lg text-sm focus:outline-sundown-500 font-semibold"
           onChange={handleFilterCategory}
         >
-          <option value="placeholder" disabled={true}>
+          <option value="default" disabled={true}>
             Categoría
           </option>
           {categoryArray.map((item, index) => (
@@ -112,7 +112,7 @@ export default function Filters({ setCurrentPage }) {
 
         <select
           name=""
-          defaultValue="placeholder"
+          value={subCategory}
           placeholder="Subcategorías"
           className={`py-2 px-4 border ${
             category === "default" ? "border-gray-500" : "border-sundown-500"
@@ -133,7 +133,7 @@ export default function Filters({ setCurrentPage }) {
         <select
           onChange={handleFilterBy}
           name=""
-          defaultValue="placeholder"
+          value={price}
           placeholder="Precio"
           className="py-2 px-4 border border-sundown-500 rounded-lg text-sm focus:outline-sundown-500 font-semibold"
         >
