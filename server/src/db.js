@@ -5,7 +5,6 @@ const path = require('path');
 const {
   DB_USER, DB_PASSWORD, DB_HOST, DB_PORT
 } = process.env;
-
 //° CONEXION A LA BASE DE DATOS
 const sequelize = new Sequelize(`mysql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/deliveloz`, {
   logging: false, // set to console.log to see the raw SQL queries
@@ -34,28 +33,33 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring cambio
 
-const { CategoryProduct, Address, Stock, PaymentMethod, Order, Product, User, Assessment, Administrator, Role, SubCategoryProduct } = sequelize.models;
-
+const { CategoryProduct, Address, Stock, PaymentMethod, Order, Product, User, Assessment, Administrator, Role, SubCategoryProduct, Cart, CartProduct, OrderProduct } = sequelize.models;
+// Definir el modelo CartProduct con el campo "cantidad"
 
 // Aca vendrian las relaciones
-// Product.hasMany(Reviews);
 
-// Order - PRUDUCTO (muchos a muchos)
-Order.belongsToMany(Product, { through: 'OrderProduct', timestamps: false });
-Product.belongsToMany(Order, { through: 'OrderProduct', timestamps: false });
-// METODO DE PAGO - Order (uno a muchos)
-PaymentMethod.hasMany(Order);
+// Order - Product (muchos a muchos)
+Order.belongsToMany(Product, { through: OrderProduct, timestamps: false });
+Product.belongsToMany(Order, { through: OrderProduct, timestamps: false });
+// PaymentMethod - Order (uno a uno)
+PaymentMethod.hasOne(Order);
 Order.belongsTo(PaymentMethod);
 // User - Order (uno a muchos)
 User.hasMany(Order);
 Order.belongsTo(User);
-// Stock - PRUDUCTO (uno a muchos)
+// User - Cart (uno a uno)
+User.hasMany(Cart);
+Cart.belongsTo(User);
+// Cart - Product (muchos a muchos)
+Cart.belongsToMany(Product, { through: CartProduct, timestamps: false });
+Product.belongsToMany(Cart, { through: CartProduct, timestamps: false });
+// Stock - Product (uno a muchos)
 Stock.hasMany(Product);
 Product.belongsTo(Stock);
-// SubCategoryProduct - PRUDUCTO (uno a muchos)
+// SubCategoryProduct - Product (uno a muchos)
 SubCategoryProduct.hasMany(Product);
 Product.belongsTo(SubCategoryProduct);
-// CategoryProduct - CategoryProduct (uno a muchos)
+// CategoryProduct - SubCategoryProduct (uno a muchos)
 CategoryProduct.hasMany(SubCategoryProduct);
 SubCategoryProduct.belongsTo(CategoryProduct);
 // Address - User (uno a muchos)
@@ -64,11 +68,9 @@ User.belongsTo(Address);
 // Assessment - User (uno a muchos)
 Assessment.hasMany(User);
 User.belongsTo(Assessment);
-// Administrator / role (uno a uno)
+// Administrator / Role (uno a uno)
 Administrator.hasOne(Role)
 Role.belongsTo(Administrator)
-// Pedido.belongsTo(Metodopago, { foreignKey: 'metodopagoId' });
-// Metodopago.hasMany(Pedido, { foreignKey: 'metodopagoId' });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
