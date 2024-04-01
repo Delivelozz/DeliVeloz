@@ -24,11 +24,11 @@ function About() {
         alt="imagen circular"
       />
 
-      <div className="rounded-xl px-1 py-1 text-center text-sm focus:outline-sundown-500 mt-10">
+      <div className="rounded-xl px-1 py-1 text-center text-sm focus:outline-sundown-500 mt-10 flex justify-center flex-col items-center">
         <h1 className="pb-6 text-center text-xl font-semibold">
           Nuestro <span className="text-sundown-500">objetivo</span>
         </h1>
-        <p className="text-base">
+        <p className="text-base w-1/2">
           Brindar alimentos de alta calidad en un ambiente familiar y cálido.
           Prestar un servicio líder de delivery para llegar a los hogares en
           buen tiempo, manteniendo altos estándares de calidad a nuestros

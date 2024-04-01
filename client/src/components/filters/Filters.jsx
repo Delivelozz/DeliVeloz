@@ -144,7 +144,7 @@ export default function Filters({ setCurrentPage }) {
           <option value="desc">$ ↑</option>
         </select>
         <button onClick={handleClick} className="btn-bg">
-          Reset
+          Limpiar
         </button>
       </div>
 
