@@ -7,4 +7,7 @@ export const SET_CATEGORIES = `SET_CATEGORIES`;
 export const SET_SUBCATEGORIES = `SET_SUBCATEGORIES`;
 export const GET_SUBCATEGORIES = `GET_SUBCATEGORIES`;
 export const SET_FILTERING = `FILTERING`;
+export const POST_USER = `POST_USER`;
 export const RESET = `RESET`;
+export const LOGIN_USER = `LOGIN_USER`;
+export const LOGOUT_USER = `LOGOUT_USER`;

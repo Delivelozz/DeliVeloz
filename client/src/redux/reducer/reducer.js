@@ -8,16 +8,22 @@ import {
   GET_SUBCATEGORIES,
   GET_NAME,
   ORDER_BY,
+  POST_USER,
   RESET,
+  LOGIN_USER,
+  LOGOUT_USER
 } from "../actions/types";
 
 const initialState = {
-  dishes: [], // Arreglo de platos original
-  filteredDishes: [], // Arreglo de platos filtrados
-  promos: [], // Arreglo de promociones
-  shoppingCart: [], // Arreglo de carrito de compras
-  categories: [], // Arreglo de categorías
+  dishes: [],
+  filteredDishes: [],
+  promos: [],
+  shoppingCart: [],
+  categories: [],
   subcategories: [], // Arreglo de categorías
+  users: [],
+  login: false,
+  user: {},
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -81,6 +87,34 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         filteredDishes: [], // Limpiamos solo los resultados filtrados
       };
+
+    // ? ----------------------------- Post
+
+    case POST_USER:
+      return {
+        ...state,
+        users: [...state.users, payload],
+      };
+
+    // ? ----------------------------- Login
+
+    case LOGIN_USER:
+      return {
+        ...state,
+        login: true,
+        user: payload,
+      }
+
+    // ? ----------------------------- Logout
+
+    case LOGOUT_USER:
+      return {
+        ...state,
+        login: false,
+        user: {},
+      };
+
+    // ? ----------------------------- Default
 
     default:
       return state;
