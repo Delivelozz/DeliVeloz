@@ -25,7 +25,7 @@ const { conn } = require('./src/db.js');
 conn.sync({ force: true }).then(() => {
   startDatabase().then(() => {
     server.listen(3001, () => {
-      console.log('%s listening at 3001'); // eslint-disable-line no-console
+      console.log('Server listening at 3001'); // eslint-disable-line no-console
     });
   }).catch((error) => {
     console.error('Error starting the database:', error);
