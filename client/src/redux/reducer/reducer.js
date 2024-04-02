@@ -21,6 +21,7 @@ const initialState = {
   shoppingCart: [],
   categories: [],
   subcategories: [], // Arreglo de categorías
+  searcher: [], // Arreglo de platos filtrados por nombre
   users: [],
   login: false,
   user: {},
@@ -79,13 +80,14 @@ export default function reducer(state = initialState, { type, payload }) {
     case GET_NAME:
       return {
         ...state,
-        filteredDishes: payload, // Actualiza el arreglo de platos filtrados
+        searcher: payload, // Actualiza el arreglo de platos filtrados
       };
 
     case RESET:
       return {
         ...state,
         filteredDishes: [], // Limpiamos solo los resultados filtrados
+        searcher: [], // Limpiamos solo los resultados filtrados
       };
 
     // ? ----------------------------- Post

@@ -8,6 +8,7 @@ import Pagination from "../../components/pagination/Pagination.jsx";
 export default function Products() {
   const dishes = useSelector((state) => state.dishes);
   const filteredDishes = useSelector((state) => state.filteredDishes);
+  const searcher = useSelector((state) => state.searcher);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,13 +24,17 @@ export default function Products() {
   const firstPostIndex = lastPostIndex - postsPerPage;
 
   const currentPosts = () => {
-    // console.log(
-    //   filteredDishes.length >= 1
-    //     ? "Renderizando filteredDishes"
-    //     : "Renderizando dishes"
-    // );
+    /* console.log(
+      searcher.length >= 1
+        ? `Renderizando searcher: ${searcher.length}`
+        : filteredDishes.length >= 1
+        ? "Renderizando filteredDishes"
+        : "Renderizando dishes"
+    ); */
 
-    return filteredDishes.length >= 1
+    return searcher.length >= 1
+      ? searcher.slice(firstPostIndex, lastPostIndex)
+      : filteredDishes.length >= 1
       ? filteredDishes.slice(firstPostIndex, lastPostIndex)
       : dishes.slice(firstPostIndex, lastPostIndex);
   };
@@ -39,9 +44,7 @@ export default function Products() {
       <Filters setCurrentPage={setCurrentPage} />
       <Cards dishes={currentPosts()} />
       <Pagination
-        totalPosts={
-          filteredDishes.length >= 1 ? filteredDishes.length : dishes.length
-        }
+        totalPosts={currentPosts().length}
         postsPerPage={postsPerPage}
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}

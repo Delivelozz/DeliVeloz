@@ -13,7 +13,6 @@ import useSubCategories from "../../data/useSubCategories.js";
 export default function Filters({ setCurrentPage }) {
   const dispatch = useDispatch();
   const [name, setName] = useState(() => localStorage.getItem("name") || "");
-  //console.log("Valor actual de name:", name);
   const [category, setCategory] = useState(
     () => localStorage.getItem("category") || "default"
   );
@@ -76,7 +75,13 @@ export default function Filters({ setCurrentPage }) {
   };
 
   useEffect(() => {
-    handleFilterCategoryPrice();
+    if (
+      category !== "default" ||
+      subCategory !== "default" ||
+      price !== "default"
+    ) {
+      handleFilterCategoryPrice();
+    }
   }, [category, subCategory, price]);
 
   // ?--------------------------------------- Filtrar por Nombre
@@ -95,7 +100,9 @@ export default function Filters({ setCurrentPage }) {
 
   useEffect(() => {
     if (name) {
+      console.log("Actualizacion por nombre :", name);
       dispatch(getByName(name));
+      setCurrentPage(1);
     }
   }, []);
 
