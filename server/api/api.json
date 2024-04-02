@@ -669,7 +669,7 @@
       "name": "Ensalada Mediterranea",
       "description": "Lechuga, Espinaca, Tomate, Palta, Esparrago, Germinado, Huevo, Queso fresco, Crutones",
       "price": "2.70",
-      "category": "Ensaladas",
+      "subCategory": "Ensaladas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711726694/jpg/ensaladaMediterranea_w5rzos-min_awjshs.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711726980/png/ensaladaMediterranea_w5rzos-removebg-preview-min_bwnrx7.png"
@@ -680,7 +680,7 @@
       "name": "Ensalada Parisina",
       "description": "Lechuga, Espinaca, Champiñones, Cebolla blanca, Tomate, Castañas acarameladas, Queso parmesano, Pollo marinado",
       "price": "3.70",
-      "category": "Ensaladas",
+      "subCategory": "Ensaladas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711726695/jpg/ensaladaParisina_ifgttq-min_dq2wst.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711726983/png/ensaladaParisina_ifgttq-removebg-preview-min_vd25nz.png"
@@ -691,7 +691,7 @@
       "name": "Ensalada Hawaiana",
       "description": "Lechuga, Espinaca, Tomate, Durazno al jugo, Piña, Queso edam, Ajonjolí, Pollo marinado",
       "price": "3.50",
-      "category": "Ensaladas",
+      "subCategory": "Ensaladas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711726692/jpg/ensaladaHawaiana_iuutir-min_yqin1c.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711726978/png/ensaladaHawaiana_iuutir-removebg-preview-min_qwiplb.png"
@@ -702,7 +702,7 @@
       "name": "Ensalada de Atún",
       "description": "Lechuga, Espinaca, Tomate, Huevo, Palta, Aceitunas negras, Aceitunas verdes, Atun en trozos",
       "price": "3.50",
-      "category": "Ensaladas",
+      "subCategory": "Ensaladas",
       "image": {
         "jpg": "https://res.cloudinary.com/derot8znd/image/upload/v1711726691/jpg/ensaladaDeAtun_czgxnb-min_m5qils.jpg",
         "png": "https://res.cloudinary.com/derot8znd/image/upload/v1711726975/png/ensaladaDeAtun_czgxnb-removebg-preview-min_kivtdt.png"
