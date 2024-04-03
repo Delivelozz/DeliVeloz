@@ -20,8 +20,14 @@ export default function Products() {
 
   // ? -------------------------------- Paginate
 
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(
+    () => localStorage.getItem("currentPage") || 1
+  );
   const [postsPerPage, setPostsPerPage] = useState(16);
+
+  useEffect(() => {
+    localStorage.setItem("currentPage", currentPage);
+  }, [currentPage]);
 
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
@@ -47,7 +53,13 @@ export default function Products() {
       <Filters setCurrentPage={setCurrentPage} />
       <Cards dishes={currentPosts()} />
       <Pagination
-        totalPosts={currentPosts().length}
+        totalPosts={
+          searcher.length >= 1
+            ? searcher.length
+            : filteredDishes.length >= 1
+            ? filteredDishes.length
+            : dishes.length
+        }
         postsPerPage={postsPerPage}
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
