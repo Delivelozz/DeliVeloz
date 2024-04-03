@@ -12,6 +12,7 @@ export default function Pagination({
 
   let totalPages = Math.ceil(totalPosts / postsPerPage);
   let pages = [];
+  console.log(currentPage);
 
   for (let i = 1; i <= totalPages; i++) {
     pages.push(i);
@@ -51,7 +52,7 @@ export default function Pagination({
           <button
             key={index}
             onClick={() => handlePageChange(page)}
-            className={currentPage === page ? "current" : "active"}
+            className={currentPage == page ? "current" : "active"}
           >
             {page}
           </button>
