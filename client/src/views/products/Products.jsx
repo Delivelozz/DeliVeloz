@@ -4,15 +4,19 @@ import { setDishes } from "../../redux/actions/actions.js";
 import Cards from "../../components/cards/Cards.jsx";
 import Filters from "../../components/filters/Filters.jsx";
 import Pagination from "../../components/pagination/Pagination.jsx";
+import { useLocalStoreUserData } from "../../hooks/useLocalStoreUserData.js";
 
 export default function Products() {
   const dishes = useSelector((state) => state.dishes);
   const filteredDishes = useSelector((state) => state.filteredDishes);
+  const searcher = useSelector((state) => state.searcher);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(setDishes());
   }, [dispatch]);
+
+  useLocalStoreUserData();
 
   // ? -------------------------------- Paginate
 
@@ -23,7 +27,17 @@ export default function Products() {
   const firstPostIndex = lastPostIndex - postsPerPage;
 
   const currentPosts = () => {
-    return filteredDishes.length >= 1
+    /* console.log(
+      searcher.length >= 1
+        ? `Renderizando searcher: ${searcher.length}`
+        : filteredDishes.length >= 1
+        ? "Renderizando filteredDishes"
+        : "Renderizando dishes"
+    ); */
+
+    return searcher.length >= 1
+      ? searcher.slice(firstPostIndex, lastPostIndex)
+      : filteredDishes.length >= 1
       ? filteredDishes.slice(firstPostIndex, lastPostIndex)
       : dishes.slice(firstPostIndex, lastPostIndex);
   };
@@ -33,9 +47,7 @@ export default function Products() {
       <Filters setCurrentPage={setCurrentPage} />
       <Cards dishes={currentPosts()} />
       <Pagination
-        totalPosts={
-          filteredDishes.length >= 1 ? filteredDishes.length : dishes.length
-        }
+        totalPosts={currentPosts().length}
         postsPerPage={postsPerPage}
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
