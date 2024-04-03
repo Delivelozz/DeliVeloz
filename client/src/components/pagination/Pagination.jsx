@@ -42,8 +42,8 @@ export default function Pagination({
     <div className="flex justify-center items-center gap-3 mt-6">
       <button
         onClick={handlePrevPage}
-        disabled={currentPage === 1}
-        className={currentPage === 1 ? "disabled text-xl" : "active text-xl"}
+        disabled={currentPage == 1}
+        className={currentPage == 1 ? "disabled text-xl" : "active text-xl"}
       >
         &lt;
       </button>
@@ -60,9 +60,9 @@ export default function Pagination({
       })}
       <button
         className={
-          currentPage === totalPages ? "disabled text-xl" : "active text-xl"
+          currentPage == totalPages ? "disabled text-xl" : "active text-xl"
         }
-        disabled={currentPage === totalPages}
+        disabled={currentPage == totalPages}
         onClick={handleNextPage}
       >
         &gt;
