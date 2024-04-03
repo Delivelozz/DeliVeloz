@@ -20,7 +20,7 @@ const initialState = {
   dishes: [],
   filteredDishes: [],
   promos: [],
-  shoppingCart: [],
+  shoppingCart: JSON.parse(localStorage.getItem("shoppingCart")) || [],
   categories: [],
   subcategories: [], // Arreglo de categorías
   searcher: [], // Arreglo de platos filtrados por nombre
@@ -35,6 +35,7 @@ const initialState = {
     email: "",
     password: "",
   },
+  loading: {},
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -139,7 +140,6 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         errors: payload,
       };
-    // ? ----------------------------- Default
 
     default:
       return state;
