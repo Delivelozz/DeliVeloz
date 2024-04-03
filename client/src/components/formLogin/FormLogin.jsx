@@ -6,6 +6,10 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { loginUser, setUserData, setErrors } from "../../redux/actions/actions";
 
+// ?-------------------------- Firebase
+
+// import { useAuth } from "../../context/AuthContext";
+
 export default function FormLogin({ closeModal }) {
   const [formData, setFormData] = useState({
     email: "",
