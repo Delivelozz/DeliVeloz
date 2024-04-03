@@ -12,7 +12,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { loginUser, setUserData, setErrors } from "../../redux/actions/actions";
 
 // ?-------------------------- Firebase
-const saludo = "hola";
 
 // import { useAuth } from "../../context/AuthContext";
 
