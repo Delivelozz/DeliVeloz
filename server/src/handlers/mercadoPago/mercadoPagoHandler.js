@@ -1,44 +1,20 @@
-// SDK de Mercado Pago
-const { MercadoPagoConfig, Preference } = require('mercadopago');
-// Agrega credenciales
-const client = new MercadoPagoConfig({ accessToken: 'YOUR_ACCESS_TOKEN' });
+const mercadoPagoController = require('../../controllers/mercadoPago/mercadoPagoController');
 
 const mercadoPagoHandler = async (req, res) => {
+  const items = req.body;
   try {
-
-    const items = req.body.items.map(item => ({
-      title: item.title,
-      quantity: Number(item.quantity),
-      unit_price: Number(item.price),
-      currency_id: "ARS",
-    }));
-
-    const body = {
-      // items: [
-      //   {
-      //     title: req.body.title,
-      //     quantity: Number(req.body.quantity),
-      //     unit_price: Number(req.body.price),
-      //     current_id: "ARS",
-      //   }
-      // ],
-      items,
-      back_urls: {
-        success: "https://www.youtube.com/watch?v=-VD-l5BQsuE&t=47s",
-        failure: "https://www.youtube.com/watch?v=-VD-l5BQsuE&t=47s",
-        pending: "https://www.youtube.com/watch?v=-VD-l5BQsuE&t=47s"
-      },
-      auto_return: "approved"
-    }
-    const preference = new Preference(client);
-    const result = await preference.create({body});
-    res.json({
-      id: result.id,
+    const itemsNew = items.map((item)=>{
+      return {
+        title: item.name,
+        quantity: Number(item.quantity),
+        unit_price: Number(item.price),
+        current_id: "ARS",
+      }
     })
+    const response = await mercadoPagoController(itemsNew); 
+    res.json({id: response.id})
   } catch (error) {
-    res.status(500).json({
-      error: "Error al crear preferencia :("
-    })
+    res.status(500).json({ error: "Error al crear preferencia" })
   }
 }
 
