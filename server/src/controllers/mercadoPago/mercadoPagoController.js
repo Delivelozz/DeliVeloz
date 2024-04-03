@@ -7,9 +7,9 @@ const mercadoPagoController = async (itemsNew) => {
     const body = {
         items: itemsNew,
         back_urls: {
-          success: "https://www.youtube.com/watch?v=-VD-l5BQsuE&t=47s",
-          failure: "https://www.youtube.com/watch?v=-VD-l5BQsuE&t=47s",
-          pending: "https://www.youtube.com/watch?v=-VD-l5BQsuE&t=47s"
+          success: "http://localhost:5173/",
+          failure: "http://localhost:5173/",
+          pending: "http://localhost:5173/"
         },
         payment_methods: {
             excluded_payment_methods: [
