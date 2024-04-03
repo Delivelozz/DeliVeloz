@@ -12,11 +12,15 @@ import Carrito from "./views/carrito/Carrito";
 import FormLogin from "./components/formLogin/FormLogin";
 import FormRegister from "./components/formRegister/FormRegister";
 
-// ? ---------------- Hooks
+// ? -------------------- Hooks
 
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+
+// ? ------------------- Firebase
+
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   //  ? ---------------- Modal
@@ -76,28 +80,32 @@ function App() {
   }, [login, pathname, navigate]);
 
   return (
-    <main className="bg-alabaster-50 min-h-screen overflow-x-hidden">
-      {pathname !== "/login" && pathname !== "/register" && (
-        <Header
-          openLoginModal={openLoginModal}
-          openRegisterModal={openRegisterModal}
-        />
-      )}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Home" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/carrito" element={<Carrito />} />
-      </Routes>
-      {pathname !== "/login" && pathname !== "/register" && <Footer />}
-      {isLoginModalOpen && <FormLogin closeModal={closeLoginModal} />}
-      {isRegisterModalOpen && <FormRegister closeModal={closeRegisterModal} />}
-    </main>
+    <AuthProvider>
+      <main className="bg-alabaster-50 min-h-screen overflow-x-hidden">
+        {pathname !== "/login" && pathname !== "/register" && (
+          <Header
+            openLoginModal={openLoginModal}
+            openRegisterModal={openRegisterModal}
+          />
+        )}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Home" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/detail/:id" element={<Detail />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/carrito" element={<Carrito />} />
+        </Routes>
+        {pathname !== "/login" && pathname !== "/register" && <Footer />}
+        {isLoginModalOpen && <FormLogin closeModal={closeLoginModal} />}
+        {isRegisterModalOpen && (
+          <FormRegister closeModal={closeRegisterModal} />
+        )}
+      </main>
+    </AuthProvider>
   );
 }
 
