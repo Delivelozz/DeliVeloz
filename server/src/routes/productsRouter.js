@@ -18,6 +18,6 @@ productsRouter.post("/", createProductHandler);
 // Editar Producto
 productsRouter.patch("/:id", editProductHandler);
 // Desactivar Producto
-productsRouter.delete("/:id/:value", desactProductHandler)
+productsRouter.put("/:id/:value", desactProductHandler)
 
 module.exports = productsRouter;
