@@ -11,7 +11,7 @@ import {
   POST_USER,
   RESET,
   LOGIN_USER,
-  LOGOUT_USER
+  LOGOUT_USER,
 } from "../actions/types";
 
 const initialState = {
@@ -103,7 +103,7 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         login: true,
         user: payload,
-      }
+      };
 
     // ? ----------------------------- Logout
 

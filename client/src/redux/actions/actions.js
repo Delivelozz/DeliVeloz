@@ -11,7 +11,7 @@ import {
   POST_USER,
   RESET,
   LOGIN_USER,
-  LOGOUT_USER
+  LOGOUT_USER,
 } from "./types";
 import axios from "axios";
 
@@ -140,59 +140,58 @@ export const setFilteringSubCategory = (payload) => ({
 // ? ----------------------------- Post Users
 
 export function postUsers(payload) {
-	return async function (dispatch) {
+  return async function (dispatch) {
     try {
-      const response = await axios.post(
-        "http://localhost:3001/users",
-				payload
-        );
-        dispatch({
-          type: POST_USER,
-          payload: response.data,
-        });
-		} catch (error) {
-			console.error("Tienes un error en: ", error);
-		}
-	};
+      const response = await axios.post("http://localhost:3001/users", payload);
+      dispatch({
+        type: POST_USER,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Tienes un error en: ", error);
+    }
+  };
 }
 
 // ? ----------------------------- Login
 
- export function loginUser(payload) {
-    return async function (dispatch) {
-      try {
-        const response = await axios.post(
-          "http://localhost:3001/users/login",
-          payload
-        );
-        dispatch({
-          type: LOGIN_USER,
-          payload: response.data,
-        });
-      } catch (error) {
-        if (error.response && error.response.status === 500) {
-          console.error("Usuario no encontrado");
-        } else {
-          console.error("Error al intentar iniciar sesión: ", error);
-        }
-        throw error;
+export function loginUser(payload) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/users/login",
+        payload
+      );
+      dispatch({
+        type: LOGIN_USER,
+        payload: response.data,
+      });
+    } catch (error) {
+      if (error.response && error.response.status === 500) {
+        console.error("Usuario no encontrado");
+      } else {
+        console.error("Error al intentar iniciar sesión: ", error);
       }
-    };
-  }
-
+      throw error;
+    }
+  };
+}
 
 // ? ----------------------------- logout
 
 export function logoutUser(payload) {
   return async function (dispatch) {
     try {
-      const response = await axios.post("http://localhost:3001/users/close", payload);
+      const response = await axios.post(
+        "http://localhost:3001/users/close",
+        payload
+      );
       dispatch({
         type: LOGOUT_USER,
         payload: response.data,
-      })
-    } catch (error){
-      console.error("Ocurrió un error al cerrar sesión: ", error)
+      });
+    } catch (error) {
+      console.error("Ocurrió un error al cerrar sesión: ", error);
     }
-  }
+  };
 }
