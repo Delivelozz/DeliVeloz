@@ -12,6 +12,8 @@ import {
   RESET,
   LOGIN_USER,
   LOGOUT_USER,
+  SET_USER_DATA,
+  SET_ERRORS,
 } from "../actions/types";
 
 const initialState = {
@@ -21,9 +23,18 @@ const initialState = {
   shoppingCart: [],
   categories: [],
   subcategories: [], // Arreglo de categorías
+  searcher: [], // Arreglo de platos filtrados por nombre
   users: [],
   login: false,
   user: {},
+  userData: JSON.parse(localStorage.getItem("userData")) || {
+    email: "",
+    password: "",
+  },
+  errors: {
+    email: "",
+    password: "",
+  },
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -79,13 +90,14 @@ export default function reducer(state = initialState, { type, payload }) {
     case GET_NAME:
       return {
         ...state,
-        filteredDishes: payload, // Actualiza el arreglo de platos filtrados
+        searcher: payload, // Actualiza el arreglo de platos filtrados
       };
 
     case RESET:
       return {
         ...state,
         filteredDishes: [], // Limpiamos solo los resultados filtrados
+        searcher: [], // Limpiamos solo los resultados filtrados
       };
 
     // ? ----------------------------- Post
@@ -114,6 +126,19 @@ export default function reducer(state = initialState, { type, payload }) {
         user: {},
       };
 
+    // ? ----------------------------- Set user data
+    case SET_USER_DATA:
+      return {
+        ...state,
+        userData: payload,
+      };
+
+    // ? ----------------------------- Set errors
+    case SET_ERRORS:
+      return {
+        ...state,
+        errors: payload,
+      };
     // ? ----------------------------- Default
 
     default:

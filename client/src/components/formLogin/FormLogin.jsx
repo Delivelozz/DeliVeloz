@@ -9,7 +9,7 @@ import axios from "axios";
 
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { loginUser } from "../../redux/actions/actions";
+import { loginUser, setUserData, setErrors } from "../../redux/actions/actions";
 
 export default function FormLogin({ closeModal }) {
   // ? ----------------------------------- Scroll hidden
@@ -22,35 +22,24 @@ export default function FormLogin({ closeModal }) {
   }, []);
 
   // ?------------------------------------ useSelector y estado
-
+  const userData = useSelector((state) => state.userData);
+  const errors = useSelector((state) => state.errors);
   const dispatch = useDispatch();
   // const login = useSelector((state) => state.login);
-
-  const [userData, setUserData] = useState({
-    email: "",
-    password: "",
-  });
-
-  // ?------------------------------------ estado de error
-
-  const [errors, setErrors] = useState({
-    email: "",
-    password: "",
-  });
 
   // ?------------------------------------ OnChange
 
   const onChange = (e) => {
     const { name, value } = e.target;
-    setUserData({ ...userData, [name]: value });
+    dispatch(setUserData({ ...userData, [name]: value }));
   };
+  //console.log(userData);
 
   // ?------------------------------------ OnSubmit
-
   const onSubmit = async (e) => {
     e.preventDefault();
     const errors = validation(userData);
-    setErrors(errors);
+    dispatch(setErrors(errors));
 
     if (
       Object.keys(errors).length === 0 &&
@@ -59,14 +48,12 @@ export default function FormLogin({ closeModal }) {
     ) {
       try {
         await dispatch(loginUser(userData));
-        setUserData({
-          email: "",
-          password: "",
-        });
         closeModal();
       } catch (error) {
         if (error.response && error.response.status === 500) {
-          setErrors({ password: "El usuario o la contraseña es incorrecta." });
+          dispatch(
+            setErrors({ password: "El usuario o la contraseña es incorrecta." })
+          );
         } else {
           console.error("Error al intentar iniciar sesión: ", error);
         }

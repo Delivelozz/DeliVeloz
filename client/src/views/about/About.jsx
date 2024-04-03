@@ -10,8 +10,11 @@ import imgJodannys from "../../assents/Jodannys.jpg";
 import imgAxl from "../../assents/Axl.png";
 import imgGaston from "../../assents/Gaston.png";
 import imgTobias from "../../assents/Tobias.jpg";
+import { useLocalStoreUserData } from "../../hooks/useLocalStoreUserData.js";
 
 function About() {
+  useLocalStoreUserData();
+
   return (
     <section className="container">
       <h3 className="py-2 text-center text-xl font-semibold pb-6">
