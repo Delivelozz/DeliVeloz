@@ -12,6 +12,8 @@ import {
   RESET,
   LOGIN_USER,
   LOGOUT_USER,
+  SET_USER_DATA,
+  SET_ERRORS,
 } from "./types";
 import axios from "axios";
 
@@ -20,7 +22,7 @@ import axios from "axios";
 export function setDishes() {
   return async (dispatch) => {
     try {
-      const response = await fetch("http://localhost:3001/products");
+      const response = await fetch("https://deliveloz-ryfh.onrender.com/products");
       const data = await response.json();
       dispatch({
         type: SET_DISHES,
@@ -52,7 +54,7 @@ export const orderBy = (category, subCategory, orderType) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/filter/${category}/${subCategory}/${orderType}`
+        `https://deliveloz-ryfh.onrender.com/filter/${category}/${subCategory}/${orderType}`
       );
       dispatch({ type: ORDER_BY, payload: response.data });
     } catch (error) {
@@ -67,7 +69,7 @@ export function getByName(name) {
   return async (dispatch) => {
     try {
       const response = await fetch(
-        `http://localhost:3001/products?name=${name}`
+        `https://deliveloz-ryfh.onrender.com/products?name=${name}`
       );
       if (!response.ok) {
         throw new Error("No hay ningún plato en el menu con ese nombre");
@@ -96,7 +98,7 @@ export const resetDishes = () => {
 export function setCategories() {
   return async (dispatch) => {
     try {
-      const response = await fetch("http://localhost:3001/categories");
+      const response = await fetch("https://deliveloz-ryfh.onrender.com/categories");
       const data = await response.json();
       dispatch({
         type: SET_CATEGORIES,
@@ -113,7 +115,7 @@ export function setCategories() {
 export function getSubCategories() {
   return async (dispatch) => {
     try {
-      const response = await fetch("http://localhost:3001/subcategories");
+      const response = await fetch("https://deliveloz-ryfh.onrender.com/subcategories");
       const data = await response.json();
       dispatch({
         type: GET_SUBCATEGORIES,
@@ -142,7 +144,7 @@ export const setFilteringSubCategory = (payload) => ({
 export function postUsers(payload) {
   return async function (dispatch) {
     try {
-      const response = await axios.post("http://localhost:3001/users", payload);
+      const response = await axios.post("https://deliveloz-ryfh.onrender.com/users", payload);
       dispatch({
         type: POST_USER,
         payload: response.data,
@@ -159,7 +161,7 @@ export function loginUser(payload) {
   return async function (dispatch) {
     try {
       const response = await axios.post(
-        "http://localhost:3001/users/login",
+        "https://deliveloz-ryfh.onrender.com/users/login",
         payload
       );
       dispatch({
@@ -183,7 +185,7 @@ export function logoutUser(payload) {
   return async function (dispatch) {
     try {
       const response = await axios.post(
-        "http://localhost:3001/users/close",
+        "https://deliveloz-ryfh.onrender.com/users/close",
         payload
       );
       dispatch({
@@ -193,5 +195,22 @@ export function logoutUser(payload) {
     } catch (error) {
       console.error("Ocurrió un error al cerrar sesión: ", error);
     }
+  };
+}
+
+// ? ----------------------------- Set User Data
+export function setUserData(userData) {
+  localStorage.setItem("userData", JSON.stringify(userData));
+  return {
+    type: "SET_USER_DATA",
+    payload: userData,
+  };
+}
+
+// ? ----------------------------- Set Errors
+export function setErrors(errors) {
+  return {
+    type: SET_ERRORS,
+    payload: errors,
   };
 }

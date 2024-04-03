@@ -12,10 +12,16 @@ import useSubCategories from "../../data/useSubCategories.js";
 
 export default function Filters({ setCurrentPage }) {
   const dispatch = useDispatch();
-  const [name, setName] = useState("");
-  const [category, setCategory] = useState("default");
-  const [subCategory, setSubCategory] = useState("default");
-  const [price, setPrice] = useState("default");
+  const [name, setName] = useState(() => localStorage.getItem("name") || "");
+  const [category, setCategory] = useState(
+    () => localStorage.getItem("category") || "default"
+  );
+  const [subCategory, setSubCategory] = useState(
+    () => localStorage.getItem("subCategory") || "default"
+  );
+  const [price, setPrice] = useState(
+    () => localStorage.getItem("price") || "default"
+  );
 
   useEffect(() => {
     dispatch(setCategories());
@@ -23,6 +29,13 @@ export default function Filters({ setCurrentPage }) {
   }, [dispatch]);
   const categoryArray = useCategories();
   const subCategoryArray = useSubCategories(category);
+
+  useEffect(() => {
+    localStorage.setItem("name", name);
+    localStorage.setItem("category", category);
+    localStorage.setItem("subCategory", subCategory);
+    localStorage.setItem("price", price);
+  }, [name, category, subCategory, price]);
 
   //por precio
   const handleFilterBy = (e) => {
@@ -39,7 +52,6 @@ export default function Filters({ setCurrentPage }) {
     e.preventDefault();
     const selectedValue = e.target.value;
     setCategory(selectedValue);
-    console.log(selectedValue);
     setCurrentPage(1);
     return selectedValue;
   };
@@ -51,19 +63,25 @@ export default function Filters({ setCurrentPage }) {
     const selectedValue = e.target.value;
     setSubCategory(selectedValue);
     setCurrentPage(1);
-    console.log(selectedValue);
+    //console.log(selectedValue);
     return selectedValue;
   };
 
   // ?--------------------------------------- Filtrar por categoría && precio
 
   const handleFilterCategoryPrice = () => {
+    console.log(category, subCategory, price);
     dispatch(orderBy(category, subCategory, price));
   };
 
   useEffect(() => {
-    handleFilterCategoryPrice();
-    console.log(category, subCategory, price);
+    if (
+      category !== "default" ||
+      subCategory !== "default" ||
+      price !== "default"
+    ) {
+      handleFilterCategoryPrice();
+    }
   }, [category, subCategory, price]);
 
   // ?--------------------------------------- Filtrar por Nombre
@@ -75,10 +93,18 @@ export default function Filters({ setCurrentPage }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Buscando por nombre:", name);
     dispatch(getByName(name));
-    console.log(name);
     setCurrentPage(1);
   };
+
+  useEffect(() => {
+    if (name) {
+      //console.log("Actualizacion por nombre :", name);
+      dispatch(getByName(name));
+      setCurrentPage(1);
+    }
+  }, []);
 
   // ? --------------------------------------- Reset
 
@@ -87,6 +113,7 @@ export default function Filters({ setCurrentPage }) {
     setCategory("default");
     setSubCategory("default");
     setPrice("default");
+    setName("");
     setCurrentPage(1);
   };
 
@@ -152,6 +179,7 @@ export default function Filters({ setCurrentPage }) {
         <form onSubmit={handleSubmit} className="flex gap-3">
           <input
             type="search"
+            value={name}
             placeholder="Buscar..."
             onChange={search}
             className="w-48 bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
