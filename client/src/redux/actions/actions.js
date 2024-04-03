@@ -12,6 +12,8 @@ import {
   RESET,
   LOGIN_USER,
   LOGOUT_USER,
+  SET_USER_DATA,
+  SET_ERRORS,
 } from "./types";
 import axios from "axios";
 
@@ -193,5 +195,22 @@ export function logoutUser(payload) {
     } catch (error) {
       console.error("Ocurrió un error al cerrar sesión: ", error);
     }
+  };
+}
+
+// ? ----------------------------- Set User Data
+export function setUserData(userData) {
+  localStorage.setItem("userData", JSON.stringify(userData));
+  return {
+    type: "SET_USER_DATA",
+    payload: userData,
+  };
+}
+
+// ? ----------------------------- Set Errors
+export function setErrors(errors) {
+  return {
+    type: SET_ERRORS,
+    payload: errors,
   };
 }

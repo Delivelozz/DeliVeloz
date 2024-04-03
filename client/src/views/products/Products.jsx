@@ -4,6 +4,7 @@ import { setDishes } from "../../redux/actions/actions.js";
 import Cards from "../../components/cards/Cards.jsx";
 import Filters from "../../components/filters/Filters.jsx";
 import Pagination from "../../components/pagination/Pagination.jsx";
+import { useLocalStoreUserData } from "../../hooks/useLocalStoreUserData.js";
 
 export default function Products() {
   const dishes = useSelector((state) => state.dishes);
@@ -14,6 +15,8 @@ export default function Products() {
   useEffect(() => {
     dispatch(setDishes());
   }, [dispatch]);
+
+  useLocalStoreUserData();
 
   // ? -------------------------------- Paginate
 

@@ -100,7 +100,7 @@ export default function Filters({ setCurrentPage }) {
 
   useEffect(() => {
     if (name) {
-      console.log("Actualizacion por nombre :", name);
+      //console.log("Actualizacion por nombre :", name);
       dispatch(getByName(name));
       setCurrentPage(1);
     }
