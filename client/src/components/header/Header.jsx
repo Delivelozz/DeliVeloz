@@ -1,7 +1,7 @@
 import Cart from "../icons/Cart";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { logoutUser } from "../../redux/actions/actions";
+import { logoutUser, setUserData } from "../../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
 
 export default function Header({ openLoginModal, openRegisterModal }) {
@@ -11,6 +11,7 @@ export default function Header({ openLoginModal, openRegisterModal }) {
 
   const onClick = () => {
     dispatch(logoutUser());
+    dispatch(setUserData({ email: "", password: "" }));
     navigate("/home");
   };
 
