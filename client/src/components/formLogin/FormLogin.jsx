@@ -11,7 +11,20 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { loginUser, setUserData, setErrors } from "../../redux/actions/actions";
 
+// ?-------------------------- Firebase
+
+// import { useAuth } from "../../context/AuthContext";
+
 export default function FormLogin({ closeModal }) {
+  // ? ---------------------------------- Firebase
+
+  // const auth = useAuth();
+
+  // const handleGoogle = (e) => {
+  //   e.preventDefault;
+  //   auth.loginWithGoogle();
+  // };
+
   // ? ----------------------------------- Scroll hidden
 
   useEffect(() => {
@@ -127,6 +140,8 @@ export default function FormLogin({ closeModal }) {
           <button className="btn-bg" type="submit">
             Ingresar
           </button>
+
+          {/* <button onClick={(e) => handleGoogle(e)}>Google</button> */}
 
           {/* --------------------- Registrarse --------------------------- */}
 
