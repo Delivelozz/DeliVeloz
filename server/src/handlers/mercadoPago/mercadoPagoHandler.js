@@ -12,9 +12,8 @@ const mercadoPagoHandler = async (req, res) => {
       }
     })
     const response = await mercadoPagoController(itemsNew); 
-    res.json({id: response})
+    res.json({id: response.id})
   } catch (error) {
-    console.log(error)
     res.status(500).json({ error: "Error al crear preferencia" })
   }
 }
