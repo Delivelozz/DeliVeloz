@@ -1,6 +1,9 @@
 import blog from "../../../img/imgBlog.jpg";
+import { useLocalStoreUserData } from "../../hooks/useLocalStoreUserData.js";
 
 function Blog() {
+  useLocalStoreUserData();
+
   return (
     <div className="container lg:mb-56">
       <div className="relative h-64">

@@ -26,10 +26,12 @@
     "express": "^4.17.1",
     "json-server": "^1.0.0-alpha.23",
     "jsonwebtoken": "^9.0.2",
+    "mercadopago": "^2.0.8",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "mysql2": "^3.9.2",
     "pg": "^8.5.1",
+    "postgres": "^3.4.4",
     "sequelize": "^6.3.5"
   },
   "devDependencies": {
