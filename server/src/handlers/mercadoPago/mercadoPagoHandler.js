@@ -1,28 +1,40 @@
 // SDK de Mercado Pago
+const { log } = require('console');
 const { MercadoPagoConfig, Preference } = require('mercadopago');
 // Agrega credenciales
-const client = new MercadoPagoConfig({ accessToken: 'YOUR_ACCESS_TOKEN' });
+const client = new MercadoPagoConfig({ accessToken: process.env.YOUR_ACCESS_TOKEN });
 
 const mercadoPagoHandler = async (req, res) => {
+  const items = req.body;
   try {
+    
+    const itemsNew = items.map((item)=>{
+      return {
+        title: item.name,
+        quantity: Number(item.quantity),
+        unit_price: Number(item.price),
+        current_id: "ARS",
+      }
+    })
+    console.log("item", itemsNew);
 
-    const items = req.body.items.map(item => ({
-      title: item.title,
-      quantity: Number(item.quantity),
-      unit_price: Number(item.price),
-      currency_id: "ARS",
-    }));
+    // const items = req.body.items.map(item => ({
+    //   title: item.title,
+    //   quantity: Number(item.quantity),
+    //   unit_price: Number(item.price),
+    //   current_id: "ARS",
+    // }));
 
     const body = {
-      // items: [
+      // itemsNew: [
       //   {
-      //     title: req.body.title,
-      //     quantity: Number(req.body.quantity),
-      //     unit_price: Number(req.body.price),
+      //     title: "Hamburguesa",
+      //     quantity: 2,
+      //     unit_price: 200,
       //     current_id: "ARS",
       //   }
       // ],
-      items,
+      itemsNew,
       back_urls: {
         success: "https://www.youtube.com/watch?v=-VD-l5BQsuE&t=47s",
         failure: "https://www.youtube.com/watch?v=-VD-l5BQsuE&t=47s",
@@ -36,6 +48,7 @@ const mercadoPagoHandler = async (req, res) => {
       id: result.id,
     })
   } catch (error) {
+    console.log(error);
     res.status(500).json({
       error: "Error al crear preferencia :("
     })
