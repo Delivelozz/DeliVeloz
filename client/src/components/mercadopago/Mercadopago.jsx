@@ -2,7 +2,8 @@ import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
 import axios from "axios";
 import { useState } from "react";
 
-const Mercadopago = () => {
+
+const Mercadopago = ({shoppingCart}) => {
     //guardo el id en preferenceId y set me ayuda a guardar el estado
     const [preferenceId, setPreferenceId] = useState(null)
 
@@ -11,20 +12,20 @@ const Mercadopago = () => {
 });
 //id de preferencia son los datos de nuestros productos
 const createPreference = async () => {
-    try{
-        const response = await axios.post("https://deliveloz-ryfh.onrender.com/mercadopago/create_preference", [{
-            name: "Hamburguesa",
-            quantity: 1,
-            price: 100,
-        }]);
-        //desestructuro id y lo retorno. id que viene del server
-        const { id } = response.data;
-        return id;
+    try {
+      const products = shoppingCart.map((item) => ({
+        name: item.name,
+        quantity: item.qty,
+        price: item.price,
+      }));
 
-    }catch(error){
-        console.log(error);
+      const response = await axios.post("https://deliveloz-ryfh.onrender.com/mercadopago/create_preference", products);
+      const { id } = response.data;
+      return id;
+    } catch (error) {
+      console.log(error);
     }
-};
+  };
 
 //invoco la funcion createPreference, si todo esta bien retornare el ID
 const handleBuy = async () => {
@@ -37,16 +38,10 @@ const handleBuy = async () => {
   return (
     <div>
         <div>
-            <div>
-                <img src='https://static.vecteezy.com/system/resources/previews/022/911/694/non_2x/cute-cartoon-burger-icon-free-png.png' 
-                alt='Product image' 
-                />
-                <h3>Hamburguesa</h3>
-                <p>100 $</p>
-                <button className="btn-bg " onClick={handleBuy}>Comprar</button>
-                {preferenceId && <Wallet initialization={{ preferenceId, redirectMode: 'modal' }} customization={{ texts:{ valueProp: 'smart_option'}}} />}
-                
+            <div className="mt-6 flex justify-center">
+                <button className="btn-bg flex items-center justify-center" onClick={handleBuy}>Ir a Billetera</button>
             </div>
+            {preferenceId && <Wallet initialization={{ preferenceId, redirectMode: 'modal' }} customization={{ texts:{ valueProp: 'smart_option'}}} />}
         </div>
     </div>
   )

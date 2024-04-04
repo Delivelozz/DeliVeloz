@@ -1,8 +1,8 @@
-//import { useEffect, useState } from "react";
-//import { useSelector, useDispatch } from "react-redux";
-//import { setDishes } from "../../redux/actions/actions.js";
-//import { getDishes } from "../../data/index.js";
-//import ShoppingCartCards from "../../components/shoppingCartCards/ShoppingCartCards.jsx";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setDishes } from "../../redux/actions/actions.js";
+import { getDishes } from "../../data/index.js";
+import ShoppingCartCards from "../../components/shoppingCartCards/ShoppingCartCards.jsx";
 import { useLocalStoreUserData } from "../../hooks/useLocalStoreUserData.js";
 import TotalAmount from "../../components/totalAmount/TotalAmount.jsx";
 

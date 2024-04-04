@@ -1,12 +1,22 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+import Mercadopago from "../mercadopago/Mercadopago";
+
 
 const TotalAmount = () => {
+
   const shoppingCart = useSelector((state) => state.shoppingCart);
   //console.log(shoppingCart);
+  
+  const [showMercadoPago, setShowMercadoPago] = useState(false);
 
   const totalpay = () =>
     shoppingCart.reduce((acc, item) => acc + item.priceTotal, 0).toFixed(2);
+
+  const handlePay = () => {
+    setShowMercadoPago(true);
+  }
 
   return (
     <article className="container flex flex-col justify-center ">
@@ -15,10 +25,11 @@ const TotalAmount = () => {
         <p className="flex items-center">${totalpay()}</p>
       </div>
       <div className="mt-6 flex justify-center">
-        <button className="btn-bg flex items-center justify-center">
+        <button  className="btn-bg flex items-center justify-center" onClick={handlePay}>
           Pagar
         </button>
       </div>
+      {showMercadoPago && <Mercadopago shoppingCart={shoppingCart}/>} {/*para renderizar*/}
     </article>
   );
 };
