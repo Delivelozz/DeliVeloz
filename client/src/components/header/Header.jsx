@@ -55,7 +55,11 @@ export default function Header({ openLoginModal, openRegisterModal }) {
           {/* Header cuando login es true */}
 
           {login && (
+<<<<<<< HEAD
             <div>
+=======
+            <div className=" flex gap-6">
+>>>>>>> d3a032e29e5b93fae3d31d5122ee9da8dd4e2230
               <Link to={"/carrito"}>
                 <div className="bg-sundown-500 rounded-full p-2 hover:bg-sundown-600">
                   <Cart />

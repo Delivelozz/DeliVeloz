@@ -11,6 +11,7 @@ const addressRouter = require("./addressRouter");
 const administratorRouter = require("./administratorRouter");
 const orderRouter = require("./orderRouter");
 const paymentMethodRouter = require("./paymentMethodRouter");
+const mercadoPagoRouter = require("./mercadoPagoRouter");
 
 // router PRODUCTOS
 router.use("/products", productsRouter);
@@ -30,6 +31,8 @@ router.use("/address", addressRouter);
 router.use("/administrator", administratorRouter);
 // Router ORDERS
 router.use("/order", orderRouter);
-//Router payment-method
+//Router METODO DE PAGO
 router.use("/payment", paymentMethodRouter);
+//Router METODO DE PAGO
+router.use("/mercadopago", mercadoPagoRouter);
 module.exports = router;
