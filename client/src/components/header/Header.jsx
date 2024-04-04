@@ -56,11 +56,11 @@ export default function Header({ openLoginModal, openRegisterModal }) {
 
           {login && (
             <div>
-              {/* <Link to={"/carrito"}>
+              <Link to={"/carrito"}>
                 <div className="bg-sundown-500 rounded-full p-2 hover:bg-sundown-600">
                   <Cart />
                 </div>
-              </Link> */}
+              </Link>
               <button onClick={onClick} className="btn-tr">
                 Cerrar Sesión
               </button>
