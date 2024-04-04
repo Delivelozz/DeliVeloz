@@ -2,7 +2,7 @@ import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import { useDispatch } from "react-redux";
 import { setShoppingCart } from "../../redux/actions/actions";
 import axios from "axios";
-import { useEffect, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const Mercadopago = ({ shoppingCart }) => {
   //guardo el id en preferenceId y set me ayuda a guardar el estado
