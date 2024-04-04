@@ -22,7 +22,9 @@ import axios from "axios";
 export function setDishes() {
   return async (dispatch) => {
     try {
-      const response = await fetch("https://deliveloz-ryfh.onrender.com/products");
+      const response = await fetch(
+        "https://deliveloz-ryfh.onrender.com/products"
+      );
       const data = await response.json();
       dispatch({
         type: SET_DISHES,
@@ -43,10 +45,13 @@ export const setPromos = (payload) => ({
 
 // ? ----------------------------- Set Shopping Cart
 
-export const setShoppingCart = (payload) => ({
-  type: SET_SHOPPING_CART,
-  payload,
-});
+export function setShoppingCart(shoppingCart) {
+  localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
+  return {
+    type: "SET_SHOPPING_CART",
+    payload: shoppingCart,
+  };
+}
 
 // ? ----------------------------- Filter By
 
@@ -98,7 +103,9 @@ export const resetDishes = () => {
 export function setCategories() {
   return async (dispatch) => {
     try {
-      const response = await fetch("https://deliveloz-ryfh.onrender.com/categories");
+      const response = await fetch(
+        "https://deliveloz-ryfh.onrender.com/categories"
+      );
       const data = await response.json();
       dispatch({
         type: SET_CATEGORIES,
@@ -115,7 +122,9 @@ export function setCategories() {
 export function getSubCategories() {
   return async (dispatch) => {
     try {
-      const response = await fetch("https://deliveloz-ryfh.onrender.com/subcategories");
+      const response = await fetch(
+        "https://deliveloz-ryfh.onrender.com/subcategories"
+      );
       const data = await response.json();
       dispatch({
         type: GET_SUBCATEGORIES,
@@ -144,7 +153,10 @@ export const setFilteringSubCategory = (payload) => ({
 export function postUsers(payload) {
   return async function (dispatch) {
     try {
-      const response = await axios.post("https://deliveloz-ryfh.onrender.com/users", payload);
+      const response = await axios.post(
+        "https://deliveloz-ryfh.onrender.com/users",
+        payload
+      );
       dispatch({
         type: POST_USER,
         payload: response.data,

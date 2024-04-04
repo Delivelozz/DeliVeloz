@@ -7,8 +7,8 @@ import {
   setCategories,
   getSubCategories,
 } from "../../redux/actions/actions";
-import useCategories from "../../data/useCategories";
-import useSubCategories from "../../data/useSubCategories.js";
+import useCategories from "../../hooks/useCategories.js";
+import useSubCategories from "../../hooks/useSubCategories.js";
 
 export default function Filters({ setCurrentPage }) {
   const dispatch = useDispatch();
