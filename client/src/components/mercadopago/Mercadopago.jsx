@@ -1,6 +1,6 @@
 import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 const Mercadopago = ({shoppingCart}) => {
@@ -35,12 +35,17 @@ const handleBuy = async () => {
     }
 };
 
+useEffect(() => {
+  handleBuy();
+},[]);
+
+
   return (
     <div>
         <div>
-            <div className="mt-6 flex justify-center">
+            {/*<div className="mt-6 flex justify-center">
                 <button className="btn-bg flex items-center justify-center" onClick={handleBuy}>Ir a Billetera</button>
-            </div>
+  </div>*/}
             {preferenceId && <Wallet initialization={{ preferenceId, redirectMode: 'modal' }} customization={{ texts:{ valueProp: 'smart_option'}}} />}
         </div>
     </div>
