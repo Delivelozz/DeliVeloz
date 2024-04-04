@@ -1,16 +1,33 @@
-import ArrowLeft from "../icons/ArrowLeft";
+// ?-------------------------- Icons
+
 import CloseIcon from "../icons/CloseIcon";
-import validation from "./validation";
-import axios from "axios";
+import GoogleIcon from "../icons/GoogleIcon";
+
+// ?-------------------------- Hooks
+
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+
+// ?--------------------------- Actions
+
 import { loginUser, setUserData, setErrors } from "../../redux/actions/actions";
 
-// ?-------------------------- Firebase
-
-// import { useAuth } from "../../context/AuthContext";
+// ?-------------------------- Importaciones
+import validation from "./validation";
+import { useAuth } from "../../context/AuthContext";
 
 export default function FormLogin({ closeModal }) {
+  // ?------------------------------------------- Firebase
+  const auth = useAuth();
+
+  const handleGoogle = async (e) => {
+    e.preventDefault();
+    closeModal();
+    await auth.loginWithGoogle();
+  };
+
+  // ?------------------------------------------- State FormData, dispatch y useSelector
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -19,6 +36,8 @@ export default function FormLogin({ closeModal }) {
   const errors = useSelector((state) => state.errors);
   const dispatch = useDispatch();
 
+  // ?------------------------------------------- useEffect para scrollbar
+
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -26,10 +45,14 @@ export default function FormLogin({ closeModal }) {
     };
   }, []);
 
+  // ?------------------------------------------- OnChange
+
   const onChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+
+  // ?------------------------------------------- OnSubmit
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -103,6 +126,13 @@ export default function FormLogin({ closeModal }) {
 
           <button className="btn-bg" type="submit">
             Ingresar
+          </button>
+
+          <button
+            onClick={(e) => handleGoogle(e)}
+            className="p-2 rounded-md font-medium bg-blue-500 text-white hover:bg-blue-600 flex justify-center items-center gap-3"
+          >
+            <p>Continuar con Google</p>
           </button>
         </div>
       </form>

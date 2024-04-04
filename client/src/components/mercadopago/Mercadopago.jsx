@@ -2,7 +2,7 @@ import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import { useDispatch } from "react-redux";
 import { setShoppingCart } from "../../redux/actions/actions";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useEffect, useState } from "react";
 
 const Mercadopago = ({ shoppingCart }) => {
   //guardo el id en preferenceId y set me ayuda a guardar el estado
@@ -48,6 +48,9 @@ const Mercadopago = ({ shoppingCart }) => {
   return (
     <div>
       <div>
+        {/*<div className="mt-6 flex justify-center">
+                <button className="btn-bg flex items-center justify-center" onClick={handleBuy}>Ir a Billetera</button>
+  </div>*/}
         {preferenceId && (
           <Wallet
             initialization={{ preferenceId, redirectMode: "modal" }}
