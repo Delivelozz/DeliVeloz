@@ -22,13 +22,17 @@ body {
   margin: 0 auto;
 }
 
-a:hover {
-  color: theme("colors.sundown.500");
+a {
   transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
+}
+
+a:hover {
+  color: theme("colors.sundown.500");
+  
 }
 
 button {
@@ -107,4 +111,10 @@ h1 {
 
 .error {
   @apply bg-wild-watermelon-100 border border-wild-watermelon-400 text-wild-watermelon-400 text-sm px-2 py-1 rounded-sm;
+}
+
+/* ?--------------------------------- modal de perfil de usuario ---------------------- */
+
+.relative:hover .absolute {
+  opacity: 1;
 }
