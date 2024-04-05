@@ -1,13 +1,13 @@
-export default function HomeIcon() {
+export default function HomeIcon({ height, width, color }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       className="icon icon-tabler icon-tabler-home"
-      width="27"
-      height="27"
+      width={width}
+      height={height}
       viewBox="0 0 24 24"
       strokeWidth={1.5}
-      stroke="#002153"
+      stroke={color}
       fill="none"
       strokeLinecap="round"
       strokeLinejoin="round"
