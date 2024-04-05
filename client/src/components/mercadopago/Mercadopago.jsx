@@ -1,4 +1,6 @@
-import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
+import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
+import { useDispatch } from "react-redux";
+import { setShoppingCart } from "../../redux/actions/actions";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -23,7 +25,10 @@ const createPreference = async () => {
         price: item.price,
       }));
 
-      const response = await axios.post("https://deliveloz-ryfh.onrender.com/mercadopago/create_preference", products);
+      const response = await axios.post(
+        "https://deliveloz-ryfh.onrender.com/mercadopago/create_preference",
+        products
+      );
       const { id } = response.data;
       return id;
     } catch (error) {
@@ -31,18 +36,18 @@ const createPreference = async () => {
     }
   };
 
-//invoco la funcion createPreference, si todo esta bien retornare el ID
-const handleBuy = async () => {
+  //invoco la funcion createPreference, si todo esta bien retornare el ID
+  const handleBuy = async () => {
     const id = await createPreference();
-    if(id){
-        setPreferenceId(id);
+    if (id) {
+      //console.log(id);
+      setPreferenceId(id);
     }
-};
+  };
 
-useEffect(() => {
-  handleBuy();
-},[]);
-
+  useEffect(() => {
+    handleBuy();
+  }, []);
 
   return (
     <div>
@@ -59,4 +64,4 @@ useEffect(() => {
   )
 }
 
-export default Mercadopago
+export default Mercadopago;

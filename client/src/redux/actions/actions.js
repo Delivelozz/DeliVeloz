@@ -74,7 +74,7 @@ export function getByName(name) {
   return async (dispatch) => {
     try {
       const response = await fetch(
-        `https://deliveloz-ryfh.onrender.com/products?nombre=${name}`
+        `https://deliveloz-ryfh.onrender.com/products?name=${name}`
       );
       if (!response.ok) {
         throw new Error("No hay ningún plato en el menu con ese nombre");
@@ -212,6 +212,7 @@ export function logoutUser(payload) {
 
 // ? ----------------------------- Set User Data
 export function setUserData(userData) {
+  console.log(userData)
   localStorage.setItem("userData", JSON.stringify(userData));
   return {
     type: "SET_USER_DATA",
