@@ -15,6 +15,11 @@ const TotalAmount = () => {
   const handlePay = () => {
     console.log(showMercadoPago);
     setShowMercadoPago(true);
+  }
+
+  //chatgpi
+  const handlePaymentComplete = () => {
+    setShowMercadoPago(false); // Ocultar el componente de MercadoPago después de que se complete el pago
   };
 
   return (
@@ -24,15 +29,13 @@ const TotalAmount = () => {
         <p className="flex items-center">${totalpay()}</p>
       </div>
       <div className="mt-6 flex justify-center">
-        <button
-          className="btn-bg flex items-center justify-center"
-          onClick={handlePay}
-        >
+      {!showMercadoPago && ( // Mostrar el botón de pago solo si no se muestra el componente de MercadoPago
+        <button  className="btn-bg flex items-center justify-center" onClick={handlePay}>
           Pagar
         </button>
+       )}
       </div>
-      {showMercadoPago && <Mercadopago shoppingCart={shoppingCart} />}{" "}
-      {/*para renderizar*/}
+      {showMercadoPago && <Mercadopago shoppingCart={shoppingCart} onPaymentComplete={handlePaymentComplete} />} {/*para renderizar*/}
     </article>
   );
 };
