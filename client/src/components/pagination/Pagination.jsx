@@ -12,7 +12,7 @@ export default function Pagination({
 
   let totalPages = Math.ceil(totalPosts / postsPerPage);
   let pages = [];
-  console.log(currentPage);
+  //console.log(currentPage);
 
   for (let i = 1; i <= totalPages; i++) {
     pages.push(i);
