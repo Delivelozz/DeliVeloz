@@ -103,11 +103,7 @@ export default function Header({ openLoginModal, openRegisterModal }) {
                       <p className=" hover:bg-sundown-600 p-2">Ver Perfil</p>
                     </Link>
                   </div>
-                  <div className="border-b border-wild-watermelon-300">
-                    <Link to={"/about"} className="hover:text-white">
-                      <p className=" hover:bg-sundown-600 p-2">admin</p>
-                    </Link>
-                  </div>
+
                   <div>
                     <p
                       onClick={onClick}
