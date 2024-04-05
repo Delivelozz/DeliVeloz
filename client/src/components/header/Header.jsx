@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser, setUserData } from "../../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
+import { useShoppingCartCounterItem } from "../../hooks/useShoppingCartCounterItem";
 
 export default function Header({ openLoginModal, openRegisterModal }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const login = useSelector((state) => state.login);
+  const shoppingCartCounterItem = useShoppingCartCounterItem();
 
   const onClick = () => {
     dispatch(logoutUser());
@@ -56,10 +58,13 @@ export default function Header({ openLoginModal, openRegisterModal }) {
 
           {login && (
             <div className=" flex gap-6">
-              <Link to={"/carrito"}>
+              <Link to={"/carrito"} className="relative">
                 <div className="bg-sundown-500 rounded-full p-2 hover:bg-sundown-600">
                   <Cart />
                 </div>
+                <p className="cursor-pointer absolute top-0 right-0 flex justify-center items-center bg-sundown-500 w-6 h-6 rounded-full text-white font-semibold -mr-3 -mt-3 border border-white border-solid text-xs">
+                  {shoppingCartCounterItem}
+                </p>
               </Link>
               <button onClick={onClick} className="btn-tr">
                 Cerrar Sesión
