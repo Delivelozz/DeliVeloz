@@ -49,10 +49,10 @@ const shoppingCartCard = ({ id, name, price, image, qty, priceTotal }) => {
             <div className="h-8 flex items-center gap-1">
               <p>Cantidad: </p>
               <button
-                onClick={handleAdd}
+                onClick={handleDelete}
                 className="w-6 h-6 bg-sundown-500 rounded-md text-white"
               >
-                +
+                -
               </button>
               <input
                 type="text"
@@ -60,10 +60,10 @@ const shoppingCartCard = ({ id, name, price, image, qty, priceTotal }) => {
                 className="border border-sundown-500 border-solid rounded-md w-8 h-6 text-center "
               />
               <button
-                onClick={handleDelete}
+                onClick={handleAdd}
                 className="w-6 h-6 bg-sundown-500 rounded-md text-white"
               >
-                -
+                +
               </button>
             </div>
           </div>
