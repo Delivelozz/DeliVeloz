@@ -74,7 +74,7 @@ export function getByName(name) {
   return async (dispatch) => {
     try {
       const response = await fetch(
-        `https://deliveloz-ryfh.onrender.com/products?nombre=${name}`
+        `https://deliveloz-ryfh.onrender.com/products?name=${name}`
       );
       if (!response.ok) {
         throw new Error("No hay ningún plato en el menu con ese nombre");
