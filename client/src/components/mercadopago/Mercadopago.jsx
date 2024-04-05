@@ -3,13 +3,17 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 
-const Mercadopago = ({shoppingCart}) => {
+const Mercadopago = ({shoppingCart, onPaymentComplete}) => {
     //guardo el id en preferenceId y set me ayuda a guardar el estado
     const [preferenceId, setPreferenceId] = useState(null)
 
-    initMercadoPago('TEST-bc727f75-9789-4717-9b6a-636604e99203',{
+useEffect(() => {
+  initMercadoPago('TEST-bc727f75-9789-4717-9b6a-636604e99203',{
     locale: "es-AR",
 });
+handleBuy();
+
+}, []);
 //id de preferencia son los datos de nuestros productos
 const createPreference = async () => {
     try {
@@ -42,13 +46,16 @@ useEffect(() => {
 
   return (
     <div>
-        <div>
-            {/*<div className="mt-6 flex justify-center">
-                <button className="btn-bg flex items-center justify-center" onClick={handleBuy}>Ir a Billetera</button>
-  </div>*/}
-            {preferenceId && <Wallet initialization={{ preferenceId, redirectMode: 'modal' }} customization={{ texts:{ valueProp: 'smart_option'}}} />}
-        </div>
+    <div>
+        {/*<div className="mt-6 flex justify-center">
+            <button className="btn-bg flex items-center justify-center" onClick={handleBuy}>Ir a Billetera</button>
+</div>*/}
+        {preferenceId && <Wallet initialization={{ preferenceId, redirectMode: 'modal' }} customization={{ texts:{ valueProp: 'smart_option'}}} 
+         onComplete={() => onPaymentComplete()}
+        />}
     </div>
+</div>
+
   )
 }
 
