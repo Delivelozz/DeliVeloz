@@ -55,12 +55,12 @@ export default function Header({ openLoginModal, openRegisterModal }) {
           {/* Header cuando login es true */}
 
           {login && (
-            <div>
-              {/* <Link to={"/carrito"}>
+            <div className=" flex gap-6">
+              <Link to={"/carrito"}>
                 <div className="bg-sundown-500 rounded-full p-2 hover:bg-sundown-600">
                   <Cart />
                 </div>
-              </Link> */}
+              </Link>
               <button onClick={onClick} className="btn-tr">
                 Cerrar Sesión
               </button>

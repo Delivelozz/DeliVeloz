@@ -10,8 +10,18 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { postUsers } from "../../redux/actions/actions";
+import { useAuth } from "../../context/AuthContext";
 
 export default function FormRegister({ closeModal }) {
+  // ?------------------------------------------- Firebase
+  const auth = useAuth();
+
+  const handleGoogle = async (e) => {
+    e.preventDefault();
+    closeModal();
+    await auth.loginWithGoogle();
+  };
+
   // ? ----------------------------------- Scroll hidden
 
   useEffect(() => {
@@ -235,6 +245,13 @@ export default function FormRegister({ closeModal }) {
           </a> */}
             <button className="btn-bg" type="submit">
               Registrarse
+            </button>
+
+            <button
+              onClick={(e) => handleGoogle(e)}
+              className="p-2 rounded-md font-medium bg-blue-500 text-white hover:bg-blue-600 flex justify-center items-center gap-3"
+            >
+              <p>Continuar con Google</p>
             </button>
           </div>
         </form>

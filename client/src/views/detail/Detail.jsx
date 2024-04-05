@@ -10,7 +10,7 @@ export default function Detail() {
   useLocalStoreUserData();
 
   useEffect(() => {
-    fetch(`http://localhost:3001/products/${id}`)
+    fetch(`https://deliveloz-ryfh.onrender.com/products/${id}`)
       .then((response) => response.json())
       .then((data) => setProduct(data));
   }, []);

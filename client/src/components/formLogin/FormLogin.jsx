@@ -1,18 +1,42 @@
-// ?--------------------------- imports Icons y validation.js
+// ?-------------------------- Icons
 
-import ArrowLeft from "../icons/ArrowLeft";
 import CloseIcon from "../icons/CloseIcon";
-import validation from "./validation";
-import axios from "axios";
+import GoogleIcon from "../icons/GoogleIcon";
 
-// ?-------------------------- Imports Hooks
+// ?-------------------------- Hooks
 
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+
+// ?--------------------------- Actions
+
 import { loginUser, setUserData, setErrors } from "../../redux/actions/actions";
 
+// ?-------------------------- Importaciones
+import validation from "./validation";
+import { useAuth } from "../../context/AuthContext";
+
 export default function FormLogin({ closeModal }) {
-  // ? ----------------------------------- Scroll hidden
+  // ?------------------------------------------- Firebase
+  const auth = useAuth();
+
+  const handleGoogle = async (e) => {
+    e.preventDefault();
+    closeModal();
+    await auth.loginWithGoogle();
+  };
+
+  // ?------------------------------------------- State FormData, dispatch y useSelector
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const errors = useSelector((state) => state.errors);
+  const dispatch = useDispatch();
+
+  // ?------------------------------------------- useEffect para scrollbar
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -21,33 +45,28 @@ export default function FormLogin({ closeModal }) {
     };
   }, []);
 
-  // ?------------------------------------ useSelector y estado
-  const userData = useSelector((state) => state.userData);
-  const errors = useSelector((state) => state.errors);
-  const dispatch = useDispatch();
-  // const login = useSelector((state) => state.login);
-
-  // ?------------------------------------ OnChange
+  // ?------------------------------------------- OnChange
 
   const onChange = (e) => {
     const { name, value } = e.target;
-    dispatch(setUserData({ ...userData, [name]: value }));
+    setFormData({ ...formData, [name]: value });
   };
-  //console.log(userData);
 
-  // ?------------------------------------ OnSubmit
+  // ?------------------------------------------- OnSubmit
+
   const onSubmit = async (e) => {
     e.preventDefault();
-    const errors = validation(userData);
+    const errors = validation(formData);
     dispatch(setErrors(errors));
 
     if (
       Object.keys(errors).length === 0 &&
-      userData.email &&
-      userData.password
+      formData.email &&
+      formData.password
     ) {
       try {
-        await dispatch(loginUser(userData));
+        await dispatch(setUserData(formData));
+        await dispatch(loginUser(formData));
         closeModal();
       } catch (error) {
         if (error.response && error.response.status === 500) {
@@ -67,14 +86,6 @@ export default function FormLogin({ closeModal }) {
         onSubmit={onSubmit}
         className="bg-white shadow-2xl rounded-md w-full max-w-sm relative"
       >
-        {/* --------------------- Float Icon --------------------------- */}
-        {/* <button
-          className="transition absolute -top-4 -right-4 bg-sundown-500 rounded-full shadow-xl flex justify-center items-center w-10 h-10 hover:scale-110"
-          onClick={closeModal}
-        >
-          <CloseIcon width={22} height={22} color={"#fff"} />
-        </button> */}
-        {/* --------------------- Flex Left --------------------------- */}
         <div className="px-6 py-10 space-y-6 flex flex-col">
           <div className="flex justify-between">
             <h4 className="font-bold text-lg text-downriver-950">
@@ -88,14 +99,13 @@ export default function FormLogin({ closeModal }) {
             <span className="text-sundown-500">Ingrese</span> con su cuenta
           </p>
 
-          {/* --------------------- Usuario y Contraseña --------------------------- */}
-
           <div className="flex flex-col gap-4">
             <div>
               <input
                 type="text"
                 placeholder="Email"
                 name="email"
+                value={formData.email}
                 onChange={onChange}
                 className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
               />
@@ -105,6 +115,7 @@ export default function FormLogin({ closeModal }) {
               <input
                 type="password"
                 name="password"
+                value={formData.password}
                 onChange={onChange}
                 placeholder="Contraseña"
                 className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
@@ -113,40 +124,17 @@ export default function FormLogin({ closeModal }) {
             </div>
           </div>
 
-          {/* --------------------- ¿Olvidaste tu contraseña? --------------------------- */}
-
-          {/* <a
-          href=""
-          className="text-sundown-500 text-right text-sm font-semibold hover:text-sundown-600"
-        >
-          ¿Olvidaste tu contraseña?
-        </a> */}
-
-          {/* --------------------- Ingresar --------------------------- */}
-
           <button className="btn-bg" type="submit">
             Ingresar
           </button>
 
-          {/* --------------------- Registrarse --------------------------- */}
-
-          {/* <a
-            href="/register"
-            className="text-center text-downriver-950 font-semibold text-sm hover:text-downriver-900"
+          <button
+            onClick={(e) => handleGoogle(e)}
+            className="p-2 rounded-md font-medium bg-blue-500 text-white hover:bg-blue-600 flex justify-center items-center gap-3"
           >
-            Crear una cuenta
-          </a> */}
+            <p>Continuar con Google</p>
+          </button>
         </div>
-
-        {/* --------------------- Flex Right --------------------------- */}
-
-        {/* <div className="">
-          <img
-            src="../../../img/login.jpg"
-            alt=""
-            className="rounded-r-md min-h-full object-cover w-full"
-          />
-        </div> */}
       </form>
     </div>
   );

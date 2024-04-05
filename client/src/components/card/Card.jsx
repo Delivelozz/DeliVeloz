@@ -2,21 +2,36 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setShoppingCart } from "../../redux/actions/actions.js";
 import { Link } from "react-router-dom";
+import Loader from "../loader/Loader.jsx";
 
 export default function Card(props) {
   const { id, name, image, price, category, subCategory } = props;
   const dispatch = useDispatch();
   const shoppingCart = useSelector((state) => state.shoppingCart);
+  const [loading, setLoading] = useState(false); // Estado local de loading
 
   useEffect(() => {
     dispatch(setShoppingCart(shoppingCart));
   }, [shoppingCart, dispatch]);
 
   const addToCart = (id) => {
-    const dataItem = { id, name, price, image };
+    setLoading(true);
+    const dataItem = { id, name, price, image, qty: 1, priceTotal: price };
     const addRes = [...shoppingCart];
-    addRes.push(dataItem);
+    const existingItem = addRes.find((item) => item.id === id);
+    if (existingItem) {
+      existingItem.qty += 1;
+      existingItem.priceTotal = parseFloat(
+        (existingItem.priceTotal + parseFloat(price)).toFixed(2)
+      );
+    } else {
+      addRes.push(dataItem);
+    }
+    //console.log(addRes);
     dispatch(setShoppingCart(addRes));
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
     //console.log(shoppingCart);
   };
 
@@ -47,7 +62,9 @@ export default function Card(props) {
           <p className="text-sundown-500 font-bold ">$ {price}</p>
         </div>
         <div className="flex justify-center" onClick={() => addToCart(id)}>
-          <button className="btn-bg ">Agregar</button>
+          <button className="btn-bg flex items-center justify-center">
+            {loading ? <Loader /> : "Agregar"}
+          </button>
         </div>
       </div>
     </article>
