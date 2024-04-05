@@ -14,6 +14,8 @@ export const useShoppingCartAdd = () => {
       existingItem.priceTotal = parseFloat(
         (existingItem.priceTotal + parseFloat(price)).toFixed(2)
       );
+    } else {
+      addRes.push(dataItem);
     }
     dispatch(setShoppingCart(addRes));
   };
