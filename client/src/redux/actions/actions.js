@@ -212,6 +212,7 @@ export function logoutUser(payload) {
 
 // ? ----------------------------- Set User Data
 export function setUserData(userData) {
+  console.log(userData);
   localStorage.setItem("userData", JSON.stringify(userData));
   return {
     type: "SET_USER_DATA",
