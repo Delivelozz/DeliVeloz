@@ -46,12 +46,6 @@ export default function Header({ openLoginModal, openRegisterModal }) {
             <p>Nosotros</p>
           </Link>
 
-          {login && (
-            <Link to={"/carrito"}>
-              <p>Carrito</p>
-            </Link>
-          )}
-
           {!login && (
             <>
               <p
