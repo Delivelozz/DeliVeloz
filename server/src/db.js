@@ -12,6 +12,7 @@ const sequelize = new Sequelize(DB_URL, {
 });
 
 
+
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
@@ -88,8 +89,14 @@ SubCategoryProduct.belongsTo(CategoryProduct);
 Address.hasMany(User);
 User.belongsTo(Address);
 // Assessment - User (uno a muchos)
-Assessment.hasMany(User);
-User.belongsTo(Assessment);
+Assessment.belongsTo(User);
+User.hasMany(Assessment);
+
+//Assessment - Product (uno a muchos)
+Assessment.hasMany(Product)
+Product.belongsTo(Assessment)
+
+
 // Administrator / Role (uno a uno)
 Administrator.hasOne(Role);
 Role.belongsTo(Administrator);
