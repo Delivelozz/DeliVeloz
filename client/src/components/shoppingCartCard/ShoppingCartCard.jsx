@@ -3,10 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { setShoppingCart } from "../../redux/actions/actions.js";
 import { useShoppingCartDelete } from "../../hooks/useShoppingCartDelete.js";
 import { useShoppingCartAdd } from "../../hooks/useShoppingCartAdd.js";
+import { Link } from "react-router-dom";
 
 const shoppingCartCard = ({ id, name, price, image, qty, priceTotal }) => {
   const shoppingCart = useSelector((state) => state.shoppingCart);
   const dispatch = useDispatch();
+  console.log(shoppingCart);
 
   const deleteFromCart = useShoppingCartDelete();
   const handleDelete = () => {
@@ -22,10 +24,10 @@ const shoppingCartCard = ({ id, name, price, image, qty, priceTotal }) => {
     const dataItem = { id, name, price, image, qty: 1, priceTotal: price };
     const addRes = [...shoppingCart];
     //console.log(addRes);
-    const existingItem = addRes.find((item) => item.id === id);
+    const existingItem = addRes.find((item) => item.id == id);
     //console.log(existingItem);
     if (existingItem) {
-      const index = addRes.findIndex((item) => item.id === id);
+      const index = addRes.findIndex((item) => item.id == id);
       addRes.splice(index, 1);
     }
     //console.log(addRes);
@@ -36,13 +38,15 @@ const shoppingCartCard = ({ id, name, price, image, qty, priceTotal }) => {
     <article id={id} className="w-full h-36 ">
       <div className="w-full h-36 flex   justify-between bg-white rounded-lg border p-4 relative">
         <div className="flex">
-          <figure className="w-28 h-28 mr-3 rounded-md cursor-pointer hover:text-black">
-            <img
-              src={image}
-              alt={name}
-              className="w-28 h-28 mx-auto rounded-md object-cover"
-            />
-          </figure>
+          <Link to={`/detail/${id}`}>
+            <figure className="w-28 h-28 mr-3 rounded-md cursor-pointer hover:text-black">
+              <img
+                src={image}
+                alt={name}
+                className="w-28 h-28 mx-auto rounded-md object-cover"
+              />
+            </figure>
+          </Link>
           <div className=" flex flex-col justify-center align-center gap-1">
             <p className="text-sundown-500 font-semibold">{name}</p>
             <p>Precio unitario: ${price}</p>
