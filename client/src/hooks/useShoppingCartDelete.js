@@ -8,7 +8,7 @@ export const useShoppingCartDelete = () => {
 
   const deleteFromCart = (id, price) => {
     const addRes = [...shoppingCart];
-    const existingItem = addRes.find((item) => item.id === id);
+    const existingItem = addRes.find((item) => item.id == id);
     if (existingItem) {
       if (existingItem.qty > 1) {
         existingItem.qty -= 1;
@@ -16,7 +16,7 @@ export const useShoppingCartDelete = () => {
           (existingItem.priceTotal - parseFloat(price)).toFixed(2)
         );
       } else {
-        const index = addRes.findIndex((item) => item.id === id);
+        const index = addRes.findIndex((item) => item.id == id);
         addRes.splice(index, 1);
       }
       dispatch(setShoppingCart(addRes));

@@ -8,12 +8,14 @@ export const useShoppingCartAdd = () => {
   const addToCart = (id, name, price, priceTotal) => {
     const addRes = [...shoppingCart];
     console.log(addRes);
-    const existingItem = addRes.find((item) => item.id === id);
+    const existingItem = addRes.find((item) => item.id == id);
     if (existingItem) {
       existingItem.qty += 1;
       existingItem.priceTotal = parseFloat(
         (existingItem.priceTotal + parseFloat(price)).toFixed(2)
       );
+    } else {
+      addRes.push(dataItem);
     }
     dispatch(setShoppingCart(addRes));
   };
