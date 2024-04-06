@@ -93,9 +93,9 @@ Address.belongsTo(User);
 User.hasMany(Assessment);
 Assessment.belongsTo(User);
 
-//Assessment - Product (uno a muchos)
-Assessment.hasMany(Product)
-Product.belongsTo(Assessment)
+//Product - Assessment (uno a muchos)
+Product.hasMany(Assessment);
+Assessment.belongsTo(Product);
 
 // Administrator / Role (uno a uno)
 Administrator.hasOne(Role);
