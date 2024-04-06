@@ -104,6 +104,14 @@ export default function Header({ openLoginModal, openRegisterModal }) {
                     </Link>
                   </div>
 
+                  <div className="border-b border-wild-watermelon-300">
+                    <Link to={"/admin"} className="hover:text-white">
+                      <p className=" hover:bg-sundown-600 p-2">
+                        Ir al dashboard
+                      </p>
+                    </Link>
+                  </div>
+
                   <div>
                     <p
                       onClick={onClick}
