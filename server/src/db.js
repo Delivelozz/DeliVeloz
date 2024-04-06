@@ -85,12 +85,18 @@ Product.belongsTo(SubCategoryProduct);
 // CategoryProduct - SubCategoryProduct (uno a muchos)
 CategoryProduct.hasMany(SubCategoryProduct);
 SubCategoryProduct.belongsTo(CategoryProduct);
+
 // User - Address (uno a muchos)
 User.hasMany(Address);
 Address.belongsTo(User);
 // User - Assessment (uno a muchos)
 User.hasMany(Assessment);
 Assessment.belongsTo(User);
+
+//Assessment - Product (uno a muchos)
+Assessment.hasMany(Product)
+Product.belongsTo(Assessment)
+
 // Administrator / Role (uno a uno)
 Administrator.hasOne(Role);
 Role.belongsTo(Administrator);
