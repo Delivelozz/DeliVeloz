@@ -14,6 +14,7 @@ import {
   LOGOUT_USER,
   SET_USER_DATA,
   SET_ERRORS,
+  GET_USERS,
 } from "../actions/types";
 
 const initialState = {
@@ -25,6 +26,7 @@ const initialState = {
   subcategories: [], // Arreglo de categorías
   searcher: [], // Arreglo de platos filtrados por nombre
   users: [],
+  allUsers: [],
   login: false,
   user: {},
   userData: JSON.parse(localStorage.getItem("userData")) || {
@@ -139,6 +141,12 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         errors: payload,
+      };
+
+    case GET_USERS:
+      return {
+        ...state,
+        allUsers: payload,
       };
 
     default:

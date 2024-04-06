@@ -14,6 +14,7 @@ import {
   LOGOUT_USER,
   SET_USER_DATA,
   SET_ERRORS,
+  GET_USERS,
 } from "./types";
 import axios from "axios";
 
@@ -219,6 +220,26 @@ export function setUserData(userData) {
     payload: userData,
   };
 }
+
+// ? ----------------------------- Get Users
+
+export function getUsers() {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(
+        "https://deliveloz-ryfh.onrender.com/users"
+      );
+      const data = await response.json();
+      dispatch({
+        type: GET_USERS,
+        payload: data,
+      });
+    } catch (error) {
+      console.error("Error fetching users: ", error);
+    }
+  };
+}
+
 
 // ? ----------------------------- Set Errors
 export function setErrors(errors) {

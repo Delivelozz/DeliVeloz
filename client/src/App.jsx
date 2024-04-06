@@ -2,8 +2,6 @@
 import About from "./views/about/About";
 import Home from "./views/home/Home";
 import Detail from "./views/detail/Detail";
-import Login from "./views/login/Login";
-import Register from "./views/register/Register";
 import Products from "./views/products/Products";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
@@ -97,7 +95,7 @@ function App() {
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/admin" element={<DashboardAdmin />} />
         </Routes>
-        {pathname !== "/admin" && <Footer />}
+        <Footer />
         {isLoginModalOpen && <FormLogin closeModal={closeLoginModal} />}
         {isRegisterModalOpen && (
           <FormRegister closeModal={closeRegisterModal} />

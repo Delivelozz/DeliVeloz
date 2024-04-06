@@ -13,3 +13,4 @@ export const LOGIN_USER = `LOGIN_USER`;
 export const LOGOUT_USER = `LOGOUT_USER`;
 export const SET_USER_DATA = `SET_USER_DATA`;
 export const SET_ERRORS = `SET_ERRORS`;
+export const GET_USERS = `GET_USERS`;

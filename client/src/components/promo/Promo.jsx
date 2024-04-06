@@ -4,7 +4,7 @@ import { smoothScrollToTop } from "../../functions/SmoothScroll";
 export default function Promo(props) {
   const { id, name, image, description } = props;
   return (
-    <section className=" mt-4 mb-4">
+    <article className=" mt-4 mb-4">
       <article id={id} className="w-full relative">
         <div className="w-full h-[24rem] bg-white rounded-lg border p-4 lg:h-[28rem]">
           <figure className="w-full h-1/2 rounded-md ">
@@ -34,6 +34,6 @@ export default function Promo(props) {
           </div>
         </div>
       </article>
-    </section>
+    </article>
   );
 }

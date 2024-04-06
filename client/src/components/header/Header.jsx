@@ -26,7 +26,7 @@ export default function Header({ openLoginModal, openRegisterModal }) {
   };
 
   return (
-    <div className="w-full shadow-xl mb-16 sticky top-0 z-40 bg-white">
+    <div className="w-full shadow-lg sticky top-0 z-40 bg-white">
       <div className="container flex py-4 items-center justify-between">
         <div>
           <Link to={"/home"}>
