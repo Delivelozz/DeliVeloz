@@ -20,7 +20,7 @@ usersRouter.post("/", createUserHandler);
 // Editar Usuario
 usersRouter.patch("/:id", editUserHandler);
 // Desactivar Usuario
-usersRouter.delete("/:id/:value", desactUserHandler);
+usersRouter.put("/:id/:value", desactUserHandler);
 // login Usuario
 usersRouter.post("/login", loginUsersHandler);
 // Cerrar Seccion
