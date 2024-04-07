@@ -1,5 +1,5 @@
 const {User} = require('../../db');
-const { Op, Sequelize } = require('sequelize');
+const { Op } = require('sequelize');
 
 const getUsersByNameController = async (name) => {
 
@@ -7,7 +7,7 @@ const getUsersByNameController = async (name) => {
     const allUsersByNameDB = await User.findAll({
         where: {
             name: {
-                [Op.like]: Sequelize.literal(`LOWER('%${name}%')`) 
+                [Op.iLike]: `%${name}%` 
             }
         }
     });
@@ -15,7 +15,7 @@ const getUsersByNameController = async (name) => {
     const allUsersByLastnameDB = await User.findAll({
         where: {
             lastName: {
-                [Op.like]: Sequelize.literal(`LOWER('%${name}%')`) 
+                [Op.iLike]: `%${name}%` 
             }
         }
     });

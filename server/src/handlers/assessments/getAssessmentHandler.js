@@ -3,9 +3,6 @@ const getAssessmentController = require("../../controllers/assessments/getAssess
 const getAssessmentHandler = async (req, res) => {
   try {    
        await getAssessmentController(req, res);
-     
-   
-    
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

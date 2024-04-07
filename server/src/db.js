@@ -85,17 +85,17 @@ Product.belongsTo(SubCategoryProduct);
 // CategoryProduct - SubCategoryProduct (uno a muchos)
 CategoryProduct.hasMany(SubCategoryProduct);
 SubCategoryProduct.belongsTo(CategoryProduct);
-// Address - User (uno a muchos)
-Address.hasMany(User);
-User.belongsTo(Address);
-//Assessment - User (uno a muchos)
-Assessment.hasOne(User);
-User.belongsTo(Assessment);
 
-//Assessment - Product (uno a muchos)
-//Product.hasMany(Assessments, { foreignKey: "productId" });
-//Assessments.belongsTo(Product, { foreignKey: "productId" });
+// User - Address (uno a muchos)
+User.hasMany(Address);
+Address.belongsTo(User);
+// User - Assessment (uno a muchos)
+User.hasMany(Assessment);
+Assessment.belongsTo(User);
 
+//Product - Assessment (uno a muchos)
+Product.hasMany(Assessment);
+Assessment.belongsTo(Product);
 
 // Administrator / Role (uno a uno)
 Administrator.hasOne(Role);
