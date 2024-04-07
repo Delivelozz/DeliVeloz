@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const { DB_URL } = process.env;
 
+
 //° CONEXION A LA BASE DE DATOS
 const sequelize = new Sequelize(DB_URL, {
   logging: false, // set to console.log to see the raw SQL queries
@@ -58,7 +59,6 @@ const {
   OrderProduct,
 } = sequelize.models;
 // Definir el modelo CartProduct con el campo "cantidad"
-
 // Aca vendrian las relaciones
 
 // Order - Product (muchos a muchos)
@@ -88,13 +88,13 @@ SubCategoryProduct.belongsTo(CategoryProduct);
 // Address - User (uno a muchos)
 Address.hasMany(User);
 User.belongsTo(Address);
-// Assessment - User (uno a muchos)
-Assessment.belongsTo(User);
-User.hasMany(Assessment);
+//Assessment - User (uno a muchos)
+Assessment.hasOne(User);
+User.belongsTo(Assessment);
 
 //Assessment - Product (uno a muchos)
-Assessment.hasMany(Product)
-Product.belongsTo(Assessment)
+//Product.hasMany(Assessments, { foreignKey: "productId" });
+//Assessments.belongsTo(Product, { foreignKey: "productId" });
 
 
 // Administrator / Role (uno a uno)
