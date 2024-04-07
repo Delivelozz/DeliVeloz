@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const { DB_URL } = process.env;
 
+
 //° CONEXION A LA BASE DE DATOS
 const sequelize = new Sequelize(DB_URL, {
   logging: false, // set to console.log to see the raw SQL queries
@@ -58,7 +59,6 @@ const {
   OrderProduct,
 } = sequelize.models;
 // Definir el modelo CartProduct con el campo "cantidad"
-
 // Aca vendrian las relaciones
 
 // Order - Product (muchos a muchos)
