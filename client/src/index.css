@@ -2,6 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ?--------------------------------- ScrollBar ---------------------------------- */
+
+/* Estilos para el scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #E74C4C;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D32F2F;
+}
+
 /* ?--------------------------------- General ------------------------------------ */
 
 body {
@@ -23,6 +45,11 @@ section {
 
 .container {
   width: 80%;
+  margin: 0 auto;
+}
+
+.container-left {
+  width: 75%;
   margin: 0 auto;
 }
 
@@ -121,4 +148,23 @@ h1 {
 
 .relative:hover .absolute {
   opacity: 1;
+}
+
+/* ?--------------------------------- List ------------------------------------ */
+
+.sc-dmyCSP {
+  color: #fff;
+  font-weight: 600;
+  background: #E74C4C !important;
+}
+
+.sc-jsEeTM {
+  color: #222 !important;
+  font-weight: 500 !important;
+}
+
+/* ?--------------------------------- Modal añadir producto ------------------------------------ */
+
+.modal {
+  
 }

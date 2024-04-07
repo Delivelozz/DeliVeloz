@@ -66,7 +66,7 @@ export default function Detail() {
   };
 
   return (
-    <div className="container flex gap-10 lg:w-3/5 lg:mb-80">
+    <section className="container flex gap-10 lg:w-3/5 lg:mb-80">
       <div className="w-1/2">
         <img
           src={product.image.jpg}
@@ -122,6 +122,6 @@ export default function Detail() {
           )}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
