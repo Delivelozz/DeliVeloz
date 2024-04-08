@@ -6,7 +6,7 @@ import { setShoppingCart } from "../../redux/actions/actions";
 import Loader from "../../components/loader/Loader";
 import { useLocalStoreUserData } from "../../hooks/useLocalStoreUserData";
 import { useShoppingCartDelete } from "../../hooks/useShoppingCartDelete";
-import './Detail.css';
+import "./Detail.css";
 
 export default function Detail() {
   const { id } = useParams();
@@ -43,7 +43,7 @@ export default function Detail() {
   const handleStarClick = (starRating) => {
     setRating((prevRating) => (prevRating === starRating ? 0 : starRating));
   };
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -51,14 +51,13 @@ export default function Detail() {
         rating,
         comment,
       });
-      
+
       console.log("Valoración enviada");
       setRatingSent(true);
     } catch (error) {
       console.error("Error al enviar la valoración:", error);
     }
   };
-  
 
   const handleUpdateRating = async () => {
     try {
@@ -103,32 +102,90 @@ export default function Detail() {
   };
 
   return (
-    <div className="container flex gap-10 lg:w-3/5 lg:mb-80">
-      <div className="w-1/2">
-        <img
-          src={product.image.jpg}
-          alt=""
-          className="w-full rounded-md object-cover max-h-80 min-h-80"
-        />
+    <section className="flex flex-col">
+      <div className="container flex gap-10 lg:w-3/5">
+        <div className="w-1/2">
+          <img
+            src={product.image.jpg}
+            alt=""
+            className="w-full rounded-md object-cover max-h-80 min-h-80"
+          />
+        </div>
+
+        <div className="w-1/2 flex flex-col justify-between">
+          <div className="flex flex-col justify-center gap-4">
+            <h1 className="text-xl mb-6 text-sundown-500">{product.name}</h1>
+            <p>
+              <span className="text-sundown-500 font-bold">Ingredientes: </span>
+              {product.description}
+            </p>
+            <p>
+              <span className="text-sundown-500 font-bold">Categoría: </span>
+              {product.category}
+            </p>
+            <p className="text-sundown-500 font-bold text-xl ">
+              $ {product.price}
+            </p>
+          </div>
+          <div className="flex ">
+            {quantity > 0 ? (
+              <div className="h-8 flex justify-center items-center gap-1">
+                <p className="mr-2 text-sundown-500 font-bold text-xl ">
+                  Cantidad:
+                </p>
+                <button
+                  onClick={handleDelete}
+                  className="w-6 h-6 bg-sundown-500 rounded-md text-white"
+                >
+                  -
+                </button>
+                <input
+                  type="text"
+                  value={quantity}
+                  className="border border-sundown-500 border-solid rounded-md w-8 h-6 text-center "
+                />
+                <button
+                  onClick={() => addToCart(id)}
+                  className="w-6 h-6 bg-sundown-500 rounded-md text-white"
+                >
+                  +
+                </button>
+              </div>
+            ) : (
+              <div
+                className=" w-20 h-8 flex justify-center mt-100"
+                onClick={() => addToCart(id)}
+              >
+                <button className="absolute btn-bg flex items-center justify-center mb-100">
+                  {loading ? <Loader /> : "Agregar"}
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+      {/* --------------- VALORACIONES ------------------ */}
+
+      <div className="container pt-10">
         {!ratingSent ? (
-  <form onSubmit={handleSubmit} className="mt-1 flex flex-col">
-    <div className="textarea-container flex-grow">
-      <textarea
-        value={comment}
-        onChange={(e) => setComment(e.target.value)}
-        placeholder="Añade un comentario"
-        required
-        className="w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 h-20 max-h-12 gray-border" // Aquí ajustamos la altura máxima y la altura actual del textarea
-      ></textarea>
+          <form onSubmit={handleSubmit} className="mt-1 flex flex-col">
+            <div className="textarea-container flex-grow pb-3">
+              <textarea
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                placeholder="Añade un comentario"
+                required
+                className="w-full rounded-md bg-white border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 gray-border h-40 max-h-40 min-h-40 focus:outline-sundown-500"
+              ></textarea>
             </div>
             <div className="flex items-end mt-0">
               <div className="star-rating">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <span
                     key={star}
-                    className={`star ${star <= rating ? 'star-filled' : ''}`}
+                    className={`star ${star <= rating ? "star-filled" : ""}`}
                     onClick={() => handleStarClick(star)}
-                    style={{ userSelect: 'none' }} 
+                    style={{ userSelect: "none" }}
                   >
                     ★
                   </span>
@@ -144,78 +201,26 @@ export default function Detail() {
             <p>Tu valoración ha sido enviada!</p>
           </div>
         )}
-      </div>
-  
-      <div className="w-1/2 flex flex-col justify-between">
-        <div className="flex flex-col justify-center gap-4">
-          <h1 className="text-xl mb-6 text-sundown-500">{product.name}</h1>
-          <p>
-            <span className="text-sundown-500 font-bold">Ingredientes: </span>
-            {product.description}
-          </p>
-          <p>
-            <span className="text-sundown-500 font-bold">Categoría: </span>
-            {product.category}
-          </p>
-          <p className="text-sundown-500 font-bold text-xl ">
-            $ {product.price}
-          </p>
-        </div>
-        <div className="flex ">
-          {quantity > 0 ? (
-            <div className="h-8 flex justify-center items-center gap-1">
-              <p className="mr-2 text-sundown-500 font-bold text-xl ">
-                Cantidad:
-              </p>
-              <button
-                onClick={handleDelete}
-                className="w-6 h-6 bg-sundown-500 rounded-md text-white"
-              >
-                -
-              </button>
-              <input
-                type="text"
-                value={quantity}
-                className="border border-sundown-500 border-solid rounded-md w-8 h-6 text-center "
-              />
-              <button
-                onClick={() => addToCart(id)}
-                className="w-6 h-6 bg-sundown-500 rounded-md text-white"
-              >
-                +
-              </button>
-            </div>
-          ) : (
-            <div className=" w-20 h-8 flex justify-center mt-100" onClick={() => addToCart(id)}>
-              <button className="absolute btn-bg flex items-center justify-center mb-100">
-                {loading ? <Loader /> : "Agregar"}
-              </button>
-            </div>
-          )}
-        </div>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 justify-center items-center">
           {!ratingSent ? (
             <form onSubmit={handleSubmit}>
               <div className="star-rating">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <span
                     key={star}
-                    className={`star ${star <= rating ? 'star-filled' : ''}`}
+                    className={`star ${star <= rating ? "star-filled" : ""}`}
                     onClick={() => handleStarClick(star)}
-                  >
-                  </span>
+                  ></span>
                 ))}
               </div>
-
-              <div className="textarea-container">
-</div>
             </form>
           ) : (
-            <div className="alert">
-            </div>
+            <div className="alert"></div>
           )}
         </div>
       </div>
-    </div>
+
+      {/* --------------- VALORACIONES ------------------ */}
+    </section>
   );
 }
