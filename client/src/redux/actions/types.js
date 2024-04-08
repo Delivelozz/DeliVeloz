@@ -1,3 +1,17 @@
 export const SET_DISHES = `SET_DISHES`;
 export const SET_PROMOS = `SET_PROMOS`;
+export const GET_NAME = `GET_NAME`;
 export const SET_SHOPPING_CART = `SET_SHOPPING_CART`;
+export const ORDER_BY = `ORDER_BY`;
+export const SET_CATEGORIES = `SET_CATEGORIES`;
+export const SET_SUBCATEGORIES = `SET_SUBCATEGORIES`;
+export const GET_SUBCATEGORIES = `GET_SUBCATEGORIES`;
+export const SET_FILTERING = `FILTERING`;
+export const POST_USER = `POST_USER`;
+export const POST_DISHES = `POST_DISHES`;
+export const RESET = `RESET`;
+export const LOGIN_USER = `LOGIN_USER`;
+export const LOGOUT_USER = `LOGOUT_USER`;
+export const SET_USER_DATA = `SET_USER_DATA`;
+export const SET_ERRORS = `SET_ERRORS`;
+export const GET_USERS = `GET_USERS`;

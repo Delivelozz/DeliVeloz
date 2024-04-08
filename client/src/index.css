@@ -2,11 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ?--------------------------------- ScrollBar ---------------------------------- */
+
+/* Estilos para el scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #E74C4C;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D32F2F;
+}
+
+/* ?--------------------------------- General ------------------------------------ */
+
 body {
   /* font-size: .9rem; */
   font-family: "DM Sans", sans-serif;
   font-optical-sizing: auto;
   overflow-x: hidden;
+}
+
+section {
+  padding: 4rem 0;
 }
 
 * {
@@ -20,13 +48,22 @@ body {
   margin: 0 auto;
 }
 
-a:hover {
-  color: theme("colors.sundown.500");
+.container-left {
+  width: 75%;
+  margin: 0 auto;
+}
+
+a {
   transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
+}
+
+a:hover {
+  color: theme("colors.sundown.500");
+  
 }
 
 button {
@@ -37,31 +74,15 @@ button {
   -o-transition: all 0.3s ease;
 }
 
-h1 {
-  @apply text-xl font-semibold;
-}
-
-.btn-bg {
-  @apply bg-sundown-500 py-2 text-white rounded-md hover:bg-sundown-600 font-medium text-center min-w-24 px-4;
-}
-
-.btn-tr {
-  @apply border bg-white font-medium border-sundown-500 py-2 text-sundown-500 rounded-md min-w-24 px-4 hover:bg-sundown-500 hover:text-white text-center;
-}
-
 input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 1000px white inset !important;
-  -webkit-text-fill-color: black !important;
-}
-input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px white inset !important;
-  -webkit-text-fill-color: black !important;
 }
 
-input:-moz-autofill {
-  box-shadow: 0 0 0 1000px white inset !important;
-  -moz-text-fill-color: black !important;
+input, select {
+  background-color: #fff;
 }
+
+/* ?--------------------------------- Slider Header ------------------------------------ */
 
 .slick-slider {
   position: relative;
@@ -76,19 +97,34 @@ input:-moz-autofill {
   color: #fff;
   font-size: 20px;
 }
-input:-moz-autofill {
-  box-shadow: 0 0 0 1000px white inset !important;
-  -moz-text-fill-color: black !important;
-}
+
+/* ?--------------------------------- Slider Promos ------------------------------------ */
 
 .carrousel .slick-dots li button:before {
   color: #d32f2f;
   font-size: 20px;
 }
+
 .carrousel .slick-track {
   display: flex;
   gap: 2rem;
 }
+
+/* ?--------------------------------- Tailwind ------------------------------------ */
+
+h1 {
+  @apply text-xl font-semibold;
+}
+
+.btn-bg {
+  @apply bg-sundown-500 py-2 text-white rounded-md hover:bg-sundown-600 font-medium text-center min-w-24 px-4;
+}
+
+.btn-tr {
+  @apply border bg-white font-medium border-sundown-500 py-2 text-sundown-500 rounded-md min-w-24 px-4 hover:bg-sundown-500 hover:text-white text-center;
+}
+
+/* ?--------------------------------- Navegación ------------------------------------ */
 
 .active {
   @apply flex justify-center items-center rounded-full border border-sundown-500 bg-sundown-500 text-white w-8 h-8 hover:bg-white hover:border hover:text-sundown-500 hover:border-sundown-500;
@@ -100,4 +136,38 @@ input:-moz-autofill {
 
 .current {
   @apply flex justify-center items-center rounded-full border border-sundown-700 bg-sundown-700 text-white w-8 h-8;
+}
+
+/* ?--------------------------------- Validaciones ------------------------------------ */
+
+.error {
+  @apply bg-wild-watermelon-100 border border-wild-watermelon-400 text-wild-watermelon-400 text-sm px-2 py-1 rounded-sm;
+}
+
+/* ?--------------------------------- modal de perfil de usuario ---------------------- */
+
+.relative:hover .absolute {
+  opacity: 1;
+}
+
+/* ?--------------------------------- List ------------------------------------ */
+
+.sc-dmyCSP {
+  color: #fff;
+  font-weight: 600;
+  background: #E74C4C !important;
+}
+
+.sc-jsEeTM {
+  color: #222 !important;
+  font-weight: 500 !important;
+}
+
+/* ?--------------------------------- Modal añadir producto ------------------------------------ */
+
+.long-description {
+  overflow-wrap: break-word;
+  /* Para que el texto haga saltos de línea */
+  word-wrap: break-word;
+  /* Por si es necesario para compatibilidad */
 }
