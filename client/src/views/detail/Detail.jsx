@@ -66,7 +66,7 @@ export default function Detail() {
   };
 
   return (
-    <div className="container flex gap-10 lg:w-3/5 lg:mb-80">
+    <section className="container flex gap-10 lg:w-3/5 lg:mb-80">
       <div className="w-1/2">
         <img
           src={product.image.jpg}
@@ -76,8 +76,10 @@ export default function Detail() {
       </div>
       <div className="w-1/2 flex flex-col justify-between ">
         <div className="flex flex-col justify-center gap-4">
-          <h1 className="text-xl mb-6 text-sundown-500">{product.name}</h1>
-          <p>
+          <h1 className="text-xl mb-6 text-sundown-500 long-description">
+            {product.name}
+          </h1>
+          <p className="long-description">
             <span className="text-sundown-500 font-bold">Ingredientes: </span>
             {product.description}
           </p>
@@ -122,6 +124,6 @@ export default function Detail() {
           )}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

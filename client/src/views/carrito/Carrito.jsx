@@ -12,10 +12,10 @@ export default function Carrito() {
   useLocalStoreUserData();
 
   return (
-    <div className="container">
+    <section className="container">
       <h1 className="mb-6">Carrito de compras</h1>
       <ShoppingCartCards shoppingCart={shoppingCart} />
       <TotalAmount />
-    </div>
+    </section>
   );
 }
