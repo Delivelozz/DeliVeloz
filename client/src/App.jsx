@@ -2,8 +2,6 @@
 import About from "./views/about/About";
 import Home from "./views/home/Home";
 import Detail from "./views/detail/Detail";
-import Login from "./views/login/Login";
-import Register from "./views/register/Register";
 import Products from "./views/products/Products";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
@@ -11,6 +9,7 @@ import Blog from "./views/blog/Blog";
 import Carrito from "./views/carrito/Carrito";
 import FormLogin from "./components/formLogin/FormLogin";
 import FormRegister from "./components/formRegister/FormRegister";
+import DashboardAdmin from "./views/admin/DashboardAdmin";
 
 // ? -------------------- Hooks
 
@@ -82,24 +81,21 @@ function App() {
   return (
     <AuthProvider>
       <main className="bg-alabaster-50 min-h-screen overflow-x-hidden">
-        {pathname !== "/login" && pathname !== "/register" && (
-          <Header
-            openLoginModal={openLoginModal}
-            openRegisterModal={openRegisterModal}
-          />
-        )}
+        <Header
+          openLoginModal={openLoginModal}
+          openRegisterModal={openRegisterModal}
+        />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Home" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
           <Route path="/about" element={<About />} />
           <Route path="/detail/:id" element={<Detail />} />
           <Route path="/products" element={<Products />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/carrito" element={<Carrito />} />
+          <Route path="/admin" element={<DashboardAdmin />} />
         </Routes>
-        {pathname !== "/login" && pathname !== "/register" && <Footer />}
+        <Footer />
         {isLoginModalOpen && <FormLogin closeModal={closeLoginModal} />}
         {isRegisterModalOpen && (
           <FormRegister closeModal={closeRegisterModal} />

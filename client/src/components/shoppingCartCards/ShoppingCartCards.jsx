@@ -1,12 +1,11 @@
 import React from "react";
 import ShoppingCartCard from "../shoppingCartCard/ShoppingCartCard";
 
-
 const shoppingCartCards = (props) => {
   const { shoppingCart } = props;
- 
+
   return (
-    <section className="container">
+    <article className="container">
       <div className="flex flex-col gap-6">
         {shoppingCart?.map(({ id, name, price, image, qty, priceTotal }) => (
           <ShoppingCartCard
@@ -20,8 +19,7 @@ const shoppingCartCards = (props) => {
           />
         ))}
       </div>
-     
-    </section>
+    </article>
   );
 };
 
