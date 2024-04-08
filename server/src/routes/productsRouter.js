@@ -8,6 +8,7 @@ const createProductHandler = require('../handlers/products/createProductHandler'
 const editProductHandler = require('../handlers/products/editProductHandler');
 const desactProductHandler = require('../handlers/products/desactProductHandler');
 
+
 // use handlers
 // Obtener todos los Productos
 productsRouter.get("/", getProductsHandler);

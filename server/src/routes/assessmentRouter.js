@@ -7,8 +7,8 @@ const updateAssessmentHandler = require("../handlers/assessments/updateAssessmen
 const deleteAssessmentHandler = require("../handlers/assessments/deleteAssessmentHandler");
 const getAssessmentHandler= require ("../handlers/assessments/getAssessmentHandler")
 
-assessmentRouter.get("/", getAssessmentHandler)
-assessmentRouter.post("/", postAssessmentHandler);
+assessmentRouter.get("/:productId", getAssessmentHandler)
+assessmentRouter.post("/:productId", postAssessmentHandler);
 assessmentRouter.put("/:id", updateAssessmentHandler);
 assessmentRouter.delete("/:id", deleteAssessmentHandler);
 
