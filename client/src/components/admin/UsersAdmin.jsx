@@ -49,7 +49,7 @@ export default function UsersAdmin() {
   ];
 
   return (
-    <section className="container">
+    <section className="container-left">
       <div className="mb-6 flex justify-between items-center">
         <h1 className="">
           Tabla de <span className="text-sundown-500">Usuarios</span>

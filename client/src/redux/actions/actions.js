@@ -9,6 +9,7 @@ import {
   ORDER_BY,
   GET_NAME,
   POST_USER,
+  POST_DISHES,
   RESET,
   LOGIN_USER,
   LOGOUT_USER,
@@ -168,6 +169,25 @@ export function postUsers(payload) {
   };
 }
 
+// ? ----------------------------- Post Dishes
+
+export function postDishes(payload) {
+  return async function (dispatch) {
+    try {
+        const response = await axios.post(
+        "https://deliveloz-ryfh.onrender.com/products",
+        payload
+      );
+      dispatch({
+        type: POST_DISHES,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Error al postear el plato: ", error)
+    }
+  }
+}
+
 // ? ----------------------------- Login
 
 export function loginUser(payload) {
@@ -239,7 +259,6 @@ export function getUsers() {
     }
   };
 }
-
 
 // ? ----------------------------- Set Errors
 export function setErrors(errors) {

@@ -8,6 +8,7 @@ export const SET_SUBCATEGORIES = `SET_SUBCATEGORIES`;
 export const GET_SUBCATEGORIES = `GET_SUBCATEGORIES`;
 export const SET_FILTERING = `FILTERING`;
 export const POST_USER = `POST_USER`;
+export const POST_DISHES = `POST_DISHES`;
 export const RESET = `RESET`;
 export const LOGIN_USER = `LOGIN_USER`;
 export const LOGOUT_USER = `LOGOUT_USER`;

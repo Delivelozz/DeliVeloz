@@ -9,6 +9,7 @@ import {
   GET_NAME,
   ORDER_BY,
   POST_USER,
+  POST_DISHES,
   RESET,
   LOGIN_USER,
   LOGOUT_USER,
@@ -38,6 +39,7 @@ const initialState = {
     password: "",
   },
   loading: {},
+  dish: [], // Para publicar un plato nuevo
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -109,6 +111,12 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         users: [...state.users, payload],
+      };
+
+    case POST_DISHES:
+      return {
+        ...state,
+        dish: [...state.dish, payload],
       };
 
     // ? ----------------------------- Login
