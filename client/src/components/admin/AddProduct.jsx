@@ -33,9 +33,9 @@ export default function AddProduct() {
     price: "",
     category: "",
     subCategory: "",
-    image: "",
     availability: "",
     stockId: "",
+    images: "",
   });
 
   const changeUploadImageJpg = async (e) => {
@@ -110,9 +110,10 @@ export default function AddProduct() {
         availability: "",
         stockId: "",
       });
-      alert("¡El usuario fue creado exitosamente!");
+      alert("¡El producto fue creado exitosamente!");
     }
   };
+
   console.log(dish);
 
   return (
@@ -227,7 +228,6 @@ export default function AddProduct() {
                   accept="image/*"
                   onChange={changeUploadImageJpg}
                 />
-                {errors.image && <p className="error">{errors.image}</p>}
               </div>
             </div>
 
@@ -254,7 +254,6 @@ export default function AddProduct() {
                   accept="image/*"
                   onChange={changeUploadImagePng}
                 />
-                {errors.image && <p className="error">{errors.image}</p>}
               </div>
             </div>
 
@@ -268,6 +267,8 @@ export default function AddProduct() {
             )}
           </div>
         </div>
+
+        {errors.images && <p className="error">{errors.images}</p>}
 
         <div className="flex flex-col">
           <label className="font-semibold text-sm text-sundown-500 mb-1">

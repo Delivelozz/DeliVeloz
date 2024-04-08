@@ -164,3 +164,10 @@ h1 {
 }
 
 /* ?--------------------------------- Modal añadir producto ------------------------------------ */
+
+.long-description {
+  overflow-wrap: break-word;
+  /* Para que el texto haga saltos de línea */
+  word-wrap: break-word;
+  /* Por si es necesario para compatibilidad */
+}

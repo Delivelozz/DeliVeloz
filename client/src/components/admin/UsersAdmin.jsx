@@ -55,11 +55,11 @@ export default function UsersAdmin() {
           Tabla de <span className="text-sundown-500">Usuarios</span>
         </h1>
 
-        <input
+        {/* <input
           type="text"
           placeholder="Buscar..."
           className="w-48 bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
-        />
+        /> */}
       </div>
       <DataTable
         columns={columns}

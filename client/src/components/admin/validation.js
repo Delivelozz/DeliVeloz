@@ -1,4 +1,4 @@
-export default function validation({ name, description, price, category, subCategory, stockId, image }) {
+export default function validation({ name, description, price, category, subCategory, stockId }) {
   const errors = {};
 
   // ? -------------------------------------- name
@@ -34,9 +34,7 @@ export default function validation({ name, description, price, category, subCate
 
   // ? ---------------------------------------- images
 
-  if (!image) {
-  errors.image = "Debes cargar ambas imágenes (jpg y png).";
-  }
+  
 
   // ? --------------------------------------- stockId
   
