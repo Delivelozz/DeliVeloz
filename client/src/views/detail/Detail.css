@@ -1,0 +1,55 @@
+.star-rating {
+    display: inline-block;
+    font-size: 24px; /* Tamaño de las estrellas */
+    margin-left: 12px;
+  }
+  
+  .star {
+    cursor: pointer;
+    color: grey; /* Estrellas transparentes por defecto */
+  }
+  
+  .star-filled {
+    color: gold; /* Estrellas doradas */
+  }
+
+  .textarea-container {
+    width: 100%;
+    margin-top: 30px;
+
+  }
+  
+  .textarea-container textarea {
+    width: 100%;
+    padding: 10px;
+  }
+  
+/* Estilos para el bloque del botón de agregar */
+
+.flex-container {
+  justify-content: space-between; /* Ajusta el espacio entre los elementos */
+  align-items: center; /* Centra verticalmente los elementos */
+}
+
+
+.btn-bg btn-sm{
+margin-right: 100px;}
+/* Ajusta la posición del botón de enviar valoración */
+.form-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.textarea-container {
+  width: 100%;
+  margin-top: 20px; /* Ajusta el margen superior según sea necesario */
+}
+
+.textarea-container textarea {
+  width: 100%;
+  padding: 10px;
+  resize: none;
+}
+.gray-border {
+  border: 1px solid #f0f0f0; /* Cambia el color del borde según lo necesites */
+}
