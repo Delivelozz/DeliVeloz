@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
         primaryKey: true,
       },
       rating: {
-        type: DataTypes.ENUM("1", "2", "3", "4", "5"),
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
       comment: {
@@ -20,9 +20,15 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       productId: {
-        type: DataTypes.INTEGER, 
+        type: DataTypes.INTEGER,
         allowNull: true,
-    }},
-  
-    { timestamps: false });
+      },
+      userId: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+      },
+    },
+
+    { timestamps: false }
+  );
 };
