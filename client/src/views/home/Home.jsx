@@ -5,6 +5,7 @@ import { getDishes } from "../../data/index.js";
 import Promos from "../../components/promos/Promos.jsx";
 import SliderHome from "../../components/sliderHome/Slider";
 import { useLocalStoreUserData } from "../../hooks/useLocalStoreUserData.js";
+import { useLocalStoreUserDataGoogle } from "../../hooks/useLocalStoreUserDataGoogle.js";
 
 export default function Home() {
   const promos = useSelector((state) => state.promos);
@@ -25,6 +26,7 @@ export default function Home() {
   }, [dispatch]);
 
   useLocalStoreUserData();
+  useLocalStoreUserDataGoogle();
 
   return (
     <section>
