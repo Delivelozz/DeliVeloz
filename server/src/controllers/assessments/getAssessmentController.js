@@ -1,25 +1,19 @@
-// const { Assessment } = require("../../db");
-
-// const getAssessmentController = async (productId) => {
-//     const assessmentDB= await Assessment.findAll({
-//       where: {
-//         productId:productId,
-//       }
-//     })
-    
-//     if (assessmentDB.length===0) {
-//       return {};
-//     }
-//     return assessmentDB;
-  
-// };
-
-// module.exports = getAssessmentController;
-
-
-const { Assessment, User } = require("../../db");
+const { Assessment, User} = require("../../db");
+const { Sequelize } = require("sequelize");
 
 const getAssessmentController = async (productId) => {
+
+    const averageRating = await Assessment.findOne({
+        where: {
+            productId: productId,
+        },
+        attributes: [
+            [Sequelize.fn('AVG', Sequelize.col('rating')), 'averageRating']
+        ],
+        raw: true
+    });
+
+
     const assessmentDB = await Assessment.findAll({
         where: {
             productId: productId,
@@ -37,15 +31,19 @@ const getAssessmentController = async (productId) => {
                 id: assessment.userId,
             }
         });
-
+        
         // Agrega el nombre del usuario al objeto de comentario
         return {
             ...assessment.dataValues,
             userName: user ? user.name : 'Usuario desconocido',
         };
     }));
-
-    return assessmentsWithUserNames;
+    
+    const allAssesment = {
+        averageRating: averageRating ? parseFloat(averageRating.averageRating) : 0,
+        assessmentsWithUserNames
+    }
+    return allAssesment;
 };
 
 module.exports = getAssessmentController;
