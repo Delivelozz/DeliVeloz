@@ -1,3 +1,4 @@
+require('dotenv').config();
 const jwt = require('jsonwebtoken'); 
 const loginUserController = require("../../controllers/users/loginUserController");
 
@@ -9,9 +10,8 @@ const loginUsersHandler = async (req, res) => {
       {
         email: user.email,
       },
-      "clave_secreta_de_prueba"
-      // process.env.JWT_SECRET,//Crear en el .env
-      // { expiresIn: "1h" } //Por si se necesita un tiempo de expiración
+      process.env.JWT_SECRET,
+      { expiresIn: "1h" } //Por si se necesita un tiempo de expiración
     );
     res.status(200).json({ message: "Inicio de sesión exitoso", user, token });
   } catch (error) {
