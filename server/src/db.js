@@ -2,15 +2,27 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-const { DB_URL } = process.env;
+const { DB, DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT, DB_URL } = process.env;
 
 
 //° CONEXION A LA BASE DE DATOS
-const sequelize = new Sequelize(DB_URL, {
-  logging: false, // set to console.log to see the raw SQL queries
-  native: false,
-  dialectOptions: { ssl: {require:true} }, // lets Sequelize know we can use pg-native for ~30% more speed
-});
+let sequelize = undefined
+
+if (process.env.NODE_ENV === 'production') {
+  sequelize = new Sequelize(DB_URL, {
+    logging: false, // set to console.log to see the raw SQL queries
+    native: false,
+    dialectOptions: { ssl: {require:true} }, // lets Sequelize know we can use pg-native for ~30% more speed
+  });
+} else {
+  sequelize = new Sequelize(`${DB}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`, {
+    logging: false, // set to console.log to see the raw SQL queries
+    native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+  });
+}
+
+
+
 
 
 
