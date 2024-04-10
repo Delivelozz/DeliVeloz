@@ -26,7 +26,7 @@ export default function Header({ openLoginModal, openRegisterModal }) {
   };
 
   return (
-    <div className="w-full shadow-xl mb-16 sticky top-0 z-40 bg-white">
+    <div className="w-full shadow-lg sticky top-0 z-40 bg-white">
       <div className="container flex py-4 items-center justify-between">
         <div>
           <Link to={"/home"}>
@@ -98,9 +98,17 @@ export default function Header({ openLoginModal, openRegisterModal }) {
                   className="object-cover rounded-full w-10 h-10 min-w-10 min-h-10 -ml-4 cursor-pointer"
                 />
                 <div className="absolute top-full -left-16 bg-sundown-500 text-white opacity-0 transition-opacity duration-300 text-sm w-40 flex flex-col">
-                  <div className="border-b border-wild-watermelon-300">
+                  {/* <div className="border-b border-wild-watermelon-300">
                     <Link to={"/about"} className="hover:text-white">
                       <p className=" hover:bg-sundown-600 p-2">Ver Perfil</p>
+                    </Link>
+                  </div> */}
+
+                  <div className="border-b border-wild-watermelon-300">
+                    <Link to={"/admin"} className="hover:text-white">
+                      <p className=" hover:bg-sundown-600 p-2">
+                        Ir al dashboard
+                      </p>
                     </Link>
                   </div>
 

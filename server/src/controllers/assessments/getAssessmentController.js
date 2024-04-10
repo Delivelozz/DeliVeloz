@@ -1,9 +1,17 @@
 const { Assessment } = require("../../db");
 
-const getAssessmentController = async () => {
-  //Obtiene todas las valoraciones de la base de datos 
-  const allAssessmentDB = await Assessment.findAll();
-  return allAssessmentDB;
+const getAssessmentController = async (productId) => {
+    const assessmentDB= await Assessment.findAll({
+      where: {
+        productId:productId,
+      }
+    })
+    
+    if (assessmentDB.length===0) {
+      return {};
+    }
+    return assessmentDB;
+  
 };
 
 module.exports = getAssessmentController;
