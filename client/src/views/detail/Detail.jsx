@@ -8,6 +8,7 @@ import { useLocalStoreUserData } from "../../hooks/useLocalStoreUserData";
 import { useShoppingCartDelete } from "../../hooks/useShoppingCartDelete";
 import "./Detail.css";
 import { useLocalStoreUserDataGoogle } from "../../hooks/useLocalStoreUserDataGoogle.js";
+import { API_URL } from "../../utils/constants";
 
 export default function Detail() {
   const { id } = useParams();
@@ -33,7 +34,7 @@ export default function Detail() {
   };
 
   useEffect(() => {
-    fetch(`https://deliveloz-ryfh.onrender.com/products/${id}`)
+    fetch(`${API_URL}/products/${id}`)
       .then((response) => response.json())
       .then((data) => setProduct(data));
   }, [id]);
@@ -49,7 +50,7 @@ export default function Detail() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`https://deliveloz-ryfh.onrender.com/assessment/${id}`, {
+      await axios.post(`${API_URL}/assessment/${id}`, {
         rating,
         comment,
       });
@@ -63,7 +64,7 @@ export default function Detail() {
 
   const handleUpdateRating = async () => {
     try {
-      await axios.put(`https://deliveloz-ryfh.onrender.com/assessment/${id}`, {
+      await axios.put(`${API_URL}/assessment/${id}`, {
         rating,
         comment,
       });
