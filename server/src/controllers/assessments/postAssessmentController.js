@@ -1,10 +1,17 @@
-const {Assessment} = require('../../db')
+const {Assessment, User} = require('../../db')
 
 const postAssessmentController = async (req, res) => {
     
     try { 
         const {productId} = req.params
-        const {rating, comment}= req.body;
+        const {rating, comment, email}= req.body;
+
+        const userCheck= await User.findOne({
+            where: {email: email}
+        })
+        if (!userCheck){
+            throw new Error ("Usuario no encontrado")
+        }
 
         if(!rating || !comment ){
             throw new Error("Es necesario proporcionar la puntuación y un comentario")
@@ -17,6 +24,7 @@ const postAssessmentController = async (req, res) => {
           rating: rating,
           comment: comment,
           productId: productId,
+          userId: userCheck.id,
         });
 
         res.status(201).json({message: "Tu valoracion fue recibida, ¡Gracias por tu tiempo!", newAssessment})

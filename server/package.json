@@ -6,7 +6,8 @@
   "scripts": {
     "server": "nodemon -L",
     "api": "echo 'Local API listening on PORT 5000' & json-server --watch api/api.json -p 5000",
-    "start": "concurrently \"npm run server\" \"npm run api\"",
+    "start": "NODE_ENV=production concurrently \"npm run server\" \"npm run api\"",
+    "local": "concurrently \"npm run server\" \"npm run api\"",
     "test": "mocha -w ./tests/**/*.spec.js"
   },
   "author": "Henry",
@@ -30,7 +31,7 @@
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "mysql2": "^3.9.2",
-    "pg": "^8.5.1",
+    "pg": "^8.11.5",
     "postgres": "^3.4.4",
     "sequelize": "^6.3.5"
   },
