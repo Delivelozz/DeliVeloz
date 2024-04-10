@@ -9,11 +9,13 @@ import {
   ORDER_BY,
   GET_NAME,
   POST_USER,
+  POST_DISHES,
   RESET,
   LOGIN_USER,
   LOGOUT_USER,
   SET_USER_DATA,
   SET_ERRORS,
+  GET_USERS,
 } from "./types";
 import axios from "axios";
 
@@ -167,6 +169,25 @@ export function postUsers(payload) {
   };
 }
 
+// ? ----------------------------- Post Dishes
+
+export function postDishes(payload) {
+  return async function (dispatch) {
+    try {
+        const response = await axios.post(
+        "https://deliveloz-ryfh.onrender.com/products",
+        payload
+      );
+      dispatch({
+        type: POST_DISHES,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Error al postear el plato: ", error)
+    }
+  }
+}
+
 // ? ----------------------------- Login
 
 export function loginUser(payload) {
@@ -217,6 +238,25 @@ export function setUserData(userData) {
   return {
     type: "SET_USER_DATA",
     payload: userData,
+  };
+}
+
+// ? ----------------------------- Get Users
+
+export function getUsers() {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(
+        "https://deliveloz-ryfh.onrender.com/users"
+      );
+      const data = await response.json();
+      dispatch({
+        type: GET_USERS,
+        payload: data,
+      });
+    } catch (error) {
+      console.error("Error fetching users: ", error);
+    }
   };
 }
 

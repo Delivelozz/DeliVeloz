@@ -14,7 +14,7 @@ export default function SliderHome() {
   };
 
   return (
-    <div className="-mt-16 mb-16 slider">
+    <div className=" mb-16 slider -mt-16">
       <Slider {...settings}>
         <div className="relative">
           <img
