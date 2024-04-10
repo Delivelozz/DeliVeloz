@@ -1,11 +1,17 @@
+// ? ------------------------------------------ Icons
+
 import Cart from "../icons/Cart";
 import HomeIcon from "../icons/HomeIcon";
+import ProductIcon from "../icons/ProductIcon";
+
+// ? ------------------------------------------ Hooks
+
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser, setUserData } from "../../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
 import { useShoppingCartCounterItem } from "../../hooks/useShoppingCartCounterItem";
-import ProductIcon from "../icons/ProductIcon";
+import { Tooltip } from "react-tooltip";
 
 export default function Header({ openLoginModal, openRegisterModal }) {
   const navigate = useNavigate();
@@ -14,9 +20,9 @@ export default function Header({ openLoginModal, openRegisterModal }) {
   const user = useSelector((state) => state.user.user);
   const userData = useSelector((state) => state.userData);
 
-  /* console.log("Este es el LocalStore", userData);
+  console.log("Este es el LocalStore", userData);
   console.log("Estas logeado?", login);
-  console.log("Este es el usuario?", user); */
+  console.log("Este es el usuario?", user);
   const shoppingCartCounterItem = useShoppingCartCounterItem();
 
   const onClick = () => {
@@ -42,17 +48,6 @@ export default function Header({ openLoginModal, openRegisterModal }) {
             </button>
           </Link>
 
-          {login && (
-            <Link to={"/carrito"} className="relative">
-              <div className="bg-sundown-500 rounded-full p-2 hover:bg-sundown-600">
-                <Cart width={22} heigth={22} color={"#fff"} />
-              </div>
-              <p className="cursor-pointer absolute top-0 right-0 flex justify-center items-center bg-sundown-500 w-6 h-6 rounded-full text-white font-semibold -mr-3 -mt-3 border border-white border-solid text-xs">
-                {shoppingCartCounterItem}
-              </p>
-            </Link>
-          )}
-
           <Link to={"/products"} className="flex gap-2">
             <p>Productos</p>
           </Link>
@@ -76,50 +71,55 @@ export default function Header({ openLoginModal, openRegisterModal }) {
 
           {login && (
             <div className=" flex gap-6 items-center ml-3">
-              {/* <Link to={"/carrito"} className="relative">
-                <div className="bg-sundown-500 rounded-full p-2 hover:bg-sundown-600">
-                  <Cart width={22} heigth={22} color={"#fff"} />
+              <Link to={"/carrito"} className="relative">
+                <div className=" p-2">
+                  <Cart width={28} heigth={28} color={"#555"} />
                 </div>
-                <p className="cursor-pointer absolute top-0 right-0 flex justify-center items-center bg-sundown-500 w-6 h-6 rounded-full text-white font-semibold -mr-3 -mt-3 border border-white border-solid text-xs">
+                <p className="cursor-pointer absolute top-0 right-0 flex justify-center items-center bg-sundown-500 w-6 h-6 rounded-full text-white font-semibold -mr-2 -mt-2 border border-white border-solid text-xs">
                   {shoppingCartCounterItem}
                 </p>
-              </Link> */}
+              </Link>
 
-              <p className="text-sm text-sundown-500">
-                {user.name}
-                <span> </span>
-                {user.lastName}
-              </p>
+              <div className="relative" data-tooltip-id="my-tooltip">
+                <div id="clickable">
+                  <img
+                    src="https://res.cloudinary.com/derot8znd/image/upload/v1712286915/Otros/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju_g2ngxd.webp"
+                    alt=""
+                    className="object-cover rounded-full w-10 h-10 min-w-10 min-h-10 cursor-pointer"
+                  />
 
-              <div className="relative">
-                <img
-                  src="https://res.cloudinary.com/derot8znd/image/upload/v1712286915/Otros/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju_g2ngxd.webp"
-                  alt=""
-                  className="object-cover rounded-full w-10 h-10 min-w-10 min-h-10 -ml-4 cursor-pointer"
-                />
-                <div className="absolute top-full -left-16 bg-sundown-500 text-white opacity-0 transition-opacity duration-300 text-sm w-40 flex flex-col">
-                  {/* <div className="border-b border-wild-watermelon-300">
-                    <Link to={"/about"} className="hover:text-white">
-                      <p className=" hover:bg-sundown-600 p-2">Ver Perfil</p>
-                    </Link>
-                  </div> */}
-
-                  <div className="border-b border-wild-watermelon-300">
-                    <Link to={"/admin"} className="hover:text-white">
-                      <p className=" hover:bg-sundown-600 p-2">
-                        Ir al dashboard
+                  <Tooltip
+                    id="my-tooltip"
+                    anchorSelect="#clickable"
+                    clickable
+                    className="select-none min-w-64"
+                    style={{
+                      backgroundColor: "#E74C4C",
+                      color: "white",
+                    }}
+                  >
+                    <div className="mb-6 text-center">
+                      <p className="text-sm font-semilbold">
+                        ¡Hola!<span> </span>
+                        {user.name}
+                        <span> </span>
+                        {user.lastName}
                       </p>
-                    </Link>
-                  </div>
-
-                  <div>
-                    <p
-                      onClick={onClick}
-                      className="cursor-pointer hover:bg-sundown-600 p-2"
-                    >
-                      Cerrar Sesión
-                    </p>
-                  </div>
+                    </div>
+                    <div className="text-center flex flex-col gap-2">
+                      <Link to={"/admin"} className="hover:text-white">
+                        <p className="hover:text-slate-200 transition">
+                          Ir al dashboard
+                        </p>
+                      </Link>
+                      <p
+                        onClick={onClick}
+                        className="cursor-pointer hover:text-slate-200 transition"
+                      >
+                        Cerrar Sesión
+                      </p>
+                    </div>
+                  </Tooltip>
                 </div>
               </div>
             </div>

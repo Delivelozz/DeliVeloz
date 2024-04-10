@@ -10,6 +10,7 @@ import Carrito from "./views/carrito/Carrito";
 import FormLogin from "./components/formLogin/FormLogin";
 import FormRegister from "./components/formRegister/FormRegister";
 import DashboardAdmin from "./views/admin/DashboardAdmin";
+import EditProduct from "./components/admin/EditProduct";
 
 // ? -------------------- Hooks
 
@@ -94,6 +95,7 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/admin" element={<DashboardAdmin />} />
+          <Route path="/editProduct/:id" element={<EditProduct />} />
         </Routes>
         <Footer />
         {isLoginModalOpen && <FormLogin closeModal={closeLoginModal} />}

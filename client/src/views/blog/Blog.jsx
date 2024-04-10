@@ -5,7 +5,7 @@ function Blog() {
   useLocalStoreUserData();
 
   return (
-    <div className="container lg:mb-56">
+    <section className="container">
       <div className="relative h-64">
         <img
           className="absolute top-0 w-full h-full object-cover py-5"
@@ -28,7 +28,7 @@ function Blog() {
           nisi incididunt mollit.
         </p>
       </div>
-    </div>
+    </section>
   );
 }
 
