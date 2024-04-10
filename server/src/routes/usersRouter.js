@@ -3,7 +3,7 @@ const usersRouter = Router();
 
 // import hadlers
 const getUsersHandler = require("../handlers/users/getUsersHandler");
-const getUserByIDHandler = require("../handlers/users/getUserByIDHandler");
+const getUserHandler = require("../handlers/users/getUserHandler");
 const createUserHandler = require("../handlers/users/createUserHandler");
 const editUserHandler = require("../handlers/users/editUserHandler");
 const desactUserHandler = require("../handlers/users/desactUserHandler");
@@ -13,8 +13,8 @@ const closeUsersHandler = require("../handlers/users/closeUsersHandler");
 // use handlers
 // Obtener todos los Usuarios
 usersRouter.get("/", getUsersHandler);
-// Obtener Usuario Por ID
-usersRouter.get("/:id", getUserByIDHandler);
+// Obtener Usuario
+usersRouter.get("/user", getUserHandler);
 // Crear Usuario
 usersRouter.post("/", createUserHandler);
 // Editar Usuario
