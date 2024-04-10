@@ -1,8 +1,10 @@
 import blog from "../../../img/imgBlog.jpg";
 import { useLocalStoreUserData } from "../../hooks/useLocalStoreUserData.js";
+import { useLocalStoreUserDataGoogle } from "../../hooks/useLocalStoreUserDataGoogle.js";
 
 function Blog() {
   useLocalStoreUserData();
+  useLocalStoreUserDataGoogle();
 
   return (
     <section className="container">
