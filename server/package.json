@@ -5,9 +5,8 @@
   "main": "index.js",
   "scripts": {
     "server": "nodemon -L",
-    "api": "echo 'Local API listening on PORT 5000' & json-server --watch api/api.json -p 5000",
-    "start": "NODE_ENV=production concurrently \"npm run server\" \"npm run api\"",
-    "local": "concurrently \"npm run server\" \"npm run api\"",
+    "start": "NODE_ENV=production npm run server",
+    "local": "npm run server",
     "test": "mocha -w ./tests/**/*.spec.js"
   },
   "author": "Henry",
@@ -25,7 +24,6 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "json-server": "^1.0.0-alpha.23",
     "jsonwebtoken": "^9.0.2",
     "mercadopago": "^2.0.8",
     "morgan": "^1.10.0",
