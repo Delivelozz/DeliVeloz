@@ -11,5 +11,4 @@ cartRouter.post("/addproduct/:userId/:productId/:quantity", addProductCartHandle
 // Remove product
 cartRouter.delete("/removeproduct/:userId/:productId", removeProductCartHandler);
 
-
 module.exports = cartRouter;
