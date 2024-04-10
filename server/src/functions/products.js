@@ -3,7 +3,7 @@ const axios = require("axios");
 const { Product, SubCategoryProduct, CategoryProduct } = require("../db.js");
 
 const fetchProducts = async () => {
- const endPointProducts = "http://127.0.0.1:5000/products";
+ const endPointProducts = "https://delivelozapi.onrender.com/products";
  const { data: productsData } = await axios.get(endPointProducts);
  // Iteramos sobre cada producto y sus subcategorías
   // Iteamos primero sobre los productos
