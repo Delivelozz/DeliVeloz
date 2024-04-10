@@ -5,6 +5,7 @@ import Cards from "../../components/cards/Cards.jsx";
 import Filters from "../../components/filters/Filters.jsx";
 import Pagination from "../../components/pagination/Pagination.jsx";
 import { useLocalStoreUserData } from "../../hooks/useLocalStoreUserData.js";
+import { useLocalStoreUserDataGoogle } from "../../hooks/useLocalStoreUserDataGoogle.js";
 
 export default function Products() {
   const dishes = useSelector((state) => state.dishes);
@@ -17,6 +18,7 @@ export default function Products() {
   }, [dispatch]);
 
   useLocalStoreUserData();
+  useLocalStoreUserDataGoogle();
 
   // ? -------------------------------- Paginate
 

@@ -11,9 +11,11 @@ import imgAxl from "../../assents/Axl.png";
 import imgGaston from "../../assents/Gaston.png";
 import imgTobias from "../../assents/Tobias.jpg";
 import { useLocalStoreUserData } from "../../hooks/useLocalStoreUserData.js";
+import { useLocalStoreUserDataGoogle } from "../../hooks/useLocalStoreUserDataGoogle.js";
 
 function About() {
   useLocalStoreUserData();
+  useLocalStoreUserDataGoogle();
 
   return (
     <section className="container">

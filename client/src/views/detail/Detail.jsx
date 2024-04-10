@@ -7,6 +7,7 @@ import Loader from "../../components/loader/Loader";
 import { useLocalStoreUserData } from "../../hooks/useLocalStoreUserData";
 import { useShoppingCartDelete } from "../../hooks/useShoppingCartDelete";
 import "./Detail.css";
+import { useLocalStoreUserDataGoogle } from "../../hooks/useLocalStoreUserDataGoogle.js";
 
 export default function Detail() {
   const { id } = useParams();
@@ -15,6 +16,9 @@ export default function Detail() {
   const shoppingCart = useSelector((state) => state.shoppingCart);
   const [loading, setLoading] = useState(false);
   const [quantity, setQuantity] = useState(0);
+
+  useLocalStoreUserData();
+  useLocalStoreUserDataGoogle();
 
   useEffect(() => {
     dispatch(setShoppingCart(shoppingCart));
@@ -27,8 +31,6 @@ export default function Detail() {
   const handleDelete = () => {
     deleteFromCart(id, product.price);
   };
-
-  useLocalStoreUserData();
 
   useEffect(() => {
     fetch(`https://deliveloz-ryfh.onrender.com/products/${id}`)
