@@ -1,0 +1,271 @@
+[33mcommit 573027b9e3cc88b437a08d3f841889e5e97440e5[m[33m ([m[1;36mHEAD -> [m[1;32mfront[m[33m)[m
+Author: Tobias <tinsaurralde17@gmail.com>
+Date:   Thu Mar 21 19:10:40 2024 -0300
+
+    FoodDetail
+
+[33mcommit 776c27bfdffb388f5f7849f95642e479d6332e4f[m
+Merge: fafdf22 74dae33
+Author: Tobias <tinsaurralde17@gmail.com>
+Date:   Thu Mar 21 19:04:31 2024 -0300
+
+    Merge branch 'front' of https://github.com/FedeCodeLab/DeliVeloz into front
+
+[33mcommit 74dae3325c78a5496444c1e76706e7a96aa82957[m[33m ([m[1;31morigin/front[m[33m)[m
+Merge: b0767bf 5054723
+Author: Federico Guzmán <123835885+FedeCodeLab@users.noreply.github.com>
+Date:   Thu Mar 21 18:45:50 2024 -0300
+
+    Merge pull request #34 from FedeCodeLab/back
+    
+    Back
+
+[33mcommit 505472323ea47e74f466106fbd3c3a4417f88f74[m
+Merge: 08d7827 19dc933
+Author: Federico Guzmán <123835885+FedeCodeLab@users.noreply.github.com>
+Date:   Thu Mar 21 18:41:43 2024 -0300
+
+    Merge pull request #31 from FedeCodeLab/filters
+    
+    Filters
+
+[33mcommit 19dc9334963cbf9502b065c91c1b500a4c2cc81e[m
+Author: gastondandrea <gastondandrea@hotmail.com>
+Date:   Thu Mar 21 18:38:13 2024 -0300
+
+    Actualizando api
+
+[33mcommit b0767bf540b97791146e76b8da8cca6ffb047d57[m
+Merge: 9a02109 857a9d7
+Author: Federico Guzmán <123835885+FedeCodeLab@users.noreply.github.com>
+Date:   Thu Mar 21 18:37:24 2024 -0300
+
+    Merge pull request #30 from FedeCodeLab/pagination
+    
+    Pagination
+
+[33mcommit 857a9d727469857ce30dee51c0d661504922eefc[m
+Author: fedecodelab <federicoguzman.css@gmail.com>
+Date:   Thu Mar 21 18:33:49 2024 -0300
+
+    paginación terminada
+
+[33mcommit 67be74e153924dbc98ca9de4c1b4b7b8e10c5a0a[m
+Author: gastondandrea <gastondandrea@hotmail.com>
+Date:   Thu Mar 21 18:30:11 2024 -0300
+
+    Filters terminados
+
+[33mcommit fafdf22863870e58ad86994bfd129d223fef1c74[m
+Merge: c9a4bdd 08d7827
+Author: Tobias <tinsaurralde17@gmail.com>
+Date:   Thu Mar 21 17:04:36 2024 -0300
+
+    Merge branch 'back' of https://github.com/FedeCodeLab/DeliVeloz into front
+
+[33mcommit 784c4b1bab0afacdfbc91d44cf1720e00d2662f3[m
+Merge: 1208b95 9a02109
+Author: fedecodelab <federicoguzman.css@gmail.com>
+Date:   Thu Mar 21 16:39:05 2024 -0300
+
+    merge 'develop' changes into 'front' branch
+
+[33mcommit 08d7827c219886cb18373bd8c829c4eb22c00b60[m[33m ([m[1;31morigin/back[m[33m)[m
+Author: Laxwip <pachecogam135583@gmail.com>
+Date:   Thu Mar 21 14:30:07 2024 -0500
+
+    prueba
+
+[33mcommit 9a0210972463f3d045b7e3c0d4145b3cc65276ef[m
+Merge: d790eae 4e4c485
+Author: fedecodelab <federicoguzman.css@gmail.com>
+Date:   Thu Mar 21 16:25:55 2024 -0300
+
+    Merge 'develop' changes into 'front' branch
+
+[33mcommit d790eae051cd27cdd2343cc4476581f3f0f2e943[m
+Merge: c9a4bdd ade5812
+Author: Federico Guzmán <123835885+FedeCodeLab@users.noreply.github.com>
+Date:   Thu Mar 21 16:24:34 2024 -0300
+
+    Merge pull request #28 from FedeCodeLab/cards
+    
+    Cards
+
+[33mcommit 4e4c48561a8cb8fb58f412f729c8d4ac7ac0c42b[m
+Merge: 90055ed f7ef1f9
+Author: Federico Guzmán <123835885+FedeCodeLab@users.noreply.github.com>
+Date:   Thu Mar 21 16:13:34 2024 -0300
+
+    Merge pull request #27 from FedeCodeLab/backfront
+    
+    Backfront
+
+[33mcommit c9a4bdd1ef4191a1be974c866ca883a579b9d96f[m
+Merge: 9263d5f 092da9e
+Author: Federico Guzmán <123835885+FedeCodeLab@users.noreply.github.com>
+Date:   Thu Mar 21 16:13:25 2024 -0300
+
+    Merge pull request #26 from FedeCodeLab/blog
+    
+    Blog
+
+[33mcommit f7ef1f9d317a70120daea44cc54ec7549c95facb[m
+Author: fedecodelab <federicoguzman.css@gmail.com>
+Date:   Thu Mar 21 16:07:41 2024 -0300
+
+    back y front juntos
+
+[33mcommit 1da2980a4eed0be284dae8fbaf05ececbf8d5484[m
+Author: Federico Guzmán <123835885+FedeCodeLab@users.noreply.github.com>
+Date:   Thu Mar 21 16:02:30 2024 -0300
+
+    Delete server directory
+
+[33mcommit 092da9ea93b68d221466c0591436917eeca289e6[m
+Merge: 42cc4a5 9263d5f
+Author: Maryxale <romerobencomo@gmail.com>
+Date:   Thu Mar 21 15:18:43 2024 -0300
+
+    Merge remote-tracking branch 'origin/front' into blog
+
+[33mcommit 42cc4a5d7a80479e6ea4af6b4ce655af3395a7b3[m
+Author: Maryxale <romerobencomo@gmail.com>
+Date:   Thu Mar 21 14:35:31 2024 -0300
+
+    blog con lorem
+
+[33mcommit 1208b95a2e6de206a26458aca718e79887f4b1bf[m
+Author: fedecodelab <federicoguzman.css@gmail.com>
+Date:   Thu Mar 21 14:17:11 2024 -0300
+
+    Creación del componente paginación
+
+[33mcommit 9263d5f2fb45dd3a566ee38882a84cff6b96d448[m
+Merge: f89e230 048619b
+Author: Federico Guzmán <123835885+FedeCodeLab@users.noreply.github.com>
+Date:   Thu Mar 21 12:16:42 2024 -0300
+
+    Merge pull request #21 from FedeCodeLab/filters
+    
+    Filters
+
+[33mcommit 048619b7b4fd18bdc70795e55c546fb25ddea334[m
+Author: fedecodelab <federicoguzman.css@gmail.com>
+Date:   Wed Mar 20 23:07:34 2024 -0300
+
+    Maquetación de filtros terminados
+
+[33mcommit 90055edaa7f68b340779a15b0596c6606ff74cb7[m
+Merge: e5e8212 f89e230
+Author: Federico Guzmán <123835885+FedeCodeLab@users.noreply.github.com>
+Date:   Wed Mar 20 19:57:47 2024 -0300
+
+    Merge pull request #20 from FedeCodeLab/front
+    
+    De front a Develop
+
+[33mcommit ade581283c1194f50d7234d8a9eb30cf1001fa8c[m
+Merge: 82c3ecb c9a4bdd
+Author: SoniaMEGS <megs.sonia@gmail.com>
+Date:   Wed Mar 20 15:43:21 2024 -0700
+
+    Resolucion de conflictos con rama front
+
+[33mcommit ba826cd38b3479efde395c056516bd562c75957b[m[33m ([m[1;31morigin/blog[m[33m)[m
+Author: Maryxale <romerobencomo@gmail.com>
+Date:   Wed Mar 20 19:40:58 2024 -0300
+
+    blog
+
+[33mcommit f89e230fb25d8537764a041e836b2a25254d7d27[m
+Merge: 93d2b08 f7a4192
+Author: Federico Guzmán <123835885+FedeCodeLab@users.noreply.github.com>
+Date:   Wed Mar 20 19:36:35 2024 -0300
+
+    Merge pull request #19 from FedeCodeLab/carrito
+    
+    Carrito
+
+[33mcommit f7a419257fe178a2cee91da6973374fc73aaa7c4[m
+Author: fedecodelab <federicoguzman.css@gmail.com>
+Date:   Wed Mar 20 19:28:23 2024 -0300
+
+    Rutas creadas
+
+[33mcommit b7018ed6dc5d243868feb48f7cd74c01c9863e4b[m
+Author: fedecodelab <federicoguzman.css@gmail.com>
+Date:   Wed Mar 20 19:23:08 2024 -0300
+
+    carrito
+
+[33mcommit 891a50cf82f75601603f05e2d9bff11ce3bd8357[m
+Merge: 9068abe 93d2b08
+Author: fedecodelab <federicoguzman.css@gmail.com>
+Date:   Wed Mar 20 19:10:14 2024 -0300
+
+    Merge remote-tracking branch 'origin/front' into carrito
+
+[33mcommit 93d2b08ba23cec2c1198099720825f99332bf6e4[m
+Merge: d701fbc e902fc6
+Author: Sonia Mendoza <megs.sonia@gmail.com>
+Date:   Wed Mar 20 15:07:25 2024 -0700
+
+    Merge pull request #18 from FedeCodeLab/About
+    
+    about listo
+
+[33mcommit 9068abee7d94c1785501f302570c36bd38601b6c[m
+Merge: 2cb07a5 d701fbc
+Author: fedecodelab <federicoguzman.css@gmail.com>
+Date:   Wed Mar 20 19:05:00 2024 -0300
+
+    Merge remote-tracking branch 'origin/front' into carrito
+
+[33mcommit 2cb07a5357e319cd290e9585da71aca8146b8cdb[m
+Author: fedecodelab <federicoguzman.css@gmail.com>
+Date:   Wed Mar 20 18:52:57 2024 -0300
+
+    pequeños cambios
+
+[33mcommit d701fbcb4b16483ea3cc46d49a34a5c992f20f77[m
+Merge: f4b4c6e 85300d2
+Author: Federico Guzmán <123835885+FedeCodeLab@users.noreply.github.com>
+Date:   Wed Mar 20 18:51:26 2024 -0300
+
+    Merge pull request #17 from FedeCodeLab/cards
+    
+    Cards
+
+[33mcommit e902fc6107d6711af760a705af95c17dae21f869[m
+Author: Maryxale <romerobencomo@gmail.com>
+Date:   Wed Mar 20 18:49:39 2024 -0300
+
+    about listo
+
+[33mcommit 82c3ecb429695fa4e61cf14f2f258e243a3eff5f[m
+Merge: 044a56d 9263d5f
+Author: SoniaMEGS <megs.sonia@gmail.com>
+Date:   Wed Mar 20 13:51:31 2024 -0700
+
+    Merge remote-tracking branch 'origin/front' into cards
+
+[33mcommit 044a56dd10f10e6c55d0260b4236383c271ba568[m
+Author: SoniaMEGS <megs.sonia@gmail.com>
+Date:   Wed Mar 20 13:38:14 2024 -0700
+
+    Cambio en margenes de tarjetas de promos
+
+[33mcommit 01bfaf0818b8ba350abbb93345cc94aaf6c660e3[m
+Author: fedecodelab <federicoguzman.css@gmail.com>
+Date:   Wed Mar 20 16:19:46 2024 -0300
+
+    Empezando a crear el carrito
+
+[33mcommit 85300d2c2245b1b9ab405698cbb7192bd6b19bd0[m[33m ([m[1;31morigin/cards[m[33m)[m
+Author: SoniaMEGS <megs.sonia@gmail.com>
+Date:   Wed Mar 20 12:13:57 2024 -0700
+
+    db
+
+[33mcommit ae6185f794ccc9bd641949ef2840484b0d86

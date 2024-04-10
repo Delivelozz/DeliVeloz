@@ -9,11 +9,13 @@ import {
   GET_NAME,
   ORDER_BY,
   POST_USER,
+  POST_DISHES,
   RESET,
   LOGIN_USER,
   LOGOUT_USER,
   SET_USER_DATA,
   SET_ERRORS,
+  GET_USERS,
 } from "../actions/types";
 
 const initialState = {
@@ -25,6 +27,7 @@ const initialState = {
   subcategories: [], // Arreglo de categorías
   searcher: [], // Arreglo de platos filtrados por nombre
   users: [],
+  allUsers: [],
   login: false,
   user: {},
   userData: JSON.parse(localStorage.getItem("userData")) || {
@@ -36,6 +39,7 @@ const initialState = {
     password: "",
   },
   loading: {},
+  dish: [], // Para publicar un plato nuevo
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -109,6 +113,12 @@ export default function reducer(state = initialState, { type, payload }) {
         users: [...state.users, payload],
       };
 
+    case POST_DISHES:
+      return {
+        ...state,
+        dish: [...state.dish, payload],
+      };
+
     // ? ----------------------------- Login
 
     case LOGIN_USER:
@@ -139,6 +149,12 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         errors: payload,
+      };
+
+    case GET_USERS:
+      return {
+        ...state,
+        allUsers: payload,
       };
 
     default:
