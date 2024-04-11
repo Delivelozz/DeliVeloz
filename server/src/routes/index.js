@@ -14,6 +14,7 @@ const paymentMethodRouter = require("./paymentMethodRouter");
 const mercadoPagoRouter = require("./mercadoPagoRouter");
 const bannersRouter = require("./bannersRouter");
 
+
 // router PRODUCTOS
 router.use("/products", productsRouter);
 // router CATEGORIAS
@@ -38,6 +39,8 @@ router.use("/payment", paymentMethodRouter);
 router.use("/mercadopago", mercadoPagoRouter);
 //Router Banners
 router.use("/banners", bannersRouter);
+
+
 
 
 module.exports = router;
