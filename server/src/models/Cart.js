@@ -8,10 +8,6 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
-    },
-    status: {
-      type: DataTypes.ENUM('active', 'inactive'),
-      allowNull: false,
-    },    
+    }
   },{timestamps: false});
 };
