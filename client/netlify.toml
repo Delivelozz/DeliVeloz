@@ -1,0 +1,27 @@
+[[redirects]]
+  from = "/home"
+  to = "/Home"
+
+[[redirects]]
+  from = "/products"
+  to = "/Products"
+
+[[redirects]]
+  from = "/about"
+  to = "/About"
+
+[[redirects]]
+  from = "/detail/*"
+  to = "/detail/:splat"
+
+[[redirects]]
+  from = "/blog"
+  to = "/Blog"
+
+[[redirects]]
+  from = "/carrito"
+  to = "/Carrito"
+
+[[redirects]]
+  from = "/admin"
+  to = "/DashboardAdmin"
