@@ -1,5 +1,6 @@
 # Redirects from what the browser requests to what we serve
-
+# This is a simple way to handle client-side routing
+/  /Home
 /home  /Home
 /products  /Products
 /about  /About
