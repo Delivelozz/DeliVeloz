@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { smoothScrollToTop } from "../../functions/SmoothScroll";
 
-export default function Promo(props) {
-  const { id, name, image, description } = props;
+export default function Promo({ id, name, image, description }) {
+  console.log("esto es una imagen", image)
   return (
     <article className=" mt-4 mb-4">
       <article id={id} className="w-full relative">
