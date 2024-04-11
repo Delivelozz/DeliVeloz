@@ -1,6 +1,6 @@
 [[redirects]]
   from = "/home"
-  to = "/Home"
+  to = "/"
 
 [[redirects]]
   from = "/products"
@@ -16,12 +16,12 @@
 
 [[redirects]]
   from = "/blog"
-  to = "/Blog"
+  to = "/blog"
 
 [[redirects]]
   from = "/carrito"
-  to = "/Carrito"
+  to = "/carrito"
 
 [[redirects]]
   from = "/admin"
-  to = "/DashboardAdmin"
+  to = "/admin"
