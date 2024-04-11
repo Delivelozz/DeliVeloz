@@ -21,11 +21,6 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-
-
-
-
-
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
