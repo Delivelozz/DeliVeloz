@@ -4,11 +4,11 @@
 
 [[redirects]]
   from = "/products"
-  to = "/Products"
+  to = "/products"
 
 [[redirects]]
   from = "/about"
-  to = "/About"
+  to = "https://delitestdeploy.netlify.app/about"
 
 [[redirects]]
   from = "/detail/*"
