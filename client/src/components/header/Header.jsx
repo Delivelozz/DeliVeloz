@@ -32,8 +32,8 @@ export default function Header({ openLoginModal, openRegisterModal }) {
   };
 
   return (
-    <div className="w-full shadow-lg sticky top-0 z-40 bg-white">
-      <div className="container flex py-4 items-center justify-between">
+    <div className="w-full shadow-lg z-40 bg-white hidden md:block sticky top-0">
+      <div className="container flex items-center justify-between h-20">
         <div>
           <Link to={"/home"}>
             <h1 className="text-sundown-500 tracking-wide font-bold hover:text-sundown-400 transition">
