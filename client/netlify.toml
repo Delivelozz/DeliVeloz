@@ -17,7 +17,7 @@
 
 [[redirects]]
   from = "/about"
-  to = "https://delitestdeploy.netlify.app/about"
+  to = "/about"
 
 [[redirects]]
   from = "/detail/*"
