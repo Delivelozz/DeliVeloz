@@ -17,6 +17,7 @@ import {
   SET_ERRORS,
   GET_USERS,
   SET_BLOG_DATA,
+  //SET_BLOG_ID,
  
 } from "./types";
 import axios from "axios";
@@ -256,6 +257,25 @@ export function setBlogData() {
     }
   }
 }
+
+// ? ----------------------------- Set Blog ID
+
+// export function setBlogId(id) {
+//   return async (dispatch) => {
+//     try {
+//       const response = await fetch(`https://deliveloz-ryfh.onrender.com/banners${id}`)
+//       const data = await response.json()
+//       dispatch ({
+//         type: SET_BLOG_ID,
+//         payload: data,
+//       })
+//     } catch (error){
+//       console.error("Error fetching posts: ", error)
+//     }
+//   }
+// }
+
+
 
 
 // ? ----------------------------- Set Errors
