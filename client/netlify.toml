@@ -1,3 +1,12 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
 [[redirects]]
   from = "/home"
   to = "/"
@@ -25,3 +34,8 @@
 [[redirects]]
   from = "/admin"
   to = "/admin"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
