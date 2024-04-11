@@ -2,10 +2,15 @@ import Menu from "../icons/Menu";
 
 export default function HeaderMobile() {
   return (
-    <div className="sticky top-0 shadow-lg block md:hidden z-50">
+    <div className="sticky top-0 shadow-lg block md:hidden z-50 bg-white">
       <div className="container flex justify-between items-center h-20">
         <Menu height={22} color={"#222"} width={22} />
-        <h1 className="text-sundown-500">header Mobile</h1>
+        <h1 className="text-sundown-500">Deliveloz</h1>
+        <img
+          src="https://res.cloudinary.com/derot8znd/image/upload/v1712286915/Otros/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju_g2ngxd.webp"
+          alt=""
+          className="object-cover w-10 h-10 min-w-10 min-h-10 cursor-pointer rounded-full"
+        />
       </div>
     </div>
   );
