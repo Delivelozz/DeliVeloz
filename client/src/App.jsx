@@ -4,6 +4,7 @@ import Home from "./views/home/Home";
 import Detail from "./views/detail/Detail";
 import Products from "./views/products/Products";
 import Header from "./components/header/Header";
+import HeaderMobile from "./components/headerMobile/HeaderMobile";
 import Footer from "./components/footer/Footer";
 import Blog from "./views/blog/Blog";
 import Carrito from "./views/carrito/Carrito";
@@ -11,6 +12,7 @@ import FormLogin from "./components/formLogin/FormLogin";
 import FormRegister from "./components/formRegister/FormRegister";
 import DashboardAdmin from "./views/admin/DashboardAdmin";
 import EditProduct from "./components/admin/EditProduct";
+import SidebarMobile from "./components/headerMobile/SidebarMobile";
 
 // ? -------------------- Hooks
 
@@ -86,6 +88,8 @@ function App() {
           openLoginModal={openLoginModal}
           openRegisterModal={openRegisterModal}
         />
+        <HeaderMobile />
+        {/* <SidebarMobile /> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Home" element={<Home />} />

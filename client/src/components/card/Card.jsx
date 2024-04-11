@@ -67,11 +67,11 @@ export default function Card(props) {
               className="w-full h-48 mx-auto rounded-md object-cover"
             />
             <div className="text-sm ml-1 mb-1 absolute bottom-0 left-0 ">
-              <p className="bg-white/80 rounded-full px-1 mb-1">
+              <p className="bg-white rounded-full px-1 mb-1">
                 <span>Categoría: </span>
                 {category}
               </p>
-              <p className="bg-white/80 rounded-full px-1">
+              <p className="bg-white rounded-full px-1">
                 <span>Subcategoría: </span>
                 {subCategory}
               </p>
@@ -113,3 +113,5 @@ export default function Card(props) {
     </article>
   );
 }
+
+// bg - white / 80;

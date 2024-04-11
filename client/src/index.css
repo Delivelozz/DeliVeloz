@@ -176,3 +176,11 @@ h1 {
 textarea {
   background-color: #fff;
 }
+
+.dinvisible {
+  display: none;
+}
+
+.dblock {
+  display: block;
+}
