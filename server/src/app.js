@@ -8,12 +8,6 @@ const cors = require("cors");
 require("./db.js");
 
 const server = express();
-
-
-
-
-
-
 server.name = "API";
 
 server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
@@ -21,12 +15,7 @@ server.use(bodyParser.json({ limit: "50mb" }));
 server.use(cookieParser());
 server.use(morgan("dev"));
 server.use((req, res, next) => {
-  const allowedOrigins = ['http://localhost:5173', 'http://127.0.0.1:5173'];
-  const origin = req.headers.origin;
-
-  if (allowedOrigins.includes(origin)) {
-      res.header("Access-Control-Allow-Origin", origin);
-  }
+  res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Credentials", "true");
   res.header(
     "Access-Control-Allow-Headers",
