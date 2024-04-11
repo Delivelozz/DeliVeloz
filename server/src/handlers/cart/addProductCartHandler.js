@@ -3,9 +3,9 @@ const addProductCartController = require('../../controllers/cart/addProductCartC
 // 
 const addProductCartHandler = async (req, res) => {
     //
-    const {userId, productId, quantity} = req.params;
+    const {idUser, idProduct} = req.params;
     try {
-        const response = await addProductCartController(userId, productId, quantity);
+        const response = await addProductCartController(idUser, idProduct);
         res.status(200).json(response);
     } catch (error) {
         res.status(500).json({error: error.message});

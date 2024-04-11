@@ -2,12 +2,11 @@ const removeProductCartController = require('../../controllers/cart/removeProduc
 
 // 
 const removeProductCartHandler = async (req, res) => {
-    //
-    // const id = req.params;
-    //
-    // const dataProduct = req.body;
+
+    const {idUser, idProduct} = req.params;
+
     try {
-        const response = await removeProductCartController();
+        const response = await removeProductCartController(idUser, idProduct);
         res.status(200).json(response);
     } catch (error) {
         res.status(500).json({error: error.message});
