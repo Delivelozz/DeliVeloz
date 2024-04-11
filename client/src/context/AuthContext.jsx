@@ -4,6 +4,7 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { loginUser, setUserData } from "../redux/actions/actions";
+import { API_URL } from "../utils/constants";
 
 export const authContext = createContext();
 
@@ -26,9 +27,7 @@ export function AuthProvider({ children }) {
       const providerData = user.providerData[0];
 
       // ?------------------------------------------- Obteniendo todos los usuarios de la base de datos
-      const allUsersResponse = await axios.get(
-        "https://deliveloz-ryfh.onrender.com/users"
-      );
+      const allUsersResponse = await axios.get(`${API_URL}/users`);
       const allUsers = allUsersResponse.data;
 
       // ? ------------------------------------------- Buscar usuarios que coinciden con el correo proporcionado
@@ -49,7 +48,7 @@ export function AuthProvider({ children }) {
         return user;
       } else {
         // ? --------------------------------------------- Se suben los datos del usuario a la base de datos si no existe el usuario
-        await axios.post("https://deliveloz-ryfh.onrender.com/users", {
+        await axios.post(`${API_URL}/users`, {
           name: providerData.displayName,
           email: providerData.email,
           lastName: "",
@@ -58,9 +57,7 @@ export function AuthProvider({ children }) {
           password: "",
         });
 
-        const allUsersResponse = await axios.get(
-          "https://deliveloz-ryfh.onrender.com/users"
-        );
+        const allUsersResponse = await axios.get(`${API_URL}/users`);
         const allUsers = allUsersResponse.data;
 
         const matchingUsers = allUsers.filter(
