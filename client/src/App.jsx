@@ -13,6 +13,7 @@ import FormRegister from "./components/formRegister/FormRegister";
 import DashboardAdmin from "./views/admin/DashboardAdmin";
 import EditProduct from "./components/admin/EditProduct";
 import SidebarMobile from "./components/headerMobile/SidebarMobile";
+import FloatButtonCard from "./components/floatButtonCard/FloatButtonCard";
 
 // ? -------------------- Hooks
 
@@ -83,13 +84,13 @@ function App() {
 
   return (
     <AuthProvider>
-      <main className="bg-alabaster-50 overflow-x-hidden relative h-screen">
+      <main className="bg-alabaster-50 relative">
         <Header
           openLoginModal={openLoginModal}
           openRegisterModal={openRegisterModal}
         />
         <HeaderMobile />
-        {/* <SidebarMobile /> */}
+        <SidebarMobile />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Home" element={<Home />} />
@@ -101,6 +102,7 @@ function App() {
           <Route path="/admin" element={<DashboardAdmin />} />
           <Route path="/editProduct/:id" element={<EditProduct />} />
         </Routes>
+        <FloatButtonCard />
         <Footer />
         {isLoginModalOpen && <FormLogin closeModal={closeLoginModal} />}
         {isRegisterModalOpen && (

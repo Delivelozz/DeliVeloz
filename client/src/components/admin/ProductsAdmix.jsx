@@ -98,7 +98,7 @@ export default function ProductsAdmin() {
   };
 
   return (
-    <section className="container-left">
+    <section className="container-left col-span-4">
       <div className="mb-6 flex justify-between items-center">
         <h1 className="">
           Tabla de <span className="text-sundown-500">Productos</span>

@@ -16,8 +16,12 @@ import {
   SET_USER_DATA,
   SET_ERRORS,
   GET_USERS,
+  TOGGLE_SIDEBAR,
+  EDIT_DISHES
 } from "./types";
 import axios from "axios";
+
+// ! ----------------------------------------------- Dishes
 
 // ? ----------------------------- Set Dishes
 
@@ -38,6 +42,30 @@ export function setDishes() {
   };
 }
 
+// ? ----------------------------- Post Dishes
+
+export function postDishes(payload) {
+  return async function (dispatch) {
+    try {
+        const response = await axios.post(
+        "https://deliveloz-ryfh.onrender.com/products",
+        payload
+      );
+      dispatch({
+        type: POST_DISHES,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Error al postear el plato: ", error)
+    }
+  }
+}
+
+// ? ----------------------------- Edit Dishes
+
+
+// ! ----------------------------------------------- Promos
+
 // ? ----------------------------- Set Promos
 
 export const setPromos = (payload) => ({
@@ -45,15 +73,19 @@ export const setPromos = (payload) => ({
   payload,
 });
 
-// ? ----------------------------- Set Shopping Cart
+// ! ----------------------------------------------- Filters
 
-export function setShoppingCart(shoppingCart) {
-  localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
-  return {
-    type: "SET_SHOPPING_CART",
-    payload: shoppingCart,
-  };
-}
+// ? ----------------------------- Set filtering
+
+export const setFiltering = (payload) => ({
+  type: SET_FILTERING,
+  payload,
+});
+
+export const setFilteringSubCategory = (payload) => ({
+  type: SET_SUBCATEGORIES,
+  payload,
+});
 
 // ? ----------------------------- Filter By
 
@@ -91,14 +123,6 @@ export function getByName(name) {
     }
   };
 }
-
-// ? ---------------------------------------------- Reset
-
-export const resetDishes = () => {
-  return {
-    type: RESET,
-  };
-};
 
 // ? ----------------------------- Set Categories
 
@@ -138,54 +162,45 @@ export function getSubCategories() {
   };
 }
 
-// ? ----------------------------- Set filtering
+// ? ---------------------------------------------- Reset
 
-export const setFiltering = (payload) => ({
-  type: SET_FILTERING,
-  payload,
-});
+export const resetDishes = () => {
+  return {
+    type: RESET,
+  };
+};
 
-export const setFilteringSubCategory = (payload) => ({
-  type: SET_SUBCATEGORIES,
-  payload,
-});
 
-// ? ----------------------------- Post Users
+// ! ----------------------------------------------- Users
 
-export function postUsers(payload) {
-  return async function (dispatch) {
+// ? ----------------------------- Get Users
+
+export function getUsers() {
+  return async (dispatch) => {
     try {
-      const response = await axios.post(
-        "https://deliveloz-ryfh.onrender.com/users",
-        payload
+      const response = await fetch(
+        "https://deliveloz-ryfh.onrender.com/users"
       );
+      const data = await response.json();
       dispatch({
-        type: POST_USER,
-        payload: response.data,
+        type: GET_USERS,
+        payload: data,
       });
     } catch (error) {
-      console.error("Tienes un error en: ", error);
+      console.error("Error fetching users: ", error);
     }
   };
 }
 
-// ? ----------------------------- Post Dishes
+// ? ----------------------------- Set User Data
 
-export function postDishes(payload) {
-  return async function (dispatch) {
-    try {
-        const response = await axios.post(
-        "https://deliveloz-ryfh.onrender.com/products",
-        payload
-      );
-      dispatch({
-        type: POST_DISHES,
-        payload: response.data,
-      });
-    } catch (error) {
-      console.error("Error al postear el plato: ", error)
-    }
-  }
+export function setUserData(userData) {
+  console.log(userData);
+  localStorage.setItem("userData", JSON.stringify(userData));
+  return {
+    type: "SET_USER_DATA",
+    payload: userData,
+  };
 }
 
 // ? ----------------------------- Login
@@ -231,39 +246,51 @@ export function logoutUser(payload) {
   };
 }
 
-// ? ----------------------------- Set User Data
-export function setUserData(userData) {
-  console.log(userData);
-  localStorage.setItem("userData", JSON.stringify(userData));
-  return {
-    type: "SET_USER_DATA",
-    payload: userData,
-  };
-}
+// ? ----------------------------- Post Users
 
-// ? ----------------------------- Get Users
-
-export function getUsers() {
-  return async (dispatch) => {
+export function postUsers(payload) {
+  return async function (dispatch) {
     try {
-      const response = await fetch(
-        "https://deliveloz-ryfh.onrender.com/users"
+      const response = await axios.post(
+        "https://deliveloz-ryfh.onrender.com/users",
+        payload
       );
-      const data = await response.json();
       dispatch({
-        type: GET_USERS,
-        payload: data,
+        type: POST_USER,
+        payload: response.data,
       });
     } catch (error) {
-      console.error("Error fetching users: ", error);
+      console.error("Tienes un error en: ", error);
     }
   };
 }
 
-// ? ----------------------------- Set Errors
+// ! ----------------------------------------------- Cart
+
+// ? ----------------------------- Set Shopping Cart
+      
+export function setShoppingCart(shoppingCart) {
+  localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
+  return {
+    type: "SET_SHOPPING_CART",
+      payload: shoppingCart,
+  };
+}
+
+// ! ----------------------------------------------- Set Errors
+
 export function setErrors(errors) {
   return {
     type: SET_ERRORS,
     payload: errors,
   };
 }
+
+// ! ------------------------------------------------ Toggle
+
+export const toggleSidebar = (left) => {
+	return {
+		type: TOGGLE_SIDEBAR,
+		payload: left,
+	};
+};

@@ -12,6 +12,7 @@ import { logoutUser, setUserData } from "../../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
 import { useShoppingCartCounterItem } from "../../hooks/useShoppingCartCounterItem";
 import { Tooltip } from "react-tooltip";
+import { smoothScrollToTop } from "../../functions/SmoothScroll";
 
 export default function Header({ openLoginModal, openRegisterModal }) {
   const navigate = useNavigate();

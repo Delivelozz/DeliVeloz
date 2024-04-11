@@ -15,3 +15,5 @@ export const LOGOUT_USER = `LOGOUT_USER`;
 export const SET_USER_DATA = `SET_USER_DATA`;
 export const SET_ERRORS = `SET_ERRORS`;
 export const GET_USERS = `GET_USERS`;
+export const TOGGLE_SIDEBAR = `TOGGLE_SIDEBAR`;
+export const EDIT_DISHES = `EDIT_DISHES`;

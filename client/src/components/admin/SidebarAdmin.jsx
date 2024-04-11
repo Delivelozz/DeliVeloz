@@ -2,7 +2,7 @@ import BoxIcon from "../icons/BoxIcon";
 
 export default function SidebarAdmin({ setSelectedComponent }) {
   return (
-    <div className="bg-white shadow-lg z-40 w-56 border-t font-semibold text-base fixed h-full">
+    <div className="bg-white shadow-lg z-30 border-t font-semibold text-base sticky top-0 col-span-1">
       <ul className="flex flex-col">
         <div className="flex items-center justify-center py-6 gap-1">
           <BoxIcon width={22} height={22} color={"#F17878"} />

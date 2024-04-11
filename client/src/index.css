@@ -4,17 +4,14 @@
 
 /* ?--------------------------------- ScrollBar ---------------------------------- */
 
-/* Estilos para el scrollbar */
 ::-webkit-scrollbar {
   width: 12px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: #E74C4C;
   border-radius: 10px;
@@ -50,7 +47,7 @@ section {
 }
 
 .container-left {
-  width: 75%;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -183,4 +180,25 @@ textarea {
 
 .dblock {
   display: block;
+}
+
+.sideBar {
+  @apply bg-white w-72 h-full fixed z-40 shadow-xl -left-full transition md:hidden;
+}
+
+.invisibleSidebar {
+  transition: all .3s ease;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+}
+
+.visibleSidebar {
+  left: 0;
+  transition: all .3s ease;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
 }
