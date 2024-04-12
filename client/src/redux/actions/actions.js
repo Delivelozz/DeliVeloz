@@ -18,8 +18,6 @@ import {
   GET_USERS,
   SET_BLOG_DATA,
   SET_BLOG_ID,
-
- 
   TOGGLE_SIDEBAR,
   EDIT_DISHES
 } from "./types";
@@ -201,22 +199,6 @@ export function getUsers() {
   };
 }
 
-// ? ----------------------------- Post Dishes
-
-export function postDishes(payload) {
-  return async function (dispatch) {
-    try {
-      const response = await axios.post(`${API_URL}/products`, payload);
-      dispatch({
-        type: POST_DISHES,
-        payload: response.data,
-      });
-    } catch (error) {
-      console.error("Error al postear el plato: ", error);
-    }
-  };
-}
-
 // ? ----------------------------- Login
 
 export function loginUser(payload) {
@@ -271,6 +253,17 @@ export function postUsers(payload) {
   };
 }
 
+// ? ----------------------------- Set User Data
+
+export function setUserData(userData) {
+  console.log(userData);
+  localStorage.setItem("userData", JSON.stringify(userData));
+  return {
+    type: "SET_USER_DATA",
+    payload: userData,
+  };
+}
+
 // ! ----------------------------------------------- Cart
 
 // ? ----------------------------- Set Shopping Cart
@@ -281,22 +274,6 @@ export function setShoppingCart(shoppingCart) {
     type: "SET_SHOPPING_CART",
       payload: shoppingCart,
   };
-}
-
-// ? ----------------------------- Set Blog
-export function setBlogData() {
-  return async (dispatch) => {
-    try {
-      const response = await fetch("https://deliveloz-ryfh.onrender.com/banners")
-      const data = await response.json()
-      dispatch ({
-        type: SET_BLOG_DATA,
-        payload: data,
-      })
-    } catch (error){
-      console.error("Error fetching posts: ", error)
-    }
-  }
 }
 
 // ? ----------------------------- Set Blog
