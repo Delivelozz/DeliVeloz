@@ -14,7 +14,7 @@ const Promos = (props) => {
     function handleScreenResize(e) {
       if (e.matches) {
         // Screen is medium
-        setSlidesToShow(2);
+        setSlidesToShow(1);
       } else {
         // Screen is not medium
         setSlidesToShow(3);

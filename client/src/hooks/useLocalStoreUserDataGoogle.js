@@ -6,6 +6,7 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { loginUser, setUserData, setErrors } from "../redux/actions/actions";
 import axios from "axios";
 import { auth } from "../firebase/firebase.config";
+import { API_URL } from "../utils/constants";
 
 /* export const authContext = createContext();
 
@@ -26,9 +27,7 @@ export const useLocalStoreUserDataGoogle = () => {
     const loginWithGoogle = async () => {
       try {
         // ?------------------------------------------- Obteniendo todos los usuarios de la base de datos
-        const allUsersResponse = await axios.get(
-          "https://deliveloz-ryfh.onrender.com/users"
-        );
+        const allUsersResponse = await axios.get(`${API_URL}/users`);
         const allUsers = allUsersResponse.data;
 
         // ? ------------------------------------------- Buscar usuarios que coinciden con el correo proporcionado

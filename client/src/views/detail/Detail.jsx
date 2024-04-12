@@ -8,6 +8,7 @@ import { useLocalStoreUserData } from "../../hooks/useLocalStoreUserData";
 import { useShoppingCartDelete } from "../../hooks/useShoppingCartDelete";
 import "./Detail.css";
 import { useLocalStoreUserDataGoogle } from "../../hooks/useLocalStoreUserDataGoogle.js";
+import { API_URL } from "../../utils/constants";
 
 export default function Detail() {
   const { id } = useParams();
@@ -33,7 +34,7 @@ export default function Detail() {
   };
 
   useEffect(() => {
-    fetch(`https://deliveloz-ryfh.onrender.com/products/${id}`)
+    fetch(`${API_URL}/products/${id}`)
       .then((response) => response.json())
       .then((data) => setProduct(data));
   }, [id]);
@@ -49,7 +50,7 @@ export default function Detail() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`https://deliveloz-ryfh.onrender.com/assessment/${id}`, {
+      await axios.post(`${API_URL}/assessment/${id}`, {
         rating,
         comment,
       });
@@ -63,7 +64,7 @@ export default function Detail() {
 
   const handleUpdateRating = async () => {
     try {
-      await axios.put(`https://deliveloz-ryfh.onrender.com/assessment/${id}`, {
+      await axios.put(`${API_URL}/assessment/${id}`, {
         rating,
         comment,
       });
@@ -116,8 +117,10 @@ export default function Detail() {
 
         <div className="w-1/2 flex flex-col justify-between">
           <div className="flex flex-col justify-center gap-4">
-            <h1 className="text-xl mb-6 text-sundown-500">{product.name}</h1>
-            <p>
+            <h1 className="text-xl mb-0 sm:mb-6 text-sundown-500">
+              {product.name}
+            </h1>
+            <p className="line-clamp-4">
               <span className="text-sundown-500 font-bold">Ingredientes: </span>
               {product.description}
             </p>
@@ -129,26 +132,26 @@ export default function Detail() {
               $ {product.price}
             </p>
           </div>
-          <div className="flex ">
+          <div className="flex w-full h-10">
             {quantity > 0 ? (
               <div className="h-8 flex justify-center items-center gap-1">
-                <p className="mr-2 text-sundown-500 font-bold text-xl ">
+                <p className="mr-1 text-sundown-500 font-semibold text-md md:font-bold md:text-xl ">
                   Cantidad:
                 </p>
                 <button
                   onClick={handleDelete}
-                  className="w-6 h-6 bg-sundown-500 rounded-md text-white"
+                  className="w-4 md:w-6 h-6 bg-sundown-500 rounded-md text-white"
                 >
                   -
                 </button>
                 <input
                   type="text"
                   value={quantity}
-                  className="border border-sundown-500 border-solid rounded-md w-8 h-6 text-center "
+                  className="border border-sundown-500 border-solid rounded-md w-6 md:w-8 h-6 text-center "
                 />
                 <button
                   onClick={() => addToCart(id)}
-                  className="w-6 h-6 bg-sundown-500 rounded-md text-white"
+                  className="w-4 md:w-6 h-6 bg-sundown-500 rounded-md text-white"
                 >
                   +
                 </button>

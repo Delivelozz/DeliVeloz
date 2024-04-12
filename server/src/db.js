@@ -2,17 +2,24 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-const { DB_URL } = process.env;
+const { DB, DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT, DB_URL } = process.env;
 
 
 //° CONEXION A LA BASE DE DATOS
-const sequelize = new Sequelize(DB_URL, {
-  logging: false, // set to console.log to see the raw SQL queries
-  native: false,
-  dialectOptions: { ssl: {require:true} }, // lets Sequelize know we can use pg-native for ~30% more speed
-});
+let sequelize = undefined
 
-
+if (process.env.NODE_ENV === 'production') {
+  sequelize = new Sequelize(DB_URL, {
+    logging: false, // set to console.log to see the raw SQL queries
+    native: false,
+    dialectOptions: { ssl: {require:true} }, // lets Sequelize know we can use pg-native for ~30% more speed
+  });
+} else {
+  sequelize = new Sequelize(`${DB}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`, {
+    logging: false, // set to console.log to see the raw SQL queries
+    native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+  });
+}
 
 const basename = path.basename(__filename);
 
@@ -57,6 +64,7 @@ const {
   Cart,
   CartProduct,
   OrderProduct,
+  Banners,
 } = sequelize.models;
 // Definir el modelo CartProduct con el campo "cantidad"
 // Aca vendrian las relaciones
@@ -100,6 +108,10 @@ Assessment.belongsTo(Product);
 // Administrator / Role (uno a uno)
 Administrator.hasOne(Role);
 Role.belongsTo(Administrator);
+
+//Banners - Product (uno a uno)
+Product.hasOne(Banners)
+Banners.belongsTo(Product);
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

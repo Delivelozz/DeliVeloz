@@ -1,0 +1,41 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/home"
+  to = "/"
+
+[[redirects]]
+  from = "/products"
+  to = "/products"
+
+[[redirects]]
+  from = "/about"
+  to = "/about"
+
+[[redirects]]
+  from = "/detail/*"
+  to = "/detail/:splat"
+
+[[redirects]]
+  from = "/blog"
+  to = "/blog"
+
+[[redirects]]
+  from = "/carrito"
+  to = "/carrito"
+
+[[redirects]]
+  from = "/admin"
+  to = "/admin"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
