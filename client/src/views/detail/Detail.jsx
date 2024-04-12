@@ -75,7 +75,11 @@ export default function Detail() {
     }
   };
   if (!product) {
-    return <div>Loading...</div>;
+    return (
+      <section className="flex justify-center items-center">
+        <div class="custom-loader"></div>
+      </section>
+    );
   }
 
   const addToCart = (id) => {

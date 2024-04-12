@@ -4,12 +4,16 @@ import Home from "./views/home/Home";
 import Detail from "./views/detail/Detail";
 import Products from "./views/products/Products";
 import Header from "./components/header/Header";
+import HeaderMobile from "./components/headerMobile/HeaderMobile";
 import Footer from "./components/footer/Footer";
 import Blog from "./views/blog/Blog";
 import Carrito from "./views/carrito/Carrito";
 import FormLogin from "./components/formLogin/FormLogin";
 import FormRegister from "./components/formRegister/FormRegister";
 import DashboardAdmin from "./views/admin/DashboardAdmin";
+import EditProduct from "./components/admin/EditProduct";
+import SidebarMobile from "./components/headerMobile/SidebarMobile";
+import FloatButtonCard from "./components/floatButtonCard/FloatButtonCard";
 
 // ? -------------------- Hooks
 
@@ -80,11 +84,13 @@ function App() {
 
   return (
     <AuthProvider>
-      <main className="bg-alabaster-50 min-h-screen overflow-x-hidden">
+      <main className="bg-alabaster-50 relative overflow.x">
         <Header
           openLoginModal={openLoginModal}
           openRegisterModal={openRegisterModal}
         />
+        <HeaderMobile />
+        <SidebarMobile />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Home" element={<Home />} />
@@ -94,7 +100,9 @@ function App() {
           <Route path="/blog/:id" element={<Blog />} />
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/admin" element={<DashboardAdmin />} />
+          <Route path="/editProduct/:id" element={<EditProduct />} />
         </Routes>
+        <FloatButtonCard />
         <Footer />
         {isLoginModalOpen && <FormLogin closeModal={closeLoginModal} />}
         {isRegisterModalOpen && (
