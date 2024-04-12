@@ -84,7 +84,7 @@ function App() {
 
   return (
     <AuthProvider>
-      <main className="bg-alabaster-50 relative">
+      <main className="bg-alabaster-50 relative overflow.x">
         <Header
           openLoginModal={openLoginModal}
           openRegisterModal={openRegisterModal}

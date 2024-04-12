@@ -27,10 +27,10 @@ body {
   /* font-size: .9rem; */
   font-family: "DM Sans", sans-serif;
   font-optical-sizing: auto;
-  overflow-x: hidden;
 }
 
 section {
+  overflow-x: hidden;
   padding: 4rem 0;
   min-height: 100vh;
 }
@@ -201,4 +201,20 @@ textarea {
   -moz-transition: all .3s ease;
   -ms-transition: all .3s ease;
   -o-transition: all .3s ease;
+}
+
+.custom-loader {
+  margin-top: -10%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: conic-gradient(#0000 10%, #D32F2F);
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+  animation: s3 1s infinite linear;
+}
+
+@keyframes s3 {
+  to {
+    transform: rotate(1turn)
+  }
 }

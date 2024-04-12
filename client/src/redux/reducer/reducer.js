@@ -45,6 +45,7 @@ const initialState = {
   sidebar: {
     isVisible: false,
   },
+  dishEdited: {}
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -61,13 +62,20 @@ export default function reducer(state = initialState, { type, payload }) {
 
     // ? ----------------------------- Post Dishes
 
+    case EDIT_DISHES:
+      return {
+        ...state,
+        dishEdited: [...state.dishEdited, payload],
+      };
+
+    // ? ----------------------------- EDIT_DISHES
+
     case POST_DISHES:
       return {
         ...state,
         dish: [...state.dish, payload],
       };
 
-    // ? ----------------------------- EDIT_DISHES
 
 
     // ! ----------------------------------------------- Promos

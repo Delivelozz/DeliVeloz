@@ -63,6 +63,23 @@ export function postDishes(payload) {
 
 // ? ----------------------------- Edit Dishes
 
+export function editDishes(payload) {
+  return async function (dispatch) {
+    try {
+        const response = await axios.patch(
+        `https://deliveloz-ryfh.onrender.com/products/${id}`,
+        payload
+      );
+      dispatch({
+        type: EDIT_DISHES,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Error al postear el plato: ", error)
+    }
+  }
+}
+
 
 // ! ----------------------------------------------- Promos
 

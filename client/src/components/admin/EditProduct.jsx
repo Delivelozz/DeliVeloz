@@ -18,8 +18,6 @@ export default function EditProduct() {
       jpg: "",
       png: "",
     },
-    availability: true,
-    stockId: "",
   });
 
   useEffect(() => {
@@ -42,7 +40,11 @@ export default function EditProduct() {
   }, [id]);
 
   if (loading) {
-    return <section>Loading...</section>;
+    return (
+      <section className="flex justify-center items-center">
+        <div class="custom-loader"></div>
+      </section>
+    );
   }
 
   return (
@@ -55,7 +57,7 @@ export default function EditProduct() {
             </h1>
             <div className="flex flex-col">
               <label className="font-semibold text-sm text-sundown-500 mb-1">
-                Nombre:{" "}
+                Nombre:
               </label>
               <input
                 type="text"
