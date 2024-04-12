@@ -47,18 +47,24 @@ const Promos = (props) => {
 
   return (
     <div className="carrousel">
-      <Slider {...settings}>
-        {blog.map((blogItem, index) => (
+    <Slider {...settings}>
+      {blog.length > 0 ? (
+        blog.map((blogItem, index) => (
           <Promo
             key={index}
             id={blogItem.id}
-            name={blogItem.title}
+            title={blogItem.title}
             image={blogItem.image.jpg}
             description={blogItem.description}
           />
-        ))}
-      </Slider>
-    </div>
+        ))
+      ) : (
+        <p>Cargando datos...</p>
+      )}
+    </Slider>
+  </div>
+
+
   );
 };
 

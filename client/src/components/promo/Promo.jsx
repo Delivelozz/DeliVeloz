@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { smoothScrollToTop } from "../../functions/SmoothScroll";
 
-export default function Promo({ id, name, image, description }) {
+export default function Promo({ id, title, image, description }) {
   //console.log("esto es una imagen", image)
   return (
     <article className=" mt-4 mb-4">
@@ -16,11 +16,11 @@ export default function Promo({ id, name, image, description }) {
           </figure>
           <div className="w-full h-1/2">
             <div className="w-full flex flex-col my-2 gap-4">
-              <h4 className="w-full truncate font-bold text-xl">{name}</h4>
+              <h4 className="w-full truncate font-bold text-xl">{title}</h4>
               <p className="line-clamp-3 lg:line-clamp-4">{description}</p>
             </div>
             <div className="flex justify-center mt-4">
-              <Link to={`/blog/`}>
+              <Link to={`/blog/${id}`}> {/*agregue id yo*/ }
                 <button
                   className="btn-bg"
                   onClick={() => {
