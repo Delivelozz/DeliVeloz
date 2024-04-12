@@ -65,8 +65,17 @@ export default function reducer(state = initialState, { type, payload }) {
     case EDIT_DISHES:
       return {
         ...state,
-        dishEdited: [...state.dishEdited, payload],
-      };
+        dishes: state.dishes.map(dish => {
+        if (dish.id === payload.id) {
+          return {
+            ...dish,
+            ...payload,
+          };
+        }
+        return dish;
+      }),
+    dishEdited: [...state.dishEdited, payload],
+  };
 
     // ? ----------------------------- EDIT_DISHES
 

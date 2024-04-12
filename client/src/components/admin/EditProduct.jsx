@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { editDishes } from "../../redux/actions/actions";
 
 export default function EditProduct() {
   const dispatch = useDispatch();
@@ -27,17 +28,31 @@ export default function EditProduct() {
           `https://deliveloz-ryfh.onrender.com/products/${id}`
         );
         const data = await response.json();
-        setProduct(data);
+        setDish(data);
         setLoading(false);
       } catch (error) {
         console.log("Error fetching: ", error);
       }
     };
-
     fetchData();
-
     return () => setLoading(true);
   }, [id]);
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setDish({ ...dish, [name]: value });
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    dispatch(editDishes(dish));
+    alert("¡El producto fue editado exitosamente!");
+  };
+
+  console.log("esto seria el plato:", dish);
+
+  // ? ---------------------------------------- Return
 
   if (loading) {
     return (
@@ -49,7 +64,7 @@ export default function EditProduct() {
 
   return (
     <section className="container">
-      <form action="" className="flex flex-col gap-5">
+      <form onSubmit={onSubmit} className="flex flex-col gap-5">
         <div className="grid grid-cols-4 gap-5">
           <div className="col-span-3 flex flex-col gap-3 bg-white shadow-xl p-6 rounded-sm">
             <h1 className="mb-6">
@@ -60,10 +75,10 @@ export default function EditProduct() {
                 Nombre:
               </label>
               <input
+                onChange={onChange}
                 type="text"
                 name="name"
-                id=""
-                value={product.name}
+                value={dish.name}
                 className=" bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               />
             </div>
@@ -74,9 +89,9 @@ export default function EditProduct() {
               </label>
               <input
                 type="text"
+                onChange={onChange}
                 name="category"
-                id=""
-                value={product.category}
+                value={dish.category}
                 className=" bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               />
             </div>
@@ -87,9 +102,9 @@ export default function EditProduct() {
               </label>
               <input
                 type="text"
+                onChange={onChange}
                 name="subCategory"
-                id=""
-                value={product.subCategory}
+                value={dish.subCategory}
                 className=" bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               />
             </div>
@@ -99,10 +114,10 @@ export default function EditProduct() {
                 Precio:
               </label>
               <input
+                onChange={onChange}
                 type="number"
                 name="price"
-                id=""
-                value={product.price}
+                value={dish.price}
                 className=" bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               />
             </div>
@@ -112,10 +127,10 @@ export default function EditProduct() {
                 Stock:
               </label>
               <input
+                onChange={onChange}
                 type="number"
                 name="stock"
-                id=""
-                value={product.stockId}
+                value={dish.stockId}
                 className=" bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               />
             </div>
@@ -124,11 +139,11 @@ export default function EditProduct() {
                 Descripción:
               </label>
               <textarea
+                onChange={onChange}
                 name="description"
-                id=""
                 cols="30"
                 rows="10"
-                value={product.description}
+                value={dish.description}
                 className="bg-white border max-h-60 min-h-60 border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               ></textarea>
             </div>
@@ -139,14 +154,14 @@ export default function EditProduct() {
               <label className="font-semibold text-sm text-sundown-500 mb-1">
                 Imagen jpg:
               </label>
-              <img src={product.image.jpg} alt="" />
+              <img src={dish.image.jpg} alt="" />
             </div>
 
             <div className="flex flex-col gap-2">
               <label className="font-semibold text-sm text-sundown-500 mb-1">
                 Imagen png:
               </label>
-              <img src={product.image.png} alt="" />
+              <img src={dish.image.png} alt="" />
             </div>
           </div>
         </div>

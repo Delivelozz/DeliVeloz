@@ -63,7 +63,7 @@ export function postDishes(payload) {
 
 // ? ----------------------------- Edit Dishes
 
-export function editDishes(payload) {
+export function editDishes(id, payload) {
   return async function (dispatch) {
     try {
         const response = await axios.patch(
@@ -75,7 +75,7 @@ export function editDishes(payload) {
         payload: response.data,
       });
     } catch (error) {
-      console.error("Error al postear el plato: ", error)
+      console.error("Error al editar el plato: ", error)
     }
   }
 }
