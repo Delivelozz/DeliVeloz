@@ -101,9 +101,9 @@ Assessment.belongsTo(Product);
 // Administrator / Role (uno a uno)
 Administrator.hasOne(Role);
 Role.belongsTo(Administrator);
-//Banners - Product (uno a muchos)
+//Banners - Product (uno a uno)
 Product.hasOne(Banners)
-Banners.belongsTo(Product)
+Banners.belongsTo(Product);
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

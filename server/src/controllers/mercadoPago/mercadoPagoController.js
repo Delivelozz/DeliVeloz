@@ -9,9 +9,9 @@ const mercadoPagoController = async (itemsNew) => {
   const body = {
     items: itemsNew,
     back_urls: {
-      success: "http://localhost:5173/",
-      failure: "http://localhost:5173/",
-      pending: "http://localhost:5173/",
+      success: "https://deliveloz.netlify.app/",
+      failure: "https://deliveloz.netlify.app/",
+      pending: "https://deliveloz.netlify.app/",
     },
     payment_methods: {
       excluded_payment_methods: [

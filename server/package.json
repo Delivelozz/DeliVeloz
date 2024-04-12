@@ -29,6 +29,7 @@
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "mysql2": "^3.9.2",
+    "nodemailer": "^6.9.13",
     "pg": "^8.11.5",
     "postgres": "^3.4.4",
     "sequelize": "^6.3.5"
