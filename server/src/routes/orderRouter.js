@@ -2,13 +2,9 @@ const { Router } = require("express");
 const orderRouter = Router();
 
 // Importar handlers
-const postOrderHandler = require("../handlers/order/postOrderHandlers");
-const deleteOrderHandler = require("../handlers/order/deleteOrderHandlers");
+const createOrderHandler = require("../handlers/order/createOrderHandler");
 // Usar handlers
 // Crear pedido
-orderRouter.post("/", postOrderHandler);
-// Eliminar pedido por Id
-orderRouter.delete("/:id", deleteOrderHandler);
-
+orderRouter.post("/", createOrderHandler);
 
 module.exports = orderRouter;

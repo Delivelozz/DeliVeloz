@@ -72,8 +72,8 @@ const {
 Order.belongsToMany(Product, { through: OrderProduct, timestamps: false });
 Product.belongsToMany(Order, { through: OrderProduct, timestamps: false });
 // PaymentMethod - Order (uno a uno)
-PaymentMethod.hasOne(Order);
-Order.belongsTo(PaymentMethod);
+Order.hasOne(PaymentMethod);
+PaymentMethod.belongsTo(Order);
 // User - Order (uno a muchos)
 User.hasMany(Order);
 Order.belongsTo(User);
