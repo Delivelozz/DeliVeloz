@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { smoothScrollToTop } from "../../functions/SmoothScroll";
 
-export default function Promo(props) {
-  const { id, name, image, description } = props;
+export default function Promo({ id, title, image, description }) {
+  //console.log("esto es una imagen", image)
   return (
     <article className=" my-10 mb-4">
       <article id={id} className="w-full relative">
@@ -14,13 +14,15 @@ export default function Promo(props) {
               className="w-full h-full rounded-t-md object-cover"
             />
           </figure>
-          <div className="w-full h-1/2 my-1">
-            <div className="w-full flex flex-col my-2 gap-4 justify-center items-center p-4">
-              <h4 className="w-full truncate font-bold text-lg">{name}</h4>
-              <p className="line-clamp-3 lg:line-clamp-4 text-gray-800">
-                {description}
-              </p>
-              <Link to={"/blog"}>
+          <div className="w-full h-1/2">
+            <div className="w-full flex flex-col my-2 gap-4">
+              <h4 className="w-full truncate font-bold text-xl">{title}</h4>
+              <p className="line-clamp-3 lg:line-clamp-4">{description}</p>
+            </div>
+            <div className="flex justify-center mt-4">
+              <Link to={`/blog/${id}`}>
+                {" "}
+                {/*agregue id yo*/}
                 <button
                   className="btn-bg"
                   onClick={() => {

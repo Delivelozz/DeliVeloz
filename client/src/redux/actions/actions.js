@@ -16,10 +16,15 @@ import {
   SET_USER_DATA,
   SET_ERRORS,
   GET_USERS,
+  SET_BLOG_DATA,
+  SET_BLOG_ID,
+
+ 
   TOGGLE_SIDEBAR,
   EDIT_DISHES
 } from "./types";
 import axios from "axios";
+import { API_URL } from "../../utils/constants";
 
 // ! ----------------------------------------------- Dishes
 
@@ -28,9 +33,7 @@ import axios from "axios";
 export function setDishes() {
   return async (dispatch) => {
     try {
-      const response = await fetch(
-        "https://deliveloz-ryfh.onrender.com/products"
-      );
+      const response = await fetch(`${API_URL}/products`);
       const data = await response.json();
       dispatch({
         type: SET_DISHES,
@@ -47,18 +50,15 @@ export function setDishes() {
 export function postDishes(payload) {
   return async function (dispatch) {
     try {
-        const response = await axios.post(
-        "https://deliveloz-ryfh.onrender.com/products",
-        payload
-      );
+      const response = await axios.post(`${API_URL}/products`, payload);
       dispatch({
         type: POST_DISHES,
         payload: response.data,
       });
     } catch (error) {
-      console.error("Error al postear el plato: ", error)
+      console.error("Error al postear el plato: ", error);
     }
-  }
+  };
 }
 
 // ? ----------------------------- Edit Dishes
@@ -110,7 +110,7 @@ export const orderBy = (category, subCategory, orderType) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `https://deliveloz-ryfh.onrender.com/filter/${category}/${subCategory}/${orderType}`
+        `${API_URL}/filter/${category}/${subCategory}/${orderType}`
       );
       dispatch({ type: ORDER_BY, payload: response.data });
     } catch (error) {
@@ -124,9 +124,7 @@ export const orderBy = (category, subCategory, orderType) => {
 export function getByName(name) {
   return async (dispatch) => {
     try {
-      const response = await fetch(
-        `https://deliveloz-ryfh.onrender.com/products?name=${name}`
-      );
+      const response = await fetch(`${API_URL}/products?name=${name}`);
       if (!response.ok) {
         throw new Error("No hay ningún plato en el menu con ese nombre");
       }
@@ -146,9 +144,7 @@ export function getByName(name) {
 export function setCategories() {
   return async (dispatch) => {
     try {
-      const response = await fetch(
-        "https://deliveloz-ryfh.onrender.com/categories"
-      );
+      const response = await fetch(`${API_URL}/categories`);
       const data = await response.json();
       dispatch({
         type: SET_CATEGORIES,
@@ -165,9 +161,7 @@ export function setCategories() {
 export function getSubCategories() {
   return async (dispatch) => {
     try {
-      const response = await fetch(
-        "https://deliveloz-ryfh.onrender.com/subcategories"
-      );
+      const response = await fetch(`${API_URL}/subcategories`);
       const data = await response.json();
       dispatch({
         type: GET_SUBCATEGORIES,
@@ -195,9 +189,7 @@ export const resetDishes = () => {
 export function getUsers() {
   return async (dispatch) => {
     try {
-      const response = await fetch(
-        "https://deliveloz-ryfh.onrender.com/users"
-      );
+      const response = await fetch(`${API_URL}/users`);
       const data = await response.json();
       dispatch({
         type: GET_USERS,
@@ -209,14 +201,19 @@ export function getUsers() {
   };
 }
 
-// ? ----------------------------- Set User Data
+// ? ----------------------------- Post Dishes
 
-export function setUserData(userData) {
-  console.log(userData);
-  localStorage.setItem("userData", JSON.stringify(userData));
-  return {
-    type: "SET_USER_DATA",
-    payload: userData,
+export function postDishes(payload) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(`${API_URL}/products`, payload);
+      dispatch({
+        type: POST_DISHES,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Error al postear el plato: ", error);
+    }
   };
 }
 
@@ -225,10 +222,7 @@ export function setUserData(userData) {
 export function loginUser(payload) {
   return async function (dispatch) {
     try {
-      const response = await axios.post(
-        "https://deliveloz-ryfh.onrender.com/users/login",
-        payload
-      );
+      const response = await axios.post(`${API_URL}/users/login`, payload);
       dispatch({
         type: LOGIN_USER,
         payload: response.data,
@@ -249,10 +243,7 @@ export function loginUser(payload) {
 export function logoutUser(payload) {
   return async function (dispatch) {
     try {
-      const response = await axios.post(
-        "https://deliveloz-ryfh.onrender.com/users/close",
-        payload
-      );
+      const response = await axios.post(`${API_URL}/users/close`, payload);
       dispatch({
         type: LOGOUT_USER,
         payload: response.data,
@@ -268,10 +259,8 @@ export function logoutUser(payload) {
 export function postUsers(payload) {
   return async function (dispatch) {
     try {
-      const response = await axios.post(
-        "https://deliveloz-ryfh.onrender.com/users",
-        payload
-      );
+      const response = await fetch(`${API_URL}/users`);
+      const data = await response.json();
       dispatch({
         type: POST_USER,
         payload: response.data,
@@ -294,6 +283,55 @@ export function setShoppingCart(shoppingCart) {
   };
 }
 
+// ? ----------------------------- Set Blog
+export function setBlogData() {
+  return async (dispatch) => {
+    try {
+      const response = await fetch("https://deliveloz-ryfh.onrender.com/banners")
+      const data = await response.json()
+      dispatch ({
+        type: SET_BLOG_DATA,
+        payload: data,
+      })
+    } catch (error){
+      console.error("Error fetching posts: ", error)
+    }
+  }
+}
+
+// ? ----------------------------- Set Blog
+export function setBlogData() {
+  return async (dispatch) => {
+    try {
+      const response = await fetch("https://deliveloz-ryfh.onrender.com/banners")
+      const data = await response.json()
+      dispatch ({
+        type: SET_BLOG_DATA,
+        payload: data,
+      })
+    } catch (error){
+      console.error("Error fetching posts: ", error)
+    }
+  }
+}
+
+// ? ----------------------------- Set Blog ID
+
+export function setBlogId(id) {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(`https://deliveloz-ryfh.onrender.com/banners/${id}`)
+      const data = await response.json()
+      dispatch ({
+        type: SET_BLOG_ID,
+        payload: data,
+      })
+    } catch (error){
+      console.error("Error fetching posts: ", error)
+    }
+  }
+}
+
 // ! ----------------------------------------------- Set Errors
 
 export function setErrors(errors) {
@@ -302,6 +340,7 @@ export function setErrors(errors) {
     payload: errors,
   };
 }
+
 
 // ! ------------------------------------------------ Toggle
 

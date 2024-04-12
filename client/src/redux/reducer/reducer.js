@@ -16,6 +16,10 @@ import {
   SET_USER_DATA,
   SET_ERRORS,
   GET_USERS,
+  SET_BLOG_DATA,
+  SET_BLOG_ID,
+ 
+  
   TOGGLE_SIDEBAR,
   EDIT_DISHES,
 } from "../actions/types";
@@ -42,6 +46,8 @@ const initialState = {
   },
   loading: {},
   dish: [], // Para publicar un plato nuevo
+  blog: [] ,
+
   sidebar: {
     isVisible: false,
   },
@@ -198,8 +204,31 @@ export default function reducer(state = initialState, { type, payload }) {
         user: {},
       };
 
-    // ! ----------------------------------------------- Errors
+    // ? ----------------------------- Set user data
+    case SET_USER_DATA:
+      return {
+        ...state,
+        userData: payload,
+      };
 
+    
+    // ? ----------------------------- Set Blog
+    case SET_BLOG_DATA:
+      return {
+        ...state,
+        blog: payload,
+       
+      };
+      // ? ----------------------------- Set Blog ID
+      case SET_BLOG_ID:
+        return {
+          ...state,
+          blog: payload,
+         
+        };
+
+       
+     
     // ? ----------------------------- Set errors
 
     case SET_ERRORS:
