@@ -1,4 +1,7 @@
 import Slider from "react-slick";
+import Pizza from "../../../img/pizzaB.jpg";
+import Sandwitch from "../../../img/sandwitch.jpg";
+import Hamburguesa from "../../../img/hamburguesa.jpg";
 
 export default function SliderHome() {
   // ?---------------------------- Slider
@@ -18,7 +21,7 @@ export default function SliderHome() {
       <Slider {...settings}>
         <div className="relative">
           <img
-            src="../../../img/pizzaB.jpg"
+            src={Pizza}
             alt=""
             className="object-cover max-h-96 min-h-96 w-full"
           />
@@ -33,7 +36,7 @@ export default function SliderHome() {
         </div>
         <div className="relative">
           <img
-            src="../../../img/sandwitch.jpg"
+            src={Sandwitch}
             alt=""
             className="object-cover max-h-96 min-h-96 w-full"
           />
@@ -48,7 +51,7 @@ export default function SliderHome() {
         </div>
         <div className="relative">
           <img
-            src="../../../img/hamburguesa.jpg"
+            src={Hamburguesa}
             alt=""
             className="h-full object-cover max-h-96 min-h-96 w-full"
           />

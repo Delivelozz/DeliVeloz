@@ -3,21 +3,20 @@ import { useDispatch } from "react-redux";
 import { setShoppingCart } from "../../redux/actions/actions";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { API_URL } from "../../utils/constants";
 
+const Mercadopago = ({ shoppingCart, onPaymentComplete }) => {
+  //guardo el id en preferenceId y set me ayuda a guardar el estado
+  const [preferenceId, setPreferenceId] = useState(null);
 
-const Mercadopago = ({shoppingCart, onPaymentComplete}) => {
-    //guardo el id en preferenceId y set me ayuda a guardar el estado
-    const [preferenceId, setPreferenceId] = useState(null)
-
-useEffect(() => {
-  initMercadoPago('TEST-bc727f75-9789-4717-9b6a-636604e99203',{
-    locale: "es-AR",
-});
-handleBuy();
-
-}, []);
-//id de preferencia son los datos de nuestros productos
-const createPreference = async () => {
+  useEffect(() => {
+    initMercadoPago("TEST-bc727f75-9789-4717-9b6a-636604e99203", {
+      locale: "es-AR",
+    });
+    handleBuy();
+  }, []);
+  //id de preferencia son los datos de nuestros productos
+  const createPreference = async () => {
     try {
       const products = shoppingCart.map((item) => ({
         name: item.name,
@@ -26,7 +25,7 @@ const createPreference = async () => {
       }));
 
       const response = await axios.post(
-        "https://deliveloz-ryfh.onrender.com/mercadopago/create_preference",
+        `${API_URL}/mercadopago/create_preference`,
         products
       );
       const { id } = response.data;
@@ -51,17 +50,20 @@ const createPreference = async () => {
 
   return (
     <div>
-    <div>
+      <div>
         {/*<div className="mt-6 flex justify-center">
             <button className="btn-bg flex items-center justify-center" onClick={handleBuy}>Ir a Billetera</button>
 </div>*/}
-        {preferenceId && <Wallet initialization={{ preferenceId, redirectMode: 'modal' }} customization={{ texts:{ valueProp: 'smart_option'}}} 
-         onComplete={() => onPaymentComplete()}
-        />}
+        {preferenceId && (
+          <Wallet
+            initialization={{ preferenceId, redirectMode: "modal" }}
+            customization={{ texts: { valueProp: "smart_option" } }}
+            onComplete={() => onPaymentComplete()}
+          />
+        )}
+      </div>
     </div>
-</div>
-
-  )
-}
+  );
+};
 
 export default Mercadopago;
