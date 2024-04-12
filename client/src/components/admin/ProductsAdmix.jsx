@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import { Link } from "react-router-dom";
 import EditIcon from "../icons/EditIcon";
+import DeleteIcon from "../icons/DeleteIcon";
 
 export default function ProductsAdmin() {
   const dishes = useSelector((state) => state.dishes);
@@ -86,6 +87,11 @@ export default function ProductsAdmin() {
           <EditIcon width={22} heigth={22} color={"#E74C4C"} />
         </Link>
       ),
+      width: "100px",
+    },
+    {
+      name: "Borrar",
+      cell: (row) => <DeleteIcon width={22} height={22} color={"#E74C4C"} />,
       width: "100px",
     },
   ];
