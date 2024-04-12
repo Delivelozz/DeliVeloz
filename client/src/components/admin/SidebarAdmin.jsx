@@ -1,4 +1,5 @@
 import BoxIcon from "../icons/BoxIcon";
+import { Link } from "react-router-dom";
 
 export default function SidebarAdmin({ setSelectedComponent }) {
   return (
@@ -28,6 +29,12 @@ export default function SidebarAdmin({ setSelectedComponent }) {
         >
           Usuarios
         </li>
+
+        <Link to={"/addNew"}>
+          <li className="p-3 border-b border-t hover:bg-sundown-500 hover:text-white cursor-pointer transition text-sm">
+            Añadir Novedades
+          </li>
+        </Link>
       </ul>
     </div>
   );
