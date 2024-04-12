@@ -35,8 +35,8 @@ const shoppingCartCard = ({ id, name, price, image, qty, priceTotal }) => {
   };
 
   return (
-    <article id={id} className="w-full h-36 ">
-      <div className="w-full h-36 flex   justify-between bg-white rounded-lg border p-4 relative">
+    <article id={id} className="w-full h-44 sm:h-36">
+      <div className="w-full h-44 flex flex-wrap justify-center bg-white rounded-lg border p-4 relative sm:justify-between sm:h-36 md:flex-row">
         <div className="flex">
           <Link to={`/detail/${id}`}>
             <figure className="w-28 h-28 mr-3 rounded-md cursor-pointer hover:text-black">
@@ -47,7 +47,7 @@ const shoppingCartCard = ({ id, name, price, image, qty, priceTotal }) => {
               />
             </figure>
           </Link>
-          <div className=" flex flex-col justify-center align-center gap-1">
+          <div className=" flex flex-col justify-center align-center gap-1 ">
             <p className="text-sundown-500 font-semibold">{name}</p>
             <p>Precio unitario: ${price}</p>
             <div className="h-8 flex items-center gap-1">
@@ -72,7 +72,7 @@ const shoppingCartCard = ({ id, name, price, image, qty, priceTotal }) => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col justify-center align-center text-sundown-500 font-bold">
+        <div className="flex flex-col justify-center align-center mx-10 text-sundown-500 font-bold sm:mx-0">
           <p>Precio total: ${priceTotal}</p>
         </div>
         <button

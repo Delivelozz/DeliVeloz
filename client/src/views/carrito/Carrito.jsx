@@ -14,8 +14,7 @@ export default function Carrito() {
   useLocalStoreUserDataGoogle();
 
   return (
-    <section className="container">
-      <h1 className="mb-6">Carrito de compras</h1>
+    <section className="">
       <ShoppingCartCards shoppingCart={shoppingCart} />
       <TotalAmount />
     </section>
