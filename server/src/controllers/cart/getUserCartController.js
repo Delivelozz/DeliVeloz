@@ -16,20 +16,23 @@ const getUserCartController = async (idUser) => {
         ]
     });
 
-    // const cartUserFilter = {
-    //     id: cartUser.id,
-    //     product: cartUser.product.map(product => (
-    //         {
-    //             name: product.name,
-    //             price: product.price,
-    //             quantity: product.CartProduct.quantity,
-    //             image: product.image
-    //         }
-    //     ))
-    // };
+    const newOrderProducts = cartUser.products.map(product => (
+        {
+            name: product.name,
+            price: product.price,
+            quantity: product.cartProduct.quantity,
+            image: product.image
+        }
+    ))
+
+    const cartUserFilter = {
+        id: cartUser.id,
+        products: newOrderProducts
+    };
     
 
-    const resp = cartUser ? cartUser : "No hay carrito para ese id";
+    const resp = cartUserFilter ? cartUserFilter : "No hay carrito para ese id";
+    // const resp = cartUser ? cartUser : "No hay carrito para ese id";
 
     return resp;
 }
