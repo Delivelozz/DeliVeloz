@@ -2,23 +2,26 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-const { DB, DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT, DB_URL } = process.env;
-
+const { DB, DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT, DB_URL } =
+  process.env;
 
 //° CONEXION A LA BASE DE DATOS
-let sequelize = undefined
+let sequelize = undefined;
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
   sequelize = new Sequelize(DB_URL, {
     logging: false, // set to console.log to see the raw SQL queries
     native: false,
-    dialectOptions: { ssl: {require:true} }, // lets Sequelize know we can use pg-native for ~30% more speed
+    dialectOptions: { ssl: { require: true } }, // lets Sequelize know we can use pg-native for ~30% more speed
   });
 } else {
-  sequelize = new Sequelize(`${DB}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`, {
-    logging: false, // set to console.log to see the raw SQL queries
-    native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-  });
+  sequelize = new Sequelize(
+    `${DB}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
+    {
+      logging: false, // set to console.log to see the raw SQL queries
+      native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+    }
+  );
 }
 
 const basename = path.basename(__filename);
@@ -52,7 +55,6 @@ sequelize.models = Object.fromEntries(capsEntries);
 const {
   CategoryProduct,
   Address,
-  Stock,
   PaymentMethod,
   Order,
   Product,
@@ -84,33 +86,26 @@ Cart.belongsTo(User);
 // Cart - Product (muchos a muchos)
 Cart.belongsToMany(Product, { through: CartProduct, timestamps: false });
 Product.belongsToMany(Cart, { through: CartProduct, timestamps: false });
-// Stock - Product (uno a muchos)
-Stock.hasMany(Product);
-Product.belongsTo(Stock);
 // SubCategoryProduct - Product (uno a muchos)
 SubCategoryProduct.hasMany(Product);
 Product.belongsTo(SubCategoryProduct);
 // CategoryProduct - SubCategoryProduct (uno a muchos)
 CategoryProduct.hasMany(SubCategoryProduct);
 SubCategoryProduct.belongsTo(CategoryProduct);
-
 // User - Address (uno a muchos)
 User.hasMany(Address);
 Address.belongsTo(User);
 // User - Assessment (uno a muchos)
 User.hasMany(Assessment);
 Assessment.belongsTo(User);
-
 //Product - Assessment (uno a muchos)
 Product.hasMany(Assessment);
 Assessment.belongsTo(Product);
-
 // Administrator / Role (uno a uno)
 Administrator.hasOne(Role);
 Role.belongsTo(Administrator);
-
 //Banners - Product (uno a uno)
-Product.hasOne(Banners)
+Product.hasOne(Banners);
 Banners.belongsTo(Product);
 
 module.exports = {

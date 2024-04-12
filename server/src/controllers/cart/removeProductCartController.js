@@ -26,11 +26,7 @@ const removeProductCartController = async (idUser, idProduct) =>{
         }
     })
     if(cartProduct){
-        if(cartProduct.quantity > 1){
-            await userCart.addProduct(product, { through: { quantity: cartProduct.quantity - 1 } });
-        }else{
-            await userCart.removeProduct(product);
-        }
+        await userCart.removeProduct(product);
     }else{
         throw new Error('Producto no encontrado');
     }
