@@ -52,7 +52,6 @@ sequelize.models = Object.fromEntries(capsEntries);
 const {
   CategoryProduct,
   Address,
-  Stock,
   PaymentMethod,
   Order,
   Product,
@@ -84,31 +83,24 @@ Cart.belongsTo(User);
 // Cart - Product (muchos a muchos)
 Cart.belongsToMany(Product, { through: CartProduct, timestamps: false });
 Product.belongsToMany(Cart, { through: CartProduct, timestamps: false });
-// Stock - Product (uno a muchos)
-Stock.hasMany(Product);
-Product.belongsTo(Stock);
 // SubCategoryProduct - Product (uno a muchos)
 SubCategoryProduct.hasMany(Product);
 Product.belongsTo(SubCategoryProduct);
 // CategoryProduct - SubCategoryProduct (uno a muchos)
 CategoryProduct.hasMany(SubCategoryProduct);
 SubCategoryProduct.belongsTo(CategoryProduct);
-
 // User - Address (uno a muchos)
 User.hasMany(Address);
 Address.belongsTo(User);
 // User - Assessment (uno a muchos)
 User.hasMany(Assessment);
 Assessment.belongsTo(User);
-
 //Product - Assessment (uno a muchos)
 Product.hasMany(Assessment);
 Assessment.belongsTo(Product);
-
 // Administrator / Role (uno a uno)
 Administrator.hasOne(Role);
 Role.belongsTo(Administrator);
-
 //Banners - Product (uno a uno)
 Product.hasOne(Banners)
 Banners.belongsTo(Product);

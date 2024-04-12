@@ -1,6 +1,6 @@
 const {User, Cart, Product, CartProduct} = require('../../db');
 
-const removeProductCartController = async (idUser, idProduct) =>{
+const decreaseProductCartController = async (idUser, idProduct) =>{
     // Verificar si el usuario existe
     const user = await User.findByPk(idUser);
     if (!user) {
@@ -26,12 +26,16 @@ const removeProductCartController = async (idUser, idProduct) =>{
         }
     })
     if(cartProduct){
-        await userCart.removeProduct(product);
+        if(cartProduct.quantity > 1){
+            await userCart.addProduct(product, { through: { quantity: cartProduct.quantity - 1 } });
+        }else{
+            await userCart.removeProduct(product);
+        }
     }else{
         throw new Error('Producto no encontrado');
     }
 
-    return "Producto removido";
+    return "Producto decrementado";
 }
 
-module.exports = removeProductCartController;
+module.exports = decreaseProductCartController;

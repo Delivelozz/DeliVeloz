@@ -4,13 +4,16 @@ const cartRouter = Router();
 // Importar handlers
 const getUserCartHandler = require("../handlers/cart/getUserCartHandler");
 const addProductCartHandler = require("../handlers/cart/addProductCartHandler");
+const decreaseProductCartHandler = require("../handlers/cart/decreaseProductCartHandler");
 const removeProductCartHandler = require("../handlers/cart/removeProductCartHandler");
 
 // Usar handlers
 cartRouter.get("/user/:idUser", getUserCartHandler);
 // Add product
-cartRouter.post("/addproduct/:idUser/:idProduct", addProductCartHandler);
+cartRouter.put("/addproduct/:idUser/:idProduct", addProductCartHandler);
+// Decrease product
+cartRouter.put("/decreaseproduct/:idUser/:idProduct", decreaseProductCartHandler);
 // Remove product
-cartRouter.put("/removeproduct/:idUser/:idProduct", removeProductCartHandler);
-
+cartRouter.delete("/removeproduct/:idUser/:idProduct", removeProductCartHandler);
+    
 module.exports = cartRouter;
