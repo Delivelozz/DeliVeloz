@@ -8,37 +8,37 @@ const addProductCartController = async (idUser, idProduct) => {
     }
 
     // Ahora que sabemos que el usuario existe, procedemos a crear o actualizar el carrito
-    const newCart = await Cart.findOrCreate({
+    const newCart = await Cart.findOne({
         where: { userId: idUser }
     });
 
-    if(newCart[1]){
-        // Crear una asociación entre el producto y el carrito
-        // Asegúrate de que el producto exista y esté correctamente definido
-        const product = await Product.findByPk(idProduct);
-        if (!product) {
-            throw new Error('Producto no encontrado');
-        }
-        await newCart[0].addProduct(product, { through: { quantity: 1 } });
+    if(!newCart){
+        throw new Error('Producto no encontrado');
     }else{
+        // // Crear una asociación entre el producto y el carrito
+        // // Asegúrate de que el producto exista y esté correctamente definido
+        // const product = await Product.findByPk(idProduct);
+        // if (!product) {
+        //     throw new Error('Producto no encontrado');
+        // }
+        // await newCart.addProduct(product, { through: { quantity: 1 } });
         const product = await Product.findByPk(idProduct);
         if (!product) {
             throw new Error('Producto no encontrado');
         }
         const cartProduct = await CartProduct.findOne({
             where: {
-                cartId: newCart[0].id,
+                cartId: newCart.id,
                 productId: product.id
             }
         })
         if(cartProduct){
-            await newCart[0].addProduct(product, { through: { quantity: cartProduct.quantity + 1 } });
+            await newCart.addProduct(product, { through: { quantity: cartProduct.quantity + 1 } });
         }else{
-            await newCart[0].addProduct(product, { through: { quantity: 1 } });
+            await newCart.addProduct(product, { through: { quantity: 1 } });
         }
     }
    
-
     return "Producto añadido";
 }
 
