@@ -1,7 +1,6 @@
 import {
   SET_DISHES,
   SET_PROMOS,
-  SET_SHOPPING_CART,
   SET_CATEGORIES,
   SET_FILTERING,
   SET_SUBCATEGORIES,
@@ -16,6 +15,7 @@ import {
   SET_USER_DATA,
   SET_ERRORS,
   GET_USERS,
+  GET_SHOPPING_CART,
 } from "./types";
 import axios from "axios";
 import { API_URL } from "../../utils/constants";
@@ -43,16 +43,6 @@ export const setPromos = (payload) => ({
   type: SET_PROMOS,
   payload,
 });
-
-// ? ----------------------------- Set Shopping Cart
-
-export function setShoppingCart(shoppingCart) {
-  localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
-  return {
-    type: "SET_SHOPPING_CART",
-    payload: shoppingCart,
-  };
-}
 
 // ? ----------------------------- Filter By
 
@@ -244,5 +234,21 @@ export function setErrors(errors) {
   return {
     type: SET_ERRORS,
     payload: errors,
+  };
+}
+
+// ? ----------------------------- Get Shopping Cart
+export function getShoppingCart(userId) {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(`${API_URL}/cart/user/${userId}`);
+      const data = await response.json();
+      dispatch({
+        type: GET_SHOPPING_CART,
+        payload: data,
+      });
+    } catch (error) {
+      console.error("Error fetching shopping cart: ", error);
+    }
   };
 }

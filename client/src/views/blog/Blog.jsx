@@ -1,10 +1,12 @@
 import blog from "../../../img/imgBlog.jpg";
 import { useLocalStoreUserData } from "../../hooks/useLocalStoreUserData.js";
 import { useLocalStoreUserDataGoogle } from "../../hooks/useLocalStoreUserDataGoogle.js";
+import { useGetShoppingDB } from "../../hooks/useGetShoppingDB.js";
 
 function Blog() {
   useLocalStoreUserData();
   useLocalStoreUserDataGoogle();
+  useGetShoppingDB();
 
   return (
     <div className="container lg:mb-56">

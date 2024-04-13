@@ -1,7 +1,6 @@
 import {
   SET_DISHES,
   SET_PROMOS,
-  SET_SHOPPING_CART,
   SET_CATEGORIES,
   SET_FILTERING,
   SET_SUBCATEGORIES,
@@ -16,6 +15,7 @@ import {
   SET_USER_DATA,
   SET_ERRORS,
   GET_USERS,
+  GET_SHOPPING_CART,
 } from "../actions/types";
 
 const initialState = {
@@ -40,6 +40,7 @@ const initialState = {
   },
   loading: {},
   dish: [], // Para publicar un plato nuevo
+  shoppingCartDB: [], // Para obtener el carrito de compras desde el back
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -54,12 +55,6 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         promos: payload, // Actualiza el arreglo de promociones
-      };
-
-    case SET_SHOPPING_CART:
-      return {
-        ...state,
-        shoppingCart: payload, // Actualiza el arreglo del carrito de compras
       };
 
     case SET_CATEGORIES:
@@ -155,6 +150,12 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         allUsers: payload,
+      };
+
+    case GET_SHOPPING_CART:
+      return {
+        ...state,
+        shoppingCartDB: payload,
       };
 
     default:

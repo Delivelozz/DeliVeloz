@@ -12,10 +12,12 @@ import imgGaston from "../../assents/Gaston.png";
 import imgTobias from "../../assents/Tobias.jpg";
 import { useLocalStoreUserData } from "../../hooks/useLocalStoreUserData.js";
 import { useLocalStoreUserDataGoogle } from "../../hooks/useLocalStoreUserDataGoogle.js";
+import { useGetShoppingDB } from "../../hooks/useGetShoppingDB.js";
 
 function About() {
   useLocalStoreUserData();
   useLocalStoreUserDataGoogle();
+  useGetShoppingDB();
 
   return (
     <section className="container">
