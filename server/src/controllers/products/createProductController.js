@@ -1,6 +1,6 @@
 const { Product, SubCategoryProduct } = require("../../db.js");
 
-const createUserController = async ({name, description, price, category, subCategory, image}) => {
+const createUserController = async ({name, description, price, category, subCategory, image, quantity}) => {
 
     const subcategory = await SubCategoryProduct.findOne({ where: { name: subCategory } });
 
@@ -12,6 +12,7 @@ const createUserController = async ({name, description, price, category, subCate
         subCategory,
         image,
         subCategoryProductId: subcategory.id,
+        quantity
     });
 
     return newProduct;
