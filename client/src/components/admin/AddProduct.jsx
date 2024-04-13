@@ -117,7 +117,7 @@ export default function AddProduct() {
   console.log(dish);
 
   return (
-    <section className="container-left">
+    <section className="container-left col-span-4">
       <h1 className="mb-6">
         Añadir <span className="text-sundown-500">Producto</span>
       </h1>

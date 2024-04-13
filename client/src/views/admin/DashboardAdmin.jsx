@@ -28,11 +28,9 @@ export default function DashboardAdmin() {
   };
 
   return (
-    <div className="">
-      <div className="h-full flex">
-        <SidebarAdmin setSelectedComponent={setSelectedComponent} />
-        {renderComponent()}
-      </div>
+    <div className="grid grid-cols-5 relative">
+      <SidebarAdmin setSelectedComponent={setSelectedComponent} />
+      {renderComponent()}
     </div>
   );
 }

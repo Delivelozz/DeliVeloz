@@ -8,6 +8,7 @@ import { useLocalStoreUserData } from "../../hooks/useLocalStoreUserData.js";
 import { useLocalStoreUserDataGoogle } from "../../hooks/useLocalStoreUserDataGoogle.js";
 import { useGetShoppingDB } from "../../hooks/useGetShoppingDB.js";
 
+
 export default function Home() {
   const promos = useSelector((state) => state.promos);
   const dispatch = useDispatch();
@@ -34,6 +35,8 @@ export default function Home() {
           Nuestras <span className="text-sundown-500">Novedades</span>
         </h1>
         <Promos dishes={promos} />
+       
+      
       </div>
     </section>
   );

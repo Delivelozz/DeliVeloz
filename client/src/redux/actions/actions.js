@@ -16,9 +16,15 @@ import {
   SET_ERRORS,
   GET_USERS,
   GET_SHOPPING_CART,
+  SET_BLOG_DATA,
+  SET_BLOG_ID,
+  TOGGLE_SIDEBAR,
+  EDIT_DISHES,
 } from "./types";
 import axios from "axios";
 import { API_URL } from "../../utils/constants";
+
+// ! ----------------------------------------------- Dishes
 
 // ? ----------------------------- Set Dishes
 
@@ -37,10 +43,61 @@ export function setDishes() {
   };
 }
 
+// ? ----------------------------- Post Dishes
+
+export function postDishes(payload) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(`${API_URL}/products`, payload);
+      dispatch({
+        type: POST_DISHES,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Error al postear el plato: ", error);
+    }
+  };
+}
+
+// ? ----------------------------- Edit Dishes
+
+export function editDishes(id, payload) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.patch(
+        `https://deliveloz-ryfh.onrender.com/products/${id}`,
+        payload
+      );
+      dispatch({
+        type: EDIT_DISHES,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Error al editar el plato: ", error);
+    }
+  };
+}
+
+// ! ----------------------------------------------- Promos
+
 // ? ----------------------------- Set Promos
 
 export const setPromos = (payload) => ({
   type: SET_PROMOS,
+  payload,
+});
+
+// ! ----------------------------------------------- Filters
+
+// ? ----------------------------- Set filtering
+
+export const setFiltering = (payload) => ({
+  type: SET_FILTERING,
+  payload,
+});
+
+export const setFilteringSubCategory = (payload) => ({
+  type: SET_SUBCATEGORIES,
   payload,
 });
 
@@ -79,14 +136,6 @@ export function getByName(name) {
   };
 }
 
-// ? ---------------------------------------------- Reset
-
-export const resetDishes = () => {
-  return {
-    type: RESET,
-  };
-};
-
 // ? ----------------------------- Set Categories
 
 export function setCategories() {
@@ -121,46 +170,29 @@ export function getSubCategories() {
   };
 }
 
-// ? ----------------------------- Set filtering
+// ? ---------------------------------------------- Reset
 
-export const setFiltering = (payload) => ({
-  type: SET_FILTERING,
-  payload,
-});
-
-export const setFilteringSubCategory = (payload) => ({
-  type: SET_SUBCATEGORIES,
-  payload,
-});
-
-// ? ----------------------------- Post Users
-
-export function postUsers(payload) {
-  return async function (dispatch) {
-    try {
-      const response = await axios.post(`${API_URL}/users`, payload);
-      dispatch({
-        type: POST_USER,
-        payload: response.data,
-      });
-    } catch (error) {
-      console.error("Tienes un error en: ", error);
-    }
+export const resetDishes = () => {
+  return {
+    type: RESET,
   };
-}
+};
 
-// ? ----------------------------- Post Dishes
+// ! ----------------------------------------------- Users
 
-export function postDishes(payload) {
-  return async function (dispatch) {
+// ? ----------------------------- Get Users
+
+export function getUsers() {
+  return async (dispatch) => {
     try {
-      const response = await axios.post(`${API_URL}/products`, payload);
+      const response = await fetch(`${API_URL}/users`);
+      const data = await response.json();
       dispatch({
-        type: POST_DISHES,
-        payload: response.data,
+        type: GET_USERS,
+        payload: data,
       });
     } catch (error) {
-      console.error("Error al postear el plato: ", error);
+      console.error("Error fetching users: ", error);
     }
   };
 }
@@ -202,7 +234,25 @@ export function logoutUser(payload) {
   };
 }
 
+// ? ----------------------------- Post Users
+
+export function postUsers(payload) {
+  return async function (dispatch) {
+    try {
+      const response = await fetch(`${API_URL}/users`);
+      const data = await response.json();
+      dispatch({
+        type: POST_USER,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Tienes un error en: ", error);
+    }
+  };
+}
+
 // ? ----------------------------- Set User Data
+
 export function setUserData(userData) {
   console.log(userData);
   localStorage.setItem("userData", JSON.stringify(userData));
@@ -212,24 +262,57 @@ export function setUserData(userData) {
   };
 }
 
-// ? ----------------------------- Get Users
+// ! ----------------------------------------------- Cart
 
-export function getUsers() {
+// ? ----------------------------- Set Shopping Cart
+
+export function setShoppingCart(shoppingCart) {
+  localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
+  return {
+    type: "SET_SHOPPING_CART",
+    payload: shoppingCart,
+  };
+}
+
+// ? ----------------------------- Set Blog
+export function setBlogData() {
   return async (dispatch) => {
     try {
-      const response = await fetch(`${API_URL}/users`);
+      const response = await fetch(
+        "https://deliveloz-ryfh.onrender.com/banners"
+      );
       const data = await response.json();
       dispatch({
-        type: GET_USERS,
+        type: SET_BLOG_DATA,
         payload: data,
       });
     } catch (error) {
-      console.error("Error fetching users: ", error);
+      console.error("Error fetching posts: ", error);
     }
   };
 }
 
-// ? ----------------------------- Set Errors
+// ? ----------------------------- Set Blog ID
+
+export function setBlogId(id) {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(
+        `https://deliveloz-ryfh.onrender.com/banners/${id}`
+      );
+      const data = await response.json();
+      dispatch({
+        type: SET_BLOG_ID,
+        payload: data,
+      });
+    } catch (error) {
+      console.error("Error fetching posts: ", error);
+    }
+  };
+}
+
+// ! ----------------------------------------------- Set Errors
+
 export function setErrors(errors) {
   return {
     type: SET_ERRORS,
@@ -252,3 +335,12 @@ export function getShoppingCart(userId) {
     }
   };
 }
+
+// ! ------------------------------------------------ Toggle
+
+export const toggleSidebar = (left) => {
+  return {
+    type: TOGGLE_SIDEBAR,
+    payload: left,
+  };
+};
