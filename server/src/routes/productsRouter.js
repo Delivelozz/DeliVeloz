@@ -18,7 +18,7 @@ productsRouter.get("/:id", getProductByIdHandler);
 productsRouter.post("/", createProductHandler);
 // Editar Producto
 productsRouter.patch("/:id", editProductHandler);
-// Desactivar Producto
+// Desactivar - Activar Producto
 productsRouter.put("/:id/:value", desactProductHandler)
 //Borrar Producto
 productsRouter.delete("/:productId", deleteProductHandler);
