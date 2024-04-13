@@ -49,7 +49,7 @@ const initialState = {
   sidebar: {
     isVisible: false,
   },
-  dishEdited: {},
+  dishEdited: [],
 };
 
 export default function reducer(state = initialState, { type, payload }) {

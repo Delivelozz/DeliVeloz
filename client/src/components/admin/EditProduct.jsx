@@ -19,6 +19,7 @@ export default function EditProduct() {
       jpg: "",
       png: "",
     },
+    quantity: "",
   });
 
   useEffect(() => {
@@ -45,8 +46,7 @@ export default function EditProduct() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    dispatch(editDishes(dish));
+    dispatch(editDishes({ ...dish, id }));
     alert("¡El producto fue editado exitosamente!");
   };
 
@@ -129,8 +129,8 @@ export default function EditProduct() {
               <input
                 onChange={onChange}
                 type="number"
-                name="stock"
-                value={dish.stockId}
+                name="quantity"
+                value={dish.quantity}
                 className=" bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               />
             </div>

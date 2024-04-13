@@ -61,11 +61,12 @@ export function postDishes(payload) {
 
 // ? ----------------------------- Edit Dishes
 
-export function editDishes(id, payload) {
+export function editDishes(payload) {
+  // console.log("esto es un payload:", payload.id)
   return async function (dispatch) {
     try {
       const response = await axios.patch(
-        `https://deliveloz-ryfh.onrender.com/products/${id}`,
+        `https://deliveloz-ryfh.onrender.com/products/${payload.id}`,
         payload
       );
       dispatch({
