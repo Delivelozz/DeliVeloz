@@ -22,6 +22,7 @@ import {
   
   TOGGLE_SIDEBAR,
   EDIT_DISHES,
+  POST_BLOG,
 } from "../actions/types";
 
 const initialState = {
@@ -46,12 +47,13 @@ const initialState = {
   },
   loading: {},
   dish: [], // Para publicar un plato nuevo
-  blog: [] ,
-
+  blog: [] , //get y getId
+  news: [],
   sidebar: {
     isVisible: false,
   },
   dishEdited: {}
+  
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -226,6 +228,14 @@ export default function reducer(state = initialState, { type, payload }) {
           blog: payload,
          
         };
+       // ? ----------------------------- Post Blog
+
+      
+    case POST_BLOG:
+      return {
+        ...state,
+        blog: [...state.blog, payload],
+      };
 
        
      

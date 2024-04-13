@@ -19,7 +19,8 @@ import {
   SET_BLOG_DATA,
   SET_BLOG_ID,
   TOGGLE_SIDEBAR,
-  EDIT_DISHES
+  EDIT_DISHES,
+  POST_BLOG,
 } from "./types";
 import axios from "axios";
 import { API_URL } from "../../utils/constants";
@@ -308,6 +309,24 @@ export function setBlogId(id) {
     }
   }
 }
+// ? ----------------------------- Post Blog 
+export function postBlog() {
+  return async (dispatch) => {
+    try {
+      const response = await fetch("https://deliveloz-ryfh.onrender.com/banners")
+      const data = await response.json()
+      dispatch ({
+        type: POST_BLOG,
+        payload: data,
+      })
+    } catch (error){
+      console.error("Error fetching posts: ", error)
+    }
+  }
+}
+
+
+
 
 // ! ----------------------------------------------- Set Errors
 
