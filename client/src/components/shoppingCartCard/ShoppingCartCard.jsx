@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { API_URL } from "../../utils/constants.js";
+import { getShoppingCart } from "../../redux/actions/actions.js";
 
 const shoppingCartCard = ({ id, name, price, image, qty }) => {
   const shoppingCartDB = useSelector((state) => state.shoppingCartDB);
   const user = useSelector((state) => state.user);
   const [total, setTotal] = useState(0);
   const [userID, setUserID] = useState(user?.user?.id);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const total = price * qty;
@@ -24,6 +26,7 @@ const shoppingCartCard = ({ id, name, price, image, qty }) => {
     if (!response.ok) {
       throw new Error("Error al eliminar el producto");
     }
+    dispatch(getShoppingCart(userID));
   };
 
   const handleDecrease = async () => {
@@ -36,6 +39,7 @@ const shoppingCartCard = ({ id, name, price, image, qty }) => {
     if (!response.ok) {
       throw new Error("Error al disminuir la cantidad del producto");
     }
+    dispatch(getShoppingCart(userID));
   };
 
   const handleAdd = async () => {
@@ -45,6 +49,7 @@ const shoppingCartCard = ({ id, name, price, image, qty }) => {
     if (!response.ok) {
       throw new Error("Error al aumentar la cantidad del producto");
     }
+    dispatch(getShoppingCart(userID));
   };
 
   return (

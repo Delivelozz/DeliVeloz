@@ -3,10 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Loader from "../loader/Loader.jsx";
 import { API_URL } from "../../utils/constants.js";
+import { getShoppingCart } from "../../redux/actions/actions.js";
 
 export default function Card(props) {
   const { id, name, image, price, category, subCategory } = props;
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const shoppingCartDB = useSelector((state) => state.shoppingCartDB);
   const user = useSelector((state) => state.user);
   const [userID, setUserID] = useState(null);
@@ -32,6 +33,7 @@ export default function Card(props) {
     if (!response.ok) {
       throw new Error("Error al aumentar la cantidad del producto");
     }
+    dispatch(getShoppingCart(userID)); // Agrega esta línea
   };
 
   const handleDecrease = async () => {
@@ -44,6 +46,7 @@ export default function Card(props) {
     if (!response.ok) {
       throw new Error("Error al disminuir la cantidad del producto");
     }
+    dispatch(getShoppingCart(userID)); // Agrega esta línea
   };
 
   return (

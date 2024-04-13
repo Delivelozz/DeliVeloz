@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import Loader from "../../components/loader/Loader";
 import { useLocalStoreUserData } from "../../hooks/useLocalStoreUserData";
@@ -8,6 +8,7 @@ import "./Detail.css";
 import { useGetShoppingDB } from "../../hooks/useGetShoppingDB.js";
 import { useLocalStoreUserDataGoogle } from "../../hooks/useLocalStoreUserDataGoogle.js";
 import { API_URL } from "../../utils/constants";
+import { getShoppingCart } from "../../redux/actions/actions.js";
 
 export default function Detail() {
   const { id } = useParams();
@@ -17,6 +18,7 @@ export default function Detail() {
   const [userID, setUserID] = useState(null);
   const [loading, setLoading] = useState(false);
   const [quantity, setQuantity] = useState(0);
+  const dispatch = useDispatch();
 
   useLocalStoreUserData();
   useLocalStoreUserDataGoogle();
@@ -90,6 +92,7 @@ export default function Detail() {
     if (!response.ok) {
       throw new Error("Error al aumentar la cantidad del producto");
     }
+    dispatch(getShoppingCart(userID));
   };
 
   const handleDecrease = async () => {
@@ -102,6 +105,7 @@ export default function Detail() {
     if (!response.ok) {
       throw new Error("Error al disminuir la cantidad del producto");
     }
+    dispatch(getShoppingCart(userID));
   };
 
   return (
