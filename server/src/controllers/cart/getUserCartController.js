@@ -11,13 +11,14 @@ const getUserCartController = async (idUser) => {
                     model: CartProduct,
                     attributes: ['quantity']
                 }, 
-                attributes: ['name', 'price', 'image']
+                attributes: ['id', 'name', 'price', 'image']
             }
         ]
     });
 
     const newOrderProducts = cartUser.products.map(product => (
         {
+            id: product.id,
             name: product.name,
             price: product.price,
             quantity: product.cartProduct.quantity,
