@@ -8,6 +8,8 @@ export const useGetShoppingDB = () => {
   const shoppingCartDB = useSelector((state) => state.shoppingCartDB);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getShoppingCart(user?.user?.id));
-  }, [user, shoppingCartDB]);
+    if (user?.user?.id) {
+      dispatch(getShoppingCart(user.user.id));
+    }
+  }, [user, dispatch]);
 };
