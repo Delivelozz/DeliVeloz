@@ -1,11 +1,25 @@
 import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
 import { useDispatch } from "react-redux";
-import { postDishes } from "../../redux/actions/actions";
+import { postDishes } from "../../../redux/actions/actions";
 import validation from "./validation";
+import UploadWidget from "../../../components/cloudinary/UploadWidget";
 
 export default function AddProduct() {
   const dispatch = useDispatch();
+
+  // ? -------------------------------------- Cloudinary
+
+  const handleImageUpload = (imageUrl, imageType) => {
+    setDish((prevDish) => ({
+      ...prevDish,
+      image: {
+        ...prevDish.image,
+        [imageType]: imageUrl,
+      },
+    }));
+  };
+
+  // ? -------------------------------------- State Dish
 
   const [dish, setDish] = useState({
     name: "",
@@ -20,6 +34,8 @@ export default function AddProduct() {
     availability: true,
     quantity: "",
   });
+
+  // ? -------------------------------------- On Errors
 
   const [errors, setErrors] = useState({
     name: "",
@@ -171,7 +187,11 @@ export default function AddProduct() {
               <label className="font-semibold text-sm text-sundown-500 mb-1">
                 Imagen jpg:
               </label>
-              <div className="flex flex-col gap-2"></div>
+              <UploadWidget
+                onImageUpload={(url) => handleImageUpload(url, "jpg")}
+                imageType="jpg"
+                texto="Añadir imagen"
+              />
             </div>
           </div>
 
@@ -180,7 +200,11 @@ export default function AddProduct() {
               <label className="font-semibold text-sm text-sundown-500 mb-1">
                 Imagen png:
               </label>
-              <div className="flex flex-col gap-2"></div>
+              <UploadWidget
+                onImageUpload={(url) => handleImageUpload(url, "png")}
+                imageType="png"
+                texto="Añadir imagen"
+              />
             </div>
           </div>
         </div>

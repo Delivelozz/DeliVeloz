@@ -61,7 +61,7 @@ export default function ProductsAdmin() {
           alt="Imagen"
           style={{
             width: "35px",
-            hidth: "35px",
+            height: "35px",
             borderRadius: "50%",
             objectFit: "cover",
           }}

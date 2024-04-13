@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { editDishes } from "../../redux/actions/actions";
+import UploadWidget from "../cloudinary/UploadWidget";
 
 export default function EditProduct() {
   const dispatch = useDispatch();
@@ -43,6 +44,18 @@ export default function EditProduct() {
     const { name, value } = e.target;
     setDish({ ...dish, [name]: value });
   };
+
+  const handleImageUpload = (imageUrl, imageType) => {
+    setDish((prevDish) => ({
+      ...prevDish,
+      image: {
+        ...prevDish.image,
+        [imageType]: imageUrl,
+      },
+    }));
+  };
+
+  console.log(dish);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -155,6 +168,11 @@ export default function EditProduct() {
                 Imagen jpg:
               </label>
               <img src={dish.image.jpg} alt="" />
+              <UploadWidget
+                onImageUpload={(url) => handleImageUpload(url, "jpg")}
+                imageType="jpg"
+                texto="Cambiar imagen"
+              />
             </div>
 
             <div className="flex flex-col gap-2">
@@ -162,6 +180,11 @@ export default function EditProduct() {
                 Imagen png:
               </label>
               <img src={dish.image.png} alt="" />
+              <UploadWidget
+                onImageUpload={(url) => handleImageUpload(url, "png")}
+                imageType="png"
+                texto="Cambiar imagen"
+              />
             </div>
           </div>
         </div>
