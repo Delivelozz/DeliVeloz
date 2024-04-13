@@ -1,4 +1,4 @@
-export default function validation({ name, description, price, category, subCategory, stockId, jpg, png }) {
+export default function validation({ name, description, price, category, subCategory, quantity, jpg, png }) {
   const errors = {};
 
   // Validación para el campo name
@@ -32,11 +32,9 @@ export default function validation({ name, description, price, category, subCate
     errors.subCategory = "Este campo no puede estar vacío.";
   }
 
-
-
   // Validación para el campo stockId
-  if (!stockId) {
-    errors.stockId = "Este campo no puede estar vacío.";
+  if (!quantity) {
+    errors.quantity = "Este campo no puede estar vacío.";
   }
 
   return errors;
