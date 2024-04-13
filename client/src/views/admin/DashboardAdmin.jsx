@@ -6,11 +6,13 @@ import ProductsAdmin from "../../components/admin/ProductsAdmix";
 import AddProduct from "../../components/admin/AddProduct";
 import { useLocalStoreUserData } from "../../hooks/useLocalStoreUserData.js";
 import { useLocalStoreUserDataGoogle } from "../../hooks/useLocalStoreUserDataGoogle.js";
+import { useGetShoppingDB } from "../../hooks/useGetShoppingDB.js";
 
 export default function DashboardAdmin() {
   const [selectedComponent, setSelectedComponent] = useState("products");
   useLocalStoreUserData();
   useLocalStoreUserDataGoogle();
+  useGetShoppingDB();
 
   const renderComponent = () => {
     switch (selectedComponent) {

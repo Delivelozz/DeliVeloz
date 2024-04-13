@@ -1,7 +1,6 @@
 import {
   SET_DISHES,
   SET_PROMOS,
-  SET_SHOPPING_CART,
   SET_CATEGORIES,
   SET_FILTERING,
   SET_SUBCATEGORIES,
@@ -16,10 +15,9 @@ import {
   SET_USER_DATA,
   SET_ERRORS,
   GET_USERS,
+  GET_SHOPPING_CART,
   SET_BLOG_DATA,
   SET_BLOG_ID,
- 
-  
   TOGGLE_SIDEBAR,
   EDIT_DISHES,
 } from "../actions/types";
@@ -46,12 +44,12 @@ const initialState = {
   },
   loading: {},
   dish: [], // Para publicar un plato nuevo
-  blog: [] ,
-
+  shoppingCartDB: [], // Para obtener el carrito de compras desde el back
+  blog: [],
   sidebar: {
     isVisible: false,
   },
-  dishEdited: {}
+  dishEdited: {},
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -71,17 +69,17 @@ export default function reducer(state = initialState, { type, payload }) {
     case EDIT_DISHES:
       return {
         ...state,
-        dishes: state.dishes.map(dish => {
-        if (dish.id === payload.id) {
-          return {
-            ...dish,
-            ...payload,
-          };
-        }
-        return dish;
-      }),
-    dishEdited: [...state.dishEdited, payload],
-  };
+        dishes: state.dishes.map((dish) => {
+          if (dish.id === payload.id) {
+            return {
+              ...dish,
+              ...payload,
+            };
+          }
+          return dish;
+        }),
+        dishEdited: [...state.dishEdited, payload],
+      };
 
     // ? ----------------------------- EDIT_DISHES
 
@@ -90,8 +88,6 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         dish: [...state.dish, payload],
       };
-
-
 
     // ! ----------------------------------------------- Promos
 
@@ -211,24 +207,19 @@ export default function reducer(state = initialState, { type, payload }) {
         userData: payload,
       };
 
-    
     // ? ----------------------------- Set Blog
     case SET_BLOG_DATA:
       return {
         ...state,
         blog: payload,
-       
       };
-      // ? ----------------------------- Set Blog ID
-      case SET_BLOG_ID:
-        return {
-          ...state,
-          blog: payload,
-         
-        };
+    // ? ----------------------------- Set Blog ID
+    case SET_BLOG_ID:
+      return {
+        ...state,
+        blog: payload,
+      };
 
-       
-     
     // ? ----------------------------- Set errors
 
     case SET_ERRORS:
@@ -239,10 +230,10 @@ export default function reducer(state = initialState, { type, payload }) {
 
     // ! ----------------------------------------------- Cart
 
-    case SET_SHOPPING_CART:
+    case GET_SHOPPING_CART:
       return {
         ...state,
-        shoppingCart: payload, // Actualiza el arreglo del carrito de compras
+        shoppingCartDB: payload,
       };
 
     // ! ------------------------------------------------ Toggle

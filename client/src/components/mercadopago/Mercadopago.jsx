@@ -1,6 +1,5 @@
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import { useDispatch } from "react-redux";
-import { setShoppingCart } from "../../redux/actions/actions";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { API_URL } from "../../utils/constants";
@@ -22,7 +21,7 @@ const createPreference = async () => {
     try {
       const products = shoppingCart.map((item) => ({
         name: item.name,
-        quantity: item.qty,
+        quantity: item.quantity,
         price: item.price,
       }));
 

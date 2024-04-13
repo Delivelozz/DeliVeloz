@@ -118,13 +118,27 @@ export default function Filters({ setCurrentPage }) {
   };
 
   return (
-    <div className="flex w-full justify-between mb-10">
-      <div className="flex gap-2">
+    <div className="flex w-full justify-center flex-wrap mb-10 gap-2 lg:justify-between">
+      <div className="w-full font-semibold sm:w-auto md:w-auto">
+        <form onSubmit={handleSubmit} className="flex justify-between gap-3">
+          <input
+            type="search"
+            value={name}
+            placeholder="Buscar..."
+            onChange={search}
+            className="w-3/4 bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+          />
+          <button type="submit" className="btn-bg">
+            Buscar
+          </button>
+        </form>
+      </div>
+      <div className="flex  gap-2">
         <select
           name=""
           value={category}
           placeholder="Categorías"
-          className="py-2 px-4 border border-sundown-500 rounded-lg text-sm focus:outline-sundown-500 font-semibold"
+          className="w-1/4 py-2  border border-sundown-500 rounded-lg text-sm focus:outline-sundown-500 font-semibold"
           onChange={handleFilterCategory}
         >
           <option value="default" disabled={true}>
@@ -141,7 +155,7 @@ export default function Filters({ setCurrentPage }) {
           name=""
           value={subCategory}
           placeholder="Subcategorías"
-          className={`py-2 px-4 border ${
+          className={`w-1/4 py-2  border ${
             category === "default" ? "border-gray-500" : "border-sundown-500"
           } rounded-lg text-sm focus:outline-sundown-500 font-semibold`}
           onChange={handleFilterSubCategory}
@@ -162,7 +176,7 @@ export default function Filters({ setCurrentPage }) {
           name=""
           value={price}
           placeholder="Precio"
-          className="py-2 px-4 border border-sundown-500 rounded-lg text-sm focus:outline-sundown-500 font-semibold"
+          className="w-1/4 py-2  border border-sundown-500 rounded-lg text-sm focus:outline-sundown-500 font-semibold"
         >
           <option value="default" disabled={true}>
             Por Precio
@@ -173,21 +187,6 @@ export default function Filters({ setCurrentPage }) {
         <button onClick={handleClick} className="btn-bg">
           Limpiar
         </button>
-      </div>
-
-      <div className="font-semibold">
-        <form onSubmit={handleSubmit} className="flex gap-3">
-          <input
-            type="search"
-            value={name}
-            placeholder="Buscar..."
-            onChange={search}
-            className="w-48 bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
-          />
-          <button type="submit" className="btn-bg">
-            Buscar
-          </button>
-        </form>
       </div>
     </div>
   );

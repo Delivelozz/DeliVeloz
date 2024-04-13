@@ -3,19 +3,18 @@ import Promo from "../../components/promo/Promo.jsx";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useSelector ,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { setBlogData } from "../../redux/actions/actions";
-
 
 const Promos = (props) => {
   const { dishes } = props;
   const [slidesToShow, setSlidesToShow] = useState(3);
 
   const dispatch = useDispatch();
-  const blog = useSelector(state => state.blog)
+  const blog = useSelector((state) => state.blog);
 
   useEffect(() => {
-      dispatch(setBlogData());
+    dispatch(setBlogData());
   }, [dispatch]);
   //console.log("blog:", blog)
 
@@ -24,7 +23,8 @@ const Promos = (props) => {
 
     function handleScreenResize(e) {
       if (e.matches) {
-        setSlidesToShow(2);
+        // Screen is medium
+        setSlidesToShow(1);
       } else {
         setSlidesToShow(3);
       }
@@ -47,24 +47,22 @@ const Promos = (props) => {
 
   return (
     <div className="carrousel">
-    <Slider {...settings}>
-      {blog.length > 0 ? (
-        blog.map((blogItem, index) => (
-          <Promo
-            key={index}
-            id={blogItem.id}
-            title={blogItem.title}
-            image={blogItem.image.jpg}
-            description={blogItem.description}
-          />
-        ))
-      ) : (
-        <p>Cargando datos...</p>
-      )}
-    </Slider>
-  </div>
-
-
+      <Slider {...settings}>
+        {blog.length > 0 ? (
+          blog.map((blogItem, index) => (
+            <Promo
+              key={index}
+              id={blogItem.id}
+              title={blogItem.title}
+              image={blogItem.image.jpg}
+              description={blogItem.description}
+            />
+          ))
+        ) : (
+          <p>Cargando datos...</p>
+        )}
+      </Slider>
+    </div>
   );
 };
 
