@@ -230,12 +230,6 @@ export default function reducer(state = initialState, { type, payload }) {
 
     // ! ----------------------------------------------- Cart
 
-    case SET_SHOPPING_CART:
-      return {
-        ...state,
-        shoppingCart: payload, // Actualiza el arreglo del carrito de compras
-      };
-
     case GET_SHOPPING_CART:
       return {
         ...state,
