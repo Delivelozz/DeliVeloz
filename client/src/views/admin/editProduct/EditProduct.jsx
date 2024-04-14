@@ -81,7 +81,7 @@ export default function EditProduct() {
         <div className="grid grid-cols-4 gap-5">
           <div className="col-span-3 flex flex-col gap-3 bg-white shadow-xl p-6 rounded-sm">
             <h1 className="mb-6">
-              <span className="text-sundown-500">Editar</span> Producto
+              <span className="text-sundown-500">Editar</span> producto
             </h1>
             <div className="flex flex-col">
               <label className="font-semibold text-sm text-sundown-500 mb-1">
