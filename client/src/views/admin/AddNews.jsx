@@ -1,3 +1,7 @@
+import { useLocalStoreUserData } from "../../hooks/useLocalStoreUserData.js";
+import { useLocalStoreUserDataGoogle } from "../../hooks/useLocalStoreUserDataGoogle.js";
+import { useGetShoppingDB } from "../../hooks/useGetShoppingDB.js";
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 import {  useDispatch } from "react-redux";
@@ -6,6 +10,10 @@ import validationPost from "./validationPost"
 
 
 export default function AddNews() {
+  useLocalStoreUserData();
+  useLocalStoreUserDataGoogle();
+  useGetShoppingDB();
+
   const dispatch = useDispatch();
   const [urlJpg, setUrlJpg] = useState("");
 

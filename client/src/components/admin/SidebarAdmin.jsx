@@ -16,18 +16,24 @@ export default function SidebarAdmin({ setSelectedComponent }) {
           Productos
         </li>
 
-        <li
-          className="p-3 border-b border-t hover:bg-sundown-500 hover:text-white cursor-pointer transition text-sm"
-          onClick={() => setSelectedComponent("addProducts")}
-        >
-          Añadir Productos
-        </li>
+        <Link to={"/addProduct"}>
+          <li className="p-3 border-b border-t hover:bg-sundown-500 hover:text-white cursor-pointer transition text-sm">
+            Añadir Productos
+          </li>
+        </Link>
 
         <li
           className="p-3 border-b border-t hover:bg-sundown-500 hover:text-white cursor-pointer transition text-sm"
           onClick={() => setSelectedComponent("users")}
         >
           Usuarios
+        </li>
+
+        <li
+          className="p-3 border-b border-t hover:bg-sundown-500 hover:text-white cursor-pointer transition text-sm"
+          onClick={() => setSelectedComponent("news")}
+        >
+          Novedades
         </li>
 
         <Link to={"/addNew"}>

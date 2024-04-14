@@ -2,36 +2,39 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { setShoppingCart } from "../../redux/actions/actions";
 import Loader from "../../components/loader/Loader";
 import { useLocalStoreUserData } from "../../hooks/useLocalStoreUserData";
-import { useShoppingCartDelete } from "../../hooks/useShoppingCartDelete";
 import "./Detail.css";
+import { useGetShoppingDB } from "../../hooks/useGetShoppingDB.js";
 import { useLocalStoreUserDataGoogle } from "../../hooks/useLocalStoreUserDataGoogle.js";
 import { API_URL } from "../../utils/constants";
+import { getShoppingCart } from "../../redux/actions/actions.js";
 
 export default function Detail() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
-  const dispatch = useDispatch();
-  const shoppingCart = useSelector((state) => state.shoppingCart);
+  const shoppingCartDB = useSelector((state) => state.shoppingCartDB);
+  const user = useSelector((state) => state.user);
+  const [userID, setUserID] = useState(null);
   const [loading, setLoading] = useState(false);
   const [quantity, setQuantity] = useState(0);
+  const dispatch = useDispatch();
 
   useLocalStoreUserData();
   useLocalStoreUserDataGoogle();
+  useGetShoppingDB();
 
   useEffect(() => {
-    dispatch(setShoppingCart(shoppingCart));
-    const existingItem = shoppingCart.find((item) => item.id === id);
-    const productQTY = existingItem ? existingItem.qty : 0;
-    setQuantity(productQTY);
-  }, [shoppingCart, dispatch, id]);
+    setUserID(user?.user?.id);
+  }, [user]);
 
-  const deleteFromCart = useShoppingCartDelete();
-  const handleDelete = () => {
-    deleteFromCart(id, product.price);
-  };
+  useEffect(() => {
+    const existingItem = shoppingCartDB?.products?.find(
+      (item) => item.id == id
+    );
+    const productQTY = existingItem ? existingItem.quantity : 0;
+    setQuantity(productQTY);
+  }, [shoppingCartDB]);
 
   useEffect(() => {
     fetch(`${API_URL}/products/${id}`)
@@ -82,30 +85,27 @@ export default function Detail() {
     );
   }
 
-  const addToCart = (id) => {
-    setLoading(true);
-    const dataItem = {
-      id,
-      name: product.name,
-      price: product.price,
-      image: product.image.jpg,
-      qty: 1,
-      priceTotal: product.price,
-    };
-    const addRes = [...shoppingCart];
-    const existingItem = addRes.find((item) => item.id == id);
-    if (existingItem) {
-      existingItem.qty += 1;
-      existingItem.priceTotal = parseFloat(
-        (existingItem.priceTotal + parseFloat(existingItem.price)).toFixed(2)
-      );
-    } else {
-      addRes.push(dataItem);
+  const handleAdd = async () => {
+    const response = await fetch(`${API_URL}/cart/addproduct/${userID}/${id}`, {
+      method: "PUT",
+    });
+    if (!response.ok) {
+      throw new Error("Error al aumentar la cantidad del producto");
     }
-    dispatch(setShoppingCart(addRes));
-    setTimeout(() => {
-      setLoading(false);
-    }, 500);
+    dispatch(getShoppingCart(userID));
+  };
+
+  const handleDecrease = async () => {
+    const response = await fetch(
+      `${API_URL}/cart/decreaseproduct/${userID}/${id}`,
+      {
+        method: "PUT",
+      }
+    );
+    if (!response.ok) {
+      throw new Error("Error al disminuir la cantidad del producto");
+    }
+    dispatch(getShoppingCart(userID));
   };
 
   return (
@@ -121,8 +121,10 @@ export default function Detail() {
 
         <div className="w-1/2 flex flex-col justify-between">
           <div className="flex flex-col justify-center gap-4">
-            <h1 className="text-xl mb-6 text-sundown-500">{product.name}</h1>
-            <p>
+            <h1 className="text-xl mb-0 sm:mb-6 text-sundown-500">
+              {product.name}
+            </h1>
+            <p className="line-clamp-4">
               <span className="text-sundown-500 font-bold">Ingredientes: </span>
               {product.description}
             </p>
@@ -134,26 +136,26 @@ export default function Detail() {
               $ {product.price}
             </p>
           </div>
-          <div className="flex ">
+          <div className="flex w-full h-10">
             {quantity > 0 ? (
               <div className="h-8 flex justify-center items-center gap-1">
-                <p className="mr-2 text-sundown-500 font-bold text-xl ">
+                <p className="mr-1 text-sundown-500 font-semibold text-md md:font-bold md:text-xl ">
                   Cantidad:
                 </p>
                 <button
-                  onClick={handleDelete}
-                  className="w-6 h-6 bg-sundown-500 rounded-md text-white"
+                  onClick={() => handleDecrease()}
+                  className="w-4 md:w-6 h-6 bg-sundown-500 rounded-md text-white"
                 >
                   -
                 </button>
                 <input
                   type="text"
                   value={quantity}
-                  className="border border-sundown-500 border-solid rounded-md w-8 h-6 text-center "
+                  className="border border-sundown-500 border-solid rounded-md w-6 md:w-8 h-6 text-center "
                 />
                 <button
-                  onClick={() => addToCart(id)}
-                  className="w-6 h-6 bg-sundown-500 rounded-md text-white"
+                  onClick={() => handleAdd()}
+                  className="w-4 md:w-6 h-6 bg-sundown-500 rounded-md text-white"
                 >
                   +
                 </button>
@@ -161,10 +163,10 @@ export default function Detail() {
             ) : (
               <div
                 className=" w-20 h-8 flex justify-center mt-100"
-                onClick={() => addToCart(id)}
+                onClick={() => handleAdd()}
               >
                 <button className="absolute btn-bg flex items-center justify-center mb-100">
-                  {loading ? <Loader /> : "Agregar"}
+                  Agregar
                 </button>
               </div>
             )}

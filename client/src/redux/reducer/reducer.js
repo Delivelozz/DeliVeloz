@@ -1,7 +1,6 @@
 import {
   SET_DISHES,
   SET_PROMOS,
-  SET_SHOPPING_CART,
   SET_CATEGORIES,
   SET_FILTERING,
   SET_SUBCATEGORIES,
@@ -16,12 +15,12 @@ import {
   SET_USER_DATA,
   SET_ERRORS,
   GET_USERS,
+  GET_SHOPPING_CART,
   SET_BLOG_DATA,
   SET_BLOG_ID,
- 
-  
   TOGGLE_SIDEBAR,
   EDIT_DISHES,
+  DISABLED_DISHES
   POST_BLOG,
 } from "../actions/types";
 
@@ -47,12 +46,13 @@ const initialState = {
   },
   loading: {},
   dish: [], // Para publicar un plato nuevo
-  blog: [] , //get y getId
-  news: [],
+  shoppingCartDB: [], // Para obtener el carrito de compras desde el back
+  blog: [],
   sidebar: {
     isVisible: false,
   },
-  dishEdited: {}
+  dishEdited: [],
+  dishDisabled: [],
   
 };
 
@@ -68,32 +68,38 @@ export default function reducer(state = initialState, { type, payload }) {
         dishes: payload, // Actualiza el arreglo de platos original
       };
 
-    // ? ----------------------------- Post Dishes
+      // ? ----------------------------- Post Dishes
+  
+    case POST_DISHES:
+      return {
+        ...state,
+         dish: [...state.dish, payload],
+      };
+
+    // ? ----------------------------- Edit Dishes
 
     case EDIT_DISHES:
       return {
         ...state,
-        dishes: state.dishes.map(dish => {
-        if (dish.id === payload.id) {
-          return {
-            ...dish,
-            ...payload,
-          };
-        }
-        return dish;
-      }),
-    dishEdited: [...state.dishEdited, payload],
-  };
-
-    // ? ----------------------------- EDIT_DISHES
-
-    case POST_DISHES:
-      return {
-        ...state,
-        dish: [...state.dish, payload],
+        dishes: state.dishes.map((dish) => {
+          if (dish.id === payload.id) {
+            return {
+              ...dish,
+              ...payload,
+            };
+          }
+          return dish;
+        }),
+        dishEdited: [...state.dishEdited, payload],
       };
 
+    // ? ----------------------------- Disabled Dishes
 
+    case DISABLED_DISHES:
+      return {
+        ...state,
+        dishDisabled: [...state.dishDisabled, payload],
+      };
 
     // ! ----------------------------------------------- Promos
 
@@ -213,13 +219,11 @@ export default function reducer(state = initialState, { type, payload }) {
         userData: payload,
       };
 
-    
     // ? ----------------------------- Set Blog
     case SET_BLOG_DATA:
       return {
         ...state,
         blog: payload,
-       
       };
       // ? ----------------------------- Set Blog ID
       case SET_BLOG_ID:
@@ -249,10 +253,10 @@ export default function reducer(state = initialState, { type, payload }) {
 
     // ! ----------------------------------------------- Cart
 
-    case SET_SHOPPING_CART:
+    case GET_SHOPPING_CART:
       return {
         ...state,
-        shoppingCart: payload, // Actualiza el arreglo del carrito de compras
+        shoppingCartDB: payload,
       };
 
     // ! ------------------------------------------------ Toggle

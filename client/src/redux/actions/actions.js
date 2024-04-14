@@ -1,7 +1,6 @@
 import {
   SET_DISHES,
   SET_PROMOS,
-  SET_SHOPPING_CART,
   SET_CATEGORIES,
   SET_FILTERING,
   SET_SUBCATEGORIES,
@@ -16,10 +15,12 @@ import {
   SET_USER_DATA,
   SET_ERRORS,
   GET_USERS,
+  GET_SHOPPING_CART,
   SET_BLOG_DATA,
   SET_BLOG_ID,
   TOGGLE_SIDEBAR,
   EDIT_DISHES,
+  DISABLED_DISHES,,
   POST_BLOG,
 } from "./types";
 import axios from "axios";
@@ -62,11 +63,12 @@ export function postDishes(payload) {
 
 // ? ----------------------------- Edit Dishes
 
-export function editDishes(id, payload) {
+export function editDishes(payload) {
+  // console.log("esto es un payload:", payload.id)
   return async function (dispatch) {
     try {
-        const response = await axios.patch(
-        `https://deliveloz-ryfh.onrender.com/products/${id}`,
+      const response = await axios.patch(
+        `https://deliveloz-ryfh.onrender.com/products/${payload.id}`,
         payload
       );
       dispatch({
@@ -74,11 +76,31 @@ export function editDishes(id, payload) {
         payload: response.data,
       });
     } catch (error) {
-      console.error("Error al editar el plato: ", error)
+      console.error("Error al editar el producto: ", error);
     }
-  }
+  };
 }
 
+// ? ----------------------------- Disabled Dishes
+
+export function disabledDishes(payload) {
+  const invertedAvailability = !payload.availability;
+
+  return async function (dispatch) {
+    try {
+      const response = await axios.put(
+        `https://deliveloz-ryfh.onrender.com/products/${payload.id}/${invertedAvailability}`,
+        payload
+      );
+      dispatch({
+        type: DISABLED_DISHES,
+        payload: { ...response.data, availability: invertedAvailability }, // Actualizar availability con el valor invertido
+      });
+    } catch (error) {
+      console.error("Error al desactivar el producto: ", error);
+    }
+  };
+}
 
 // ! ----------------------------------------------- Promos
 
@@ -180,7 +202,6 @@ export const resetDishes = () => {
   };
 };
 
-
 // ! ----------------------------------------------- Users
 
 // ? ----------------------------- Get Users
@@ -268,12 +289,12 @@ export function setUserData(userData) {
 // ! ----------------------------------------------- Cart
 
 // ? ----------------------------- Set Shopping Cart
-      
+
 export function setShoppingCart(shoppingCart) {
   localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
   return {
     type: "SET_SHOPPING_CART",
-      payload: shoppingCart,
+    payload: shoppingCart,
   };
 }
 
@@ -281,16 +302,18 @@ export function setShoppingCart(shoppingCart) {
 export function setBlogData() {
   return async (dispatch) => {
     try {
-      const response = await fetch("https://deliveloz-ryfh.onrender.com/banners")
-      const data = await response.json()
-      dispatch ({
+      const response = await fetch(
+        "https://deliveloz-ryfh.onrender.com/banners"
+      );
+      const data = await response.json();
+      dispatch({
         type: SET_BLOG_DATA,
         payload: data,
-      })
-    } catch (error){
-      console.error("Error fetching posts: ", error)
+      });
+    } catch (error) {
+      console.error("Error fetching posts: ", error);
     }
-  }
+  };
 }
 
 // ? ----------------------------- Set Blog ID
@@ -298,16 +321,18 @@ export function setBlogData() {
 export function setBlogId(id) {
   return async (dispatch) => {
     try {
-      const response = await fetch(`https://deliveloz-ryfh.onrender.com/banners/${id}`)
-      const data = await response.json()
-      dispatch ({
+      const response = await fetch(
+        `https://deliveloz-ryfh.onrender.com/banners/${id}`
+      );
+      const data = await response.json();
+      dispatch({
         type: SET_BLOG_ID,
         payload: data,
-      })
-    } catch (error){
-      console.error("Error fetching posts: ", error)
+      });
+    } catch (error) {
+      console.error("Error fetching posts: ", error);
     }
-  }
+  };
 }
 // ? ----------------------------- Post Blog 
 export function postBlog() {
@@ -318,11 +343,11 @@ export function postBlog() {
       dispatch ({
         type: POST_BLOG,
         payload: data,
-      })
-    } catch (error){
-      console.error("Error fetching posts: ", error)
+      });
+    } catch (error) {
+      console.error("Error fetching posts: ", error);
     }
-  }
+  };
 }
 
 
@@ -337,12 +362,27 @@ export function setErrors(errors) {
   };
 }
 
+// ? ----------------------------- Get Shopping Cart
+export function getShoppingCart(userId) {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(`${API_URL}/cart/user/${userId}`);
+      const data = await response.json();
+      dispatch({
+        type: GET_SHOPPING_CART,
+        payload: data,
+      });
+    } catch (error) {
+      console.error("Error fetching shopping cart: ", error);
+    }
+  };
+}
 
 // ! ------------------------------------------------ Toggle
 
 export const toggleSidebar = (left) => {
-	return {
-		type: TOGGLE_SIDEBAR,
-		payload: left,
-	};
+  return {
+    type: TOGGLE_SIDEBAR,
+    payload: left,
+  };
 };

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { editDishes } from "../../redux/actions/actions";
+import { editDishes } from "../../../redux/actions/actions";
+import UploadWidget from "../../../components/cloudinary/UploadWidget";
+import validation from "./validation";
 
 export default function EditProduct() {
   const dispatch = useDispatch();
@@ -19,6 +21,19 @@ export default function EditProduct() {
       jpg: "",
       png: "",
     },
+    quantity: "",
+  });
+
+  // ? -------------------------------------- Errors
+
+  const [errors, setErrors] = useState({
+    name: "",
+    description: "",
+    price: "",
+    category: "",
+    subCategory: "",
+    availability: "",
+    quantity: "",
   });
 
   useEffect(() => {
@@ -43,11 +58,28 @@ export default function EditProduct() {
     setDish({ ...dish, [name]: value });
   };
 
+  const handleImageUpload = (imageUrl, imageType) => {
+    setDish((prevDish) => ({
+      ...prevDish,
+      image: {
+        ...prevDish.image,
+        [imageType]: imageUrl,
+      },
+    }));
+  };
+
+  console.log(dish);
+
   const onSubmit = async (e) => {
     e.preventDefault();
+    const errors = validation({ ...dish });
 
-    dispatch(editDishes(dish));
-    alert("¡El producto fue editado exitosamente!");
+    if (Object.keys(errors).length > 0) {
+      setErrors(errors);
+    } else {
+      await dispatch(editDishes(dish, id));
+      alert("¡El producto fue editado exitosamente!");
+    }
   };
 
   console.log("esto seria el plato:", dish);
@@ -68,7 +100,7 @@ export default function EditProduct() {
         <div className="grid grid-cols-4 gap-5">
           <div className="col-span-3 flex flex-col gap-3 bg-white shadow-xl p-6 rounded-sm">
             <h1 className="mb-6">
-              <span className="text-sundown-500">Editar</span> Producto
+              <span className="text-sundown-500">Editar</span> producto
             </h1>
             <div className="flex flex-col">
               <label className="font-semibold text-sm text-sundown-500 mb-1">
@@ -81,6 +113,7 @@ export default function EditProduct() {
                 value={dish.name}
                 className=" bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               />
+              {errors.name && <p className="error mt-2">{errors.name}</p>}
             </div>
 
             <div className="flex flex-col">
@@ -94,6 +127,9 @@ export default function EditProduct() {
                 value={dish.category}
                 className=" bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               />
+              {errors.category && (
+                <p className="error mt-2">{errors.category}</p>
+              )}
             </div>
 
             <div className="flex flex-col">
@@ -107,6 +143,9 @@ export default function EditProduct() {
                 value={dish.subCategory}
                 className=" bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               />
+              {errors.subCategory && (
+                <p className="error mt-2">{errors.subCategory}</p>
+              )}
             </div>
 
             <div className="flex flex-col">
@@ -120,6 +159,7 @@ export default function EditProduct() {
                 value={dish.price}
                 className=" bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               />
+              {errors.price && <p className="error mt-2">{errors.price}</p>}
             </div>
 
             <div className="flex flex-col">
@@ -129,10 +169,13 @@ export default function EditProduct() {
               <input
                 onChange={onChange}
                 type="number"
-                name="stock"
-                value={dish.stockId}
+                name="quantity"
+                value={dish.quantity}
                 className=" bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               />
+              {errors.quantity && (
+                <p className="error mt-2">{errors.quantity}</p>
+              )}
             </div>
             <div className="flex flex-col">
               <label className="font-semibold text-sm text-sundown-500 mb-1">
@@ -146,6 +189,9 @@ export default function EditProduct() {
                 value={dish.description}
                 className="bg-white border max-h-60 min-h-60 border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               ></textarea>
+              {errors.description && (
+                <p className="error mt-2">{errors.description}</p>
+              )}
             </div>
           </div>
 
@@ -155,6 +201,11 @@ export default function EditProduct() {
                 Imagen jpg:
               </label>
               <img src={dish.image.jpg} alt="" />
+              <UploadWidget
+                onImageUpload={(url) => handleImageUpload(url, "jpg")}
+                imageType="jpg"
+                texto="Cambiar imagen"
+              />
             </div>
 
             <div className="flex flex-col gap-2">
@@ -162,7 +213,14 @@ export default function EditProduct() {
                 Imagen png:
               </label>
               <img src={dish.image.png} alt="" />
+              <UploadWidget
+                onImageUpload={(url) => handleImageUpload(url, "png")}
+                imageType="png"
+                texto="Cambiar imagen"
+              />
             </div>
+
+            {errors.image && <p className="error">{errors.image}</p>}
           </div>
         </div>
 

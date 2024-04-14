@@ -1,37 +1,34 @@
-import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
-import { setDishes, disabledDishes } from "../../redux/actions/actions";
 import EditIcon from "../icons/EditIcon";
 import DeleteIcon from "../icons/DeleteIcon";
+import { setBlogData } from "../../redux/actions/actions";
 
-export default function ProductsAdmin() {
+export default function NewsAdmin() {
   const dispatch = useDispatch();
+  const blog = useSelector((state) => state.blog);
 
   useEffect(() => {
-    dispatch(setDishes());
+    dispatch(setBlogData());
   }, [dispatch]);
 
-  const dishes = useSelector((state) => state.dishes);
   const [filterText, setFilterText] = useState("");
-  const [filterDishes, setFilterDishes] = useState(dishes);
+  const [filterBlog, setFilterBlog] = useState(blog);
+
+  console.log("Estos son los blogs: ", blog);
 
   useEffect(() => {
-    setFilterDishes(filterBySearch(dishes, filterText));
-  }, [dishes, filterText]);
-
-  const onDisabled = ({ id, availability }) => {
-    dispatch(disabledDishes({ id, availability }));
-  };
-
+    setFilterBlog(filterBySearch(blog, filterText));
+  }, [blog, filterText]);
   const handleChange = (e) => {
     setFilterText(e.target.value);
   };
 
-  const filterBySearch = (dishes, searchText) => {
-    return dishes.filter((dish) =>
-      dish.name.toLowerCase().includes(searchText.toLowerCase())
+  const filterBySearch = (blog, searchText) => {
+    return blog.filter((single) =>
+      single.title.toLowerCase().includes(searchText.toLowerCase())
     );
   };
 
@@ -43,28 +40,10 @@ export default function ProductsAdmin() {
       width: "100px",
     },
     {
-      name: "Nombre",
-      selector: (row) => row.name,
+      name: "Titulo",
+      selector: (row) => row.title,
       sortable: true,
       width: "200px",
-    },
-    {
-      name: "Precio",
-      selector: (row) => row.price,
-      sortable: true,
-      width: "100px",
-    },
-    {
-      name: "Categoría",
-      selector: (row) => row.category,
-      sortable: true,
-      width: "150px",
-    },
-    {
-      name: "Subcategoría",
-      selector: (row) => row.subCategory,
-      sortable: true,
-      width: "150px",
     },
     {
       name: "Descripción",
@@ -88,32 +67,11 @@ export default function ProductsAdmin() {
       width: "100px",
     },
     {
-      name: "Disponibilidad",
-      selector: (row) => (row.availability ? "Sí" : "No"),
-      sortable: true,
-      width: "100px",
-    },
-    {
-      name: "Stock",
-      selector: (row) => row.quantity,
-      sortable: true,
-      width: "100px",
-    },
-    {
       name: "Editar",
       cell: (row) => (
-        <Link to={`/editProduct/${row.id}`}>
+        <Link to={`/editNews/${row.id}`}>
           <EditIcon width={22} height={22} color={"#E74C4C"} />
         </Link>
-      ),
-      width: "100px",
-    },
-    {
-      name: "Desactivar",
-      cell: (row) => (
-        <button onClick={() => onDisabled(row)}>
-          <DeleteIcon width={22} height={22} color={"#E74C4C"} />
-        </button>
       ),
       width: "100px",
     },
@@ -123,7 +81,7 @@ export default function ProductsAdmin() {
     <section className="container-left col-span-4">
       <div className="mb-6 flex justify-between items-center">
         <h1 className="">
-          Tabla de <span className="text-sundown-500">Productos</span>
+          Tabla de <span className="text-sundown-500">Novedades</span>
         </h1>
 
         <input
@@ -133,10 +91,9 @@ export default function ProductsAdmin() {
           className="w-48 bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
         />
       </div>
-
       <DataTable
         columns={columns}
-        data={filterDishes}
+        data={filterBlog}
         selectableRows
         onSelectedRowsChange={(data) => console.log(data)}
         pagination
