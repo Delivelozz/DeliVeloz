@@ -44,8 +44,151 @@ export default function NavListDrawer({
     openLoginModal();
   };
 
+  // ? ---------------------------------------- Return
+
+  if (!login) {
+    return (
+      <Box sx={{ width: 250, bgcolor: "white" }}>
+        <nav>
+          <ListItem disablePadding>
+            <img
+              src="https://res.cloudinary.com/derot8znd/image/upload/v1713113177/png/a5xd2b9zcl7orbclcgnr.png"
+              alt="isologo"
+              class="w-15 h-8 object-cover pl-3"
+            />
+            <ListItemButton
+              component={Link}
+              to="/home"
+              onClick={() => setOpen(false)}
+              sx={{
+                "& .MuiTypography-root": {
+                  fontSize: "1.3rem",
+                  fontWeight: "normal",
+                  color: "#E74C4C",
+                },
+              }}
+            >
+              <ListItemText primary="Deliveloz" />
+            </ListItemButton>
+          </ListItem>
+        </nav>
+        <nav>
+          <List>
+            <ListItem disablePadding>
+              <ListItemButton
+                component={Link}
+                to="/home"
+                onClick={() => setOpen(false)}
+                sx={{
+                  "& .MuiSvgIcon-root": { fontSize: 24 },
+                  "& .MuiTypography-root": {
+                    fontSize: ".95rem",
+                    fontWeight: "normal",
+                  },
+                }}
+              >
+                <ListItemIcon>
+                  <HomeIcon />
+                </ListItemIcon>
+                <ListItemText primary="Inicio" />
+              </ListItemButton>
+            </ListItem>
+
+            <ListItem disablePadding>
+              <ListItemButton
+                component={Link}
+                to="/products"
+                onClick={() => setOpen(false)}
+                sx={{
+                  "& .MuiSvgIcon-root": { fontSize: 24 },
+                  "& .MuiTypography-root": {
+                    fontSize: ".95rem",
+                    fontWeight: "normal",
+                  },
+                }}
+              >
+                <ListItemIcon>
+                  <FastfoodIcon />
+                </ListItemIcon>
+                <ListItemText primary="Productos" />
+              </ListItemButton>
+            </ListItem>
+
+            <ListItem disablePadding>
+              <ListItemButton
+                component={Link}
+                to="/about"
+                onClick={() => setOpen(false)}
+                sx={{
+                  "& .MuiSvgIcon-root": { fontSize: 24 },
+                  "& .MuiTypography-root": {
+                    fontSize: ".95rem",
+                    fontWeight: "normal",
+                  },
+                }}
+              >
+                <ListItemIcon>
+                  <InfoIcon />
+                </ListItemIcon>
+                <ListItemText primary="Nosotros" />
+              </ListItemButton>
+            </ListItem>
+          </List>
+        </nav>
+
+        <Divider />
+
+        <nav>
+          <List>
+            <ListItem disablePadding>
+              <ListItemButton
+                component="a"
+                onClick={() => loginModal()}
+                sx={{
+                  "& .MuiSvgIcon-root": { fontSize: 24 },
+                  "& .MuiTypography-root": {
+                    fontSize: ".95rem",
+                    fontWeight: "normal",
+                  },
+                }}
+              >
+                <ListItemIcon>
+                  <LoginIcon />
+                </ListItemIcon>
+                <ListItemText primary="Iniciar Sesión" />
+              </ListItemButton>
+            </ListItem>
+          </List>
+        </nav>
+      </Box>
+    );
+  }
+
   return (
     <Box sx={{ width: 250, bgcolor: "white" }}>
+      <nav>
+        <ListItem disablePadding>
+          <img
+            src="https://res.cloudinary.com/derot8znd/image/upload/v1713113177/png/a5xd2b9zcl7orbclcgnr.png"
+            alt="isologo"
+            class="w-15 h-8 object-cover pl-3"
+          />
+          <ListItemButton
+            component={Link}
+            to="/home"
+            onClick={() => setOpen(false)}
+            sx={{
+              "& .MuiTypography-root": {
+                fontSize: "1.3rem",
+                fontWeight: "normal",
+                color: "#E74C4C",
+              },
+            }}
+          >
+            <ListItemText primary="Deliveloz" />
+          </ListItemButton>
+        </ListItem>
+      </nav>
       <nav>
         <List>
           <ListItem disablePadding>
@@ -57,7 +200,7 @@ export default function NavListDrawer({
                 "& .MuiSvgIcon-root": { fontSize: 24 },
                 "& .MuiTypography-root": {
                   fontSize: ".95rem",
-                  fontWeight: "bold",
+                  fontWeight: "normal",
                 },
               }}
             >
@@ -77,7 +220,7 @@ export default function NavListDrawer({
                 "& .MuiSvgIcon-root": { fontSize: 24 },
                 "& .MuiTypography-root": {
                   fontSize: ".95rem",
-                  fontWeight: "bold",
+                  fontWeight: "normal",
                 },
               }}
             >
@@ -97,7 +240,7 @@ export default function NavListDrawer({
                 "& .MuiSvgIcon-root": { fontSize: 24 },
                 "& .MuiTypography-root": {
                   fontSize: ".95rem",
-                  fontWeight: "bold",
+                  fontWeight: "normal",
                 },
               }}
             >
@@ -121,7 +264,7 @@ export default function NavListDrawer({
                 "& .MuiSvgIcon-root": { fontSize: 24 },
                 "& .MuiTypography-root": {
                   fontSize: ".95rem",
-                  fontWeight: "bold",
+                  fontWeight: "normal",
                 },
               }}
             >
@@ -139,7 +282,7 @@ export default function NavListDrawer({
                 "& .MuiSvgIcon-root": { fontSize: 24 },
                 "& .MuiTypography-root": {
                   fontSize: ".95rem",
-                  fontWeight: "bold",
+                  fontWeight: "normal",
                 },
               }}
             >
@@ -162,7 +305,7 @@ export default function NavListDrawer({
                 "& .MuiSvgIcon-root": { fontSize: 24 },
                 "& .MuiTypography-root": {
                   fontSize: ".95rem",
-                  fontWeight: "bold",
+                  fontWeight: "normal",
                 },
               }}
             >
@@ -170,25 +313,6 @@ export default function NavListDrawer({
                 <LogoutIcon />
               </ListItemIcon>
               <ListItemText primary="Cerrar Sesión" />
-            </ListItemButton>
-          </ListItem>
-
-          <ListItem disablePadding>
-            <ListItemButton
-              component="a"
-              onClick={() => loginModal()}
-              sx={{
-                "& .MuiSvgIcon-root": { fontSize: 24 },
-                "& .MuiTypography-root": {
-                  fontSize: ".95rem",
-                  fontWeight: "bold",
-                },
-              }}
-            >
-              <ListItemIcon>
-                <LoginIcon />
-              </ListItemIcon>
-              <ListItemText primary="Iniciar Sesión" />
             </ListItemButton>
           </ListItem>
         </List>
