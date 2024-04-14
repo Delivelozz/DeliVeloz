@@ -16,6 +16,7 @@ import SidebarMobile from "./components/headerMobile/SidebarMobile";
 import FloatButtonCard from "./components/floatButtonCard/FloatButtonCard";
 import AddNews from "./views/admin/AddNews";
 import AddProduct from "./views/admin/addProduct/AddProduct";
+import EditNews from "./views/admin/editNews/EditNews";
 
 // ? -------------------- Hooks
 
@@ -105,6 +106,7 @@ function App() {
           <Route path="/editProduct/:id" element={<EditProduct />} />
           <Route path="/addNew" element={<AddNews />} />
           <Route path="/addProduct" element={<AddProduct />} />
+          <Route path="/editNews/:id" element={<EditNews />} />
         </Routes>
         <FloatButtonCard />
         <Footer />
