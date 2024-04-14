@@ -105,14 +105,6 @@ export default function FormRegister({ closeModal }) {
           style={{ maxWidth: "500px", width: "500px" }}
           onSubmit={onSubmit}
         >
-          {/* ------------------ Boton de Home -------------------- */}
-
-          {/* <button
-            className="transition absolute -top-4 -right-4 bg-sundown-500 rounded-full shadow-xl flex justify-center items-center w-10 h-10 hover:scale-110"
-            onClick={closeModal}
-          >
-            <CloseIcon width={22} color={"#fff"} />
-          </button> */}
           {/* ------------------ Formulario --------------------- */}
 
           <div className="flex-1 p-6 space-y-6 flex flex-col">
