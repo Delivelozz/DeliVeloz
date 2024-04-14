@@ -20,6 +20,7 @@ import {
   SET_BLOG_ID,
   TOGGLE_SIDEBAR,
   EDIT_DISHES,
+  DISABLED_DISHES,
 } from "./types";
 import axios from "axios";
 import { API_URL } from "../../utils/constants";
@@ -74,7 +75,28 @@ export function editDishes(payload) {
         payload: response.data,
       });
     } catch (error) {
-      console.error("Error al editar el plato: ", error);
+      console.error("Error al editar el producto: ", error);
+    }
+  };
+}
+
+// ? ----------------------------- Disabled Dishes
+
+export function disabledDishes(payload) {
+  const invertedAvailability = !payload.availability;
+
+  return async function (dispatch) {
+    try {
+      const response = await axios.put(
+        `https://deliveloz-ryfh.onrender.com/products/${payload.id}/${invertedAvailability}`,
+        payload
+      );
+      dispatch({
+        type: DISABLED_DISHES,
+        payload: { ...response.data, availability: invertedAvailability }, // Actualizar availability con el valor invertido
+      });
+    } catch (error) {
+      console.error("Error al desactivar el producto: ", error);
     }
   };
 }

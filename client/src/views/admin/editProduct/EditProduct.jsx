@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { editDishes } from "../../redux/actions/actions";
-import UploadWidget from "../cloudinary/UploadWidget";
+import { editDishes } from "../../../redux/actions/actions";
+import UploadWidget from "../../../components/cloudinary/UploadWidget";
 
 export default function EditProduct() {
   const dispatch = useDispatch();
