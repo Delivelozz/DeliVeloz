@@ -20,7 +20,7 @@ import {
   SET_BLOG_ID,
   TOGGLE_SIDEBAR,
   EDIT_DISHES,
-  DISABLED_DISHES,,
+  DISABLED_DISHES,
   POST_BLOG,
 } from "./types";
 import axios from "axios";
@@ -335,17 +335,16 @@ export function setBlogId(id) {
   };
 }
 // ? ----------------------------- Post Blog 
-export function postBlog() {
-  return async (dispatch) => {
+export function postBlog(payload) {
+  return async function (dispatch) {
     try {
-      const response = await fetch("https://deliveloz-ryfh.onrender.com/banners")
-      const data = await response.json()
-      dispatch ({
+      const response = await axios.post(`https://deliveloz-ryfh.onrender.com/banners`, payload);
+      dispatch({
         type: POST_BLOG,
-        payload: data,
+        payload: response.data,
       });
     } catch (error) {
-      console.error("Error fetching posts: ", error);
+      console.error("Error al postear el plato: ", error);
     }
   };
 }

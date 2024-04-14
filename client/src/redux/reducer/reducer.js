@@ -20,7 +20,7 @@ import {
   SET_BLOG_ID,
   TOGGLE_SIDEBAR,
   EDIT_DISHES,
-  DISABLED_DISHES
+  DISABLED_DISHES,
   POST_BLOG,
 } from "../actions/types";
 
@@ -48,6 +48,7 @@ const initialState = {
   dish: [], // Para publicar un plato nuevo
   shoppingCartDB: [], // Para obtener el carrito de compras desde el back
   blog: [],
+  news: [],
   sidebar: {
     isVisible: false,
   },
@@ -238,7 +239,7 @@ export default function reducer(state = initialState, { type, payload }) {
     case POST_BLOG:
       return {
         ...state,
-        blog: [...state.blog, payload],
+        news: [...state.news, payload],
       };
 
        
