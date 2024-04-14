@@ -91,7 +91,7 @@ export default function EditUser() {
       <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
         <div className="flex gap-5">
           <div className="flex flex-col flex-1">
-            <label className="font-semibold text-sm text-sundown-500 mb-1">
+            <label className="font-semibold text-sm text-gray-800 mb-1">
               Nombre:
             </label>
             <input
@@ -100,19 +100,19 @@ export default function EditUser() {
               type="text"
               name="name"
               placeholder="Añadir nombre"
-              className=" bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+              className=" bg-gray-50 border border-gray-600 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
             />
             {errors.name && <p className="error">{errors.name}</p>}
           </div>
 
           <div className="flex flex-col flex-1">
-            <label className="font-semibold text-sm text-sundown-500 mb-1">
+            <label className="font-semibold text-sm text-gray-800 mb-1">
               Apellido:
             </label>
             <input
               value={userData.lastName}
               onChange={handleChange}
-              className=" bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+              className=" bg-gray-50 border border-gray-600 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               type="text"
               name="lastName"
               placeholder="Añadir apellido "
@@ -123,14 +123,14 @@ export default function EditUser() {
 
         <div className="flex justify-between gap-5">
           <div className="flex flex-col flex-1">
-            <label className="font-semibold text-sm text-sundown-500 mb-1">
+            <label className="font-semibold text-sm text-gray-800 mb-1">
               Teléfono:
             </label>
 
             <input
               value={userData.phone}
               onChange={handleChange}
-              className="bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+              className="bg-gray-50 border border-gray-600 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               type="number"
               name="phone"
               placeholder="Añadir número de teléfono"
@@ -139,14 +139,14 @@ export default function EditUser() {
           </div>
 
           <div className="flex flex-col flex-1">
-            <label className="font-semibold text-sm text-sundown-500 mb-1">
+            <label className="font-semibold text-sm text-gray-800 mb-1">
               Direccion:
             </label>
 
             <input
               value={userData.userAddress}
               onChange={handleChange}
-              className="bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+              className="bg-gray-50 border border-gray-600 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               type="text"
               name="userAddress"
               placeholder="Añadir direccion"

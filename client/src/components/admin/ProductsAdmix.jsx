@@ -21,10 +21,6 @@ export default function ProductsAdmin() {
     setFilterDishes(filterBySearch(dishes, filterText));
   }, [dishes, filterText]);
 
-  const onDisabled = ({ id, availability }) => {
-    dispatch(disabledDishes({ id, availability }));
-  };
-
   const handleChange = (e) => {
     setFilterText(e.target.value);
   };
@@ -33,6 +29,15 @@ export default function ProductsAdmin() {
     return dishes.filter((dish) =>
       dish.name.toLowerCase().includes(searchText.toLowerCase())
     );
+  };
+
+  const onDisabled = async ({ id, availability }) => {
+    try {
+      await dispatch(disabledDishes({ id, availability }));
+      await dispatch(setDishes());
+    } catch (error) {
+      console.error("Error al desactivar el producto:", error);
+    }
   };
 
   const columns = [
@@ -47,6 +52,21 @@ export default function ProductsAdmin() {
       selector: (row) => row.name,
       sortable: true,
       width: "200px",
+    },
+    {
+      name: "Disponibilidad",
+      selector: (row) => (row.availability ? "Sí" : "No"),
+      sortable: true,
+      width: "100px",
+    },
+    {
+      name: "Desactivar",
+      cell: (row) => (
+        <button onClick={() => onDisabled(row)}>
+          <DeleteIcon width={22} height={22} color={"#E74C4C"} />
+        </button>
+      ),
+      width: "100px",
     },
     {
       name: "Precio",
@@ -87,12 +107,12 @@ export default function ProductsAdmin() {
       ),
       width: "100px",
     },
-    {
-      name: "Disponibilidad",
-      selector: (row) => (row.availability ? "Sí" : "No"),
-      sortable: true,
-      width: "100px",
-    },
+    // {
+    //   name: "Disponibilidad",
+    //   selector: (row) => (row.availability ? "Sí" : "No"),
+    //   sortable: true,
+    //   width: "100px",
+    // },
     {
       name: "Stock",
       selector: (row) => row.quantity,
@@ -108,15 +128,15 @@ export default function ProductsAdmin() {
       ),
       width: "100px",
     },
-    {
-      name: "Desactivar",
-      cell: (row) => (
-        <button onClick={() => onDisabled(row)}>
-          <DeleteIcon width={22} height={22} color={"#E74C4C"} />
-        </button>
-      ),
-      width: "100px",
-    },
+    // {
+    //   name: "Desactivar",
+    //   cell: (row) => (
+    //     <button onClick={() => onDisabled(row)}>
+    //       <DeleteIcon width={22} height={22} color={"#E74C4C"} />
+    //     </button>
+    //   ),
+    //   width: "100px",
+    // },
   ];
 
   return (
