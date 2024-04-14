@@ -15,7 +15,8 @@ const getOrderController = async (idUser, idPedido) =>{
                 },
                 attributes: ['id', 'name', 'price', 'image']
             }
-        ]
+        ],
+        attributes:['id','userId','total','paid','orderStatus']
     })
 
     const orderUserProducts = orderUser.products.map(product => (
@@ -30,6 +31,10 @@ const getOrderController = async (idUser, idPedido) =>{
 
     const orderUserFilter = {
         id: orderUser.id,
+        userId: orderUser.userId,
+        total: orderUser.total,
+        paid: orderUser.paid,
+        orderStatus: orderUser.orderStatus,
         products: orderUserProducts
     };
     
