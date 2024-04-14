@@ -47,7 +47,7 @@ export default function AddProduct() {
     quantity: "",
   });
 
-  // ? -------------------------------------- On change
+  // ? --------------------------------------- On change
 
   const onChange = (e) => {
     const { name, value } = e.target;
