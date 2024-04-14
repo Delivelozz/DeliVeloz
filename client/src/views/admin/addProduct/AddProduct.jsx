@@ -35,7 +35,7 @@ export default function AddProduct() {
     quantity: "",
   });
 
-  // ? -------------------------------------- On Errors
+  // ? -------------------------------------- Errors
 
   const [errors, setErrors] = useState({
     name: "",
@@ -208,6 +208,7 @@ export default function AddProduct() {
             </div>
           </div>
         </div>
+        {errors.image && <p className="error -mt-3">{errors.image}</p>}
 
         <div className="flex flex-col">
           <label className="font-semibold text-sm text-sundown-500 mb-1">

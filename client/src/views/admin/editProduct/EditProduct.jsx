@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { editDishes } from "../../../redux/actions/actions";
 import UploadWidget from "../../../components/cloudinary/UploadWidget";
+import validation from "./validation";
 
 export default function EditProduct() {
   const dispatch = useDispatch();
@@ -20,6 +21,18 @@ export default function EditProduct() {
       jpg: "",
       png: "",
     },
+    quantity: "",
+  });
+
+  // ? -------------------------------------- Errors
+
+  const [errors, setErrors] = useState({
+    name: "",
+    description: "",
+    price: "",
+    category: "",
+    subCategory: "",
+    availability: "",
     quantity: "",
   });
 
@@ -59,8 +72,14 @@ export default function EditProduct() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    dispatch(editDishes({ ...dish, id }));
-    alert("¡El producto fue editado exitosamente!");
+    const errors = validation({ ...dish });
+
+    if (Object.keys(errors).length > 0) {
+      setErrors(errors);
+    } else {
+      await dispatch(editDishes(dish, id));
+      alert("¡El producto fue editado exitosamente!");
+    }
   };
 
   console.log("esto seria el plato:", dish);
@@ -94,6 +113,7 @@ export default function EditProduct() {
                 value={dish.name}
                 className=" bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               />
+              {errors.name && <p className="error mt-2">{errors.name}</p>}
             </div>
 
             <div className="flex flex-col">
@@ -107,6 +127,9 @@ export default function EditProduct() {
                 value={dish.category}
                 className=" bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               />
+              {errors.category && (
+                <p className="error mt-2">{errors.category}</p>
+              )}
             </div>
 
             <div className="flex flex-col">
@@ -120,6 +143,9 @@ export default function EditProduct() {
                 value={dish.subCategory}
                 className=" bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               />
+              {errors.subCategory && (
+                <p className="error mt-2">{errors.subCategory}</p>
+              )}
             </div>
 
             <div className="flex flex-col">
@@ -133,6 +159,7 @@ export default function EditProduct() {
                 value={dish.price}
                 className=" bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               />
+              {errors.price && <p className="error mt-2">{errors.price}</p>}
             </div>
 
             <div className="flex flex-col">
@@ -146,6 +173,9 @@ export default function EditProduct() {
                 value={dish.quantity}
                 className=" bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               />
+              {errors.quantity && (
+                <p className="error mt-2">{errors.quantity}</p>
+              )}
             </div>
             <div className="flex flex-col">
               <label className="font-semibold text-sm text-sundown-500 mb-1">
@@ -159,6 +189,9 @@ export default function EditProduct() {
                 value={dish.description}
                 className="bg-white border max-h-60 min-h-60 border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               ></textarea>
+              {errors.description && (
+                <p className="error mt-2">{errors.description}</p>
+              )}
             </div>
           </div>
 
@@ -186,6 +219,8 @@ export default function EditProduct() {
                 texto="Cambiar imagen"
               />
             </div>
+
+            {errors.image && <p className="error">{errors.image}</p>}
           </div>
         </div>
 
