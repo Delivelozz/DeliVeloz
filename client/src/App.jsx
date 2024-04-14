@@ -17,6 +17,7 @@ import FloatButtonCard from "./components/floatButtonCard/FloatButtonCard";
 import AddNews from "./views/admin/AddNews";
 import AddProduct from "./views/admin/addProduct/AddProduct";
 import EditNews from "./views/admin/editNews/EditNews";
+import Navbar from "./components/navbar/Navbar";
 
 // ? -------------------- Hooks
 
@@ -88,12 +89,19 @@ function App() {
   return (
     <AuthProvider>
       <main className="bg-alabaster-50 relative overflow.x">
-        <Header
+        <Navbar
           openLoginModal={openLoginModal}
           openRegisterModal={openRegisterModal}
         />
-        <HeaderMobile />
-        <SidebarMobile />
+        {/* <Header
+          openLoginModal={openLoginModal}
+          openRegisterModal={openRegisterModal}
+        /> */}
+        <HeaderMobile
+          openLoginModal={openLoginModal}
+          openRegisterModal={openRegisterModal}
+        />
+        {/* <SidebarMobile /> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Home" element={<Home />} />
