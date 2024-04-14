@@ -2,7 +2,7 @@ import { useLocalStoreUserData } from "../../hooks/useLocalStoreUserData.js";
 import { useLocalStoreUserDataGoogle } from "../../hooks/useLocalStoreUserDataGoogle.js";
 import { useGetShoppingDB } from "../../hooks/useGetShoppingDB.js";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { postBlog } from "../../redux/actions/actions";
@@ -24,30 +24,7 @@ export default function AddNews() {
     },
   });
 
-  // useEffect(() => {
-  //   dispatch(postBlog());
-  // }, [dispatch, blog]);
-
-  // useEffect(() => {
-  //   if (blog) {
-  //     dispatch(postBlog(blog));
-  //   }
-  // }, [dispatch, blog]);
-
-  // useEffect(() => {
-  //   if (blog && blog.title && blog.description && blog.image) {
-  //     // Verificar si blog tiene título y contenido
-  //     dispatch(postBlog(blog));
-  //   }
-  // }, [dispatch, blog]);
   const [formSubmitted, setFormSubmitted] = useState(false);
-
-  // useEffect(() => {
-  //   // Solo ejecutar postBlog si el formulario ha sido enviado
-  //   if (formSubmitted && blog.title && blog.description && blog.image) {
-  //     dispatch(postBlog(blog));
-  //   }
-  // }, [dispatch, formSubmitted, blog]); // Incluir formSubmitted en las dependencias
 
   const [errors, setErrors] = useState({
     title: "",
