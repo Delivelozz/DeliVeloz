@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SidebarAdmin from "../../../components/admin/SidebarAdmin.jsx";
 import UsersAdmin from "../../../components/admin/UsersAdmin.jsx";
+import NewsAdmin from "../../../components/admin/NewsAdmin.jsx";
 // import ProductsAdmin from "../../components/admin/ProductsAdmin";
 import ProductsAdmin from "../../../components/admin/ProductsAdmix.jsx";
 import { useLocalStoreUserData } from "../../../hooks/useLocalStoreUserData.js";
@@ -19,6 +20,8 @@ export default function DashboardAdmin() {
         return <UsersAdmin />;
       case "products":
         return <ProductsAdmin />;
+      case "news":
+        return <NewsAdmin />;
       default:
         return null;
     }
