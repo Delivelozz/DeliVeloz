@@ -20,6 +20,7 @@ import {
   SET_BLOG_ID,
   TOGGLE_SIDEBAR,
   EDIT_DISHES,
+  DISABLED_DISHES
 } from "../actions/types";
 
 const initialState = {
@@ -49,7 +50,8 @@ const initialState = {
   sidebar: {
     isVisible: false,
   },
-  dishEdited: {},
+  dishEdited: [],
+  dishDisabled: [],
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -64,7 +66,15 @@ export default function reducer(state = initialState, { type, payload }) {
         dishes: payload, // Actualiza el arreglo de platos original
       };
 
-    // ? ----------------------------- Post Dishes
+      // ? ----------------------------- Post Dishes
+  
+    case POST_DISHES:
+      return {
+        ...state,
+         dish: [...state.dish, payload],
+      };
+
+    // ? ----------------------------- Edit Dishes
 
     case EDIT_DISHES:
       return {
@@ -81,12 +91,12 @@ export default function reducer(state = initialState, { type, payload }) {
         dishEdited: [...state.dishEdited, payload],
       };
 
-    // ? ----------------------------- EDIT_DISHES
+    // ? ----------------------------- Disabled Dishes
 
-    case POST_DISHES:
+    case DISABLED_DISHES:
       return {
         ...state,
-        dish: [...state.dish, payload],
+        dishDisabled: [...state.dishDisabled, payload],
       };
 
     // ! ----------------------------------------------- Promos

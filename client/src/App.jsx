@@ -10,11 +10,12 @@ import Blog from "./views/blog/Blog";
 import Carrito from "./views/carrito/Carrito";
 import FormLogin from "./components/formLogin/FormLogin";
 import FormRegister from "./components/formRegister/FormRegister";
-import DashboardAdmin from "./views/admin/DashboardAdmin";
-import EditProduct from "./components/admin/EditProduct";
+import DashboardAdmin from "./views/admin/dashboardAdmin/DashboardAdmin";
+import EditProduct from "./views/admin/editProduct/EditProduct";
 import SidebarMobile from "./components/headerMobile/SidebarMobile";
 import FloatButtonCard from "./components/floatButtonCard/FloatButtonCard";
 import AddNews from "./views/admin/AddNews";
+import AddProduct from "./views/admin/addProduct/AddProduct";
 
 // ? -------------------- Hooks
 
@@ -103,6 +104,7 @@ function App() {
           <Route path="/admin" element={<DashboardAdmin />} />
           <Route path="/editProduct/:id" element={<EditProduct />} />
           <Route path="/addNew" element={<AddNews />} />
+          <Route path="/addProduct" element={<AddProduct />} />
         </Routes>
         <FloatButtonCard />
         <Footer />

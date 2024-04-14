@@ -21,9 +21,9 @@ export default function Header({ openLoginModal, openRegisterModal }) {
   const user = useSelector((state) => state.user.user);
   const userData = useSelector((state) => state.userData);
 
-  /* console.log("Este es el LocalStore", userData);
-  console.log("Estas logeado?", login);
-  console.log("Este es el usuario?", user); */
+  // console.log("Este es el LocalStore", userData);
+  // console.log("Estas logeado?", login);
+  // console.log("Este es el usuario?", user);
   const shoppingCartCounterItem = useShoppingCartCounterItem();
 
   const onClick = () => {
