@@ -134,6 +134,9 @@ export default function FormLogin({ closeModal }) {
           >
             <p>Continuar con Google</p>
           </button>
+          <p className="text-right text-downriver-950 font-semibold text-sm">
+            ¿No tienes una cuenta aun? ¡Registrate!
+          </p>
         </div>
       </form>
     </div>

@@ -52,7 +52,7 @@ export default function Card(props) {
   return (
     <article id={id} className="w-full h-80">
       <div className="bg-white rounded-lg border flex flex-col gap-2 p-4 h-80">
-        <Link to={`/detail/${id}`} className="h-48 mb-3">
+        <Link to={`/detail/${id}`} className="h-48 mb-3 hover:text-black">
           <figure className="w-full h-48 rounded-md cursor-pointer hover:text-black relative">
             <img
               src={image}
