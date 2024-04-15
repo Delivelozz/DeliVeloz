@@ -92,7 +92,7 @@ export default function AddProduct() {
       <form className="flex flex-col gap-5" onSubmit={onSubmit}>
         <div className="flex justify-between gap-5">
           <div className="flex flex-col flex-1">
-            <label className="font-semibold text-sm text-sundown-500 mb-1">
+            <label className="font-semibold text-sm text-gray-800 mb-1">
               Nombre:
             </label>
 
@@ -103,20 +103,20 @@ export default function AddProduct() {
                 type="text"
                 name="name"
                 placeholder="Añadir nombre"
-                className=" bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+                className=" bg-gray-50 border border-gray-600 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               />
               {errors.name && <p className="error">{errors.name}</p>}
             </div>
           </div>
           <div className="flex flex-col flex-1">
-            <label className="font-semibold text-sm text-sundown-500 mb-1">
+            <label className="font-semibold text-sm text-gray-800 mb-1">
               Categoría:
             </label>
             <div className="flex flex-col gap-2">
               <input
                 value={dish.category}
                 onChange={onChange}
-                className=" bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+                className=" bg-gray-50 border border-gray-600 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
                 type="text"
                 name="category"
                 placeholder="Añadir categoría"
@@ -128,14 +128,14 @@ export default function AddProduct() {
 
         <div className="flex justify-between gap-5">
           <div className="flex flex-col flex-grow">
-            <label className="font-semibold text-sm text-sundown-500 mb-1">
+            <label className="font-semibold text-sm text-gray-800 mb-1">
               Subcategoría:
             </label>
             <div className="flex flex-col gap-2">
               <input
                 value={dish.subCategory}
                 onChange={onChange}
-                className="bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+                className="bg-gray-50 border border-gray-600 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
                 type="text"
                 name="subCategory"
                 placeholder="Añadir subcategoría"
@@ -147,14 +147,14 @@ export default function AddProduct() {
           </div>
 
           <div className="flex flex-col flex-grow">
-            <label className="font-semibold text-sm text-sundown-500 mb-1">
+            <label className="font-semibold text-sm text-gray-800 mb-1">
               Precio:
             </label>
             <div className="flex flex-col gap-2">
               <input
                 value={dish.price}
                 onChange={onChange}
-                className="bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+                className="bg-gray-50 border border-gray-600 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
                 type="number"
                 name="price"
                 placeholder="Añadir precio"
@@ -164,14 +164,14 @@ export default function AddProduct() {
           </div>
 
           <div className="flex flex-col flex-grow">
-            <label className="font-semibold text-sm text-sundown-500 mb-1">
+            <label className="font-semibold text-sm text-gray-800 mb-1">
               Cantidad
             </label>
             <div className="flex flex-col gap-2">
               <input
                 value={dish.quantity}
                 onChange={onChange}
-                className=" bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+                className=" bg-gray-50 border border-gray-600 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
                 type="number"
                 name="quantity"
                 placeholder="Añadir cantidad de productos"
@@ -184,7 +184,7 @@ export default function AddProduct() {
         <div className="flex justify-between items-center gap-5">
           <div className="flex flex-col flex-1 gap-5">
             <div className="flex flex-col gap-1">
-              <label className="font-semibold text-sm text-sundown-500 mb-1">
+              <label className="font-semibold text-sm text-gray-800 mb-1">
                 Imagen jpg:
               </label>
               <UploadWidget
@@ -197,7 +197,7 @@ export default function AddProduct() {
 
           <div className="flex flex-col flex-1 gap-5">
             <div className="flex flex-col gap-1">
-              <label className="font-semibold text-sm text-sundown-500 mb-1">
+              <label className="font-semibold text-sm text-gray-800 mb-1">
                 Imagen png:
               </label>
               <UploadWidget
@@ -210,8 +210,8 @@ export default function AddProduct() {
         </div>
         {errors.image && <p className="error -mt-3">{errors.image}</p>}
 
-        <div className=" flex flex-col">
-          <label className="font-semibold text-sm text-sundown-500 mb-1">
+        <div className="flex flex-col">
+          <label className="font-semibold text-sm text-gray-800 mb-1">
             Descripción:
           </label>
           <div className="flex flex-col gap-2">
@@ -221,7 +221,7 @@ export default function AddProduct() {
               name="description"
               cols="30"
               rows="10"
-              className="bg-white border max-h-60 min-h-60 border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+              className="bg-white border max-h-60 min-h-60 border-gray-600 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               placeholder="Descripción del producto..."
             ></textarea>
             {errors.description && (

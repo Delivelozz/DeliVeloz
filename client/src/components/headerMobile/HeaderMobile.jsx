@@ -6,6 +6,7 @@ import NavListDrawer from "../navbar/NavListDrawer";
 import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "../icons/HomeIcon";
 import ProductIcon from "../icons/ProductIcon";
+import { Link } from "react-router-dom";
 
 import {
   Button,
@@ -30,7 +31,10 @@ export default function HeaderMobile({ openLoginModal, openRegisterModal }) {
         <IconButton color="inherit" size="large" onClick={() => setOpen(true)}>
           <MenuIcon />
         </IconButton>
-        <h1 className="text-sundown-500">Deliveloz</h1>
+
+        <Link to={"/home"}>
+          <h1 className="text-sundown-500">Deliveloz</h1>
+        </Link>
       </div>
       <Drawer open={open} anchor="left" onClose={() => setOpen(false)}>
         <NavListDrawer

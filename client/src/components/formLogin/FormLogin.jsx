@@ -36,12 +36,17 @@ export default function FormLogin({ closeModal }) {
   const errors = useSelector((state) => state.errors);
   const dispatch = useDispatch();
 
-  // ?------------------------------------------- useEffect para scrollbar
+  // ?-------------------------------------------- useEffect para scrollbar
 
   useEffect(() => {
+    const scrollBarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = "hidden";
+    document.body.style.marginRight = `${scrollBarWidth}px`;
+
     return () => {
       document.body.style.overflow = "auto";
+      document.body.style.marginRight = "0px";
     };
   }, []);
 
@@ -80,6 +85,12 @@ export default function FormLogin({ closeModal }) {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      onSubmit(e);
+    }
+  };
+
   return (
     <div className="fixed top-0 left-0 w-full min-h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
       <form
@@ -107,6 +118,7 @@ export default function FormLogin({ closeModal }) {
                 name="email"
                 value={formData.email}
                 onChange={onChange}
+                onKeyDown={handleKeyDown}
                 className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
               />
               {errors.email && <p className="error">{errors.email}</p>}
@@ -119,6 +131,7 @@ export default function FormLogin({ closeModal }) {
                 onChange={onChange}
                 placeholder="Contraseña"
                 className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
+                onKeyDown={handleKeyDown}
               />
               {errors.password && <p className="error">{errors.password}</p>}
             </div>

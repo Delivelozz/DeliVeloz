@@ -24,6 +24,7 @@ import {
   EDIT_USER,
   POST_BLOG,
   EDIT_NEWS,
+  SET_MY_ORDERS
 } from "./types";
 import axios from "axios";
 import { API_URL } from "../../utils/constants";
@@ -422,5 +423,21 @@ export const toggleSidebar = (left) => {
   return {
     type: TOGGLE_SIDEBAR,
     payload: left,
+  };
+};
+
+// ! ----------------------------------------------- Orders
+
+export const setMyOrders = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`https://deliveloz-ryfh.onrender.com/order/${id}`);
+      dispatch({
+        type: SET_MY_ORDERS,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Error fetching your orders: ", error);
+    }
   };
 };
