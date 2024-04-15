@@ -4,12 +4,18 @@ import { useParams } from "react-router-dom";
 import { editDishes } from "../../../redux/actions/actions";
 import UploadWidget from "../../../components/cloudinary/UploadWidget";
 import validation from "./validation";
+import { useLocalStoreUserData } from "../../../hooks/useLocalStoreUserData.js";
+import { useLocalStoreUserDataGoogle } from "../../../hooks/useLocalStoreUserDataGoogle.js";
+import { useGetShoppingDB } from "../../../hooks/useGetShoppingDB.js";
 
 export default function EditProduct() {
   const dispatch = useDispatch();
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
+  useLocalStoreUserData();
+  useLocalStoreUserDataGoogle();
+  useGetShoppingDB();
 
   const [dish, setDish] = useState({
     name: "",
