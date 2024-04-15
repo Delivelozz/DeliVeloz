@@ -25,9 +25,14 @@ export default function FormRegister({ closeModal }) {
   // ? ----------------------------------- Scroll hidden
 
   useEffect(() => {
+    const scrollBarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = "hidden";
+    document.body.style.marginRight = `${scrollBarWidth}px`;
+
     return () => {
       document.body.style.overflow = "auto";
+      document.body.style.marginRight = "0px";
     };
   }, []);
 
