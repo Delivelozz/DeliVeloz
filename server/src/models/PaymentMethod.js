@@ -13,5 +13,5 @@ module.exports = (sequelize) => {
       type: DataTypes.ENUM('Cash', 'Credit Card', 'Debit Card'),
       allowNull: false,
     },
-  });
+  },{timestamps: false});
 };
