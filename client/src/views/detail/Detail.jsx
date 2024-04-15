@@ -19,7 +19,10 @@ export default function Detail() {
   const [loading, setLoading] = useState(false);
   const [quantity, setQuantity] = useState(0);
   const dispatch = useDispatch();
-
+  const [averageRating, setAverageRating] = useState(null);
+  const [assessments, setAssessments] = useState([]);
+  const userData = useSelector(state => state.userData);
+  
   useLocalStoreUserData();
   useLocalStoreUserDataGoogle();
   useGetShoppingDB();
@@ -41,6 +44,19 @@ export default function Detail() {
       .then((response) => response.json())
       .then((data) => setProduct(data));
   }, [id]);
+
+
+  useEffect(() => {
+    fetch(`${API_URL}/assessment/${id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setAverageRating(data.averageRating);
+        setAssessments(data.assessmentsWithUserNames);
+      })
+      .catch((error) => console.error("Error al obtener las valoraciones:", error));
+  }, [id]);
+
+
 
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
@@ -228,8 +244,36 @@ export default function Detail() {
           )}
         </div>
       </div>
+{/* Tabla de Comentarios */}
+{assessments && assessments.length > 0 ? (
+  <>
+    <h2 className="mt-10 mb-4 text-xl font-bold ml-5">Comentarios:</h2>
+    <table className="ml-5" style={{ borderCollapse: 'collapse',  maxWidth: '300px'}}>
+  <tbody>
+    {assessments.map((assessment) => (
+      <tr key={assessment.id} style={{ border: '1px solid #ddd' }}>
+        <td style={{ textAlign: 'left', border: 'none', padding: '13px' }}>{assessment.comment}</td>
+        <td style={{ textAlign: 'left', padding: '13px' }}>
+          {Array.from({ length: assessment.rating }).map((_, index) => (
+            <span key={index} style={{ color: 'gold' }}>&#9733;</span> // Estrellas doradas
+          ))}
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+  </>
+) : (
+  <p className="mt-10 mb-4 text-xl font-bold ml-5">No hay valoraciones aún</p>
+)}
+
 
       {/* --------------- VALORACIONES ------------------ */}
     </section>
+    
   );
+  
 }
+
+
