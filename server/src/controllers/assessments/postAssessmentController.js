@@ -29,21 +29,7 @@ const postAssessmentController = async (req, res) => {
       throw new Error("La puntuación debe estar entre 1 y 5");
     }
 
-    /*  if (existingAssessment) {
-            // Si el usuario ya ha valorado el producto, crear una nueva valoración
-            const newAssessment = await Assessment.create({
-                rating: rating,
-                comment: comment,
-                productId: productId,
-                userId: user.id
-            });
-            res.status(201).json({ message: "Tu valoración fue recibida. ¡Gracias por tu tiempo!", newAssessment });
-        } else {
-            // Si el usuario no ha valorado el producto, actualizar el comentario
-            existingAssessment.comment = comment;
-            await existingAssessment.save();
-            res.status(200).json({ message: "Tu comentario ha sido actualizado", existingAssessment });
-        } */
+    
     if (existingAssessment) {
       // Si la evaluación existe, actualizar el comentario
       await existingAssessment.update({ comment: comment });
@@ -70,3 +56,4 @@ const postAssessmentController = async (req, res) => {
 };
 
 module.exports = postAssessmentController;
+

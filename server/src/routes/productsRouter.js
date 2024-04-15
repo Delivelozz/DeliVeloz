@@ -7,7 +7,7 @@ const getProductByIdHandler = require('../handlers/products/getProductByIdHandle
 const createProductHandler = require('../handlers/products/createProductHandler');
 const editProductHandler = require('../handlers/products/editProductHandler');
 const desactProductHandler = require('../handlers/products/desactProductHandler');
-
+const deleteProductHandler= require('../handlers/products/deleteProductHandler');
 
 // use handlers
 // Obtener todos los Productos
@@ -18,7 +18,9 @@ productsRouter.get("/:id", getProductByIdHandler);
 productsRouter.post("/", createProductHandler);
 // Editar Producto
 productsRouter.patch("/:id", editProductHandler);
-// Desactivar Producto
+// Desactivar - Activar Producto
 productsRouter.put("/:id/:value", desactProductHandler)
+//Borrar Producto
+productsRouter.delete("/:productId", deleteProductHandler);
 
 module.exports = productsRouter;

@@ -6,10 +6,11 @@ const postAssessmentHandler = require("../handlers/assessments/postAssessmentHan
 const updateAssessmentHandler = require("../handlers/assessments/updateAssessmentHandler")
 const deleteAssessmentHandler = require("../handlers/assessments/deleteAssessmentHandler");
 const getAssessmentHandler= require ("../handlers/assessments/getAssessmentHandler")
-
-assessmentRouter.get("/:productId/assessment", getAssessmentHandler)
-assessmentRouter.post("/:productId/assessment", postAssessmentHandler);
+const getHistoryHandler = require("../handlers/assessments/getHistoryHandler");
+assessmentRouter.get("/:productId", getAssessmentHandler)
+assessmentRouter.post("/:productId", postAssessmentHandler);
 assessmentRouter.put("/:id", updateAssessmentHandler);
 assessmentRouter.delete("/:id", deleteAssessmentHandler);
+assessmentRouter.get("/:userId/history",getHistoryHandler)
 
 module.exports = assessmentRouter;

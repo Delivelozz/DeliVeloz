@@ -2,17 +2,24 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-const { DB_URL } = process.env;
+const { DB, DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT, DB_URL } = process.env;
 
 
 //° CONEXION A LA BASE DE DATOS
-const sequelize = new Sequelize(DB_URL, {
-  logging: false, // set to console.log to see the raw SQL queries
-  native: false,
-  dialectOptions: { ssl: {require:true} }, // lets Sequelize know we can use pg-native for ~30% more speed
-});
+let sequelize = undefined
 
-
+if (process.env.NODE_ENV === 'production') {
+  sequelize = new Sequelize(DB_URL, {
+    logging: false, // set to console.log to see the raw SQL queries
+    native: false,
+    dialectOptions: { ssl: {require:true} }, // lets Sequelize know we can use pg-native for ~30% more speed
+  });
+} else {
+  sequelize = new Sequelize(`${DB}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`, {
+    logging: false, // set to console.log to see the raw SQL queries
+    native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+  });
+}
 
 const basename = path.basename(__filename);
 
@@ -45,7 +52,6 @@ sequelize.models = Object.fromEntries(capsEntries);
 const {
   CategoryProduct,
   Address,
-  Stock,
   PaymentMethod,
   Order,
   Product,
@@ -57,6 +63,7 @@ const {
   Cart,
   CartProduct,
   OrderProduct,
+  Banners,
 } = sequelize.models;
 // Definir el modelo CartProduct con el campo "cantidad"
 // Aca vendrian las relaciones
@@ -65,8 +72,8 @@ const {
 Order.belongsToMany(Product, { through: OrderProduct, timestamps: false });
 Product.belongsToMany(Order, { through: OrderProduct, timestamps: false });
 // PaymentMethod - Order (uno a uno)
-PaymentMethod.hasOne(Order);
-Order.belongsTo(PaymentMethod);
+Order.hasOne(PaymentMethod);
+PaymentMethod.belongsTo(Order);
 // User - Order (uno a muchos)
 User.hasMany(Order);
 Order.belongsTo(User);
@@ -76,30 +83,27 @@ Cart.belongsTo(User);
 // Cart - Product (muchos a muchos)
 Cart.belongsToMany(Product, { through: CartProduct, timestamps: false });
 Product.belongsToMany(Cart, { through: CartProduct, timestamps: false });
-// Stock - Product (uno a muchos)
-Stock.hasMany(Product);
-Product.belongsTo(Stock);
 // SubCategoryProduct - Product (uno a muchos)
 SubCategoryProduct.hasMany(Product);
 Product.belongsTo(SubCategoryProduct);
 // CategoryProduct - SubCategoryProduct (uno a muchos)
 CategoryProduct.hasMany(SubCategoryProduct);
 SubCategoryProduct.belongsTo(CategoryProduct);
-
 // User - Address (uno a muchos)
 User.hasMany(Address);
 Address.belongsTo(User);
 // User - Assessment (uno a muchos)
 User.hasMany(Assessment);
 Assessment.belongsTo(User);
-
 //Product - Assessment (uno a muchos)
 Product.hasMany(Assessment);
 Assessment.belongsTo(Product);
-
 // Administrator / Role (uno a uno)
 Administrator.hasOne(Role);
 Role.belongsTo(Administrator);
+//Banners - Product (uno a uno)
+Product.hasOne(Banners)
+Banners.belongsTo(Product);
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

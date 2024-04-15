@@ -20,9 +20,15 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       productId: {
-        type: DataTypes.INTEGER, 
+        type: DataTypes.INTEGER,
         allowNull: true,
-    }},
-  
-    { timestamps: false });
+      },
+      userId: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+      },
+    },
+
+    { timestamps: false }
+  );
 };
