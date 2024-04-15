@@ -138,6 +138,11 @@ export default function Header({ openLoginModal, openRegisterModal }) {
                         Ir al dashboard
                       </p>
                     </Link>
+                    <Link to={"/profile"} className="hover:text-white">
+                      <p className="hover:text-slate-200 transition">
+                        Perfil de usuario
+                      </p>
+                    </Link>
                     <p
                       onClick={onClick}
                       className="cursor-pointer hover:text-slate-200 transition"

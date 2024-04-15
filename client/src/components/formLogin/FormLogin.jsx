@@ -17,7 +17,7 @@ import validation from "./validation";
 import { useAuth } from "../../context/AuthContext";
 
 export default function FormLogin({ closeModal }) {
-  // ?------------------------------------------- Firebase
+  // ?-------------------------------------------- Firebase
   const auth = useAuth();
 
   const handleGoogle = async (e) => {
