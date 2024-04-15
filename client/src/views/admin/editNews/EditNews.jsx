@@ -2,12 +2,19 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import UploadWidget from "../../../components/cloudinary/UploadWidget";
+import { useLocalStoreUserData } from "../../../hooks/useLocalStoreUserData.js";
+import { useLocalStoreUserDataGoogle } from "../../../hooks/useLocalStoreUserDataGoogle.js";
+import { useGetShoppingDB } from "../../../hooks/useGetShoppingDB.js";
 
 export default function EditNews() {
   const dispatch = useDispatch();
   const [New, setNew] = useState({});
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
+
+  useLocalStoreUserData();
+  useLocalStoreUserDataGoogle();
+  useGetShoppingDB();
 
   const [blog, SetBlog] = useState({
     name: "",
