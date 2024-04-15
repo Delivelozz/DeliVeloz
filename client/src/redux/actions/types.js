@@ -20,4 +20,5 @@ export const SET_BLOG_ID = `SET_BLOG_ID`;
 export const TOGGLE_SIDEBAR = `TOGGLE_SIDEBAR`;
 export const EDIT_DISHES = `EDIT_DISHES`;
 export const DISABLED_DISHES = `DISABLED_DISHES`;
+export const EDIT_USER = `EDIT_USER`;
 export const POST_BLOG = `POST_BLOG`;

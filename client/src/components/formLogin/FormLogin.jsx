@@ -17,7 +17,7 @@ import validation from "./validation";
 import { useAuth } from "../../context/AuthContext";
 
 export default function FormLogin({ closeModal }) {
-  // ?------------------------------------------- Firebase
+  // ?-------------------------------------------- Firebase
   const auth = useAuth();
 
   const handleGoogle = async (e) => {
@@ -134,6 +134,9 @@ export default function FormLogin({ closeModal }) {
           >
             <p>Continuar con Google</p>
           </button>
+          <p className="text-right text-downriver-950 font-semibold text-sm">
+            ¿No tienes una cuenta aun? ¡Registrate!
+          </p>
         </div>
       </form>
     </div>

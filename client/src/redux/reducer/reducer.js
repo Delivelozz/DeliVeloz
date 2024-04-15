@@ -21,6 +21,7 @@ import {
   TOGGLE_SIDEBAR,
   EDIT_DISHES,
   DISABLED_DISHES,
+  EDIT_USER,,
   POST_BLOG,
 } from "../actions/types";
 
@@ -69,12 +70,12 @@ export default function reducer(state = initialState, { type, payload }) {
         dishes: payload, // Actualiza el arreglo de platos original
       };
 
-      // ? ----------------------------- Post Dishes
-  
+    // ? ----------------------------- Post Dishes
+
     case POST_DISHES:
       return {
         ...state,
-         dish: [...state.dish, payload],
+        dish: [...state.dish, payload],
       };
 
     // ? ----------------------------- Edit Dishes
@@ -177,6 +178,13 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         allUsers: payload,
+      };
+
+    // ? ----------------------------- SET_USER_DATA
+    case EDIT_USER:
+      return {
+        ...state,
+          user: payload,
       };
 
     // ? ----------------------------- SET_USER_DATA
