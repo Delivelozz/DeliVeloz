@@ -4,7 +4,7 @@ const orderRouter = Router();
 // Importar handlers
 const createOrderHandler = require("../handlers/order/createOrderHandler");
 const getOrderHandler = require("../handlers/order/getOrderHandler");
-// const getOrdersUserHandler = require("../handlers/order/getOrdersUserHandler");
+const getOrdersUserHandler = require("../handlers/order/getOrdersUserHandler");
 
 // Usar handlers
 
@@ -15,6 +15,6 @@ orderRouter.post("/", createOrderHandler);
 orderRouter.get("/:idUser/:idPedido", getOrderHandler);
 
 // Obtener pedidos
-// orderRouter.get("/:idUser", getOrdersUserHandler);
+orderRouter.get("/:idUser", getOrdersUserHandler); //<-Esta
 
 module.exports = orderRouter;
