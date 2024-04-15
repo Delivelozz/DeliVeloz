@@ -36,7 +36,7 @@ export default function FormLogin({ closeModal }) {
   const errors = useSelector((state) => state.errors);
   const dispatch = useDispatch();
 
-  // ?------------------------------------------- useEffect para scrollbar
+  // ?-------------------------------------------- useEffect para scrollbar
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
