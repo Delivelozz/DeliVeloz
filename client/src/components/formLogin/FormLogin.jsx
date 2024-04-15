@@ -17,7 +17,7 @@ import validation from "./validation";
 import { useAuth } from "../../context/AuthContext";
 
 export default function FormLogin({ closeModal }) {
-  // ?------------------------------------------- Firebase
+  // ?-------------------------------------------- Firebase
   const auth = useAuth();
 
   const handleGoogle = async (e) => {
@@ -80,6 +80,12 @@ export default function FormLogin({ closeModal }) {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      onSubmit(e);
+    }
+  };
+
   return (
     <div className="fixed top-0 left-0 w-full min-h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
       <form
@@ -107,6 +113,7 @@ export default function FormLogin({ closeModal }) {
                 name="email"
                 value={formData.email}
                 onChange={onChange}
+                onKeyDown={handleKeyDown}
                 className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
               />
               {errors.email && <p className="error">{errors.email}</p>}
@@ -119,6 +126,7 @@ export default function FormLogin({ closeModal }) {
                 onChange={onChange}
                 placeholder="Contraseña"
                 className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
+                onKeyDown={handleKeyDown}
               />
               {errors.password && <p className="error">{errors.password}</p>}
             </div>
@@ -134,6 +142,9 @@ export default function FormLogin({ closeModal }) {
           >
             <p>Continuar con Google</p>
           </button>
+          <p className="text-right text-downriver-950 font-semibold text-sm">
+            ¿No tienes una cuenta aun? ¡Registrate!
+          </p>
         </div>
       </form>
     </div>

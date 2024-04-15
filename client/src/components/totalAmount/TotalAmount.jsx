@@ -1,21 +1,25 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useState } from "react";
 import Mercadopago from "../mercadopago/Mercadopago";
 
 const TotalAmount = () => {
-  const shoppingCart = useSelector((state) => state.shoppingCart);
-  //console.log(shoppingCart);
+  const shoppingCartDB = useSelector((state) => state.shoppingCartDB);
 
   const [showMercadoPago, setShowMercadoPago] = useState(false);
 
-  const totalpay = () =>
-    shoppingCart.reduce((acc, item) => acc + item.priceTotal, 0).toFixed(2);
+  const totalpay = () => {
+    let total = 0;
+    shoppingCartDB?.products?.map((product) => {
+      total += product.price * product.quantity;
+    });
+    return total.toFixed(2);
+  };
 
   const handlePay = () => {
     console.log(showMercadoPago);
     setShowMercadoPago(true);
-  }
+  };
 
   //chatgpi
   const handlePaymentComplete = () => {
@@ -29,13 +33,22 @@ const TotalAmount = () => {
         <p className="flex items-center">${totalpay()}</p>
       </div>
       <div className="mt-6 flex justify-center">
-      {!showMercadoPago && ( // Mostrar el botón de pago solo si no se muestra el componente de MercadoPago
-        <button  className="btn-bg flex items-center justify-center" onClick={handlePay}>
-          Pagar
-        </button>
-       )}
+        {!showMercadoPago && ( // Mostrar el botón de pago solo si no se muestra el componente de MercadoPago
+          <button
+            className="btn-bg flex items-center justify-center"
+            onClick={handlePay}
+          >
+            Pagar
+          </button>
+        )}
       </div>
-      {showMercadoPago && <Mercadopago shoppingCart={shoppingCart} onPaymentComplete={handlePaymentComplete} />} {/*para renderizar*/}
+      {showMercadoPago && (
+        <Mercadopago
+          shoppingCart={shoppingCartDB?.products}
+          onPaymentComplete={handlePaymentComplete}
+        />
+      )}{" "}
+      {/*para renderizar*/}
     </article>
   );
 };
