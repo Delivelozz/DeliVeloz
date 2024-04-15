@@ -25,9 +25,14 @@ export default function FormRegister({ closeModal }) {
   // ? ----------------------------------- Scroll hidden
 
   useEffect(() => {
+    const scrollBarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = "hidden";
+    document.body.style.marginRight = `${scrollBarWidth}px`;
+
     return () => {
       document.body.style.overflow = "auto";
+      document.body.style.marginRight = "0px";
     };
   }, []);
 
@@ -74,6 +79,7 @@ export default function FormRegister({ closeModal }) {
   // ? ---------------------------------------- onSubmit
 
   const onSubmit = async (e) => {
+    console.log(user);
     e.preventDefault();
 
     const errors = validation({ ...user, repeatPassword }); // Utilizar repeatPassword en la llamada a la función de validación
@@ -97,6 +103,12 @@ export default function FormRegister({ closeModal }) {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      onSubmit(e);
+    }
+  };
+
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50 overflow-y-auto">
       <div className="max-h-full absolute">
@@ -105,14 +117,6 @@ export default function FormRegister({ closeModal }) {
           style={{ maxWidth: "500px", width: "500px" }}
           onSubmit={onSubmit}
         >
-          {/* ------------------ Boton de Home -------------------- */}
-
-          {/* <button
-            className="transition absolute -top-4 -right-4 bg-sundown-500 rounded-full shadow-xl flex justify-center items-center w-10 h-10 hover:scale-110"
-            onClick={closeModal}
-          >
-            <CloseIcon width={22} color={"#fff"} />
-          </button> */}
           {/* ------------------ Formulario --------------------- */}
 
           <div className="flex-1 p-6 space-y-6 flex flex-col">
@@ -136,6 +140,7 @@ export default function FormRegister({ closeModal }) {
                     onChange={onChange}
                     name="name"
                     placeholder="Nombre"
+                    onKeyDown={handleKeyDown}
                     className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
                   />
                   {errors.name && <p className="error">{errors.name}</p>}
@@ -150,6 +155,7 @@ export default function FormRegister({ closeModal }) {
                     onChange={onChange}
                     name="lastName"
                     placeholder="Apellido"
+                    onKeyDown={handleKeyDown}
                     className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
                   />
                   {errors.lastName && (
@@ -170,6 +176,7 @@ export default function FormRegister({ closeModal }) {
                     onChange={onChange}
                     name="email"
                     placeholder="Correo electrónico"
+                    onKeyDown={handleKeyDown}
                     className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
                   />
                   {errors.email && <p className="error">{errors.email}</p>}
@@ -184,6 +191,7 @@ export default function FormRegister({ closeModal }) {
                     onChange={onChange}
                     name="userAddress"
                     placeholder="Calle"
+                    onKeyDown={handleKeyDown}
                     className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
                   />
                   {errors.userAddress && (
@@ -201,6 +209,7 @@ export default function FormRegister({ closeModal }) {
                   onChange={onChange}
                   name="phone"
                   placeholder="Celular"
+                  onKeyDown={handleKeyDown}
                   className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
                 />
                 {errors.phone && <p className="error">{errors.phone}</p>}
@@ -217,6 +226,7 @@ export default function FormRegister({ closeModal }) {
                       onChange={onChange}
                       name="password"
                       placeholder="Contraseña"
+                      onKeyDown={handleKeyDown}
                       className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
                     />
                   </div>
@@ -227,6 +237,7 @@ export default function FormRegister({ closeModal }) {
                       onChange={(e) => setRepeatPassword(e.target.value)}
                       name="repeatPassword"
                       placeholder="Repetir contraseña"
+                      onKeyDown={handleKeyDown}
                       className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
                     />
                   </div>

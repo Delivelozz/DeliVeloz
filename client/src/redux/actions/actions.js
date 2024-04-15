@@ -1,7 +1,6 @@
 import {
   SET_DISHES,
   SET_PROMOS,
-  SET_SHOPPING_CART,
   SET_CATEGORIES,
   SET_FILTERING,
   SET_SUBCATEGORIES,
@@ -16,13 +15,19 @@ import {
   SET_USER_DATA,
   SET_ERRORS,
   GET_USERS,
+  GET_SHOPPING_CART,
   SET_BLOG_DATA,
   SET_BLOG_ID,
-
- 
+  TOGGLE_SIDEBAR,
+  EDIT_DISHES,
+  DISABLED_DISHES,
+  EDIT_USER,
+  SET_MY_ORDERS
 } from "./types";
 import axios from "axios";
 import { API_URL } from "../../utils/constants";
+
+// ! ----------------------------------------------- Dishes
 
 // ? ----------------------------- Set Dishes
 
@@ -41,6 +46,65 @@ export function setDishes() {
   };
 }
 
+// ? ----------------------------- Post Dishes
+
+export function postDishes(payload) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(`${API_URL}/products`, payload);
+      dispatch({
+        type: POST_DISHES,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Error al postear el plato: ", error);
+    }
+  };
+}
+
+// ? ----------------------------- Edit Dishes
+
+export function editDishes(payload) {
+  // console.log("esto es un payload:", payload.id)
+  return async function (dispatch) {
+    try {
+      const response = await axios.patch(
+        `https://deliveloz-ryfh.onrender.com/products/${payload.id}`,
+        payload
+      );
+      dispatch({
+        type: EDIT_DISHES,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Error al editar el producto: ", error);
+    }
+  };
+}
+
+// ? ----------------------------- Disabled Dishes
+
+export function disabledDishes(payload) {
+  const invertedAvailability = !payload.availability;
+
+  return async function (dispatch) {
+    try {
+      const response = await axios.put(
+        `https://deliveloz-ryfh.onrender.com/products/${payload.id}/${invertedAvailability}`,
+        payload
+      );
+      dispatch({
+        type: DISABLED_DISHES,
+        payload: { ...response.data, availability: invertedAvailability }, // Actualizar availability con el valor invertido
+      });
+    } catch (error) {
+      console.error("Error al desactivar el producto: ", error);
+    }
+  };
+}
+
+// ! ----------------------------------------------- Promos
+
 // ? ----------------------------- Set Promos
 
 export const setPromos = (payload) => ({
@@ -48,15 +112,19 @@ export const setPromos = (payload) => ({
   payload,
 });
 
-// ? ----------------------------- Set Shopping Cart
+// ! ----------------------------------------------- Filters
 
-export function setShoppingCart(shoppingCart) {
-  localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
-  return {
-    type: "SET_SHOPPING_CART",
-    payload: shoppingCart,
-  };
-}
+// ? ----------------------------- Set filtering
+
+export const setFiltering = (payload) => ({
+  type: SET_FILTERING,
+  payload,
+});
+
+export const setFilteringSubCategory = (payload) => ({
+  type: SET_SUBCATEGORIES,
+  payload,
+});
 
 // ? ----------------------------- Filter By
 
@@ -93,14 +161,6 @@ export function getByName(name) {
   };
 }
 
-// ? ---------------------------------------------- Reset
-
-export const resetDishes = () => {
-  return {
-    type: RESET,
-  };
-};
-
 // ? ----------------------------- Set Categories
 
 export function setCategories() {
@@ -135,46 +195,49 @@ export function getSubCategories() {
   };
 }
 
-// ? ----------------------------- Set filtering
+// ? ---------------------------------------------- Reset
 
-export const setFiltering = (payload) => ({
-  type: SET_FILTERING,
-  payload,
-});
+export const resetDishes = () => {
+  return {
+    type: RESET,
+  };
+};
 
-export const setFilteringSubCategory = (payload) => ({
-  type: SET_SUBCATEGORIES,
-  payload,
-});
+// ! ----------------------------------------------- Users
 
-// ? ----------------------------- Post Users
+// ? ----------------------------- Get Users
 
-export function postUsers(payload) {
-  return async function (dispatch) {
+export function getUsers() {
+  return async (dispatch) => {
     try {
-      const response = await axios.post(`${API_URL}/users`, payload);
+      const response = await fetch(`${API_URL}/users`);
+      const data = await response.json();
       dispatch({
-        type: POST_USER,
-        payload: response.data,
+        type: GET_USERS,
+        payload: data,
       });
     } catch (error) {
-      console.error("Tienes un error en: ", error);
+      console.error("Error fetching users: ", error);
     }
   };
 }
 
-// ? ----------------------------- Post Dishes
+// ? ----------------------------- Edit user
 
-export function postDishes(payload) {
+export function editUser(payload) {
+  // console.log("esto es un payload:", payload.id)
   return async function (dispatch) {
     try {
-      const response = await axios.post(`${API_URL}/products`, payload);
+      const response = await axios.patch(
+        `https://deliveloz-ryfh.onrender.com/users/${payload.id}`,
+        payload
+      );
       dispatch({
-        type: POST_DISHES,
+        type: EDIT_USER,
         payload: response.data,
       });
     } catch (error) {
-      console.error("Error al postear el plato: ", error);
+      console.error("Error al editar el perfil: ", error);
     }
   };
 }
@@ -216,7 +279,24 @@ export function logoutUser(payload) {
   };
 }
 
+// ? ----------------------------- Post Users
+
+export function postUsers(payload) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(`${API_URL}/users`, payload);
+      dispatch({
+        type: POST_USER,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Tienes un error en: ", error);
+    }
+  };
+}
+
 // ? ----------------------------- Set User Data
+
 export function setUserData(userData) {
   console.log(userData);
   localStorage.setItem("userData", JSON.stringify(userData));
@@ -226,20 +306,15 @@ export function setUserData(userData) {
   };
 }
 
-// ? ----------------------------- Get Users
+// ! ----------------------------------------------- Cart
 
-export function getUsers() {
-  return async (dispatch) => {
-    try {
-      const response = await fetch(`${API_URL}/users`);
-      const data = await response.json();
-      dispatch({
-        type: GET_USERS,
-        payload: data,
-      });
-    } catch (error) {
-      console.error("Error fetching users: ", error);
-    }
+// ? ----------------------------- Set Shopping Cart
+
+export function setShoppingCart(shoppingCart) {
+  localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
+  return {
+    type: "SET_SHOPPING_CART",
+    payload: shoppingCart,
   };
 }
 
@@ -247,16 +322,18 @@ export function getUsers() {
 export function setBlogData() {
   return async (dispatch) => {
     try {
-      const response = await fetch("https://deliveloz-ryfh.onrender.com/banners")
-      const data = await response.json()
-      dispatch ({
+      const response = await fetch(
+        "https://deliveloz-ryfh.onrender.com/banners"
+      );
+      const data = await response.json();
+      dispatch({
         type: SET_BLOG_DATA,
         payload: data,
-      })
-    } catch (error){
-      console.error("Error fetching posts: ", error)
+      });
+    } catch (error) {
+      console.error("Error fetching posts: ", error);
     }
-  }
+  };
 }
 
 // ? ----------------------------- Set Blog ID
@@ -264,20 +341,22 @@ export function setBlogData() {
 export function setBlogId(id) {
   return async (dispatch) => {
     try {
-      const response = await fetch(`https://deliveloz-ryfh.onrender.com/banners/${id}`)
-      const data = await response.json()
-      dispatch ({
+      const response = await fetch(
+        `https://deliveloz-ryfh.onrender.com/banners/${id}`
+      );
+      const data = await response.json();
+      dispatch({
         type: SET_BLOG_ID,
         payload: data,
-      })
-    } catch (error){
-      console.error("Error fetching posts: ", error)
+      });
+    } catch (error) {
+      console.error("Error fetching posts: ", error);
     }
-  }
+  };
 }
 
+// ! ----------------------------------------------- Set Errors
 
-// ? ----------------------------- Set Errors
 export function setErrors(errors) {
   return {
     type: SET_ERRORS,
@@ -285,3 +364,44 @@ export function setErrors(errors) {
   };
 }
 
+// ? ----------------------------- Get Shopping Cart
+export function getShoppingCart(userId) {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(`${API_URL}/cart/user/${userId}`);
+      const data = await response.json();
+      dispatch({
+        type: GET_SHOPPING_CART,
+        payload: data,
+      });
+    } catch (error) {
+      console.error("Error fetching shopping cart: ", error);
+    }
+  };
+}
+
+// ! ------------------------------------------------ Toggle
+
+export const toggleSidebar = (left) => {
+  return {
+    type: TOGGLE_SIDEBAR,
+    payload: left,
+  };
+};
+
+// ! ----------------------------------------------- Orders
+
+export const setMyOrders = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(`http://deliveloz-ryfh.onrender.com/order/${id}`)
+      const data = await response.json()
+      dispatch({
+        type: SET_MY_ORDERS,
+        payload: data,
+      })
+    } catch (error){
+      console.error("Error fetching your orders: ", error)
+    }
+  }
+}

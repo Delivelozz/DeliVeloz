@@ -1,17 +1,25 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { postDishes } from "../../redux/actions/actions";
+import { postDishes } from "../../../redux/actions/actions";
 import validation from "./validation";
+import UploadWidget from "../../../components/cloudinary/UploadWidget";
 
 export default function AddProduct() {
   const dispatch = useDispatch();
-  const [urlJpg, setUrlJpg] = useState("");
-  const [urlPng, setUrlPng] = useState("");
 
-  useEffect(() => {
-    dispatch(postDishes());
-  }, [dispatch]);
+  // ? -------------------------------------- Cloudinary
+
+  const handleImageUpload = (imageUrl, imageType) => {
+    setDish((prevDish) => ({
+      ...prevDish,
+      image: {
+        ...prevDish.image,
+        [imageType]: imageUrl,
+      },
+    }));
+  };
+
+  // ? -------------------------------------- State Dish
 
   const [dish, setDish] = useState({
     name: "",
@@ -24,8 +32,10 @@ export default function AddProduct() {
       png: "",
     },
     availability: true,
-    stockId: "",
+    quantity: "",
   });
+
+  // ? -------------------------------------- Errors
 
   const [errors, setErrors] = useState({
     name: "",
@@ -34,60 +44,17 @@ export default function AddProduct() {
     category: "",
     subCategory: "",
     availability: "",
-    stockId: "",
-    images: "",
+    quantity: "",
   });
 
-  const changeUploadImageJpg = async (e) => {
-    const file = e.target.files[0];
-    const data = new FormData();
-    data.append("file", file);
-    data.append("upload_preset", "deliveloz");
-
-    const response = await axios.post(
-      "https://api.cloudinary.com/v1_1/derot8znd/image/upload",
-      data
-    );
-
-    setUrlJpg(response.data.secure_url);
-    setDish({
-      ...dish,
-      image: { ...dish.image, jpg: response.data.secure_url },
-    });
-  };
-
-  const deleteImage = () => {
-    setUrlJpg("");
-    setDish({ ...dish, image: { ...dish.image, jpg: "" } });
-  };
-
-  const changeUploadImagePng = async (e) => {
-    const file = e.target.files[0];
-    const data = new FormData();
-    data.append("file", file);
-    data.append("upload_preset", "delivelozpng");
-
-    const response = await axios.post(
-      "https://api.cloudinary.com/v1_1/derot8znd/image/upload",
-      data
-    );
-
-    setUrlPng(response.data.secure_url);
-    setDish({
-      ...dish,
-      image: { ...dish.image, png: response.data.secure_url },
-    });
-  };
-
-  const deleteImagePng = () => {
-    setUrlPng("");
-    setDish({ ...dish, image: { ...dish.image, png: "" } });
-  };
+  // ? --------------------------------------- On change
 
   const onChange = (e) => {
     const { name, value } = e.target;
     setDish({ ...dish, [name]: value });
   };
+
+  // ? -------------------------------------- On submit
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -108,16 +75,16 @@ export default function AddProduct() {
           png: "",
         },
         availability: "",
-        stockId: "",
+        quantity: "",
       });
       alert("¡El producto fue creado exitosamente!");
     }
   };
 
-  console.log(dish);
+  // console.log(dish);
 
   return (
-    <section className="container-left">
+    <section className="container-left col-span-4">
       <h1 className="mb-6">
         Añadir <span className="text-sundown-500">Producto</span>
       </h1>
@@ -125,7 +92,7 @@ export default function AddProduct() {
       <form className="flex flex-col gap-5" onSubmit={onSubmit}>
         <div className="flex justify-between gap-5">
           <div className="flex flex-col flex-1">
-            <label className="font-semibold text-sm text-sundown-500 mb-1">
+            <label className="font-semibold text-sm text-gray-800 mb-1">
               Nombre:
             </label>
 
@@ -136,20 +103,20 @@ export default function AddProduct() {
                 type="text"
                 name="name"
                 placeholder="Añadir nombre"
-                className=" bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+                className=" bg-gray-50 border border-gray-600 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               />
               {errors.name && <p className="error">{errors.name}</p>}
             </div>
           </div>
           <div className="flex flex-col flex-1">
-            <label className="font-semibold text-sm text-sundown-500 mb-1">
+            <label className="font-semibold text-sm text-gray-800 mb-1">
               Categoría:
             </label>
             <div className="flex flex-col gap-2">
               <input
                 value={dish.category}
                 onChange={onChange}
-                className=" bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+                className=" bg-gray-50 border border-gray-600 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
                 type="text"
                 name="category"
                 placeholder="Añadir categoría"
@@ -161,14 +128,14 @@ export default function AddProduct() {
 
         <div className="flex justify-between gap-5">
           <div className="flex flex-col flex-grow">
-            <label className="font-semibold text-sm text-sundown-500 mb-1">
+            <label className="font-semibold text-sm text-gray-800 mb-1">
               Subcategoría:
             </label>
             <div className="flex flex-col gap-2">
               <input
                 value={dish.subCategory}
                 onChange={onChange}
-                className="bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+                className="bg-gray-50 border border-gray-600 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
                 type="text"
                 name="subCategory"
                 placeholder="Añadir subcategoría"
@@ -180,14 +147,14 @@ export default function AddProduct() {
           </div>
 
           <div className="flex flex-col flex-grow">
-            <label className="font-semibold text-sm text-sundown-500 mb-1">
+            <label className="font-semibold text-sm text-gray-800 mb-1">
               Precio:
             </label>
             <div className="flex flex-col gap-2">
               <input
                 value={dish.price}
                 onChange={onChange}
-                className="bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+                className="bg-gray-50 border border-gray-600 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
                 type="number"
                 name="price"
                 placeholder="Añadir precio"
@@ -197,19 +164,19 @@ export default function AddProduct() {
           </div>
 
           <div className="flex flex-col flex-grow">
-            <label className="font-semibold text-sm text-sundown-500 mb-1">
+            <label className="font-semibold text-sm text-gray-800 mb-1">
               Cantidad
             </label>
             <div className="flex flex-col gap-2">
               <input
-                value={dish.stockId}
+                value={dish.quantity}
                 onChange={onChange}
-                className=" bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+                className=" bg-gray-50 border border-gray-600 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
                 type="number"
-                name="stockId"
+                name="quantity"
                 placeholder="Añadir cantidad de productos"
               />
-              {errors.stockId && <p className="error">{errors.stockId}</p>}
+              {errors.quantity && <p className="error">{errors.quantity}</p>}
             </div>
           </div>
         </div>
@@ -217,61 +184,34 @@ export default function AddProduct() {
         <div className="flex justify-between items-center gap-5">
           <div className="flex flex-col flex-1 gap-5">
             <div className="flex flex-col gap-1">
-              <label className="font-semibold text-sm text-sundown-500 mb-1">
+              <label className="font-semibold text-sm text-gray-800 mb-1">
                 Imagen jpg:
               </label>
-              <div className="flex flex-col gap-2">
-                <input
-                  value={dish.jpg}
-                  type="file"
-                  name="images"
-                  accept="image/*"
-                  onChange={changeUploadImageJpg}
-                />
-              </div>
+              <UploadWidget
+                onImageUpload={(url) => handleImageUpload(url, "jpg")}
+                imageType="jpg"
+                texto="Añadir imagen"
+              />
             </div>
-
-            {urlJpg && (
-              <div>
-                <img src={urlJpg} alt="Imagen JPG" className="w-72" />
-                <button className="btn-bg mt-5" onClick={deleteImage}>
-                  Eliminar Imagen
-                </button>
-              </div>
-            )}
           </div>
 
           <div className="flex flex-col flex-1 gap-5">
             <div className="flex flex-col gap-1">
-              <label className="font-semibold text-sm text-sundown-500 mb-1">
+              <label className="font-semibold text-sm text-gray-800 mb-1">
                 Imagen png:
               </label>
-              <div className="flex flex-col gap-2">
-                <input
-                  value={dish.png}
-                  type="file"
-                  name="images"
-                  accept="image/*"
-                  onChange={changeUploadImagePng}
-                />
-              </div>
+              <UploadWidget
+                onImageUpload={(url) => handleImageUpload(url, "png")}
+                imageType="png"
+                texto="Añadir imagen"
+              />
             </div>
-
-            {urlPng && (
-              <div>
-                <img src={urlPng} alt="Imagen PNG" className="w-72" />
-                <button className="btn-bg mt-5" onClick={deleteImagePng}>
-                  Eliminar Imagen
-                </button>
-              </div>
-            )}
           </div>
         </div>
-
-        {errors.images && <p className="error">{errors.images}</p>}
+        {errors.image && <p className="error -mt-3">{errors.image}</p>}
 
         <div className="flex flex-col">
-          <label className="font-semibold text-sm text-sundown-500 mb-1">
+          <label className="font-semibold text-sm text-gray-800 mb-1">
             Descripción:
           </label>
           <div className="flex flex-col gap-2">
@@ -281,7 +221,7 @@ export default function AddProduct() {
               name="description"
               cols="30"
               rows="10"
-              className="bg-white border max-h-60 min-h-60 border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+              className="bg-white border max-h-60 min-h-60 border-gray-600 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               placeholder="Descripción del producto..."
             ></textarea>
             {errors.description && (
