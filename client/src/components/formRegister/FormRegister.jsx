@@ -74,6 +74,7 @@ export default function FormRegister({ closeModal }) {
   // ? ---------------------------------------- onSubmit
 
   const onSubmit = async (e) => {
+    console.log(user);
     e.preventDefault();
 
     const errors = validation({ ...user, repeatPassword }); // Utilizar repeatPassword en la llamada a la función de validación

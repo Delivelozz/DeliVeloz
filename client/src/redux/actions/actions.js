@@ -21,6 +21,7 @@ import {
   TOGGLE_SIDEBAR,
   EDIT_DISHES,
   DISABLED_DISHES,
+  EDIT_USER,
 } from "./types";
 import axios from "axios";
 import { API_URL } from "../../utils/constants";
@@ -220,6 +221,26 @@ export function getUsers() {
   };
 }
 
+// ? ----------------------------- Edit user
+
+export function editUser(payload) {
+  // console.log("esto es un payload:", payload.id)
+  return async function (dispatch) {
+    try {
+      const response = await axios.patch(
+        `https://deliveloz-ryfh.onrender.com/users/${payload.id}`,
+        payload
+      );
+      dispatch({
+        type: EDIT_USER,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Error al editar el perfil: ", error);
+    }
+  };
+}
+
 // ? ----------------------------- Login
 
 export function loginUser(payload) {
@@ -262,8 +283,7 @@ export function logoutUser(payload) {
 export function postUsers(payload) {
   return async function (dispatch) {
     try {
-      const response = await fetch(`${API_URL}/users`);
-      const data = await response.json();
+      const response = await axios.post(`${API_URL}/users`, payload);
       dispatch({
         type: POST_USER,
         payload: response.data,
