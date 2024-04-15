@@ -6,9 +6,11 @@ import EditIcon from "../icons/EditIcon";
 import DeleteIcon from "../icons/DeleteIcon";
 import { setBlogData } from "../../redux/actions/actions";
 
+
 export default function NewsAdmin() {
   const dispatch = useDispatch();
   const blog = useSelector((state) => state.blog);
+  
 
   useEffect(() => {
     dispatch(setBlogData());
