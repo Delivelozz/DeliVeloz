@@ -22,6 +22,7 @@ import {
   EDIT_DISHES,
   DISABLED_DISHES,
   EDIT_USER,
+  SET_MY_ORDERS
 } from "../actions/types";
 
 const initialState = {
@@ -53,6 +54,7 @@ const initialState = {
   },
   dishEdited: [],
   dishDisabled: [],
+  myOrders: [],
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -264,6 +266,14 @@ export default function reducer(state = initialState, { type, payload }) {
           isVisible: !state.sidebar.isVisible,
         },
       };
+
+    // ! ------------------------------------------------ Orders
+    
+    case SET_MY_ORDERS:
+      return {
+        ...state,
+        myOrders: payload,
+      }
 
     // ! ------------------------------------------------ Default
 

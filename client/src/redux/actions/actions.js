@@ -22,6 +22,7 @@ import {
   EDIT_DISHES,
   DISABLED_DISHES,
   EDIT_USER,
+  SET_MY_ORDERS
 } from "./types";
 import axios from "axios";
 import { API_URL } from "../../utils/constants";
@@ -387,3 +388,20 @@ export const toggleSidebar = (left) => {
     payload: left,
   };
 };
+
+// ! ----------------------------------------------- Orders
+
+export const setMyOrders = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(`http://deliveloz-ryfh.onrender.com/order/${id}`)
+      const data = await response.json()
+      dispatch({
+        type: SET_MY_ORDERS,
+        payload: data,
+      })
+    } catch (error){
+      console.error("Error fetching your orders: ", error)
+    }
+  }
+}
