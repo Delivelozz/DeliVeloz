@@ -22,6 +22,8 @@ import {
   EDIT_DISHES,
   DISABLED_DISHES,
   EDIT_USER,
+  POST_BLOG,
+  EDIT_NEWS,
   SET_MY_ORDERS
 } from "./types";
 import axios from "axios";
@@ -354,6 +356,41 @@ export function setBlogId(id) {
     }
   };
 }
+// ? ----------------------------- Post Blog 
+export function postBlog(payload) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(`https://deliveloz-ryfh.onrender.com/banners`, payload);
+      dispatch({
+        type: POST_BLOG,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Error al postear el plato: ", error);
+    }
+  };
+}
+// ? ----------------------------- Edit news
+export function editNews(payload) {
+  // console.log("esto es un payload:", payload.id)
+  return async function (dispatch) {
+    try {
+      const response = await axios.patch(
+        `https://deliveloz-ryfh.onrender.com/banners/${payload.id}`,
+        payload
+      );
+      dispatch({
+        type: EDIT_NEWS,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Error al editar la novedad: ", error);
+    }
+  };
+}
+
+
+
 
 // ! ----------------------------------------------- Set Errors
 

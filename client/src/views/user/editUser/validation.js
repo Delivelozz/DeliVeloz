@@ -1,7 +1,7 @@
 const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const regexIncludesNumber = /\d/;
+//const regexIncludesNumber = /\d/;
 
-export default function validation ({name,lastName,email,userAddress,phone,password,repeatPassword}) {
+export default function validation ({name,lastName,email,userAddress,phone}) {
   const errors = {};
 
   // ? -------------------------------------- name
@@ -57,17 +57,17 @@ export default function validation ({name,lastName,email,userAddress,phone,passw
   }
   // ? ---------------------------------------- password
 
-  if (password.length === 0) {
-    errors.password = "Este campo es obligatorio"
-  } else if (password.length >= 1 && password.length <= 5 || password.length >= 20) {
-    errors.password = "Debe tener entre 6 y 20 caracteres";
-  } else if (!regexIncludesNumber.test(password)) {
-    errors.password = "Debe contener al menos un número";
-  } else if (password !== repeatPassword) {
-    errors.password = "Las contraseñas no coinciden";
-  }
+  // if (password.length === 0) {
+  //   errors.password = "Este campo es obligatorio"
+  // } else if (password.length >= 1 && password.length <= 5 || password.length >= 20) {
+  //   errors.password = "Debe tener entre 6 y 20 caracteres";
+  // } else if (!regexIncludesNumber.test(password)) {
+  //   errors.password = "Debe contener al menos un número";
+  // } else if (password !== repeatPassword) {
+  //   errors.password = "Las contraseñas no coinciden";
+  // }
 
   // ? ---------------------------------------- Return
 
   return errors;
-};
+}
