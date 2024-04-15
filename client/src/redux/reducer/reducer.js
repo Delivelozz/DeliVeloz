@@ -21,8 +21,9 @@ import {
   TOGGLE_SIDEBAR,
   EDIT_DISHES,
   DISABLED_DISHES,
-  EDIT_USER,,
+  EDIT_USER,
   POST_BLOG,
+  EDIT_NEWS,
 } from "../actions/types";
 
 const initialState = {
@@ -180,7 +181,7 @@ export default function reducer(state = initialState, { type, payload }) {
         allUsers: payload,
       };
 
-    // ? ----------------------------- SET_USER_DATA
+    // ? ----------------------------- EDIT USER
     case EDIT_USER:
       return {
         ...state,
@@ -248,6 +249,14 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         news: [...state.news, payload],
+      };
+
+     // ? ----------------------------- Edit news
+     
+     case EDIT_NEWS:
+      return {
+        ...state,
+          blog: payload,
       };
 
        

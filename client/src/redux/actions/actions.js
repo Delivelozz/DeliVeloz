@@ -23,6 +23,7 @@ import {
   DISABLED_DISHES,
   EDIT_USER,
   POST_BLOG,
+  EDIT_NEWS,
 } from "./types";
 import axios from "axios";
 import { API_URL } from "../../utils/constants";
@@ -365,6 +366,24 @@ export function postBlog(payload) {
       });
     } catch (error) {
       console.error("Error al postear el plato: ", error);
+    }
+  };
+}
+// ? ----------------------------- Edit news
+export function editNews(payload) {
+  // console.log("esto es un payload:", payload.id)
+  return async function (dispatch) {
+    try {
+      const response = await axios.patch(
+        `https://deliveloz-ryfh.onrender.com/banners/${payload.id}`,
+        payload
+      );
+      dispatch({
+        type: EDIT_NEWS,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Error al editar la novedad: ", error);
     }
   };
 }

@@ -7,19 +7,37 @@ export default function EditUser() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
 
-  const [userData, setUserData] = useState({});
+  //const [userData, setUserData] = useState({});
+
+  const [userData, setUserData] = useState({
+    name: "",
+    lastName: "",
+    email: "",
+    userAddress: "",
+    phone: "",
+  });
 
   useEffect(() => {
-    setUserData({
-      name: user.name,
-      lastName: user.lastName,
-      email: user.email,
-      userAddress: user.userAddress,
-      phone: user.phone,
-    });
+    if (user) {
+      setUserData({
+        name: user.name || "",
+        lastName: user.lastName || "",
+        email: user.email || "",
+        userAddress: user.userAddress || "",
+        phone: user.phone || "",
+      });
+    }
   }, [user]);
 
-  // console.log(setUserData);
+  console.log(setUserData);
+
+  const [errors, setErrors] = useState({
+    name: "",
+    lastName: "",
+    email: "",
+    userAddress: "",
+    phone: "",
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,10 +47,33 @@ export default function EditUser() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(userData);
-    dispatch(editUser({ id: user.id, ...userData }));
+    // Primero, valida los datos
+    const newErrors = validation(userData);
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    // Envia los datos a través de la acción editUser
+    try {
+      await dispatch(editUser({ id: user.id, ...userData }));
+      alert("¡Usuario editado con éxito!");
+      // Si la actualización es exitosa, restablece los datos del formulario
+      setUserData({
+        name: "",
+        lastName: "",
+        email: "",
+        userAddress: "",
+        phone: "",
+      });
+    } catch (error) {
+      console.error("Error al editar el usuario:", error);
+      alert(
+        "Ocurrió un error al editar el usuario. Por favor, inténtalo de nuevo."
+      );
+    }
   };
 
   return (
@@ -54,6 +95,7 @@ export default function EditUser() {
               placeholder="Añadir nombre"
               className=" bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
             />
+            {errors.name && <p className="error">{errors.name}</p>}
           </div>
 
           <div className="flex flex-col flex-1">
@@ -68,6 +110,7 @@ export default function EditUser() {
               name="lastName"
               placeholder="Añadir apellido "
             />
+            {errors.lastName && <p className="error">{errors.lastName}</p>}
           </div>
         </div>
 
@@ -85,6 +128,7 @@ export default function EditUser() {
               name="phone"
               placeholder="Añadir número de teléfono"
             />
+            {errors.phone && <p className="error">{errors.phone}</p>}
           </div>
 
           <div className="flex flex-col flex-1">
@@ -100,6 +144,9 @@ export default function EditUser() {
               name="userAddress"
               placeholder="Añadir direccion"
             />
+            {errors.userAddress && (
+              <p className="error">{errors.userAddress}</p>
+            )}
           </div>
         </div>
         <button className="btn-bg">Confirmar cambios</button>
