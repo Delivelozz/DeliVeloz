@@ -133,7 +133,7 @@ export default function Header({ openLoginModal, openRegisterModal }) {
                     </p>
                   </div>
                   <div className="text-center flex flex-col gap-2">
-                    <Link to={"/admin"} className="hover:text-white">
+                    <Link to={"/dashboard"} className="hover:text-white">
                       <p className="hover:text-slate-200 transition">
                         Ir al dashboard
                       </p>

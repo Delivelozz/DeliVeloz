@@ -125,18 +125,16 @@ export default function ProductsAdmin() {
   ];
 
   return (
-    <section className="container py-0">
-      <div className="bg-white border my-6 px-2 py-6">
+    <div className="py-0 ">
+      <div className=" border px-2 py-6 bg-white rounded-lg shadow-sm">
         <div className="mb-6 flex justify-between items-center ">
-          <h1 className="font-medium">
-            Lista de <span className="text-sundown-500">Productos</span>
-          </h1>
+          <h4 className="font-medium">Lista de Productos</h4>
 
           <input
             type="text"
             onChange={handleChange}
             placeholder="Buscar..."
-            className="min-w-64 bg-gray-50 border p-2 text-sm focus:outline-sundown-500 focus:border-transparent"
+            className="min-w-64 bg-gray-50 border p-2 text-sm rounded-lg focus:outline-sundown-500 focus:border-transparent"
           />
         </div>
 
@@ -147,6 +145,6 @@ export default function ProductsAdmin() {
           pagination
         />
       </div>
-    </section>
+    </div>
   );
 }

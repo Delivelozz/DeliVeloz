@@ -7,6 +7,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { postBlog } from "../../../redux/actions/actions.js";
 import validationPost from "./validationPost.js";
+import Sidenav from "../../../components/admin/sidenav/Sidenav.jsx";
 
 export default function AddNews() {
   useLocalStoreUserData();
@@ -82,74 +83,77 @@ export default function AddNews() {
   };
 
   return (
-    <section className="container-left col-span-4">
-      <h1 className="mb-6">
-        Añadir <span className="text-sundown-500">Novedad</span>
-      </h1>
+    <div>
+      <Sidenav />
+      <section className="container-left col-span-4">
+        <h1 className="mb-6">
+          Añadir <span className="text-sundown-500">Novedad</span>
+        </h1>
 
-      {/* Inicio Formulario */}
-      <form className="flex flex-col gap-5" onSubmit={(e) => handleSubmit(e)}>
-        {/* Inicio Añadir Nombre */}
-        <div className="flex justify-between gap-5">
-          <div className="flex flex-col flex-1">
-            <label className="font-semibold text-sm text-gray-800 mb-1">
-              Nombre:
-            </label>
+        {/* Inicio Formulario */}
+        <form className="flex flex-col gap-5" onSubmit={(e) => handleSubmit(e)}>
+          {/* Inicio Añadir Nombre */}
+          <div className="flex justify-between gap-5">
+            <div className="flex flex-col flex-1">
+              <label className="font-semibold text-sm text-gray-800 mb-1">
+                Nombre:
+              </label>
 
-            <div className="flex flex-col gap-2">
-              <input
-                value={blog.title}
-                onChange={handleChange}
-                type="text"
-                name="title"
-                placeholder="Añadir novedad"
-                className=" bg-gray-50 border border-gray-600 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
-              />
-              {errors.title && <p className="error">{errors.title}</p>}
+              <div className="flex flex-col gap-2">
+                <input
+                  value={blog.title}
+                  onChange={handleChange}
+                  type="text"
+                  name="title"
+                  placeholder="Añadir novedad"
+                  className=" bg-gray-50 border border-gray-600 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+                />
+                {errors.title && <p className="error">{errors.title}</p>}
+              </div>
             </div>
-          </div>
-          {/* Fin Añadir Nombre */}
-          {/* Inicio Añadir Imagen */}
-          <div className="flex justify-between items-center gap-5">
-            <div className="flex flex-col flex-1 gap-5">
-              <div className="flex flex-col gap-1">
-                <label className="font-semibold text-sm text-gray-800 mb-1">
-                  Imagen jpg:
-                </label>
-                <div className="flex flex-col gap-2">
-                  <input
-                    value={blog.jpg}
-                    type="file"
-                    name="images"
-                    accept="image/*"
-                    onChange={changeUploadImageJpg}
-                  />
+            {/* Fin Añadir Nombre */}
+            {/* Inicio Añadir Imagen */}
+            <div className="flex justify-between items-center gap-5">
+              <div className="flex flex-col flex-1 gap-5">
+                <div className="flex flex-col gap-1">
+                  <label className="font-semibold text-sm text-gray-800 mb-1">
+                    Imagen jpg:
+                  </label>
+                  <div className="flex flex-col gap-2">
+                    <input
+                      value={blog.jpg}
+                      type="file"
+                      name="images"
+                      accept="image/*"
+                      onChange={changeUploadImageJpg}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className=" flex flex-col">
-          <label className="font-semibold text-sm text-gray-800 mb-1">
-            Descripción:
-          </label>
-          <div className="flex flex-col gap-2">
-            <textarea
-              value={blog.description}
-              onChange={handleChange}
-              name="description"
-              cols="30"
-              rows="10"
-              className="bg-white border max-h-60 min-h-60 border-gray-600 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
-              placeholder="Descripción..."
-            ></textarea>
-            {errors.description && (
-              <p className="error">{errors.description}</p>
-            )}
+          <div className=" flex flex-col">
+            <label className="font-semibold text-sm text-gray-800 mb-1">
+              Descripción:
+            </label>
+            <div className="flex flex-col gap-2">
+              <textarea
+                value={blog.description}
+                onChange={handleChange}
+                name="description"
+                cols="30"
+                rows="10"
+                className="bg-white border max-h-60 min-h-60 border-gray-600 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+                placeholder="Descripción..."
+              ></textarea>
+              {errors.description && (
+                <p className="error">{errors.description}</p>
+              )}
+            </div>
           </div>
-        </div>
-        <button className="btn-bg">Crear Novedad</button>
-      </form>
-    </section>
+          <button className="btn-bg">Crear Novedad</button>
+        </form>
+      </section>
+    </div>
   );
 }

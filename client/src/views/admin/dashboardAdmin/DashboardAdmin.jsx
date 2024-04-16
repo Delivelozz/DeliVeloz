@@ -1,6 +1,6 @@
 import { useState } from "react";
-// import SidebarAdmin from "../../../components/admin/SidebarAdmin.jsx";
-import Sidenav from "../../../components/admin/sidenav/Sidenav.jsx";
+import SidebarAdmin from "../../../components/admin/SidebarAdmin.jsx";
+// import Sidenav from "../../../components/admin/sidenav/Sidenav.jsx";
 import UsersAdmin from "../../../components/admin/UsersAdmin.jsx";
 import NewsAdmin from "../../../components/admin/NewsAdmin.jsx";
 // import ProductsAdmin from "../../components/admin/ProductsAdmin";
@@ -29,11 +29,11 @@ export default function DashboardAdmin() {
   };
 
   return (
-    <div className=" relative">
-      <Sidenav setSelectedComponent={setSelectedComponent} />
-      {/* {renderComponent()} */}
+    <div className=" relative grid grid-cols-5">
+      <SidebarAdmin setSelectedComponent={setSelectedComponent} />
+      {renderComponent()}
     </div>
   );
 }
 
-// grid grid-cols-5
+//
