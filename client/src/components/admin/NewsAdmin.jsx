@@ -6,11 +6,9 @@ import EditIcon from "../icons/EditIcon";
 import DeleteIcon from "../icons/DeleteIcon";
 import { setBlogData } from "../../redux/actions/actions";
 
-
 export default function NewsAdmin() {
   const dispatch = useDispatch();
   const blog = useSelector((state) => state.blog);
-  
 
   useEffect(() => {
     dispatch(setBlogData());
@@ -80,26 +78,26 @@ export default function NewsAdmin() {
   ];
 
   return (
-    <section className="container-left col-span-4">
-      <div className="mb-6 flex justify-between items-center">
-        <h1 className="">
-          Tabla de <span className="text-sundown-500">Novedades</span>
-        </h1>
+    <div className="">
+      <div className="bg-white border px-2 py-6 rounded-lg shadow-sm">
+        <div className="mb-6 flex justify-between items-center">
+          <h1 className="">Lista de Novedades</h1>
 
-        <input
-          type="text"
-          onChange={handleChange}
-          placeholder="Buscar..."
-          className="w-48 bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+          <input
+            type="text"
+            onChange={handleChange}
+            placeholder="Buscar..."
+            className="w-48 rounded-lg bg-gray-50 border border-sundown-500 p-2 text-sm focus:outline-sundown-500 focus:border-transparent"
+          />
+        </div>
+        <DataTable
+          columns={columns}
+          data={filterBlog}
+          selectableRows
+          onSelectedRowsChange={(data) => console.log(data)}
+          pagination
         />
       </div>
-      <DataTable
-        columns={columns}
-        data={filterBlog}
-        selectableRows
-        onSelectedRowsChange={(data) => console.log(data)}
-        pagination
-      />
-    </section>
+    </div>
   );
 }
