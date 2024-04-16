@@ -27,9 +27,64 @@ const createOrderController = async ({idUser, total}) => {
                 ]
             })
             for (let index = 0; index < orderProduct.products.length; index++) {
-                await orderProduct.removeProduct(orderProduct.products[index].id);
+                await orderProduct.removeProduct(orderProduct.products[index]);
             }
-            return orderProduct;
+            const orderProductPrueb = await Order.findByPk(orderUpdate.id, {
+                include: [
+                    {
+                        model: Product,
+                        through: { 
+                            model: OrderProduct,
+                            attributes: ['quantity']
+                        },
+                        attributes: ['id', 'name']
+                    }
+                ]
+            })
+
+            const userCart = await Cart.findOne({
+                where:{ userId : idUser },
+                include: [
+                    {
+                        model: Product,
+                        through: { 
+                            model: CartProduct,
+                            attributes: ['quantity']
+                        },
+                        attributes: ['id']
+                    }
+                ]
+            })
+
+            const userCartProducts = userCart.products.map(product => (
+                {
+                    id: product.id,
+                    quantity: product.cartProduct.quantity,
+                }
+            ))  
+            const userCartFilter = {
+                id: userCart.id,
+                products: userCartProducts
+            };
+    
+            for (let index = 0; index < userCartFilter.products.length; index++) {
+                await orderProductPrueb.addProduct(userCartFilter.products[index].id, { through: { quantity: userCartFilter.products[index].quantity } });        
+            }
+
+            const orderProductPrueb2 = await Order.findByPk(orderUpdate.id, {
+                include: [
+                    {
+                        model: Product,
+                        through: { 
+                            model: OrderProduct,
+                            attributes: ['quantity']
+                        },
+                        attributes: ['id', 'name']
+                    }
+                ]
+            })
+
+            return orderProductPrueb2;
         }else{
             const orderNew = await Order.create(
                 {
@@ -131,126 +186,6 @@ const createOrderController = async ({idUser, total}) => {
 
         return orderProduct;
     }
-    // if(order){
-        
-    //     if(order[order.length].paid === false){ 
-
-    //         const orderUpdate = await order.update({
-    //                 userId: idUser,
-    //                 total
-    //         });
-    //         
-
-    //         const userCart = await Cart.findOne({
-    //             where:{ userId : idUser },
-    //             include: [
-    //                 {
-    //                     model: Product,
-    //                     through: { 
-    //                         model: CartProduct,
-    //                         attributes: ['quantity']
-    //                     },
-    //                     attributes: ['id']
-    //                 }
-    //             ]
-    //         })
-
-    //         const userCartProducts = userCart.products.map(product => (
-    //             {
-    //                 id: product.id,
-    //                 quantity: product.cartProduct.quantity,
-    //             }
-    //         ))
-
-    //         const userCartFilter = {
-    //             id: userCart.id,
-    //             products: userCartProducts
-    //         };
-
-    //         for (let index = 0; index < userCartFilter.products.length; index++) {
-    //             await orderUpdate.addProduct(userCartFilter.products[index].id, { through: { quantity: userCartFilter.products[index].quantity } });        
-    //         }
-
-    //         return userCartFilter;
-    //     }else{
-    //         const newOrder = await Order.create(
-    //             {
-    //               userId: idUser,
-    //               total,
-    //             }
-    //           );
-    //           const userCart = await Cart.findOne({
-    //             where:{ userId : idUser },
-    //             include: [
-    //                 {
-    //                     model: Product,
-    //                     through: { 
-    //                         model: CartProduct,
-    //                         attributes: ['quantity']
-    //                     },
-    //                     attributes: ['id']
-    //                 }
-    //             ]
-    //         })
-        
-    //         const userCartProducts = userCart.products.map(product => (
-    //             {
-    //                 id: product.id,
-    //                 quantity: product.cartProduct.quantity,
-    //             }
-    //         ))
-        
-    //         const userCartFilter = {
-    //             id: userCart.id,
-    //             products: userCartProducts
-    //         };
-        
-    //         for (let index = 0; index < userCartFilter.products.length; index++) {
-    //             await newOrder.addProduct(userCartFilter.products[index].id, { through: { quantity: userCartFilter.products[index].quantity } });        
-    //         }
-  
-    //         return userCartFilter;
-    //     }
-    // }else{
-    //     const newOrder = await Order.create(
-    //         {
-    //           userId: idUser,
-    //           total,
-    //         }
-    //       );
-      
-    //       const userCart = await Cart.findOne({
-    //           where:{ userId : idUser },
-    //           include: [
-    //               {
-    //                   model: Product,
-    //                   through: { 
-    //                       model: CartProduct,
-    //                       attributes: ['quantity']
-    //                   },
-    //                   attributes: ['id']
-    //               }
-    //           ]
-    //       })
-      
-    //       const userCartProducts = userCart.products.map(product => (
-    //           {
-    //               id: product.id,
-    //               quantity: product.cartProduct.quantity,
-    //           }
-    //       ))
-      
-    //       const userCartFilter = {
-    //           id: userCart.id,
-    //           products: userCartProducts
-    //       };
-      
-    //       for (let index = 0; index < userCartFilter.products.length; index++) {
-    //           await newOrder.addProduct(userCartFilter.products[index].id, { through: { quantity: userCartFilter.products[index].quantity } });        
-    //       }
-
-    //     return userCartFilter;
-    // }
 };
 
 module.exports = createOrderController;
