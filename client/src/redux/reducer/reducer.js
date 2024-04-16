@@ -63,7 +63,7 @@ const initialState = {
   myOrders: [],
   order: [],
   orderDetail: [],
-  idOrder: "",
+  idOrder: JSON.parse(localStorage.getItem("idOrder")) || "",
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -316,6 +316,7 @@ export default function reducer(state = initialState, { type, payload }) {
 
     // ? ----------------------------- Set order ID
     case SET_ORDER_ID:
+      localStorage.setItem("idOrder", JSON.stringify(payload));
       return {
         ...state,
         idOrder: payload,

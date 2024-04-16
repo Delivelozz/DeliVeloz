@@ -16,7 +16,8 @@ export default function OrderUser() {
   useLocalStoreUserDataGoogle();
   useGetShoppingDB();
 
-  //console.log(idOrder);
+  console.log("ID de la user: ", idUser);
+  console.log("ID de la order: ", idOrder);
 
   useEffect(() => {
     setIdUser(user?.user?.id);
