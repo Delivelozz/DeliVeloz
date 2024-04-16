@@ -94,7 +94,7 @@ export default function AddProduct() {
   return (
     <div>
       <Sidenav />
-      <section className="container-left col-span-4">
+      <section className="container-left col-span-4 p-1 py-16">
         <h1 className="mb-6">
           Añadir <span className="text-sundown-500">Producto</span>
         </h1>

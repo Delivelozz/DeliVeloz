@@ -95,7 +95,9 @@ function App() {
       <main className="bg-alabaster-50 relative overflow.x">
         {pathname !== "/dashboard" &&
           pathname !== "/addProduct" &&
-          pathname !== "/addNew" && (
+          pathname !== "/addNew" &&
+          !pathname.startsWith("/editNews/") &&
+          !pathname.startsWith("/editProduct/") && (
             <Navbar
               openLoginModal={openLoginModal}
               openRegisterModal={openRegisterModal}
@@ -104,7 +106,9 @@ function App() {
 
         {pathname !== "/dashboard" &&
           pathname !== "/addProduct" &&
-          pathname !== "/addNew" && (
+          pathname !== "/addNew" &&
+          !pathname.startsWith("/editNews/") &&
+          !pathname.startsWith("/editProduct/") && (
             <HeaderMobile
               openLoginModal={openLoginModal}
               openRegisterModal={openRegisterModal}
