@@ -34,7 +34,7 @@ const TotalAmount = () => {
     console.log("Usuario: ", idUser);
 
     const payload = {
-      userId: idUser,
+      idUser: idUser,
       total: total,
     };
     await dispatch(postOrder(payload));
