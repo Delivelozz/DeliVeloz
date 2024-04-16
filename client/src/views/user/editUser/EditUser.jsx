@@ -78,7 +78,7 @@ export default function EditUser() {
 
   return (
     <section className="container">
-      <h1 className="mb-6">
+      <h1 className="mb-6 mt-6">
         Editar <span className="text-sundown-500">Usuario</span>
       </h1>
       <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
