@@ -1,7 +1,7 @@
 const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 //const regexIncludesNumber = /\d/;
 
-export default function validation ({name,lastName,email,userAddress,phone}) {
+export default function validation({ name, lastName, userAddress, phone }) {
   const errors = {};
 
   // ? -------------------------------------- name
@@ -10,7 +10,7 @@ export default function validation ({name,lastName,email,userAddress,phone}) {
     errors.name = "Este campo no puede estar vacío";
   }
 
-  if (name.length >= 1 && name.length < 3 ) {
+  if (name.length >= 1 && name.length < 3) {
     errors.name = "Debe tener como minimo 3 carácteres";
   }
 
@@ -24,20 +24,12 @@ export default function validation ({name,lastName,email,userAddress,phone}) {
     errors.lastName = "Este campo no puede estar vacío";
   }
 
-  if (lastName.length >= 1 && lastName.length < 3 ) {
+  if (lastName.length >= 1 && lastName.length < 3) {
     errors.lastName = "Debe tener como minimo 3 carácteres";
   }
 
   if (lastName && !/^[A-Za-z0-9\s]+$/g.test(lastName)) {
     errors.lastName = "No puede contener carácteres especiales.";
-  }
-
-  // ? ---------------------------------------- Email
-
-  if (email.length === 0) {
-    errors.email = "Este campo no puede estar vacío.";
-  } else if (!regexEmail.test(email)) {
-    errors.email = "Debe ser un email";
   }
 
   // ? ---------------------------------------- UserAddress
@@ -55,17 +47,6 @@ export default function validation ({name,lastName,email,userAddress,phone}) {
   } else if (phone.length < 10) {
     errors.phone = "El número de teléfono debe tener al menos 10 dígitos";
   }
-  // ? ---------------------------------------- password
-
-  // if (password.length === 0) {
-  //   errors.password = "Este campo es obligatorio"
-  // } else if (password.length >= 1 && password.length <= 5 || password.length >= 20) {
-  //   errors.password = "Debe tener entre 6 y 20 caracteres";
-  // } else if (!regexIncludesNumber.test(password)) {
-  //   errors.password = "Debe contener al menos un número";
-  // } else if (password !== repeatPassword) {
-  //   errors.password = "Las contraseñas no coinciden";
-  // }
 
   // ? ---------------------------------------- Return
 
