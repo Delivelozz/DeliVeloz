@@ -189,3 +189,69 @@ const createOrderController = async ({idUser, total}) => {
 };
 
 module.exports = createOrderController;
+
+//! NO BORRAR; MIRAR EL CODIGO, MEJORAR EL DE ARRIBA
+
+// const createOrderController = async ({idUser, total}) => {
+//     const lastOrder = await Order.findOne({
+//         where: { userId: idUser },
+//         order: [['createdAt', 'DESC']]
+//     });
+
+//     if (lastOrder && !lastOrder.paid) {
+//         await lastOrder.update({ total });
+//         await lastOrder.setProducts([]);
+
+//         const userCart = await Cart.findOne({
+//             where: { userId: idUser },
+//             include: [{
+//                 model: Product,
+//                 through: { model: CartProduct, attributes: ['quantity'] },
+//                 attributes: ['id']
+//             }]
+//         });
+
+//         const productsToAdd = userCart.products.map(product => ({
+//             id: product.id,
+//             through: { quantity: product.cartProduct.quantity }
+//         }));
+
+//         await lastOrder.setProducts(productsToAdd);
+
+//         return await Order.findByPk(lastOrder.id, {
+//             include: [{
+//                 model: Product,
+//                 through: { model: OrderProduct, attributes: ['quantity'] },
+//                 attributes: ['id', 'name']
+//             }]
+//         });
+//     } else {
+//         const newOrder = await Order.create({ userId: idUser, total });
+
+//         const userCart = await Cart.findOne({
+//             where: { userId: idUser },
+//             include: [{
+//                 model: Product,
+//                 through: { model: CartProduct, attributes: ['quantity'] },
+//                 attributes: ['id']
+//             }]
+//         });
+
+//         const productsToAdd = userCart.products.map(product => ({
+//             id: product.id,
+//             through: { quantity: product.cartProduct.quantity }
+//         }));
+
+//         await newOrder.setProducts(productsToAdd);
+
+//         return await Order.findByPk(newOrder.id, {
+//             include: [{
+//                 model: Product,
+//                 through: { model: OrderProduct, attributes: ['quantity'] },
+//                 attributes: ['id', 'name']
+//             }]
+//         });
+//     }
+// };
+
+// module.exports = createOrderController;
