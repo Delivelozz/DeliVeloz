@@ -3,10 +3,17 @@ import { useDispatch } from "react-redux";
 import { postDishes } from "../../../redux/actions/actions";
 import validation from "./validation";
 import UploadWidget from "../../../components/cloudinary/UploadWidget";
+import { useLocalStoreUserData } from "../../../hooks/useLocalStoreUserData.js";
+import { useLocalStoreUserDataGoogle } from "../../../hooks/useLocalStoreUserDataGoogle.js";
+import { useGetShoppingDB } from "../../../hooks/useGetShoppingDB.js";
 import Sidenav from "../../../components/admin/sidenav/Sidenav.jsx";
 
 export default function AddProduct() {
   const dispatch = useDispatch();
+
+  useLocalStoreUserData();
+  useLocalStoreUserDataGoogle();
+  useGetShoppingDB();
 
   // ? -------------------------------------- Cloudinary
 

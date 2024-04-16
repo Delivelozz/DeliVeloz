@@ -1,7 +1,7 @@
 const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 //const regexIncludesNumber = /\d/;
 
-export default function validation ({name,lastName,userAddress,phone}) {
+export default function validation({ name, lastName, userAddress, phone }) {
   const errors = {};
 
   // ? -------------------------------------- name
@@ -10,7 +10,7 @@ export default function validation ({name,lastName,userAddress,phone}) {
     errors.name = "Este campo no puede estar vacío";
   }
 
-  if (name.length >= 1 && name.length < 3 ) {
+  if (name.length >= 1 && name.length < 3) {
     errors.name = "Debe tener como minimo 3 carácteres";
   }
 
@@ -24,7 +24,7 @@ export default function validation ({name,lastName,userAddress,phone}) {
     errors.lastName = "Este campo no puede estar vacío";
   }
 
-  if (lastName.length >= 1 && lastName.length < 3 ) {
+  if (lastName.length >= 1 && lastName.length < 3) {
     errors.lastName = "Debe tener como minimo 3 carácteres";
   }
 
