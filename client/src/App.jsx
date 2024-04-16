@@ -14,7 +14,7 @@ import DashboardAdmin from "./views/admin/dashboardAdmin/DashboardAdmin";
 import EditProduct from "./views/admin/editProduct/EditProduct";
 import SidebarMobile from "./components/headerMobile/SidebarMobile";
 import FloatButtonCard from "./components/floatButtonCard/FloatButtonCard";
-import AddNews from "./views/admin/AddNews";
+import AddNews from "./views/admin/addNews/AddNews";
 import AddProduct from "./views/admin/addProduct/AddProduct";
 import EditNews from "./views/admin/editNews/EditNews";
 import Navbar from "./components/navbar/Navbar";

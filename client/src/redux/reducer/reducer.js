@@ -22,6 +22,8 @@ import {
   EDIT_DISHES,
   DISABLED_DISHES,
   EDIT_USER,
+  POST_BLOG,
+  EDIT_NEWS,
   SET_MY_ORDERS
 } from "../actions/types";
 
@@ -49,6 +51,7 @@ const initialState = {
   dish: [], // Para publicar un plato nuevo
   shoppingCartDB: [], // Para obtener el carrito de compras desde el back
   blog: [],
+  news: [],
   sidebar: {
     isVisible: false,
   },
@@ -179,7 +182,7 @@ export default function reducer(state = initialState, { type, payload }) {
         allUsers: payload,
       };
 
-    // ? ----------------------------- SET_USER_DATA
+    // ? ----------------------------- EDIT USER
     case EDIT_USER:
       return {
         ...state,
@@ -233,13 +236,32 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         blog: payload,
       };
-    // ? ----------------------------- Set Blog ID
-    case SET_BLOG_ID:
+      // ? ----------------------------- Set Blog ID
+      case SET_BLOG_ID:
+        return {
+          ...state,
+          blog: payload,
+         
+        };
+       // ? ----------------------------- Post Blog
+
+      
+    case POST_BLOG:
       return {
         ...state,
-        blog: payload,
+        news: [...state.news, payload],
       };
 
+     // ? ----------------------------- Edit news
+     
+     case EDIT_NEWS:
+      return {
+        ...state,
+          blog: payload,
+      };
+
+       
+     
     // ? ----------------------------- Set errors
 
     case SET_ERRORS:

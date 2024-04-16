@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SidebarAdmin from "../../../components/admin/SidebarAdmin.jsx";
 import UsersAdmin from "../../../components/admin/UsersAdmin.jsx";
 import NewsAdmin from "../../../components/admin/NewsAdmin.jsx";
@@ -9,7 +9,14 @@ import { useLocalStoreUserDataGoogle } from "../../../hooks/useLocalStoreUserDat
 import { useGetShoppingDB } from "../../../hooks/useGetShoppingDB.js";
 
 export default function DashboardAdmin() {
-  const [selectedComponent, setSelectedComponent] = useState("products");
+  const [selectedComponent, setSelectedComponent] = useState(
+    () => localStorage.getItem("selectedComponent") || "products"
+  );
+
+  useEffect(() => {
+    localStorage.setItem("selectedComponent", selectedComponent);
+  }, [selectedComponent]);
+
   useLocalStoreUserData();
   useLocalStoreUserDataGoogle();
   useGetShoppingDB();

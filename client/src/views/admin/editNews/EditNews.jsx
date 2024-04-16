@@ -1,26 +1,54 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import UploadWidget from "../../../components/cloudinary/UploadWidget";
+import { useLocalStoreUserData } from "../../../hooks/useLocalStoreUserData.js";
+import { useLocalStoreUserDataGoogle } from "../../../hooks/useLocalStoreUserDataGoogle.js";
+import { useGetShoppingDB } from "../../../hooks/useGetShoppingDB.js";
+import { editNews } from "../../../redux/actions/actions";
+import validation from "./validation";
 
 export default function EditNews() {
   const dispatch = useDispatch();
-  const [New, setNew] = useState({});
+  useLocalStoreUserData();
+  useLocalStoreUserDataGoogle();
+  useGetShoppingDB();
+  //const [New, setNew] = useState({});
+
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
+  const blog = useSelector((state) => state.blog);
 
-  const [blog, SetBlog] = useState({
-    name: "",
-    description: "",
-    price: "",
-    category: "",
-    subCategory: "",
-    image: {
-      jpg: "",
-      png: "",
-    },
-    quantity: "",
+  const [form, setForm] = useState({
+    title: blog?.title || "",
+    description: blog?.description || "",
+    image: blog?.image || { jpg: "" },
   });
+
+  const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    if (blog) {
+      setForm({
+        title: blog.title,
+        description: blog.description,
+        image: blog.image,
+      });
+    }
+  }, [blog]);
+
+  // const [blog, SetBlog] = useState({
+  //   name: "",
+  //   description: "",
+  //   price: "",
+  //   category: "",
+  //   subCategory: "",
+  //   image: {
+  //     jpg: "",
+  //     png: "",
+  //   },
+  //   quantity: "",
+  // });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,7 +57,7 @@ export default function EditNews() {
           `https://deliveloz-ryfh.onrender.com/banners/${id}`
         );
         const data = await response.json();
-        SetBlog(data);
+        setForm(data);
         setLoading(false);
       } catch (error) {
         console.log("Error fetching: ", error);
@@ -41,24 +69,31 @@ export default function EditNews() {
 
   const onChange = (e) => {
     const { name, value } = e.target;
-    SetBlog({ ...blog, [name]: value });
+    setForm({ ...form, [name]: value });
+
+    const newErrors = validation({ ...form, [name]: value });
+    setErrors(newErrors);
   };
 
-  console.log(blog);
-
+  //console.log(blog);
   const onSubmit = async (e) => {
     e.preventDefault();
-    // dispatch(editDishes({ ...dish, id }));
+    const validationErrors = validation(form);
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      alert("Corrige los errores en el formulario antes de continuar.");
+      return;
+    }
+    console.log("Form antes de enviar:", form);
+    dispatch(editNews({ ...form, id }));
     alert("¡La publicación fue editada exitosamente!");
   };
 
-  console.log("esto seria el plato:", blog);
-
   const handleImageUpload = (imageUrl, imageType) => {
-    setBlog((prevBlog) => ({
-      ...prevBlog,
+    setForm((prevForm) => ({
+      ...prevForm,
       image: {
-        ...prevBlog.image,
+        ...prevForm.image,
         [imageType]: imageUrl,
       },
     }));
@@ -69,7 +104,7 @@ export default function EditNews() {
   if (loading) {
     return (
       <section className="flex justify-center items-center">
-        <div class="custom-loader"></div>
+        <div className="custom-loader"></div>
       </section>
     );
   }
@@ -78,25 +113,26 @@ export default function EditNews() {
     <section className="container">
       <form onSubmit={onSubmit} className="flex flex-col gap-5">
         <div className="grid grid-cols-4 gap-5">
-          <div className="col-span-3 flex flex-col gap-3 bg-white shadow-xl p-6 rounded-sm">
+          <div className="col-span-3 flex flex-col gap-3 bg-white border p-6 rounded-sm">
             <h1 className="mb-6">
               <span className="text-sundown-500">Editar</span> publicación
             </h1>
             <div className="flex flex-col">
-              <label className="font-semibold text-sm text-sundown-500 mb-1">
+              <label className="font-semibold text-sm text-gray-800 mb-1">
                 Titulo:
               </label>
               <input
                 onChange={onChange}
                 type="text"
                 name="title"
-                value={blog.title}
-                className=" bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+                value={form.title}
+                className=" bg-gray-50 border border-gray-600 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               />
+              {errors.title && <p className="error">{errors.title}</p>}
             </div>
 
             <div className="flex flex-col">
-              <label className="font-semibold text-sm text-sundown-500 mb-1">
+              <label className="font-semibold text-sm text-gray-800 mb-1">
                 Descripción:
               </label>
               <textarea
@@ -104,18 +140,21 @@ export default function EditNews() {
                 name="description"
                 cols="30"
                 rows="10"
-                value={blog.description}
-                className="bg-white border max-h-60 min-h-60 border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+                value={form.description}
+                className="bg-white border max-h-60 min-h-60 border-gray-600 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               ></textarea>
+              {errors.description && (
+                <p className="error">{errors.description}</p>
+              )}
             </div>
           </div>
 
-          <div className="col-span-1 bg-white shadow-xl p-6 rounded-sm flex flex-col gap-5">
+          <div className="col-span-1 bg-white border p-6 rounded-sm flex flex-col gap-5">
             <div className="flex flex-col gap-2">
-              <label className="font-semibold text-sm text-sundown-500 mb-1">
+              <label className="font-semibold text-sm text-gray-800 mb-1">
                 Imagen:
               </label>
-              <img src={blog.image.jpg} alt="" />
+              <img src={form.image.jpg} alt="" />
               <UploadWidget
                 onImageUpload={(url) => handleImageUpload(url, "jpg")}
                 imageType="jpg"
