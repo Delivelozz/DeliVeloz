@@ -92,10 +92,13 @@ function App() {
   return (
     <AuthProvider>
       <main className="bg-alabaster-50 relative overflow.x">
-        <Navbar
-          openLoginModal={openLoginModal}
-          openRegisterModal={openRegisterModal}
-        />
+        {pathname !== "/admin" && (
+          <Navbar
+            openLoginModal={openLoginModal}
+            openRegisterModal={openRegisterModal}
+          />
+        )}
+
         {/* <Header
           openLoginModal={openLoginModal}
           openRegisterModal={openRegisterModal}

@@ -29,9 +29,11 @@ export default function DashboardAdmin() {
   };
 
   return (
-    <div className="grid grid-cols-5 relative">
+    <div className=" relative">
       <Sidenav setSelectedComponent={setSelectedComponent} />
-      {renderComponent()}
+      {/* {renderComponent()} */}
     </div>
   );
 }
+
+// grid grid-cols-5

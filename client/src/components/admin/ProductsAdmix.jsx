@@ -125,7 +125,7 @@ export default function ProductsAdmin() {
   ];
 
   return (
-    <section className="container-left col-span-4 py-0">
+    <section className="container py-0">
       <div className="bg-white border my-6 px-2 py-6">
         <div className="mb-6 flex justify-between items-center ">
           <h1 className="font-medium">
