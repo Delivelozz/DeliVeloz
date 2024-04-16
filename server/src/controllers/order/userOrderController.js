@@ -1,10 +1,8 @@
-const { User }=require("../../db");
+const { User } = require("../../db");
 
-const userOrderController = async (idUser) =>{
-    const user = await User.findOne({
-        where: {userId: idUser}
-    })
-    return user;
-}
+const userOrderController = async (idUser) => {
+  const user = await User.findByPk(idUser);
+  return user;
+};
 
-module.exports= userOrderController;
+module.exports = userOrderController;

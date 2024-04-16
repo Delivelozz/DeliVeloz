@@ -15,6 +15,6 @@ orderRouter.get("/:idUser/:idPedido", getOrderHandler);
 // Obtener pedidos
 orderRouter.get("/:idUser", getOrdersUserHandler);
 // Enviar Email
-orderRouter.get("/:idUser/:orderStatus", emailOrderHandler);
+orderRouter.post("/:idUser/:orderStatus", emailOrderHandler);
 
 module.exports = orderRouter;
