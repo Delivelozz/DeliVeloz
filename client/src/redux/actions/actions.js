@@ -24,7 +24,8 @@ import {
   EDIT_USER,
   POST_BLOG,
   EDIT_NEWS,
-  SET_MY_ORDERS
+  SET_MY_ORDERS,
+  POST_ORDER,
 } from "./types";
 import axios from "axios";
 import { API_URL } from "../../utils/constants";
@@ -441,3 +442,17 @@ export const setMyOrders = (id) => {
     }
   };
 };
+// ? ----------------------------- Post order
+export function postOrder(payload) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(`https://deliveloz-ryfh.onrender.com/order/`, payload);
+      dispatch({
+        type: POST_ORDER,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Error al guardar su pedido: ", error);
+    }
+  };
+}

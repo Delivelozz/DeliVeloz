@@ -24,7 +24,8 @@ import {
   EDIT_USER,
   POST_BLOG,
   EDIT_NEWS,
-  SET_MY_ORDERS
+  SET_MY_ORDERS,
+  POST_ORDER,
 } from "../actions/types";
 
 const initialState = {
@@ -58,6 +59,7 @@ const initialState = {
   dishEdited: [],
   dishDisabled: [],
   myOrders: [],
+  order: [],
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -249,7 +251,7 @@ export default function reducer(state = initialState, { type, payload }) {
     case POST_BLOG:
       return {
         ...state,
-        news: [...state.news, payload],
+        order: [...state.order, payload],
       };
 
      // ? ----------------------------- Edit news
@@ -296,7 +298,14 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         myOrders: payload,
       }
+    
+       // ? ----------------------------- Post order
 
+    case POST_ORDER:
+      return {
+    ...state,
+    order: payload, 
+  };
     // ! ------------------------------------------------ Default
 
     default:

@@ -1,12 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import Mercadopago from "../mercadopago/Mercadopago";
+//import Mercadopago from "../mercadopago/Mercadopago";
+import { Link, useNavigate } from "react-router-dom";
+import { postOrder } from "../../redux/actions/actions";
 
 const TotalAmount = () => {
   const shoppingCartDB = useSelector((state) => state.shoppingCartDB);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const [showMercadoPago, setShowMercadoPago] = useState(false);
+  //const [showMercadoPago, setShowMercadoPago] = useState(false);
 
   const totalpay = () => {
     let total = 0;
@@ -16,14 +20,21 @@ const TotalAmount = () => {
     return total.toFixed(2);
   };
 
-  const handlePay = () => {
-    console.log(showMercadoPago);
-    setShowMercadoPago(true);
-  };
+  const handlePayment = async () => {
+    // Obtén el total a pagar
+    const total = parseFloat(totalpay());
 
-  //chatgpi
-  const handlePaymentComplete = () => {
-    setShowMercadoPago(false); // Ocultar el componente de MercadoPago después de que se complete el pago
+    const userId = "tuUserId"; // Reemplázalo con el método correcto para obtener el userId
+
+    // Crea el payload con los datos necesarios
+    const payload = {
+      userId: userId,
+      total: total,
+    };
+    await dispatch(postOrder(payload));
+
+    // Redirige al usuario a orderUser
+    navigate("/orderUser");
   };
 
   return (
@@ -32,23 +43,12 @@ const TotalAmount = () => {
         <p className="flex items-center">Total a pagar: </p>
         <p className="flex items-center">${totalpay()}</p>
       </div>
-      <div className="mt-6 flex justify-center">
-        {!showMercadoPago && ( // Mostrar el botón de pago solo si no se muestra el componente de MercadoPago
-          <button
-            className="btn-bg flex items-center justify-center"
-            onClick={handlePay}
-          >
-            Pagar
-          </button>
-        )}
-      </div>
-      {showMercadoPago && (
-        <Mercadopago
-          shoppingCart={shoppingCartDB?.products}
-          onPaymentComplete={handlePaymentComplete}
-        />
-      )}{" "}
-      {/*para renderizar*/}
+      <button
+        className="btn-bg flex items-center justify-center"
+        onClick={handlePayment}
+      >
+        Pagar
+      </button>
     </article>
   );
 };

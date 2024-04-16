@@ -21,6 +21,7 @@ import Navbar from "./components/navbar/Navbar";
 import DashboardUser from "./views/user/dashboardUser/DashboardUser";
 import EditUser from "./views/user/editUser/EditUser";
 import Orders from "./views/user/orders/Orders";
+import OrderUser from "./views/orderUser/OrderUser";
 
 // ? -------------------- Hooks
 
@@ -121,6 +122,7 @@ function App() {
           <Route path="/profile" element={<DashboardUser />} />
           <Route path="/editUser/:id" element={<EditUser />} />
           <Route path="/orders" element={<Orders />} />
+          <Route path="/orderUser" element={<OrderUser />} />
         </Routes>
         <FloatButtonCard />
         <Footer />
