@@ -2,10 +2,17 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { editUser } from "../../../redux/actions/actions";
 import validation from "./validation";
+import { Link } from "react-router-dom";
+import { useLocalStoreUserData } from "../../../hooks/useLocalStoreUserData.js";
+import { useLocalStoreUserDataGoogle } from "../../../hooks/useLocalStoreUserDataGoogle.js";
+import { useGetShoppingDB } from "../../../hooks/useGetShoppingDB.js";
 
 export default function EditUser() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
+  useLocalStoreUserData();
+  useLocalStoreUserDataGoogle();
+  useGetShoppingDB();
 
   //const [userData, setUserData] = useState({});
 
@@ -78,7 +85,7 @@ export default function EditUser() {
 
   return (
     <section className="container">
-      <h1 className="mb-6">
+      <h1 className="mb-6 mt-6">
         Editar <span className="text-sundown-500">Usuario</span>
       </h1>
       <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
