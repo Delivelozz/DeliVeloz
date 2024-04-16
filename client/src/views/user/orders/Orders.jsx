@@ -29,8 +29,7 @@ export default function Orders() {
     },
     {
       name: "Precio total",
-      selector: (row) => row.total,
-      sortable: true,
+      selector: (row) => `$${row.total}`,
       width: "150px",
     },
     {
@@ -38,25 +37,29 @@ export default function Orders() {
       cell: (row) => (
         <div>
           {row.products.map((product) => (
-            <div key={product.id}>
-              <p>Nombre: {product.name}</p>
-              <p>Descripción: {product.description}</p>
-              <p>Precio: {product.price}</p>
+            <div key={product.id} className="flex flex-col gap-3">
+              <div>
+                <p>Nombre: {product.name}</p>
+                <p>Precio: ${product.price}</p>
+              </div>
+              <Link to={`/editUser/${product.id}`}>
+                <span className="btn-bg cursor-pointer">Valorar</span>
+              </Link>
               <hr />
             </div>
           ))}
         </div>
       ),
-      sortable: true,
-      width: "300px",
+      width: "250px",
     },
   ];
 
   return (
     <section className="container">
-      <h1>Tablas de pedidos</h1>
-
-      <DataTable columns={columns} data={myOrders} selectableRows pagination />
+      <h1 className="mb-5">
+        Tablas de <span className="text-sundown-500">pedidos</span>
+      </h1>
+      <DataTable columns={columns} data={myOrders} pagination />
     </section>
   );
 }
