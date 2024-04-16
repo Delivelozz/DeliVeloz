@@ -26,6 +26,10 @@ export default function OrderUser() {
   }
   console.log(orderDetail);
 
+  if (!orderDetail) {
+    return <div>No se encontró ningún pedido.</div>;
+  }
+
   return (
     <section className="container">
       <h2>Detalles del pedido</h2>
