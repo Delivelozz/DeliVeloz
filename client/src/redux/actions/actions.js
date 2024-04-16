@@ -446,13 +446,14 @@ export const setMyOrders = (id) => {
 export function postOrder(payload) {
   return async function (dispatch) {
     try {
-      const response = await axios.post(`https://deliveloz-ryfh.onrender.com/order/`, payload);
+      const response = await axios.post(`https://deliveloz-ryfh.onrender.com/order/`,payload);
       dispatch({
         type: POST_ORDER,
         payload: response.data,
       });
+       console.log('Respuesta de la API:', response.data);
     } catch (error) {
-      console.error("Error al guardar su pedido: ", error);
+      console.error("Error al obetener su pedido: ", error);
     }
   };
 }

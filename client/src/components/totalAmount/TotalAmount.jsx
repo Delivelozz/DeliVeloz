@@ -1,12 +1,14 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+
 //import Mercadopago from "../mercadopago/Mercadopago";
 import { Link, useNavigate } from "react-router-dom";
 import { postOrder } from "../../redux/actions/actions";
 
 const TotalAmount = () => {
   const shoppingCartDB = useSelector((state) => state.shoppingCartDB);
+  const userId = useSelector((state) => state.user.id);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -21,12 +23,8 @@ const TotalAmount = () => {
   };
 
   const handlePayment = async () => {
-    // Obtén el total a pagar
     const total = parseFloat(totalpay());
 
-    const userId = "tuUserId"; // Reemplázalo con el método correcto para obtener el userId
-
-    // Crea el payload con los datos necesarios
     const payload = {
       userId: userId,
       total: total,
@@ -47,7 +45,7 @@ const TotalAmount = () => {
         className="btn-bg flex items-center justify-center"
         onClick={handlePayment}
       >
-        Pagar
+        Generar Pago
       </button>
     </article>
   );
