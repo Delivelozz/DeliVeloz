@@ -26,6 +26,7 @@ import {
   EDIT_NEWS,
   SET_MY_ORDERS,
   POST_ORDER,
+  GET_ORDER,
 } from "../actions/types";
 
 const initialState = {
@@ -60,6 +61,7 @@ const initialState = {
   dishDisabled: [],
   myOrders: [],
   order: [],
+  orderDetail: [],
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -188,7 +190,7 @@ export default function reducer(state = initialState, { type, payload }) {
     case EDIT_USER:
       return {
         ...state,
-          user: payload,
+        user: payload,
       };
 
     // ? ----------------------------- SET_USER_DATA
@@ -238,32 +240,28 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         blog: payload,
       };
-      // ? ----------------------------- Set Blog ID
-      case SET_BLOG_ID:
-        return {
-          ...state,
-          blog: payload,
-         
-        };
-       // ? ----------------------------- Post Blog
+    // ? ----------------------------- Set Blog ID
+    case SET_BLOG_ID:
+      return {
+        ...state,
+        blog: payload,
+      };
+    // ? ----------------------------- Post Blog
 
-      
     case POST_BLOG:
       return {
         ...state,
         order: [...state.order, payload],
       };
 
-     // ? ----------------------------- Edit news
-     
-     case EDIT_NEWS:
+    // ? ----------------------------- Edit news
+
+    case EDIT_NEWS:
       return {
         ...state,
-          blog: payload,
+        blog: payload,
       };
 
-       
-     
     // ? ----------------------------- Set errors
 
     case SET_ERRORS:
@@ -292,20 +290,28 @@ export default function reducer(state = initialState, { type, payload }) {
       };
 
     // ! ------------------------------------------------ Orders
-    
+
     case SET_MY_ORDERS:
       return {
         ...state,
         myOrders: payload,
-      }
-    
-       // ? ----------------------------- Post order
+      };
+
+    // ? ----------------------------- Post order
 
     case POST_ORDER:
       return {
-    ...state,
-    order: payload, 
-  };
+        ...state,
+        order: payload,
+      };
+
+    // ? ----------------------------- Get order
+    case GET_ORDER:
+      return {
+        ...state,
+        orderDetail: payload,
+      };
+
     // ! ------------------------------------------------ Default
 
     default:

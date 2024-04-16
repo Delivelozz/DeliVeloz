@@ -26,6 +26,7 @@ import {
   EDIT_NEWS,
   SET_MY_ORDERS,
   POST_ORDER,
+  GET_ORDER,
 } from "./types";
 import axios from "axios";
 import { API_URL } from "../../utils/constants";
@@ -357,11 +358,14 @@ export function setBlogId(id) {
     }
   };
 }
-// ? ----------------------------- Post Blog 
+// ? ----------------------------- Post Blog
 export function postBlog(payload) {
   return async function (dispatch) {
     try {
-      const response = await axios.post(`https://deliveloz-ryfh.onrender.com/banners`, payload);
+      const response = await axios.post(
+        `https://deliveloz-ryfh.onrender.com/banners`,
+        payload
+      );
       dispatch({
         type: POST_BLOG,
         payload: response.data,
@@ -389,9 +393,6 @@ export function editNews(payload) {
     }
   };
 }
-
-
-
 
 // ! ----------------------------------------------- Set Errors
 
@@ -432,7 +433,9 @@ export const toggleSidebar = (left) => {
 export const setMyOrders = (id) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`https://deliveloz-ryfh.onrender.com/order/${id}`);
+      const response = await axios.get(
+        `https://deliveloz-ryfh.onrender.com/order/${id}`
+      );
       dispatch({
         type: SET_MY_ORDERS,
         payload: response.data,
@@ -446,14 +449,34 @@ export const setMyOrders = (id) => {
 export function postOrder(payload) {
   return async function (dispatch) {
     try {
-      const response = await axios.post(`https://deliveloz-ryfh.onrender.com/order/`,payload);
+      const response = await axios.post(
+        `https://deliveloz-ryfh.onrender.com/order/`,
+        payload
+      );
       dispatch({
         type: POST_ORDER,
         payload: response.data,
       });
-       console.log('Respuesta de la API:', response.data);
+      console.log("Respuesta de la API:", response.data);
     } catch (error) {
       console.error("Error al obtener su pedido: ", error);
+    }
+  };
+}
+
+// ? ----------------------------- Get order
+export function getOrder(idUser, idOrder) {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `https://deliveloz-ryfh.onrender.com/order/${idUser}/${idOrder}`
+      );
+      dispatch({
+        type: GET_ORDER,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Error fetching order: ", error);
     }
   };
 }

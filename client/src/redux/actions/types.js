@@ -25,3 +25,4 @@ export const SET_MY_ORDERS = `SET_MY_ORDERS`;
 export const POST_BLOG = `POST_BLOG`;
 export const EDIT_NEWS = `EDIT_NEWS`;
 export const POST_ORDER = `POST_ORDER`;
+export const GET_ORDER = `GET_ORDER`;
