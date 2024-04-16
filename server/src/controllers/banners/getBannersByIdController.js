@@ -1,8 +1,8 @@
-const {Banners}= require ("../../db")
+const { Banners } = require("../../db");
 
-const getBannersByIdController=async (id)=>{
-    const bannerIdDb= await Banners.findByPk(id)
-    return bannerIdDb
-}
+const getBannersByIdController = async (id) => {
+  const bannerIdDb = await Banners.findByPk(id);
+  return bannerIdDb;
+};
 
-module.exports= getBannersByIdController
+module.exports = getBannersByIdController;

@@ -1,0 +1,69 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/home"
+  to = "/"
+
+[[redirects]]
+  from = "/about"
+  to = "/about"
+
+[[redirects]]
+  from = "/detail/*"
+  to = "/detail/:splat"
+
+[[redirects]]
+  from = "/products"
+  to = "/products"
+
+[[redirects]]
+  from = "/blog/*"
+  to = "/blog/splat"
+
+[[redirects]]
+  from = "/carrito"
+  to = "/carrito"
+
+[[redirects]]
+  from = "/admin"
+  to = "/admin"
+
+  [[redirects]]
+    from = "/editProduct/:*"
+    to = "/editProduct/:splat"
+
+  [[redirects]]
+    from = "/addNew"
+    to = "/addNew"
+
+  [[redirects]]
+    from = "/addProduct"
+    to = "/addProduct"
+
+  [[redirects]]
+    from = "/editNews/:*"
+    to = "/editNews/:splat"
+
+  [[redirects]]
+    from = "/profile"
+    to = "/profile"
+
+  [[redirects]]
+    from = "/editUser/:*"
+    to = "/editUser/:splat"
+
+  [[redirects]]
+    from = "/orders"
+    to = "/orders"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

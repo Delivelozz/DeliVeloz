@@ -3,11 +3,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 
 export const useShoppingCartCounterItem = () => {
-  const shoppingCart = useSelector((state) => state.shoppingCart);
+  const shoppingCartDB = useSelector((state) => state.shoppingCartDB);
   const [counter, setCounter] = React.useState(0);
   useEffect(() => {
-    const count = shoppingCart.reduce((acc, item) => acc + item.qty, 0);
+    const count = shoppingCartDB?.products?.reduce(
+      (acc, item) => acc + item.quantity,
+      0
+    );
     setCounter(count);
-  }, [shoppingCart]);
+  }, [shoppingCartDB]);
   return counter;
 };

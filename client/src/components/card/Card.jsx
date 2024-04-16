@@ -1,65 +1,69 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setShoppingCart } from "../../redux/actions/actions.js";
 import { Link } from "react-router-dom";
+import { Popper } from "@mui/base/Popper";
+import { useTheme } from "@mui/system";
 import Loader from "../loader/Loader.jsx";
-import { useShoppingCartDelete } from "../../hooks/useShoppingCartDelete.js";
+import { API_URL } from "../../utils/constants.js";
+import { getShoppingCart } from "../../redux/actions/actions.js";
 
 export default function Card(props) {
   const { id, name, image, price, category, subCategory } = props;
   const dispatch = useDispatch();
-  const shoppingCart = useSelector((state) => state.shoppingCart);
+  const shoppingCartDB = useSelector((state) => state.shoppingCartDB);
+  const user = useSelector((state) => state.user);
+  const [userID, setUserID] = useState(null);
   const [loading, setLoading] = useState(false); // Estado local de loading
   const [quantity, setQuantity] = useState(0);
+  const [popperOpen, setPopperOpen] = useState(false);
+  const anchorRef = useRef(null);
 
   useEffect(() => {
-    dispatch(setShoppingCart(shoppingCart));
-    const existingItem = shoppingCart.find((item) => item.id == id);
-    const productQTY = existingItem ? existingItem.qty : 0;
+    setUserID(user?.user?.id);
+  }, [user]);
+
+  useEffect(() => {
+    const existingItem = shoppingCartDB?.products?.find(
+      (item) => item.id == id
+    );
+    const productQTY = existingItem ? existingItem.quantity : 0;
     setQuantity(productQTY);
-  }, [shoppingCart, dispatch]);
-  //console.log(shoppingCart);
+  }, [shoppingCartDB]);
 
-  /* useEffect(() => {
-    qtyID(id);
-  }, [shoppingCart]); */
-
-  const addToCart = (id) => {
-    setLoading(true);
-    const dataItem = { id, name, price, image, qty: 1, priceTotal: price };
-    const addRes = [...shoppingCart];
-    const existingItem = addRes.find((item) => item.id == id);
-    if (existingItem) {
-      existingItem.qty += 1;
-      existingItem.priceTotal = parseFloat(
-        (existingItem.priceTotal + parseFloat(price)).toFixed(2)
-      );
-    } else {
-      addRes.push(dataItem);
+  const handleAdd = async () => {
+    const response = await fetch(`${API_URL}/cart/addproduct/${userID}/${id}`, {
+      method: "PUT",
+    });
+    if (!response.ok) {
+      throw new Error("Error al aumentar la cantidad del producto");
     }
-    //console.log(addRes);
-    dispatch(setShoppingCart(addRes));
+    dispatch(getShoppingCart(userID)); // Agrega esta línea
+  };
+
+  const handleDecrease = async () => {
+    const response = await fetch(
+      `${API_URL}/cart/decreaseproduct/${userID}/${id}`,
+      {
+        method: "PUT",
+      }
+    );
+    if (!response.ok) {
+      throw new Error("Error al disminuir la cantidad del producto");
+    }
+    dispatch(getShoppingCart(userID)); // Agrega esta línea
+  };
+
+  const handlePopperOpen = () => {
+    setPopperOpen(true);
     setTimeout(() => {
-      setLoading(false);
-    }, 500);
-    //console.log(shoppingCart);
+      setPopperOpen(false);
+    }, 3000);
   };
-
-  const deleteFromCart = useShoppingCartDelete();
-  const handleDelete = () => {
-    deleteFromCart(id, price);
-  };
-
-  /* const qtyID = (id) => {
-    const existingItem = shoppingCart.find((item) => item.id === id);
-    const productQTY = existingItem ? existingItem.qty : 0;
-    setQuantity(productQTY);
-  }; */
 
   return (
     <article id={id} className="w-full h-80">
       <div className="bg-white rounded-lg border flex flex-col gap-2 p-4 h-80">
-        <Link to={`/detail/${id}`} className="h-48 mb-3">
+        <Link to={`/detail/${id}`} className="h-48 mb-3 hover:text-black">
           <figure className="w-full h-48 rounded-md cursor-pointer hover:text-black relative">
             <img
               src={image}
@@ -82,10 +86,29 @@ export default function Card(props) {
           <p className="w-4/6 truncate font-bold">{name}</p>
           <p className="text-sundown-500 font-bold ">$ {price}</p>
         </div>
-        {quantity > 0 ? (
+        {userID === undefined || userID === null ? (
+          <div className="flex justify-center">
+            <button
+              ref={anchorRef}
+              onClick={handlePopperOpen}
+              className="btn-bg flex items-center justify-center"
+            >
+              Agregar
+            </button>
+            <Popper
+              open={popperOpen}
+              anchorEl={anchorRef.current}
+              placement="bottom"
+            >
+              <div className="p-2 bg-gray-200 text-gray-800 rounded-md">
+                Iniciar sesión para agregar productos al carrito.
+              </div>
+            </Popper>
+          </div>
+        ) : quantity > 0 ? (
           <div className="h-8 flex justify-center items-center gap-1">
             <button
-              onClick={handleDelete}
+              onClick={() => handleDecrease()}
               className="w-6 h-6 bg-sundown-500 rounded-md text-white"
             >
               -
@@ -96,14 +119,14 @@ export default function Card(props) {
               className="border border-sundown-500 border-solid rounded-md w-8 h-6 text-center "
             />
             <button
-              onClick={() => addToCart(id)}
+              onClick={() => handleAdd()}
               className="w-6 h-6 bg-sundown-500 rounded-md text-white"
             >
               +
             </button>
           </div>
         ) : (
-          <div className="flex justify-center" onClick={() => addToCart(id)}>
+          <div className="flex justify-center" onClick={() => handleAdd()}>
             <button className="btn-bg flex items-center justify-center">
               {loading ? <Loader /> : "Agregar"}
             </button>
