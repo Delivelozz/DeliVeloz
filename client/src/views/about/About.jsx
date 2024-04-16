@@ -12,10 +12,12 @@ import imgGaston from "../../assents/Gaston.png";
 import imgTobias from "../../assents/Tobias.jpg";
 import { useLocalStoreUserData } from "../../hooks/useLocalStoreUserData.js";
 import { useLocalStoreUserDataGoogle } from "../../hooks/useLocalStoreUserDataGoogle.js";
+import { useGetShoppingDB } from "../../hooks/useGetShoppingDB.js";
 
 function About() {
   useLocalStoreUserData();
   useLocalStoreUserDataGoogle();
+  useGetShoppingDB();
 
   return (
     <section className="container">
@@ -33,7 +35,7 @@ function About() {
         <h1 className="pb-6 text-center text-xl font-semibold">
           Nuestro <span className="text-sundown-500">objetivo</span>
         </h1>
-        <p className="text-base w-1/2">
+        <p className="text-base max-w-full md:max-w-md lg:max-w-lg xl:max-w-xl">
           Brindar alimentos de alta calidad en un ambiente familiar y cálido.
           Prestar un servicio líder de delivery para llegar a los hogares en
           buen tiempo, manteniendo altos estándares de calidad a nuestros
@@ -50,7 +52,7 @@ function About() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Maria Romero */}
         <div className="border text-sm py-6 flex items-center justify-center flex-col gap-3 rounded-lg">
-          <img className="w-28 h-28 rounded-full" src={imgMaria} />
+          <img className="w-auto h-28 md:w-28 lg:w-28 rounded-full" src={imgMaria} />
           <h3 className="font-semibold text-center text-lg">Maria Romero</h3>
           <div className="flex justify-center items-center gap-3">
             <NavLink
@@ -70,7 +72,7 @@ function About() {
 
         {/* Jose Chapid */}
         <div className="border text-sm py-6 flex items-center justify-center flex-col gap-3 rounded-lg">
-          <img className="w-28 h-28 rounded-full" src={imgJose} />
+          <img className="w-auto h-28 md:w-28 lg:w-28 rounded-full" src={imgJose} />
           <h3 className="font-semibold text-center text-lg">Jose Chapid</h3>
           <div className="flex justify-center items-center gap-3">
             <NavLink
@@ -90,7 +92,7 @@ function About() {
 
         {/* Sonia Mendoza</ */}
         <div className="border text-sm py-6 flex items-center justify-center flex-col gap-3 rounded-lg">
-          <img className="w-28 h-28 rounded-full" src={imgSonia} />
+          <img className="w-auto h-28 md:w-28 lg:w-28 rounded-full" src={imgSonia} />
           <h3 className="font-semibold text-center text-lg">Sonia Mendoza</h3>
           <div className="flex justify-center items-center gap-3">
             <NavLink
@@ -110,7 +112,7 @@ function About() {
 
         {/* Federico Guzman */}
         <div className="border text-sm py-6 flex items-center justify-center flex-col gap-3 rounded-lg">
-          <img className="w-28 h-28 rounded-full" src={imgFede} />
+          <img className="w-auto h-28 md:w-28 lg:w-28 rounded-full" src={imgFede} />
           <h3 className="font-semibold text-center text-lg">Federico Guzman</h3>
           <div className="flex justify-center items-center gap-3">
             <NavLink
@@ -130,7 +132,7 @@ function About() {
 
         {/* Jodannys Brito */}
         <div className="border text-sm py-6 flex items-center justify-center flex-col gap-3 rounded-lg">
-          <img className="w-28 h-28 rounded-full" src={imgJodannys} />
+          <img className="w-auto h-28 md:w-28 lg:w-28 rounded-full" src={imgJodannys} />
           <h3 className="font-semibold text-center text-lg">Jodannys Brito</h3>
           <div className="flex justify-center items-center gap-3">
             <NavLink
@@ -150,7 +152,7 @@ function About() {
 
         {/* Axl Pacheco */}
         <div className="border text-sm py-6 flex items-center justify-center flex-col gap-3 rounded-lg">
-          <img className="w-28 h-28 rounded-full" src={imgAxl} />
+          <img className="w-auto h-28 md:w-28 lg:w-28 rounded-full" src={imgAxl} />
           <h3 className="font-semibold text-center text-lg">Axl Pacheco</h3>
           <div className="flex justify-center items-center gap-3">
             <NavLink
@@ -170,7 +172,7 @@ function About() {
 
         {/* Gaston Dandrea */}
         <div className="border text-sm py-6 flex items-center justify-center flex-col gap-3 rounded-lg">
-          <img className="w-28 h-28 rounded-full" src={imgGaston} />
+          <img className="w-auto h-28 md:w-28 lg:w-28 rounded-full" src={imgGaston} />
           <h3 className="font-semibold text-center text-lg">Gaston Dandrea</h3>
           <div className="flex justify-center items-center gap-3">
             <NavLink
@@ -190,7 +192,7 @@ function About() {
 
         {/* Tobias Insaurralde */}
         <div className="border text-sm py-6 flex items-center justify-center flex-col gap-3 rounded-lg">
-          <img className="w-28 h-28 rounded-full" src={imgTobias} />
+          <img className="w-auto h-28 md:w-28 lg:w-28 rounded-full" src={imgTobias} />
           <h3 className="font-semibold text-center text-lg">
             Tobias Insaurralde
           </h3>
