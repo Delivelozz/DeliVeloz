@@ -461,8 +461,12 @@ export function postOrder(payload) {
       console.log("Respuesta de la API:", response.data);
       return response; // Devuelve la respuesta
     } catch (error) {
+<<<<<<< HEAD
       console.error("Error al obetener su pedido: ", error);
       throw error; // Lanza el error para que pueda ser capturado en el componente
+=======
+      console.error("Error al obtener su pedido: ", error);
+>>>>>>> ad9812077409c4bd0b23ee6879f9bc33497e4491
     }
   };
 }
