@@ -1,7 +1,13 @@
 const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 //const regexIncludesNumber = /\d/;
 
-export default function validation({ name, lastName, userAddress, phone }) {
+export default function validation({
+  name,
+  lastName,
+  email,
+  userAddress,
+  phone,
+}) {
   const errors = {};
 
   // ? -------------------------------------- name

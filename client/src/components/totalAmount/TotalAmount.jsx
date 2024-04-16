@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import { useEffect } from "react";
 
 //import Mercadopago from "../mercadopago/Mercadopago";
 import { useNavigate } from "react-router-dom";
@@ -8,11 +9,16 @@ import { postOrder } from "../../redux/actions/actions";
 
 const TotalAmount = () => {
   const shoppingCartDB = useSelector((state) => state.shoppingCartDB);
-  const userId = useSelector((state) => state.user.id);
+  const user = useSelector((state) => state.user);
+  const [idUser, setIdUser] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   //const [showMercadoPago, setShowMercadoPago] = useState(false);
+
+  useEffect(() => {
+    setIdUser(user?.user?.id);
+  }, [user]);
 
   const totalpay = () => {
     let total = 0;
@@ -24,9 +30,11 @@ const TotalAmount = () => {
 
   const handlePayment = async () => {
     const total = parseFloat(totalpay());
+    console.log("Total a pagar: ", total);
+    console.log("Usuario: ", idUser);
 
     const payload = {
-      userId: userId,
+      userId: idUser,
       total: total,
     };
     await dispatch(postOrder(payload));
