@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
+import { setOrderIdAppi } from "../../redux/actions/actions";
 
 //import Mercadopago from "../mercadopago/Mercadopago";
 import { useNavigate } from "react-router-dom";
@@ -20,6 +21,15 @@ const TotalAmount = () => {
   useEffect(() => {
     setIdUser(user?.user?.id);
   }, [user]);
+
+  useEffect(() => {
+    if (orderId !== null) {
+      //console.log("ID de la orden: ", orderId);
+      dispatch(setOrderIdAppi(orderId));
+      // Aquí puedes realizar otras acciones que dependan del valor de orderId
+      navigate("/orderUser");
+    }
+  }, [orderId]);
 
   const totalpay = () => {
     let total = 0;
@@ -40,15 +50,10 @@ const TotalAmount = () => {
     };
     try {
       const response = await dispatch(postOrder(payload));
-      // Guardar el ID de la orden en el estado
-      setOrderId(response?.data);
-      console.log("ID de la orden dentro: ", response?.data);
-      // Redirige al usuario a orderUser
-      //navigate("/orderUser");
+      setOrderId(response?.data?.id);
     } catch (error) {
       console.error("Error al procesar la orden: ", error);
     }
-    console.log("ID de la orden fuera: ", orderId);
   };
 
   return (

@@ -5,30 +5,25 @@ import { getOrder } from "../../redux/actions/actions";
 export default function OrderUser() {
   const orderDetail = useSelector((state) => state.orderDetail);
   const user = useSelector((state) => state.user);
+  const idOrder = useSelector((state) => state.idOrder);
   const [idUser, setIdUser] = useState(null);
   const dispatch = useDispatch();
+
+  //console.log(idOrder);
 
   useEffect(() => {
     setIdUser(user?.user?.id);
   }, [user]);
 
   useEffect(() => {
-    dispatch(getOrder(idUser));
-  }, []);
+    if (idUser && idOrder) {
+      console.log("ID de la user: ", idUser);
+      console.log("ID de la order: ", idOrder);
+      dispatch(getOrder(idUser, idOrder));
+    }
+  }, [idUser, idOrder]);
 
   console.log(orderDetail);
-
-  const latestOrder =
-    orderDetail.length > 0 ? order[orderDetail.length - 1] : null;
-
-  if (!latestOrder) {
-    return <div>No se encontró ningún pedido.</div>;
-  }
-  console.log(orderDetail);
-
-  if (!orderDetail) {
-    return <div>No se encontró ningún pedido.</div>;
-  }
 
   return (
     <section className="container">

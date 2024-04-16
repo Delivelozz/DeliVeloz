@@ -27,6 +27,7 @@ import {
   SET_MY_ORDERS,
   POST_ORDER,
   GET_ORDER,
+  SET_ORDER_ID,
 } from "./types";
 import axios from "axios";
 import { API_URL } from "../../utils/constants";
@@ -458,8 +459,10 @@ export function postOrder(payload) {
         payload: response.data,
       });
       console.log("Respuesta de la API:", response.data);
+      return response; // Devuelve la respuesta
     } catch (error) {
-      console.error("Error al obtener su pedido: ", error);
+      console.error("Error al obetener su pedido: ", error);
+      throw error; // Lanza el error para que pueda ser capturado en el componente
     }
   };
 }
@@ -480,3 +483,11 @@ export function getOrder(idUser, idOrder) {
     }
   };
 }
+
+// ? ----------------------------- Set order ID
+export const setOrderIdAppi = (payload) => {
+  return {
+    type: SET_ORDER_ID,
+    payload,
+  };
+};
