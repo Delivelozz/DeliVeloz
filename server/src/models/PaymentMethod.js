@@ -10,8 +10,12 @@ module.exports = (sequelize) => {
       primaryKey: true,
     },
     type: {
-      type: DataTypes.ENUM('Cash', 'Credit Card', 'Debit Card'),
+      type: DataTypes.STRING,
       allowNull: false,
     },
-  });
+    status: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    }
+  },{timestamps: false});
 };

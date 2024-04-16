@@ -20,6 +20,11 @@ import {
   SET_BLOG_ID,
   TOGGLE_SIDEBAR,
   EDIT_DISHES,
+  DISABLED_DISHES,
+  EDIT_USER,
+  POST_BLOG,
+  EDIT_NEWS,
+  SET_MY_ORDERS
 } from "./types";
 import axios from "axios";
 import { API_URL } from "../../utils/constants";
@@ -61,11 +66,12 @@ export function postDishes(payload) {
 
 // ? ----------------------------- Edit Dishes
 
-export function editDishes(id, payload) {
+export function editDishes(payload) {
+  // console.log("esto es un payload:", payload.id)
   return async function (dispatch) {
     try {
       const response = await axios.patch(
-        `https://deliveloz-ryfh.onrender.com/products/${id}`,
+        `https://deliveloz-ryfh.onrender.com/products/${payload.id}`,
         payload
       );
       dispatch({
@@ -73,7 +79,28 @@ export function editDishes(id, payload) {
         payload: response.data,
       });
     } catch (error) {
-      console.error("Error al editar el plato: ", error);
+      console.error("Error al editar el producto: ", error);
+    }
+  };
+}
+
+// ? ----------------------------- Disabled Dishes
+
+export function disabledDishes(payload) {
+  const invertedAvailability = !payload.availability;
+
+  return async function (dispatch) {
+    try {
+      const response = await axios.put(
+        `https://deliveloz-ryfh.onrender.com/products/${payload.id}/${invertedAvailability}`,
+        payload
+      );
+      dispatch({
+        type: DISABLED_DISHES,
+        payload: { ...response.data, availability: invertedAvailability }, // Actualizar availability con el valor invertido
+      });
+    } catch (error) {
+      console.error("Error al desactivar el producto: ", error);
     }
   };
 }
@@ -197,6 +224,26 @@ export function getUsers() {
   };
 }
 
+// ? ----------------------------- Edit user
+
+export function editUser(payload) {
+  // console.log("esto es un payload:", payload.id)
+  return async function (dispatch) {
+    try {
+      const response = await axios.patch(
+        `https://deliveloz-ryfh.onrender.com/users/${payload.id}`,
+        payload
+      );
+      dispatch({
+        type: EDIT_USER,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Error al editar el perfil: ", error);
+    }
+  };
+}
+
 // ? ----------------------------- Login
 
 export function loginUser(payload) {
@@ -239,8 +286,7 @@ export function logoutUser(payload) {
 export function postUsers(payload) {
   return async function (dispatch) {
     try {
-      const response = await fetch(`${API_URL}/users`);
-      const data = await response.json();
+      const response = await axios.post(`${API_URL}/users`, payload);
       dispatch({
         type: POST_USER,
         payload: response.data,
@@ -310,6 +356,41 @@ export function setBlogId(id) {
     }
   };
 }
+// ? ----------------------------- Post Blog 
+export function postBlog(payload) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(`https://deliveloz-ryfh.onrender.com/banners`, payload);
+      dispatch({
+        type: POST_BLOG,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Error al postear el plato: ", error);
+    }
+  };
+}
+// ? ----------------------------- Edit news
+export function editNews(payload) {
+  // console.log("esto es un payload:", payload.id)
+  return async function (dispatch) {
+    try {
+      const response = await axios.patch(
+        `https://deliveloz-ryfh.onrender.com/banners/${payload.id}`,
+        payload
+      );
+      dispatch({
+        type: EDIT_NEWS,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Error al editar la novedad: ", error);
+    }
+  };
+}
+
+
+
 
 // ! ----------------------------------------------- Set Errors
 
@@ -342,5 +423,21 @@ export const toggleSidebar = (left) => {
   return {
     type: TOGGLE_SIDEBAR,
     payload: left,
+  };
+};
+
+// ! ----------------------------------------------- Orders
+
+export const setMyOrders = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`https://deliveloz-ryfh.onrender.com/order/${id}`);
+      dispatch({
+        type: SET_MY_ORDERS,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Error fetching your orders: ", error);
+    }
   };
 };

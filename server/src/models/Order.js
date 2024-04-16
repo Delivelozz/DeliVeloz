@@ -16,13 +16,16 @@ module.exports = (sequelize) => {
       defaultValue: 'pending',
     },    
     total: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.FLOAT,
     allowNull: false,
     },
     paid: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false,
+    },
+    deliveryAddress: {
+      type: DataTypes.STRING,
     }
   },{timestamps: false});
 };

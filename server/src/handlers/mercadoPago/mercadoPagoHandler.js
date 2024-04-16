@@ -1,9 +1,10 @@
 const mercadoPagoController = require('../../controllers/mercadoPago/mercadoPagoController');
 
 const mercadoPagoHandler = async (req, res) => {
-  const items = req.body;
+  const {product} = req.body;
+  const {id_order} = req.body;
   try {
-    const itemsNew = items.map((item)=>{
+    const itemsNew = product.map((item)=>{
       return {
         title: item.name,
         quantity: Number(item.quantity),
@@ -11,10 +12,10 @@ const mercadoPagoHandler = async (req, res) => {
         current_id: "ARS",
       }
     })
-    const response = await mercadoPagoController(itemsNew); 
-    res.json({id: response.id})
+    const response = await mercadoPagoController(itemsNew, id_order); 
+    res.json(response)
   } catch (error) {
-    res.status(500).json({ error: "Error al crear preferencia" })
+    res.status(500).json({ error:error.message })
   }
 }
 

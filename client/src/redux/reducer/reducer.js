@@ -20,6 +20,11 @@ import {
   SET_BLOG_ID,
   TOGGLE_SIDEBAR,
   EDIT_DISHES,
+  DISABLED_DISHES,
+  EDIT_USER,
+  POST_BLOG,
+  EDIT_NEWS,
+  SET_MY_ORDERS
 } from "../actions/types";
 
 const initialState = {
@@ -46,10 +51,13 @@ const initialState = {
   dish: [], // Para publicar un plato nuevo
   shoppingCartDB: [], // Para obtener el carrito de compras desde el back
   blog: [],
+  news: [],
   sidebar: {
     isVisible: false,
   },
-  dishEdited: {},
+  dishEdited: [],
+  dishDisabled: [],
+  myOrders: [],
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -66,6 +74,14 @@ export default function reducer(state = initialState, { type, payload }) {
 
     // ? ----------------------------- Post Dishes
 
+    case POST_DISHES:
+      return {
+        ...state,
+        dish: [...state.dish, payload],
+      };
+
+    // ? ----------------------------- Edit Dishes
+
     case EDIT_DISHES:
       return {
         ...state,
@@ -81,12 +97,12 @@ export default function reducer(state = initialState, { type, payload }) {
         dishEdited: [...state.dishEdited, payload],
       };
 
-    // ? ----------------------------- EDIT_DISHES
+    // ? ----------------------------- Disabled Dishes
 
-    case POST_DISHES:
+    case DISABLED_DISHES:
       return {
         ...state,
-        dish: [...state.dish, payload],
+        dishDisabled: [...state.dishDisabled, payload],
       };
 
     // ! ----------------------------------------------- Promos
@@ -166,6 +182,13 @@ export default function reducer(state = initialState, { type, payload }) {
         allUsers: payload,
       };
 
+    // ? ----------------------------- EDIT USER
+    case EDIT_USER:
+      return {
+        ...state,
+          user: payload,
+      };
+
     // ? ----------------------------- SET_USER_DATA
 
     case SET_USER_DATA:
@@ -213,13 +236,32 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         blog: payload,
       };
-    // ? ----------------------------- Set Blog ID
-    case SET_BLOG_ID:
+      // ? ----------------------------- Set Blog ID
+      case SET_BLOG_ID:
+        return {
+          ...state,
+          blog: payload,
+         
+        };
+       // ? ----------------------------- Post Blog
+
+      
+    case POST_BLOG:
       return {
         ...state,
-        blog: payload,
+        news: [...state.news, payload],
       };
 
+     // ? ----------------------------- Edit news
+     
+     case EDIT_NEWS:
+      return {
+        ...state,
+          blog: payload,
+      };
+
+       
+     
     // ? ----------------------------- Set errors
 
     case SET_ERRORS:
@@ -246,6 +288,14 @@ export default function reducer(state = initialState, { type, payload }) {
           isVisible: !state.sidebar.isVisible,
         },
       };
+
+    // ! ------------------------------------------------ Orders
+    
+    case SET_MY_ORDERS:
+      return {
+        ...state,
+        myOrders: payload,
+      }
 
     // ! ------------------------------------------------ Default
 
