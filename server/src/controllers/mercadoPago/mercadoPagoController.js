@@ -48,6 +48,7 @@ const mercadoPagoController = async (itemsNew) => {
       installments: 1,
     },
     auto_return: "approved",
+    notification_url: "https://deliveloz-ryfh.onrender.com/webhook"
   };
   const preference = new Preference(client);
   const result = await preference.create({ body });
