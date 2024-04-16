@@ -21,7 +21,8 @@ server.use(morgan("dev"));
 const allowedOrigins = [
   'http://localhost:5173', 
   'http://127.0.0.1:5173', 
-  'http://deliveloz-ryfh.onrender.com'
+  'http://deliveloz-ryfh.onrender.com',
+  "https://www.mercadopago.com"
 ];
 server.use((req, res, next) => {
   const origin = req.headers.origin;
