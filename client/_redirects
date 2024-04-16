@@ -8,3 +8,10 @@
 /blog  /Blog
 /carrito  /Carrito
 /admin  /DashboardAdmin
+/editProduct/*  /editProduct/:splat
+/addNew         /addNew
+/addProduct     /addProduct
+/editNews/*     /editNews/:splat
+/profile        /profile
+/editUser/*     /editUser/:splat
+/orders         /orders

@@ -12,10 +12,6 @@
   to = "/"
 
 [[redirects]]
-  from = "/products"
-  to = "/products"
-
-[[redirects]]
   from = "/about"
   to = "/about"
 
@@ -24,8 +20,12 @@
   to = "/detail/:splat"
 
 [[redirects]]
-  from = "/blog"
-  to = "/blog"
+  from = "/products"
+  to = "/products"
+
+[[redirects]]
+  from = "/blog/*"
+  to = "/blog/splat"
 
 [[redirects]]
   from = "/carrito"
@@ -34,6 +34,34 @@
 [[redirects]]
   from = "/admin"
   to = "/admin"
+
+  [[redirects]]
+    from = "/editProduct/:*"
+    to = "/editProduct/:splat"
+
+  [[redirects]]
+    from = "/addNew"
+    to = "/addNew"
+
+  [[redirects]]
+    from = "/addProduct"
+    to = "/addProduct"
+
+  [[redirects]]
+    from = "/editNews/:*"
+    to = "/editNews/:splat"
+
+  [[redirects]]
+    from = "/profile"
+    to = "/profile"
+
+  [[redirects]]
+    from = "/editUser/:*"
+    to = "/editUser/:splat"
+
+  [[redirects]]
+    from = "/orders"
+    to = "/orders"
 
 [[redirects]]
   from = "/*"
