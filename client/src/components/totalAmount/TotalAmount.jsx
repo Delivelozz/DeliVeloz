@@ -11,6 +11,7 @@ const TotalAmount = () => {
   const shoppingCartDB = useSelector((state) => state.shoppingCartDB);
   const user = useSelector((state) => state.user);
   const [idUser, setIdUser] = useState(null);
+  const [orderId, setOrderId] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -37,10 +38,17 @@ const TotalAmount = () => {
       idUser: idUser,
       total: total,
     };
-    await dispatch(postOrder(payload));
-
-    // Redirige al usuario a orderUser
-    navigate("/orderUser");
+    try {
+      const response = await dispatch(postOrder(payload));
+      // Guardar el ID de la orden en el estado
+      setOrderId(response?.data);
+      console.log("ID de la orden dentro: ", response?.data);
+      // Redirige al usuario a orderUser
+      //navigate("/orderUser");
+    } catch (error) {
+      console.error("Error al procesar la orden: ", error);
+    }
+    console.log("ID de la orden fuera: ", orderId);
   };
 
   return (
