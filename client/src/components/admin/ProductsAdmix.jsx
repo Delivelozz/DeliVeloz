@@ -54,21 +54,6 @@ export default function ProductsAdmin() {
       width: "200px",
     },
     {
-      name: "Disponibilidad",
-      selector: (row) => (row.availability ? "Sí" : "No"),
-      sortable: true,
-      width: "100px",
-    },
-    {
-      name: "Desactivar",
-      cell: (row) => (
-        <button onClick={() => onDisabled(row)}>
-          <DeleteIcon width={22} height={22} color={"#E74C4C"} />
-        </button>
-      ),
-      width: "100px",
-    },
-    {
       name: "Precio",
       selector: (row) => row.price,
       sortable: true,
@@ -107,12 +92,12 @@ export default function ProductsAdmin() {
       ),
       width: "100px",
     },
-    // {
-    //   name: "Disponibilidad",
-    //   selector: (row) => (row.availability ? "Sí" : "No"),
-    //   sortable: true,
-    //   width: "100px",
-    // },
+    {
+      name: "Disponibilidad",
+      selector: (row) => (row.availability ? "Sí" : "No"),
+      sortable: true,
+      width: "100px",
+    },
     {
       name: "Stock",
       selector: (row) => row.quantity,
@@ -128,39 +113,40 @@ export default function ProductsAdmin() {
       ),
       width: "100px",
     },
-    // {
-    //   name: "Desactivar",
-    //   cell: (row) => (
-    //     <button onClick={() => onDisabled(row)}>
-    //       <DeleteIcon width={22} height={22} color={"#E74C4C"} />
-    //     </button>
-    //   ),
-    //   width: "100px",
-    // },
+    {
+      name: "Desactivar",
+      cell: (row) => (
+        <button onClick={() => onDisabled(row)}>
+          <DeleteIcon width={22} height={22} color={"#E74C4C"} />
+        </button>
+      ),
+      width: "100px",
+    },
   ];
 
   return (
-    <section className="container-left col-span-4">
-      <div className="mb-6 flex justify-between items-center">
-        <h1 className="">
-          Tabla de <span className="text-sundown-500">Productos</span>
-        </h1>
+    <section className="container-left col-span-4 py-0">
+      <div className="bg-white border my-6 px-2 py-6">
+        <div className="mb-6 flex justify-between items-center ">
+          <h1 className="font-medium">
+            Lista de <span className="text-sundown-500">Productos</span>
+          </h1>
 
-        <input
-          type="text"
-          onChange={handleChange}
-          placeholder="Buscar..."
-          className="w-48 bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+          <input
+            type="text"
+            onChange={handleChange}
+            placeholder="Buscar..."
+            className="min-w-64 bg-gray-50 border p-2 text-sm focus:outline-sundown-500 focus:border-transparent"
+          />
+        </div>
+
+        <DataTable
+          columns={columns}
+          data={filterDishes}
+          onSelectedRowsChange={(data) => console.log(data)}
+          pagination
         />
       </div>
-
-      <DataTable
-        columns={columns}
-        data={filterDishes}
-        selectableRows
-        onSelectedRowsChange={(data) => console.log(data)}
-        pagination
-      />
     </section>
   );
 }
