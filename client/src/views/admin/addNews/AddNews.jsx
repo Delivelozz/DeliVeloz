@@ -92,7 +92,7 @@ export default function AddNews() {
         {/* Inicio Añadir Nombre */}
         <div className="flex justify-between gap-5">
           <div className="flex flex-col flex-1">
-            <label className="font-semibold text-sm text-sundown-500 mb-1">
+            <label className="font-semibold text-sm text-gray-800 mb-1">
               Nombre:
             </label>
 
@@ -103,7 +103,7 @@ export default function AddNews() {
                 type="text"
                 name="title"
                 placeholder="Añadir novedad"
-                className=" bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+                className=" bg-gray-50 border border-gray-600 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               />
               {errors.title && <p className="error">{errors.title}</p>}
             </div>
@@ -113,7 +113,7 @@ export default function AddNews() {
           <div className="flex justify-between items-center gap-5">
             <div className="flex flex-col flex-1 gap-5">
               <div className="flex flex-col gap-1">
-                <label className="font-semibold text-sm text-sundown-500 mb-1">
+                <label className="font-semibold text-sm text-gray-800 mb-1">
                   Imagen jpg:
                 </label>
                 <div className="flex flex-col gap-2">
@@ -130,7 +130,7 @@ export default function AddNews() {
           </div>
         </div>
         <div className=" flex flex-col">
-          <label className="font-semibold text-sm text-sundown-500 mb-1">
+          <label className="font-semibold text-sm text-gray-800 mb-1">
             Descripción:
           </label>
           <div className="flex flex-col gap-2">
@@ -140,7 +140,7 @@ export default function AddNews() {
               name="description"
               cols="30"
               rows="10"
-              className="bg-white border max-h-60 min-h-60 border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+              className="bg-white border max-h-60 min-h-60 border-gray-600 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
               placeholder="Descripción..."
             ></textarea>
             {errors.description && (
