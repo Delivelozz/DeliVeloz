@@ -453,7 +453,7 @@ export function postOrder(payload) {
       });
        console.log('Respuesta de la API:', response.data);
     } catch (error) {
-      console.error("Error al obetener su pedido: ", error);
+      console.error("Error al obtener su pedido: ", error);
     }
   };
 }

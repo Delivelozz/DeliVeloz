@@ -13,7 +13,7 @@ export default function OrderUser() {
   return (
     <section className="container">
       <h2>Detalles del pedido</h2>
-      <p>User ID: {order.userId}</p>
+
       <p>Total a pagar: ${order.total.toFixed(2)}</p>
       <h3>Productos:</h3>
       <ul>
