@@ -1,13 +1,18 @@
 const mercadoPagoWebhookController = require('../../controllers/mercadoPago/mercadoPagoWebhookController');
 
 const mercadoPagoWebhookHandler = async (req, res) => {
-    const event = req.body;
+    const paymentId = req.query.id;
     try {
         // Aquí puedes verificar el tipo de evento y actuar en consecuencia
-        await mercadoPagoWebhookController(event);
-        res.status(200).send();
+        const response = await mercadoPagoWebhookController(paymentId);
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+        }
+        res.sendStatus(200);
     } catch (error) {
-        res.status(400).json({error:error.message});
+        console.log('Error:', error);
+        res.sendStatus(500);
     }
 }
 
