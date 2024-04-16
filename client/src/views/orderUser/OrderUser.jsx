@@ -46,8 +46,9 @@ export default function OrderUser() {
           </li>
         ))}
       </ul>
-      <p>Estado del pago: {orderDetail?.paid ? "Pagado" : "No pagado"}</p>
-      <p>Estado del pedido: {orderDetail?.orderStatus}</p>
+
+      {/* <p>Estado del pago: {orderDetail?.paid ? "Pagado" : "No pagado"}</p>
+      <p>Estado del pedido: {orderDetail?.orderStatus}</p> */}
     </section>
   );
 }
