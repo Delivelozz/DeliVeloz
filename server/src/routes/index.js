@@ -43,8 +43,5 @@ router.use("/cart", cartRouter);
 //Router Banners
 router.use("/banners", bannersRouter);
 
-
-
-
 module.exports = router;
 
