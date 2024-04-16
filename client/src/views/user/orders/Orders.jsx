@@ -21,9 +21,51 @@ export default function Orders() {
   const myOrders = useSelector((state) => state.myOrders);
   console.log(myOrders);
 
+  const columns = [
+    {
+      name: "Número de pedido",
+      selector: (row) => row.id,
+      sortable: true,
+      width: "160px",
+    },
+    {
+      name: "Estado de la orden",
+      selector: (row) => row.orderStatus,
+      width: "150px",
+    },
+    {
+      name: "Precio total",
+      selector: (row) => `$${row.total}`,
+      width: "150px",
+    },
+    {
+      name: "Productos",
+      cell: (row) => (
+        <div>
+          {row.products.map((product) => (
+            <div key={product.id} className="flex flex-col gap-3">
+              <div>
+                <p>Nombre: {product.name}</p>
+                <p>Precio: ${product.price}</p>
+              </div>
+              <Link to={`/editUser/${product.id}`}>
+                <span className="btn-bg cursor-pointer">Valorar</span>
+              </Link>
+              <hr />
+            </div>
+          ))}
+        </div>
+      ),
+      width: "250px",
+    },
+  ];
+
   return (
     <section className="container">
-      <h1 className="mt-4">Tablas de pedidos</h1>
+      <h1 className="mb-5">
+        Tablas de <span className="text-sundown-500">pedidos</span>
+      </h1>
+      <DataTable columns={columns} data={myOrders} pagination />
     </section>
   );
 }
