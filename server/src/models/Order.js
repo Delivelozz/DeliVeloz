@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
       defaultValue: 'pending',
     },    
     total: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.FLOAT,
     allowNull: false,
     },
     paid: {
