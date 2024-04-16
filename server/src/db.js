@@ -51,7 +51,6 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 const {
   CategoryProduct,
-  Address,
   PaymentMethod,
   Order,
   Product,
@@ -89,9 +88,9 @@ Product.belongsTo(SubCategoryProduct);
 // CategoryProduct - SubCategoryProduct (uno a muchos)
 CategoryProduct.hasMany(SubCategoryProduct);
 SubCategoryProduct.belongsTo(CategoryProduct);
-// User - Address (uno a muchos)
-User.hasMany(Address);
-Address.belongsTo(User);
+// *User - Address (uno a muchos)
+// User.hasMany(Address);
+// Address.belongsTo(User);
 // User - Assessment (uno a muchos)
 User.hasMany(Assessment);
 Assessment.belongsTo(User);
