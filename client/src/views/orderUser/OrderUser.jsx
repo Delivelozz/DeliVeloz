@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 
 export default function OrderUser() {
   const order = useSelector((state) => state.order);
+  console.log(order);
 
   const latestOrder = order.length > 0 ? order[order.length - 1] : null;
 
