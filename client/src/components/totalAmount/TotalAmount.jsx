@@ -55,7 +55,6 @@ const TotalAmount = () => {
       console.error("Error al procesar la orden: ", error);
     }
   };
-
   return (
     <article className="container flex flex-col justify-center ">
       <div className=" w-full h-16 mt-6 p-4 bg-gray-100 rounded-lg border flex justify-between text-lg text-sundown-500 font-bold">

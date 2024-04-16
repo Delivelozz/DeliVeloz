@@ -23,24 +23,24 @@ export default function OrderUser() {
     }
   }, [idUser, idOrder]);
 
-  console.log(orderDetail);
+  //console.log(orderDetail);
 
   return (
     <section className="container">
       <h2>Detalles del pedido</h2>
-      <p>User ID: {orderDetail.userId}</p>
-      <p>Total a pagar: ${orderDetail.total.toFixed(2)}</p>
+      <p>User ID: {orderDetail?.userId}</p>
+      <p>Total a pagar: ${orderDetail?.total}</p>
       <h3>Productos:</h3>
       <ul>
-        {orderDetail.products.map((product, index) => (
+        {orderDetail?.products?.map((product, index) => (
           <li key={index}>
-            {product.name} - Cantidad: {product.quantity} - Precio: $
-            {product.price}
+            {product?.name} - Cantidad: {product?.quantity} - Precio: $
+            {product?.price}
           </li>
         ))}
       </ul>
-      <p>Estado del pago: {orderDetail.paid ? "Pagado" : "No pagado"}</p>
-      <p>Estado del pedido: {orderDetail.orderStatus}</p>
+      <p>Estado del pago: {orderDetail?.paid ? "Pagado" : "No pagado"}</p>
+      <p>Estado del pedido: {orderDetail?.orderStatus}</p>
     </section>
   );
 }
