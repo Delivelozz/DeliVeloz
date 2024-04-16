@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 
 //import Mercadopago from "../mercadopago/Mercadopago";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { postOrder } from "../../redux/actions/actions";
 
 const TotalAmount = () => {
