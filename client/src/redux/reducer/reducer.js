@@ -27,6 +27,7 @@ import {
   SET_MY_ORDERS,
   POST_ORDER,
   GET_ORDER,
+  SET_ORDER_ID,
 } from "../actions/types";
 
 const initialState = {
@@ -62,6 +63,7 @@ const initialState = {
   myOrders: [],
   order: [],
   orderDetail: [],
+  idOrder: "",
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -310,6 +312,13 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         orderDetail: payload,
+      };
+
+    // ? ----------------------------- Set order ID
+    case SET_ORDER_ID:
+      return {
+        ...state,
+        idOrder: payload,
       };
 
     // ! ------------------------------------------------ Default
