@@ -7,15 +7,14 @@ const shoppingCartCards = (props) => {
   return (
     <article className="container">
       <div className="flex flex-col gap-6">
-        {shoppingCart?.map(({ id, name, price, image, qty, priceTotal }) => (
+        {shoppingCart?.map(({ id, name, price, image, quantity }) => (
           <ShoppingCartCard
             key={id}
             id={id}
             name={name}
-            image={image}
+            image={image.jpg}
             price={price}
-            qty={qty}
-            priceTotal={priceTotal}
+            qty={quantity}
           />
         ))}
       </div>

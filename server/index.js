@@ -17,16 +17,18 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const server = require('./src/app.js');
-const startDatabase = require('./src/functions/startDatabase.js');
-const { conn } = require('./src/db.js');
+const server = require("./src/app.js");
+const startDatabase = require("./src/functions/startDatabase.js");
+const { conn } = require("./src/db.js");
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
-  startDatabase().then(() => {
-    server.listen(3001, () => {
-      console.log('Server listening at 3001'); // eslint-disable-line no-console
+conn.sync({ alter: true }).then(() => {
+  startDatabase()
+    .then(() => {
+      server.listen(3001, () => {
+        console.log("Server listening at 3001"); // eslint-disable-line no-console
+      });
+    })
+    .catch((error) => {
+      console.error("Error starting the database:", error);
     });
-  }).catch((error) => {
-    console.error('Error starting the database:', error);
-  });
 });
