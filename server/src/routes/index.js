@@ -29,7 +29,7 @@ router.use("/assessment", assessmentRouter);
 // Router FILTROS
 router.use("/filter", filterRouter);
 // Router ADDRESS
-router.use("/address", addressRouter);
+// router.use("/address", addressRouter);
 // Router ADMINISTRATOR
 router.use("/administrator", administratorRouter);
 // Router ORDERS

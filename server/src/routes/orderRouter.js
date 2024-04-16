@@ -5,11 +5,15 @@ const orderRouter = Router();
 const createOrderHandler = require("../handlers/order/createOrderHandler");
 const getOrderHandler = require("../handlers/order/getOrderHandler");
 const getOrdersUserHandler = require("../handlers/order/getOrdersUserHandler");
+const updateOrderHandler = require("../handlers/order/updateOrderHandler");
 
 // Usar handlers
 
 // Crear pedido
 orderRouter.post("/", createOrderHandler);
+
+// Actualizar pedido
+orderRouter.put("/", updateOrderHandler);
 
 // Obtener pedido
 orderRouter.get("/:idUser/:idPedido", getOrderHandler);
