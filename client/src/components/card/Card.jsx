@@ -8,7 +8,7 @@ import { API_URL } from "../../utils/constants.js";
 import { getShoppingCart } from "../../redux/actions/actions.js";
 
 export default function Card(props) {
-  const { id, name, image, price, category, subCategory } = props;
+  const { id, name, image, price, category, subCategory, stock } = props;
   const dispatch = useDispatch();
   const shoppingCartDB = useSelector((state) => state.shoppingCartDB);
   const user = useSelector((state) => state.user);
@@ -16,6 +16,7 @@ export default function Card(props) {
   const [loading, setLoading] = useState(false); // Estado local de loading
   const [quantity, setQuantity] = useState(0);
   const [popperOpen, setPopperOpen] = useState(false);
+  const [popperStock, setPopperStock] = useState(false);
   const anchorRef = useRef(null);
 
   useEffect(() => {
@@ -60,6 +61,13 @@ export default function Card(props) {
     }, 3000);
   };
 
+  const handlePopperStock = () => {
+    setPopperStock(true);
+    setTimeout(() => {
+      setPopperStock(false);
+    }, 3000);
+  };
+
   return (
     <article id={id} className="w-full h-80">
       <div className="bg-white rounded-lg border flex flex-col gap-2 p-4 h-80">
@@ -85,6 +93,7 @@ export default function Card(props) {
         <div className="w-full flex justify-between ">
           <p className="w-4/6 truncate font-bold">{name}</p>
           <p className="text-sundown-500 font-bold ">$ {price}</p>
+          <p>{stock}</p>
         </div>
         {userID === undefined || userID === null ? (
           <div className="flex justify-center">
@@ -118,18 +127,63 @@ export default function Card(props) {
               value={quantity}
               className="border border-sundown-500 border-solid rounded-md w-8 h-6 text-center "
             />
-            <button
-              onClick={() => handleAdd()}
-              className="w-6 h-6 bg-sundown-500 rounded-md text-white"
-            >
-              +
-            </button>
+            {stock !== quantity && stock !== 0 ? (
+              <button
+                onClick={() => handleAdd()}
+                className="w-6 h-6 bg-sundown-500 rounded-md text-white"
+              >
+                +
+              </button>
+            ) : (
+              <div className="flex justify-center">
+                <button
+                  ref={anchorRef}
+                  onClick={handlePopperStock}
+                  className="w-6 h-6 bg-sundown-500 rounded-md text-white"
+                >
+                  +
+                </button>
+                <Popper
+                  open={popperStock}
+                  anchorEl={anchorRef.current}
+                  placement="bottom"
+                >
+                  <div className="p-2 bg-gray-200 text-gray-800 rounded-md">
+                    No hay mas productos disponibles.
+                  </div>
+                </Popper>
+              </div>
+            )}
           </div>
         ) : (
-          <div className="flex justify-center" onClick={() => handleAdd()}>
-            <button className="btn-bg flex items-center justify-center">
-              {loading ? <Loader /> : "Agregar"}
-            </button>
+          <div className="flex justify-center">
+            {stock !== quantity && stock !== 0 ? (
+              <button
+                onClick={() => handleAdd()}
+                className="btn-bg flex items-center justify-center"
+              >
+                {loading ? <Loader /> : "Agregar"}
+              </button>
+            ) : (
+              <div>
+                <button
+                  ref={anchorRef}
+                  onClick={handlePopperStock}
+                  className="btn-bg flex items-center justify-center"
+                >
+                  {loading ? <Loader /> : "Agregar"}
+                </button>
+                <Popper
+                  open={popperStock}
+                  anchorEl={anchorRef.current}
+                  placement="bottom"
+                >
+                  <div className="p-2 bg-gray-200 text-gray-800 rounded-md">
+                    No hay mas productos disponibles.
+                  </div>
+                </Popper>
+              </div>
+            )}
           </div>
         )}
       </div>

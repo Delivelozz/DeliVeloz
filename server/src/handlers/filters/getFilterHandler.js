@@ -1,7 +1,7 @@
 const getCategoriesController = require('../../controllers/categories/getCategoriesController');
 const filterCategoryController = require('../../controllers/filters/filterCategoryController')
 const orderingPriceController = require('../../controllers/filters/orderingPriceController')
-const getProductsAllController = require('../../controllers/products/getProductsAllController');
+const getProductsAllActiveController = require('../../controllers/products/getProductsAllActiveController');
 const filterSubCategoryController = require('../../controllers/subcategories/filterSubCategoryController');
 const getSubCategoriesController = require('../../controllers/subcategories/getSubCategoriesController');
 
@@ -21,7 +21,7 @@ const getFilterHandler = async (req, res) => {
         error: `La categoría solicitada ${category} no está disponible.` 
       });
     }
-    let results = category !== "default" ? await filterCategoryController(category) : await getProductsAllController(); 
+    let results = category !== "default" ? await filterCategoryController(category) : await getProductsAllActiveController(); 
 
     //+ SUBCATEGORY
     const listOfSubCategories = await getSubCategoriesController();
