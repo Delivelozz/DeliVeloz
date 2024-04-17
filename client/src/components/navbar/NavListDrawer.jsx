@@ -258,7 +258,7 @@ export default function NavListDrawer({
           <ListItem disablePadding>
             <ListItemButton
               component={Link}
-              to="/dashboard"
+              to="/admin"
               onClick={() => setOpen(false)}
               sx={{
                 "& .MuiSvgIcon-root": { fontSize: 24 },

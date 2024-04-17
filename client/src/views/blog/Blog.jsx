@@ -24,7 +24,7 @@ function Blog() {
   }, [dispatch, id]);
 
   return (
-    <section className="container lg:mb-56">
+    <section className="container">
       <div className="relative h-64">
         <img
           className="absolute top-0 w-full h-full object-cover py-5"
