@@ -8,12 +8,15 @@ import {
   ListItemButton,
 } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
-import InfoIcon from "@mui/icons-material/Info";
 import FastfoodIcon from "@mui/icons-material/Fastfood";
+import FeedIcon from "@mui/icons-material/Feed";
+import GroupIcon from "@mui/icons-material/Group";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import LogoutIcon from "@mui/icons-material/Logout";
 import LoginIcon from "@mui/icons-material/Login";
 import { Link } from "react-router-dom";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import PostAddIcon from "@mui/icons-material/PostAdd";
 
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser, setUserData } from "../../../redux/actions/actions";
@@ -51,7 +54,7 @@ export default function SideDrawer({
           <img
             src="https://res.cloudinary.com/derot8znd/image/upload/v1713113177/png/a5xd2b9zcl7orbclcgnr.png"
             alt="isologo"
-            class="w-15 h-8 object-cover pl-3"
+            className="w-15 h-8 object-cover pl-3"
           />
           <ListItemButton
             component={Link}
@@ -65,7 +68,7 @@ export default function SideDrawer({
               },
             }}
           >
-            <ListItemText primary="Deliveloz" />
+            <ListItemText primary="Dashboard" />
           </ListItemButton>
         </ListItem>
       </nav>
@@ -90,11 +93,7 @@ export default function SideDrawer({
               <ListItemText primary="Inicio" />
             </ListItemButton>
           </ListItem>
-        </List>
-      </nav>
-      <Divider />
-      <nav>
-        <List>
+
           <ListItem disablePadding>
             <ListItemButton
               component={Link}
@@ -114,11 +113,15 @@ export default function SideDrawer({
               <ListItemText primary="Dashboard de administrador" />
             </ListItemButton>
           </ListItem>
-
+        </List>
+      </nav>
+      <Divider />
+      <nav>
+        <List>
           <ListItem disablePadding>
             <ListItemButton
               component={Link}
-              to="/addProduct"
+              to="/dashboard/products"
               onClick={() => setOpen(false)}
               sx={{
                 "& .MuiSvgIcon-root": { fontSize: 24 },
@@ -129,7 +132,71 @@ export default function SideDrawer({
               }}
             >
               <ListItemIcon>
-                <HomeIcon />
+                <FastfoodIcon />
+              </ListItemIcon>
+              <ListItemText primary="Lista de Productos" />
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem disablePadding>
+            <ListItemButton
+              component={Link}
+              to="/dashboard/news"
+              onClick={() => setOpen(false)}
+              sx={{
+                "& .MuiSvgIcon-root": { fontSize: 24 },
+                "& .MuiTypography-root": {
+                  fontSize: ".95rem",
+                  fontWeight: "normal",
+                },
+              }}
+            >
+              <ListItemIcon>
+                <FeedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Lista de Novedades" />
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem disablePadding>
+            <ListItemButton
+              component={Link}
+              to="/dashboard/users"
+              onClick={() => setOpen(false)}
+              sx={{
+                "& .MuiSvgIcon-root": { fontSize: 24 },
+                "& .MuiTypography-root": {
+                  fontSize: ".95rem",
+                  fontWeight: "normal",
+                },
+              }}
+            >
+              <ListItemIcon>
+                <GroupIcon />
+              </ListItemIcon>
+              <ListItemText primary="Lista de Usuarios" />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      </nav>
+      <Divider />
+      <nav>
+        <List>
+          <ListItem disablePadding>
+            <ListItemButton
+              component={Link}
+              to="/dashboard/products/addProduct"
+              onClick={() => setOpen(false)}
+              sx={{
+                "& .MuiSvgIcon-root": { fontSize: 24 },
+                "& .MuiTypography-root": {
+                  fontSize: ".95rem",
+                  fontWeight: "normal",
+                },
+              }}
+            >
+              <ListItemIcon>
+                <AddCircleOutlineIcon />
               </ListItemIcon>
               <ListItemText primary="Añadir Producto" />
             </ListItemButton>
@@ -138,7 +205,7 @@ export default function SideDrawer({
           <ListItem disablePadding>
             <ListItemButton
               component={Link}
-              to="/addNew"
+              to="/dashboard/news/addNew"
               onClick={() => setOpen(false)}
               sx={{
                 "& .MuiSvgIcon-root": { fontSize: 24 },
@@ -149,7 +216,7 @@ export default function SideDrawer({
               }}
             >
               <ListItemIcon>
-                <HomeIcon />
+                <PostAddIcon />
               </ListItemIcon>
               <ListItemText primary="Añadir Novedad" />
             </ListItemButton>
