@@ -1,5 +1,5 @@
 const axios = require('axios');
-const {Order, PaymentMethod} = require('../../db');
+const {Order, PaymentMethod, Cart, Product} = require('../../db');
 const mercadoPagoWebhookController = async (req, res) => {
     const payment = req.query;
     try {
@@ -13,15 +13,19 @@ const mercadoPagoWebhookController = async (req, res) => {
             });
             const data = response.data;
             console.log(data);
-            const id_order = response.data.external_reference;
+
+            const dataId = JSON.parse(response.data.external_reference);
+            const id_order = dataId.id_order;
+            const id_user = dataId.id_user;
+            console.log(id_order);
+            console.log(id_user);
+
+
             const order = await Order.findByPk(id_order);
             order.update({
                 paid: true,
             });
-            // const paymentMethod = PaymentMethod.create({
-            //     type: '',
-                
-            // });
+  
             await PaymentMethod.create({
                 type: data.payment_method.type,
                 status: data.status,
@@ -29,25 +33,18 @@ const mercadoPagoWebhookController = async (req, res) => {
                 // Incluir cualquier otra información relevante del pago
             });  
 
-            // // Buscar el pedido en la base de datos
-            // const order = await Order.findOne({ where: { id: orderId } });
+            const cart = await Cart.findByPk(id_user, {
+                include: [
+                    {
+                        model: Product,
+                    }
+                ]
+            });
 
-            // // Verificar si el pedido existe y si el estado es diferente de 'pagado'
-            // if (order && order.status !== 'pagado') {
-            //     // Actualizar el estado del pedido a 'pagado'
-            //     order.status = 'pagado';
-            //     await order.save();
-            //     console.log(`Pedido ${orderId} actualizado a estado 'pagado'.`);
+            for (let index = 0; index < cart.products.length; index++) {
+                await cart.removeProduct(cart.products[index]);
+            }
 
-            //     // Crear un registro en PaymentMethod usando .create()
-            //     await PaymentMethod.create({
-            //         orderId: orderId,
-            //         paymentId: data.id,
-            //         status: data.status,
-            //         // Incluir cualquier otra información relevante del pago
-            //     });
-            //     console.log(`Registro de pago creado para el pedido ${orderId}.`);
-            // }
         }
         res.sendStatus(204);
     } catch (error) {

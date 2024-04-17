@@ -2,13 +2,14 @@ const jwt = require('jsonwebtoken');
 const { Administrator } = require('../db');
 
 const accessAdmin = async (req) => {
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1];
+ const authHeader = req.headers['authorization'];
+ const token = authHeader && authHeader.split(' ')[1];
 
-  if (!token) {
-      throw new Error('Token no proporcionado');
-  }
-  try {
+ if (!token) {
+    console.error('Token no proporcionado');
+    return false;
+ }
+ try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const { email } = decoded;
 
@@ -17,11 +18,15 @@ const accessAdmin = async (req) => {
     });
 
     if (!adminByToken) {
-        throw new Error('Acceso denegado');
+      console.error('Acceso denegado');
+      return false;
     }
-  } catch (error) {
-    throw error;
-  }
+
+    return adminByToken;
+ } catch (error) {
+    console.error('Error de token, inválido o expirado:', error);
+    return false;
+ }
 }
 
-module.exports = accessAdmin
+module.exports = accessAdmin;
