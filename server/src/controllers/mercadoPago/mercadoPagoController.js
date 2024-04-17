@@ -4,10 +4,10 @@ const { MercadoPagoConfig, Preference } = require("mercadopago");
 const client = new MercadoPagoConfig({
   accessToken: process.env.YOUR_ACCESS_TOKEN,
 });
-
-const mercadoPagoController = async (itemsNew) => {
+const mercadoPagoController = async (itemsNew, id_order) => {
   const body = {
     items: itemsNew,
+    external_reference: id_order,
     back_urls: {
       success: "https://deliveloz.netlify.app/",
       failure: "https://deliveloz.netlify.app/",
@@ -48,6 +48,7 @@ const mercadoPagoController = async (itemsNew) => {
       installments: 1,
     },
     auto_return: "approved",
+    notification_url: "https://deliveloz-ryfh.onrender.com/mercadopago/webhook"
   };
   const preference = new Preference(client);
   const result = await preference.create({ body });

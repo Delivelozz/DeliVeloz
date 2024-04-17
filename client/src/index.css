@@ -218,3 +218,13 @@ textarea {
     transform: rotate(1turn)
   }
 }
+
+.login-input {
+  border: none !important;
+  border-bottom: 1px solid !important;
+  border-color: #adadad !important;
+}
+
+.login-input:focus {
+  border-bottom: 1px solid transparent !important;
+}

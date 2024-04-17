@@ -14,6 +14,7 @@ const paymentMethodRouter = require("./paymentMethodRouter");
 const mercadoPagoRouter = require("./mercadoPagoRouter");
 const cartRouter = require("./cartRouter");
 const bannersRouter = require("./bannersRouter");
+const loginDashboardRouter = require ("./loginDashboardRouter")
 
 
 // router PRODUCTOS
@@ -42,9 +43,8 @@ router.use("/mercadopago", mercadoPagoRouter);
 router.use("/cart", cartRouter);
 //Router Banners
 router.use("/banners", bannersRouter);
-
-
-
+//Router Login
+router.use("/loginDashboard", loginDashboardRouter);
 
 module.exports = router;
 
