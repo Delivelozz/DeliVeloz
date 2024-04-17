@@ -1,15 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { Popper } from "@mui/base/Popper";
+import { useTheme } from "@mui/system";
 import { API_URL } from "../../utils/constants.js";
 import { getShoppingCart } from "../../redux/actions/actions.js";
 
-const shoppingCartCard = ({ id, name, price, image, qty }) => {
+const shoppingCartCard = ({ id, name, price, image, qty, stock }) => {
   const shoppingCartDB = useSelector((state) => state.shoppingCartDB);
   const user = useSelector((state) => state.user);
   const [total, setTotal] = useState(0);
   const [userID, setUserID] = useState(user?.user?.id);
   const dispatch = useDispatch();
+  const [popperStock, setPopperStock] = useState(false);
+  const anchorRef = useRef(null);
 
   useEffect(() => {
     const total = price * qty;
@@ -52,6 +56,13 @@ const shoppingCartCard = ({ id, name, price, image, qty }) => {
     dispatch(getShoppingCart(userID));
   };
 
+  const handlePopperStock = () => {
+    setPopperStock(true);
+    setTimeout(() => {
+      setPopperStock(false);
+    }, 3000);
+  };
+
   return (
     <article id={id} className="w-full h-44 sm:h-36">
       <div className="w-full h-44 flex flex-wrap justify-center bg-white rounded-lg border p-4 relative sm:justify-between sm:h-36 md:flex-row">
@@ -81,12 +92,33 @@ const shoppingCartCard = ({ id, name, price, image, qty }) => {
                 value={qty}
                 className="border border-sundown-500 border-solid rounded-md w-8 h-6 text-center "
               />
-              <button
-                onClick={() => handleAdd()}
-                className="w-6 h-6 bg-sundown-500 rounded-md text-white"
-              >
-                +
-              </button>
+              {stock !== qty && stock !== 0 ? (
+                <button
+                  onClick={() => handleAdd()}
+                  className="w-6 h-6 bg-sundown-500 rounded-md text-white"
+                >
+                  +
+                </button>
+              ) : (
+                <div className="flex justify-center">
+                  <button
+                    ref={anchorRef}
+                    onClick={handlePopperStock}
+                    className="w-6 h-6 bg-sundown-500 rounded-md text-white"
+                  >
+                    +
+                  </button>
+                  <Popper
+                    open={popperStock}
+                    anchorEl={anchorRef.current}
+                    placement="bottom"
+                  >
+                    <div className="p-2 bg-gray-200 text-gray-800 rounded-md">
+                      No hay mas productos disponibles.
+                    </div>
+                  </Popper>
+                </div>
+              )}
             </div>
           </div>
         </div>
