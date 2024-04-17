@@ -26,6 +26,7 @@ import AddProduct from "./views/admin/addProduct/AddProduct";
 import AddNews from "./views/admin/addNews/AddNews";
 import EditNews from "./views/admin/editNews/EditNews";
 import EditProduct from "./views/admin/editProduct/EditProduct";
+import OrderUser from "./views/orderUser/OrderUser";
 
 // ? -------------------- Hooks
 
@@ -139,6 +140,7 @@ function App() {
             element={<AddProduct />}
           />
           <Route path="/dashboard/news/addNew" element={<AddNews />} />
+          <Route path="/orderUser" element={<OrderUser />} />
         </Routes>
         <FloatButtonCard />
         <Footer />

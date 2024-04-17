@@ -24,7 +24,10 @@ import {
   EDIT_USER,
   POST_BLOG,
   EDIT_NEWS,
-  SET_MY_ORDERS
+  SET_MY_ORDERS,
+  POST_ORDER,
+  GET_ORDER,
+  SET_ORDER_ID,
 } from "../actions/types";
 
 const initialState = {
@@ -58,6 +61,9 @@ const initialState = {
   dishEdited: [],
   dishDisabled: [],
   myOrders: [],
+  order: [],
+  orderDetail: [],
+  idOrder: JSON.parse(localStorage.getItem("idOrder")) || "",
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -186,7 +192,7 @@ export default function reducer(state = initialState, { type, payload }) {
     case EDIT_USER:
       return {
         ...state,
-          user: payload,
+        user: payload,
       };
 
     // ? ----------------------------- SET_USER_DATA
@@ -236,32 +242,28 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         blog: payload,
       };
-      // ? ----------------------------- Set Blog ID
-      case SET_BLOG_ID:
-        return {
-          ...state,
-          blog: payload,
-         
-        };
-       // ? ----------------------------- Post Blog
+    // ? ----------------------------- Set Blog ID
+    case SET_BLOG_ID:
+      return {
+        ...state,
+        blog: payload,
+      };
+    // ? ----------------------------- Post Blog
 
-      
     case POST_BLOG:
       return {
         ...state,
-        news: [...state.news, payload],
+        order: [...state.order, payload],
       };
 
-     // ? ----------------------------- Edit news
-     
-     case EDIT_NEWS:
+    // ? ----------------------------- Edit news
+
+    case EDIT_NEWS:
       return {
         ...state,
-          blog: payload,
+        blog: payload,
       };
 
-       
-     
     // ? ----------------------------- Set errors
 
     case SET_ERRORS:
@@ -290,12 +292,35 @@ export default function reducer(state = initialState, { type, payload }) {
       };
 
     // ! ------------------------------------------------ Orders
-    
+
     case SET_MY_ORDERS:
       return {
         ...state,
         myOrders: payload,
-      }
+      };
+
+    // ? ----------------------------- Post order
+
+    case POST_ORDER:
+      return {
+        ...state,
+        order: payload,
+      };
+
+    // ? ----------------------------- Get order
+    case GET_ORDER:
+      return {
+        ...state,
+        orderDetail: payload,
+      };
+
+    // ? ----------------------------- Set order ID
+    case SET_ORDER_ID:
+      localStorage.setItem("idOrder", JSON.stringify(payload));
+      return {
+        ...state,
+        idOrder: payload,
+      };
 
     // ! ------------------------------------------------ Default
 

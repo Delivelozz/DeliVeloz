@@ -25,6 +25,9 @@ import {
   POST_BLOG,
   EDIT_NEWS,
   SET_MY_ORDERS,
+  POST_ORDER,
+  GET_ORDER,
+  SET_ORDER_ID,
 } from "./types";
 import axios from "axios";
 import { API_URL } from "../../utils/constants";
@@ -441,5 +444,50 @@ export const setMyOrders = (id) => {
     } catch (error) {
       console.error("Error fetching your orders: ", error);
     }
+  };
+};
+// ? ----------------------------- Post order
+export function postOrder(payload) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(
+        `https://deliveloz-ryfh.onrender.com/order/`,
+        payload
+      );
+      dispatch({
+        type: POST_ORDER,
+        payload: response.data,
+      });
+      console.log("Respuesta de la API:", response.data);
+      return response; // Devuelve la respuesta
+    } catch (error) {
+      console.error("Error al obetener su pedido: ", error);
+      throw error; // Lanza el error para que pueda ser capturado en el componente
+    }
+  };
+}
+
+// ? ----------------------------- Get order
+export function getOrder(idUser, idOrder) {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `https://deliveloz-ryfh.onrender.com/order/${idUser}/${idOrder}`
+      );
+      dispatch({
+        type: GET_ORDER,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Error fetching order: ", error);
+    }
+  };
+}
+
+// ? ----------------------------- Set order ID
+export const setOrderIdAppi = (payload) => {
+  return {
+    type: SET_ORDER_ID,
+    payload,
   };
 };
