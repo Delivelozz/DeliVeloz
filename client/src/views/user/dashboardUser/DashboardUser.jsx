@@ -62,7 +62,7 @@ export default function DashboardUser() {
 
             <div className="flex flex-col gap-4">
               <Link
-                to={`/editUser/${user?.id}`}
+                to={`/profile/editUser/${user?.id}`}
                 className="btn-bg hover:text-white"
                 onClick={() => smoothScrollToTop()}
               >
@@ -70,7 +70,7 @@ export default function DashboardUser() {
               </Link>
 
               <Link
-                to={"/orders"}
+                to={"/profile/orders"}
                 className="btn-bg hover:text-white"
                 onClick={() => smoothScrollToTop()}
               >

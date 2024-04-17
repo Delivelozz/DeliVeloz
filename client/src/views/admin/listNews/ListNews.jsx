@@ -2,15 +2,20 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
-import EditIcon from "../icons/EditIcon";
-import DeleteIcon from "../icons/DeleteIcon";
-import { setBlogData } from "../../redux/actions/actions";
+import EditIcon from "../../../components/icons/EditIcon";
+import { setBlogData } from "../../../redux/actions/actions";
+import Sidenav from "../../../components/admin/sidenav/Sidenav";
+import { useLocalStoreUserData } from "../../../hooks/useLocalStoreUserData.js";
+import { useLocalStoreUserDataGoogle } from "../../../hooks/useLocalStoreUserDataGoogle.js";
+import { useGetShoppingDB } from "../../../hooks/useGetShoppingDB.js";
 
+export default function ListNews() {
+  useLocalStoreUserData();
+  useLocalStoreUserDataGoogle();
+  useGetShoppingDB();
 
-export default function NewsAdmin() {
   const dispatch = useDispatch();
   const blog = useSelector((state) => state.blog);
-  
 
   useEffect(() => {
     dispatch(setBlogData());
@@ -71,7 +76,7 @@ export default function NewsAdmin() {
     {
       name: "Editar",
       cell: (row) => (
-        <Link to={`/editNews/${row.id}`}>
+        <Link to={`/dashboard/news/editNews/${row.id}`}>
           <EditIcon width={22} height={22} color={"#E74C4C"} />
         </Link>
       ),
@@ -80,26 +85,29 @@ export default function NewsAdmin() {
   ];
 
   return (
-    <section className="container-left col-span-4">
-      <div className="mb-6 flex justify-between items-center">
-        <h1 className="">
-          Tabla de <span className="text-sundown-500">Novedades</span>
-        </h1>
+    <div>
+      <Sidenav />
+      <section className="container">
+        <div className="bg-white border px-2 py-6 rounded-lg shadow-sm">
+          <div className="mb-6 flex justify-between items-center">
+            <h4 className="font-medium">Lista de Novedades</h4>
 
-        <input
-          type="text"
-          onChange={handleChange}
-          placeholder="Buscar..."
-          className="w-48 bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
-        />
-      </div>
-      <DataTable
-        columns={columns}
-        data={filterBlog}
-        selectableRows
-        onSelectedRowsChange={(data) => console.log(data)}
-        pagination
-      />
-    </section>
+            <input
+              type="text"
+              onChange={handleChange}
+              placeholder="Buscar..."
+              className="w-48 rounded-lg bg-gray-50 border border-sundown-500 p-2 text-sm focus:outline-sundown-500 focus:border-transparent"
+            />
+          </div>
+          <DataTable
+            columns={columns}
+            data={filterBlog}
+            selectableRows
+            onSelectedRowsChange={(data) => console.log(data)}
+            pagination
+          />
+        </div>
+      </section>
+    </div>
   );
 }
