@@ -30,14 +30,12 @@ const decreaseProductCartController = async (idUser, idProduct) =>{
         if(cartProduct.quantity > 1){
             await userCart.addProduct(product, { through: { quantity: cartProduct.quantity - 1 } });
             await product.update({
-                quantity: product.quantity + 1,
-                availability: true
+                quantity: product.quantity + 1
             });
         }else{
             await userCart.removeProduct(product);
             await product.update({
-                quantity: product.quantity + 1,
-                availability: true
+                quantity: product.quantity + 1
             });
         }
     }else{

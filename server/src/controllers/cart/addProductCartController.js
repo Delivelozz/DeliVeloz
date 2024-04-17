@@ -54,22 +54,22 @@ const addProductCartController = async (idUser, idProduct) => {
                 await product.update({
                     quantity: product.quantity - 1
                 });
-                if(product.quantity === 0){
-                    await product.update({
-                        availability: false
-                    });
-                }
+                // if(product.quantity === 0){
+                //     await product.update({
+                //         availability: false
+                //     });
+                // }
 
             }else{
                 await newCart.addProduct(product, { through: { quantity: 1 } });
                 await product.update({
                     quantity: product.quantity - 1
                 });
-                if(product.quantity === 0){
-                    await product.update({
-                        availability: false
-                    });
-                }
+                // if(product.quantity === 0){
+                //     await product.update({
+                //         availability: false
+                //     });
+                // }
             }
         }else{
             return "Alcanzo el numero de productos disponibles";

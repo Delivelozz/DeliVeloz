@@ -85,7 +85,7 @@ export default function AddNews() {
   return (
     <div>
       <Sidenav />
-      <section className="container-left col-span-4 py-16">
+      <section className="container col-span-4 py-16">
         <h1 className="mb-6">
           Añadir <span className="text-sundown-500">Novedad</span>
         </h1>

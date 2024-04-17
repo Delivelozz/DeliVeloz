@@ -24,7 +24,7 @@ import {
   EDIT_USER,
   POST_BLOG,
   EDIT_NEWS,
-  SET_MY_ORDERS,
+  SET_MY_ORDERS,,
   POST_ORDER,
   GET_ORDER,
   SET_ORDER_ID,
@@ -39,7 +39,7 @@ import { API_URL } from "../../utils/constants";
 export function setDishes() {
   return async (dispatch) => {
     try {
-      const response = await fetch(`${API_URL}/products`);
+      const response = await fetch(`${API_URL}/products/active`);
       const data = await response.json();
       dispatch({
         type: SET_DISHES,

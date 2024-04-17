@@ -3,25 +3,29 @@ import About from "./views/about/About";
 import Home from "./views/home/Home";
 import Detail from "./views/detail/Detail";
 import Products from "./views/products/Products";
-import Header from "./components/header/Header";
 import HeaderMobile from "./components/headerMobile/HeaderMobile";
 import Footer from "./components/footer/Footer";
 import Blog from "./views/blog/Blog";
 import Carrito from "./views/carrito/Carrito";
 import FormLogin from "./components/formLogin/FormLogin";
 import FormRegister from "./components/formRegister/FormRegister";
-import DashboardAdmin from "./views/admin/dashboardAdmin/DashboardAdmin";
-import EditProduct from "./views/admin/editProduct/EditProduct";
-import SidebarMobile from "./components/headerMobile/SidebarMobile";
 import FloatButtonCard from "./components/floatButtonCard/FloatButtonCard";
-import AddNews from "./views/admin/addNews/AddNews";
-import AddProduct from "./views/admin/addProduct/AddProduct";
-import EditNews from "./views/admin/editNews/EditNews";
 import Navbar from "./components/navbar/Navbar";
+import Orders from "./views/user/orders/Orders";
+
+// ? -------------------- User
 import DashboardUser from "./views/user/dashboardUser/DashboardUser";
 import EditUser from "./views/user/editUser/EditUser";
-import Orders from "./views/user/orders/Orders";
+
+// ? -------------------- Admin
 import Dashboard from "./views/admin/dashboard/Dashboard";
+import ListProducts from "./views/admin/ListProducts/ListProducts";
+import ListUsers from "./views/admin/ListUsers/ListUsers";
+import ListNews from "./views/admin/listNews/ListNews";
+import AddProduct from "./views/admin/addProduct/AddProduct";
+import AddNews from "./views/admin/addNews/AddNews";
+import EditNews from "./views/admin/editNews/EditNews";
+import EditProduct from "./views/admin/editProduct/EditProduct";
 import OrderUser from "./views/orderUser/OrderUser";
 
 // ? -------------------- Hooks
@@ -94,27 +98,19 @@ function App() {
   return (
     <AuthProvider>
       <main className="bg-alabaster-50 relative overflow.x">
-        {pathname !== "/dashboard" &&
-          pathname !== "/addProduct" &&
-          pathname !== "/addNew" &&
-          !pathname.startsWith("/editNews/") &&
-          !pathname.startsWith("/editProduct/") && (
-            <Navbar
-              openLoginModal={openLoginModal}
-              openRegisterModal={openRegisterModal}
-            />
-          )}
+        {pathname !== "/dashboard" && !pathname.startsWith("/dashboard/") && (
+          <Navbar
+            openLoginModal={openLoginModal}
+            openRegisterModal={openRegisterModal}
+          />
+        )}
 
-        {pathname !== "/dashboard" &&
-          pathname !== "/addProduct" &&
-          pathname !== "/addNew" &&
-          !pathname.startsWith("/editNews/") &&
-          !pathname.startsWith("/editProduct/") && (
-            <HeaderMobile
-              openLoginModal={openLoginModal}
-              openRegisterModal={openRegisterModal}
-            />
-          )}
+        {pathname !== "/dashboard" && !pathname.startsWith("/dashboard/") && (
+          <HeaderMobile
+            openLoginModal={openLoginModal}
+            openRegisterModal={openRegisterModal}
+          />
+        )}
 
         {/* <SidebarMobile /> */}
         <Routes>
@@ -125,15 +121,25 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/blog/:id" element={<Blog />} />
           <Route path="/carrito" element={<Carrito />} />
-          <Route path="/admin" element={<DashboardAdmin />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/editProduct/:id" element={<EditProduct />} />
-          <Route path="/addNew" element={<AddNews />} />
-          <Route path="/addProduct" element={<AddProduct />} />
-          <Route path="/editNews/:id" element={<EditNews />} />
+          {/* ----------- User ------------ */}
           <Route path="/profile" element={<DashboardUser />} />
-          <Route path="/editUser/:id" element={<EditUser />} />
-          <Route path="/orders" element={<Orders />} />
+          <Route path="/profile/editUser/:id" element={<EditUser />} />
+          <Route path="/profile/orders" element={<Orders />} />
+          {/* ----------- Admin ------------ */}
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/products" element={<ListProducts />} />
+          <Route path="/dashboard/users" element={<ListUsers />} />
+          <Route path="/dashboard/news" element={<ListNews />} />
+          <Route path="/dashboard/news/editNews/:id" element={<EditNews />} />
+          <Route
+            path="/dashboard/products/editProduct/:id"
+            element={<EditProduct />}
+          />
+          <Route
+            path="/dashboard/products/addProduct"
+            element={<AddProduct />}
+          />
+          <Route path="/dashboard/news/addNew" element={<AddNews />} />
           <Route path="/orderUser" element={<OrderUser />} />
         </Routes>
         <FloatButtonCard />
