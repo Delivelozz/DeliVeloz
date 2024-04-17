@@ -75,6 +75,13 @@ export default function EditUser() {
         userAddress: "",
         phone: "",
       });
+      setErrors({
+        name: "",
+        lastName: "",
+        email: "",
+        userAddress: "",
+        phone: "",
+      });
     } catch (error) {
       console.error("Error al editar el usuario:", error);
       alert(
