@@ -30,7 +30,6 @@ module.exports = (sequelize) => {
       },
       image:{
         type: DataTypes.JSON,
-        allowNull: false,
       },
       active: {
         type: DataTypes.BOOLEAN,
