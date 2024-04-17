@@ -86,9 +86,11 @@ export default function EditNews() {
     console.log("Form antes de enviar:", form);
     dispatch(editNews({ ...form, id }));
     toast.success("¡La publicación fue editada exitosamente!", {
-      closeOnClick: true,
+      style: {
+        backgroundColor: "green",
+        color: "black",
+      },
     });
-    //alert("¡La publicación fue editada exitosamente!");
 
     navigate("/home");
   };
