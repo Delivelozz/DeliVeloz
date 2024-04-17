@@ -7,7 +7,7 @@ const subcategoriesRouter = require("./subcategoriesRouter");
 const usersRouter = require("./usersRouter");
 const assessmentRouter = require("./assessmentRouter");
 const filterRouter = require("./filterRouter");
-const addressRouter = require("./addressRouter");
+// const addressRouter = require("./addressRouter");
 const administratorRouter = require("./administratorRouter");
 const orderRouter = require("./orderRouter");
 const paymentMethodRouter = require("./paymentMethodRouter");
@@ -29,7 +29,7 @@ router.use("/assessment", assessmentRouter);
 // Router FILTROS
 router.use("/filter", filterRouter);
 // Router ADDRESS
-router.use("/address", addressRouter);
+// router.use("/address", addressRouter);
 // Router ADMINISTRATOR
 router.use("/administrator", administratorRouter);
 // Router ORDERS
@@ -43,7 +43,5 @@ router.use("/cart", cartRouter);
 //Router Banners
 router.use("/banners", bannersRouter);
 
-
-
-
 module.exports = router;
+
