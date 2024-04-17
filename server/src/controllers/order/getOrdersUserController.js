@@ -1,9 +1,9 @@
-const { Order, Product, PaymentMethod, OrderProduct } = require('../../db');
+const { Order, Product, PaymentMethod } = require('../../db');
 
 const getOrdersUserController = async (idUser) => {
     const orders = await Order.findAll({
-        where: { userId: idUser },
-        include: [{ model: Product, through:{ model: OrderProduct,attributes: ['quantity']}}, { model: PaymentMethod, attributes: ['type', 'status'] }],
+    where: { userId: idUser },
+    include: [{ model: Product }, {model:PaymentMethod}],
     });
 
     // Ordenar el array de órdenes
