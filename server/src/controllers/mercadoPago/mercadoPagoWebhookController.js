@@ -27,6 +27,7 @@ const mercadoPagoWebhookController = async (req, res) => {
                 status: data.status,
                 // Incluir cualquier otra información relevante del pago
             });
+
             const data = response.data;
             console.log(data);
             

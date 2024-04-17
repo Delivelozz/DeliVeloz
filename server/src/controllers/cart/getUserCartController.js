@@ -11,7 +11,7 @@ const getUserCartController = async (idUser) => {
           model: CartProduct,
           attributes: ["quantity"],
         },
-        attributes: ["id", "name", "price", "image"],
+        attributes: ["id", "name", "price", "image", "quantity"],
       },
     ],
   });
@@ -21,6 +21,7 @@ const getUserCartController = async (idUser) => {
     name: product.name,
     price: product.price,
     quantity: product.cartProduct.quantity,
+    quantity_stock: product.quantity,
     image: product.image,
   }));
 
