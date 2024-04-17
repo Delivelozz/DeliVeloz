@@ -5,8 +5,15 @@ import DataTable from "react-data-table-component";
 import EditIcon from "../../../components/icons/EditIcon";
 import { setBlogData } from "../../../redux/actions/actions";
 import Sidenav from "../../../components/admin/sidenav/Sidenav";
+import { useLocalStoreUserData } from "../../../hooks/useLocalStoreUserData.js";
+import { useLocalStoreUserDataGoogle } from "../../../hooks/useLocalStoreUserDataGoogle.js";
+import { useGetShoppingDB } from "../../../hooks/useGetShoppingDB.js";
 
 export default function ListNews() {
+  useLocalStoreUserData();
+  useLocalStoreUserDataGoogle();
+  useGetShoppingDB();
+
   const dispatch = useDispatch();
   const blog = useSelector((state) => state.blog);
 

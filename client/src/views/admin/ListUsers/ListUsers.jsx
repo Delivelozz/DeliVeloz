@@ -3,8 +3,15 @@ import { getUsers } from "../../../redux/actions/actions";
 import { useEffect } from "react";
 import DataTable from "react-data-table-component";
 import Sidenav from "../../../components/admin/sidenav/Sidenav";
+import { useLocalStoreUserData } from "../../../hooks/useLocalStoreUserData.js";
+import { useLocalStoreUserDataGoogle } from "../../../hooks/useLocalStoreUserDataGoogle.js";
+import { useGetShoppingDB } from "../../../hooks/useGetShoppingDB.js";
 
 export default function ListUsers() {
+  useLocalStoreUserData();
+  useLocalStoreUserDataGoogle();
+  useGetShoppingDB();
+
   const allUsers = useSelector((state) => state.allUsers);
   const dispatch = useDispatch();
 

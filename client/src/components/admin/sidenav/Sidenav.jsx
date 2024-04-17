@@ -3,22 +3,9 @@ import { useState } from "react";
 import SideDrawer from "./SideDrawer";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
-
-import {
-  Button,
-  Drawer,
-  AppBar,
-  Toolbar,
-  IconButton,
-  Typography,
-} from "@mui/material";
+import { Drawer, IconButton } from "@mui/material";
 
 export default function Sidenav({ openLoginModal, openRegisterModal }) {
-  const dispatch = useDispatch();
-  const handleClick = () => {
-    dispatch(toggleSidebar());
-  };
-
   const [open, setOpen] = useState(false);
 
   return (

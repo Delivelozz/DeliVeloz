@@ -6,8 +6,15 @@ import { setDishes, disabledDishes } from "../../../redux/actions/actions";
 import EditIcon from "../../../components/icons/EditIcon";
 import DeleteIcon from "../../../components/icons/DeleteIcon";
 import Sidenav from "../../../components/admin/sidenav/Sidenav";
+import { useLocalStoreUserData } from "../../../hooks/useLocalStoreUserData.js";
+import { useLocalStoreUserDataGoogle } from "../../../hooks/useLocalStoreUserDataGoogle.js";
+import { useGetShoppingDB } from "../../../hooks/useGetShoppingDB.js";
 
 export default function ListProducts() {
+  useLocalStoreUserData();
+  useLocalStoreUserDataGoogle();
+  useGetShoppingDB();
+
   const dispatch = useDispatch();
 
   useEffect(() => {
