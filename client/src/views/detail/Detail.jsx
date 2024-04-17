@@ -144,7 +144,7 @@ export default function Detail() {
   };
 
   return (
-    <section className="flex flex-col">
+    <section className="flex flex-col container">
       <div className="container flex gap-2 lg:gap-10 lg:w-3/5">
         <div className="w-1/2">
           <img
@@ -270,85 +270,29 @@ export default function Detail() {
           </div>
         </div>
       </div>
-      {/* --------------- VALORACIONES ------------------ */}
 
-      <div className="container pt-10">
-        {!ratingSent ? (
-          <form onSubmit={handleSubmit} className="mt-1 flex flex-col">
-            <div className="textarea-container flex-grow pb-3">
-              <textarea
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-                placeholder="Añade un comentario"
-                required
-                className="w-full rounded-md bg-white border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 gray-border h-40 max-h-40 min-h-40 focus:outline-sundown-500"
-              ></textarea>
-            </div>
-            <div className="flex items-end mt-0">
-              <div className="star-rating">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <span
-                    key={star}
-                    className={`star ${star <= rating ? "star-filled" : ""}`}
-                    onClick={() => handleStarClick(star)}
-                    style={{ userSelect: "none" }}
-                  >
-                    ★
-                  </span>
-                ))}
-              </div>
-              <button type="submit" className="btn-bg btn-sm ml-auto">
-                Enviar Valoración
-              </button>
-            </div>
-          </form>
-        ) : (
-          <div className="alert mt-12">
-            <p>Tu valoración ha sido enviada!</p>
-          </div>
-        )}
-        <div className="flex flex-col gap-4 justify-center items-center">
-          {!ratingSent ? (
-            <form onSubmit={handleSubmit}>
-              <div className="star-rating">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <span
-                    key={star}
-                    className={`star ${star <= rating ? "star-filled" : ""}`}
-                    onClick={() => handleStarClick(star)}
-                  ></span>
-                ))}
-              </div>
-            </form>
-          ) : (
-            <div className="alert"></div>
-          )}
-        </div>
-      </div>
       {/* Tabla de Comentarios */}
       {assessments && assessments.length > 0 ? (
         <>
-          <h2 className="mt-10 mb-4 text-xl font-bold ml-5">Comentarios:</h2>
-          <table
-            className="ml-5"
-            style={{ borderCollapse: "collapse", maxWidth: "300px" }}
-          >
-            <tbody>
+          <h4 className="mt-20 mb-4 text-lg font-bold text-sundown-500">
+            Comentarios:
+          </h4>
+          <table className="w-full">
+            <tbody className="border border-gray-200">
               {assessments.map((assessment) => (
-                <tr key={assessment.id} style={{ border: "1px solid #ddd" }}>
-                  <td
-                    style={{
-                      textAlign: "left",
-                      border: "none",
-                      padding: "13px",
-                    }}
-                  >
-                    {assessment.comment}
-                  </td>
-                  <td style={{ textAlign: "left", padding: "13px" }}>
+                <tr
+                  className="flex flex-col gap-4 p-6 border-b"
+                  key={assessment.id}
+                >
+                  <td>{assessment.comment}</td>
+                  <td>
                     {Array.from({ length: assessment.rating }).map(
                       (_, index) => (
-                        <span key={index} style={{ color: "gold" }}>
+                        <span
+                          key={index}
+                          className="text-xl"
+                          style={{ color: "gold" }}
+                        >
                           &#9733;
                         </span> // Estrellas doradas
                       )
@@ -360,7 +304,7 @@ export default function Detail() {
           </table>
         </>
       ) : (
-        <p className="mt-10 mb-4 text-xl font-bold ml-5">
+        <p className="mt-20 mb-4 text-lg font-bold text-center text-sundown-500">
           No hay valoraciones aún
         </p>
       )}
