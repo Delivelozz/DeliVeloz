@@ -1,11 +1,11 @@
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
-const loginDashboardController = require("../../controllers/loginDashboard/loginDashboardController");
+const loginController = require("../../controllers/login/loginController");
 
-const loginDashboardHandler = async (req, res) => {
+const loginHandler = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const { message, user, admin } = await loginDashboardController(email, password);
+    const { message, user, admin } = await loginController(email, password);
     
     if(user){
         const token = jwt.sign(
@@ -32,4 +32,4 @@ const loginDashboardHandler = async (req, res) => {
   }
 };
 
-module.exports = loginDashboardHandler;
+module.exports = loginHandler;
