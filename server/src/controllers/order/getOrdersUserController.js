@@ -1,10 +1,10 @@
-const { Order, Product } = require('../../db');
+const { Order, Product, PaymentMethod } = require('../../db');
 
 
 const getOrdersUserController = async (idUser) =>{
     const orders = await Order.findAll({
     where: { userId: idUser },
-    include: [{ model: Product }],
+    include: [{ model: Product }, {model:PaymentMethod}],
     });
     return orders;
  };
