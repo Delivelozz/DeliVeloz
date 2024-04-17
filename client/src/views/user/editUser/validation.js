@@ -61,17 +61,9 @@ export default function validation({
   } else if (phone.length < 10) {
     errors.phone = "El número de teléfono debe tener al menos 10 dígitos";
   }
-  // ? ---------------------------------------- password
 
-  // if (password.length === 0) {
-  //   errors.password = "Este campo es obligatorio"
-  // } else if (password.length >= 1 && password.length <= 5 || password.length >= 20) {
-  //   errors.password = "Debe tener entre 6 y 20 caracteres";
-  // } else if (!regexIncludesNumber.test(password)) {
-  //   errors.password = "Debe contener al menos un número";
-  // } else if (password !== repeatPassword) {
-  //   errors.password = "Las contraseñas no coinciden";
-  // }
+
+
 
   // ? ---------------------------------------- Return
 
