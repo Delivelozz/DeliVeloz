@@ -92,18 +92,28 @@ function App() {
   return (
     <AuthProvider>
       <main className="bg-alabaster-50 relative overflow.x">
-        <Navbar
-          openLoginModal={openLoginModal}
-          openRegisterModal={openRegisterModal}
-        />
-        {/* <Header
-          openLoginModal={openLoginModal}
-          openRegisterModal={openRegisterModal}
-        /> */}
-        <HeaderMobile
-          openLoginModal={openLoginModal}
-          openRegisterModal={openRegisterModal}
-        />
+        {pathname !== "/dashboard" &&
+          pathname !== "/addProduct" &&
+          pathname !== "/addNew" &&
+          !pathname.startsWith("/editNews/") &&
+          !pathname.startsWith("/editProduct/") && (
+            <Navbar
+              openLoginModal={openLoginModal}
+              openRegisterModal={openRegisterModal}
+            />
+          )}
+
+        {pathname !== "/dashboard" &&
+          pathname !== "/addProduct" &&
+          pathname !== "/addNew" &&
+          !pathname.startsWith("/editNews/") &&
+          !pathname.startsWith("/editProduct/") && (
+            <HeaderMobile
+              openLoginModal={openLoginModal}
+              openRegisterModal={openRegisterModal}
+            />
+          )}
+
         {/* <SidebarMobile /> */}
         <Routes>
           <Route path="/" element={<Home />} />

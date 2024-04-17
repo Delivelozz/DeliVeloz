@@ -119,7 +119,7 @@ export default function FormLogin({ closeModal }) {
                 value={formData.email}
                 onChange={onChange}
                 onKeyDown={handleKeyDown}
-                className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
+                className="login-input p-2 text-sm  placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
               />
               {errors.email && <p className="error">{errors.email}</p>}
             </div>
@@ -130,7 +130,7 @@ export default function FormLogin({ closeModal }) {
                 value={formData.password}
                 onChange={onChange}
                 placeholder="Contraseña"
-                className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
+                className="login-input p-2 text-sm placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
                 onKeyDown={handleKeyDown}
               />
               {errors.password && <p className="error">{errors.password}</p>}
