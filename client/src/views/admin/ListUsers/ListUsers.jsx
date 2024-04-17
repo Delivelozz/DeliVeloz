@@ -55,7 +55,7 @@ export default function ListUsers() {
       <section className="container">
         <div className="bg-white border px-2 py-6 rounded-lg shadow-sm">
           <div className="mb-6 flex justify-between items-center">
-            <h1 className="">Lista de Usuarios</h1>
+            <h4 className="font-medium">Lista de Usuarios</h4>
 
             {/* <input
           type="text"

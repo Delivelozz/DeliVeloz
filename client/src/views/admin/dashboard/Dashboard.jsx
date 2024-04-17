@@ -4,7 +4,7 @@ export default function Dashboard() {
   return (
     <div>
       <Sidenav />
-      <section>
+      <section className="container">
         <h1>Dashboard</h1>
       </section>
     </div>

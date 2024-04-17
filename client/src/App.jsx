@@ -122,8 +122,6 @@ function App() {
           <Route path="/blog/:id" element={<Blog />} />
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/admin" element={<DashboardAdmin />} />
-          <Route path="/addNew" element={<AddNews />} />
-          <Route path="/addProduct" element={<AddProduct />} />
           {/* ----------- User ------------ */}
           <Route path="/profile" element={<DashboardUser />} />
           <Route path="/editUser/:id" element={<EditUser />} />
@@ -138,6 +136,11 @@ function App() {
             path="/dashboard/products/editProduct/:id"
             element={<EditProduct />}
           />
+          <Route
+            path="/dashboard/products/addProduct"
+            element={<AddProduct />}
+          />
+          <Route path="/dashboard/news/addNew" element={<AddNews />} />
         </Routes>
         <FloatButtonCard />
         <Footer />
