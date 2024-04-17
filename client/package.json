@@ -12,13 +12,9 @@
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
-    "@headlessui/react": "^1.7.19",
-    "@headlessui/tailwindcss": "^0.2.0",
     "@mercadopago/sdk-react": "^0.0.19",
     "@mui/icons-material": "^5.15.15",
     "@mui/material": "^5.15.15",
-    "@remixicon/react": "^4.2.0",
-    "@tremor/react": "^3.16.0",
     "axios": "^1.6.8",
     "canvas-confetti": "^1.9.2",
     "firebase": "^10.6.0",
@@ -35,7 +31,6 @@
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
-    "@tailwindcss/forms": "^0.5.7",
     "@types/react": "^18.2.64",
     "@types/react-dom": "^18.2.21",
     "@vitejs/plugin-react": "^4.2.1",

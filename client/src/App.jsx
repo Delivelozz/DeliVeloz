@@ -21,7 +21,6 @@ import Navbar from "./components/navbar/Navbar";
 import DashboardUser from "./views/user/dashboardUser/DashboardUser";
 import EditUser from "./views/user/editUser/EditUser";
 import Orders from "./views/user/orders/Orders";
-import Dashboard from "./views/admin/dashboard/Dashboard";
 
 // ? -------------------- Hooks
 
@@ -125,7 +124,6 @@ function App() {
           <Route path="/blog/:id" element={<Blog />} />
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/admin" element={<DashboardAdmin />} />
-          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/editProduct/:id" element={<EditProduct />} />
           <Route path="/addNew" element={<AddNews />} />
           <Route path="/addProduct" element={<AddProduct />} />
