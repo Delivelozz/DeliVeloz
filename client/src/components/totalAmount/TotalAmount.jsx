@@ -3,20 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
 import { setOrderIdAppi } from "../../redux/actions/actions";
-
-//import Mercadopago from "../mercadopago/Mercadopago";
 import { useNavigate } from "react-router-dom";
 import { postOrder } from "../../redux/actions/actions";
 
 const TotalAmount = () => {
   const shoppingCartDB = useSelector((state) => state.shoppingCartDB);
+  console.log(shoppingCartDB);
   const user = useSelector((state) => state.user);
   const [idUser, setIdUser] = useState(null);
   const [orderId, setOrderId] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  //const [showMercadoPago, setShowMercadoPago] = useState(false);
 
   useEffect(() => {
     setIdUser(user?.user?.id);
@@ -26,7 +23,7 @@ const TotalAmount = () => {
     if (orderId !== null) {
       //console.log("ID de la orden: ", orderId);
       dispatch(setOrderIdAppi(orderId));
-      // Aquí puedes realizar otras acciones que dependan del valor de orderId
+
       navigate("/orderUser");
     }
   }, [orderId]);
@@ -61,12 +58,15 @@ const TotalAmount = () => {
         <p className="flex items-center">Total a pagar: </p>
         <p className="flex items-center">${totalpay()}</p>
       </div>
-      <button
-        className="btn-bg flex items-center justify-center"
-        onClick={handlePayment}
-      >
-        Generar Pago
-      </button>
+
+      <div className="mt-6 flex justify-center">
+        <button
+          className="btn-bg flex items-center justify-center"
+          onClick={handlePayment}
+        >
+          Generar Pago
+        </button>
+      </div>
     </article>
   );
 };
