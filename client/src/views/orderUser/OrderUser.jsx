@@ -9,6 +9,7 @@ import Mercadopago from "../../components/mercadopago/Mercadopago.jsx";
 export default function OrderUser() {
   const orderDetail = useSelector((state) => state.orderDetail);
   const shoppingCartDB = useSelector((state) => state.shoppingCartDB);
+  console.log("shoppingCartDB in OrderUser:", shoppingCartDB);
   const user = useSelector((state) => state.user);
   const idOrder = useSelector((state) => state.idOrder);
   const [idUser, setIdUser] = useState(null);
@@ -20,8 +21,12 @@ export default function OrderUser() {
   //mercado pago
   const [showMercadoPago, setShowMercadoPago] = useState(false);
 
+  const cartDB = Array.isArray(shoppingCartDB) ? shoppingCartDB : [];
+
+  const productsArray = shoppingCartDB.products || [];
+
   const handlePay = () => {
-    console.log(showMercadoPago);
+    //console.log(showMercadoPago);
     setShowMercadoPago(true);
   };
 
@@ -81,7 +86,7 @@ export default function OrderUser() {
       </div>
       {showMercadoPago && (
         <Mercadopago
-          shoppingCartDB={shoppingCartDB}
+          shoppingCartDB={productsArray}
           onPaymentComplete={handlePaymentComplete}
         />
       )}

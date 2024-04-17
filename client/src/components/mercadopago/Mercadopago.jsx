@@ -6,6 +6,10 @@ import { API_URL } from "../../utils/constants";
 
 const Mercadopago = ({ shoppingCartDB, onPaymentComplete }) => {
   //guardo el id en preferentceId y set me ayuda a guardar el estado
+  console.log("shoppingCartDB in Mercadopago:", shoppingCartDB);
+  shoppingCartDB.forEach((item, index) => {
+    console.log(`Producto ${index}:`, item);
+  });
   const [preferenceId, setPreferenceId] = useState(null);
 
   useEffect(() => {
@@ -14,6 +18,7 @@ const Mercadopago = ({ shoppingCartDB, onPaymentComplete }) => {
     });
   }, []);
   //id de preferencia son los datos de nuestros productos
+
   const createPreference = async () => {
     try {
       const products = shoppingCartDB.map((item) => ({
@@ -22,14 +27,32 @@ const Mercadopago = ({ shoppingCartDB, onPaymentComplete }) => {
         price: item.price,
       }));
 
+      console.log("productos a enviar", products);
+      console.log("shoppingCartDB in Mercadopago:", shoppingCartDB);
+
       const response = await axios.post(
         `${API_URL}/mercadopago/create_preference`,
-        products
+        products,
+        {
+          headers: {
+            "Content-Type": "application/json", // Asegura que los datos se envíen como JSON
+          },
+        }
       );
+
+      if (response.status !== 200) {
+        console.error(
+          "Error en la solicitud POST:",
+          response.status,
+          response.statusText
+        );
+        return null;
+      }
+
       const { id } = response.data;
       return id;
     } catch (error) {
-      console.log(error);
+      console.error("Error al crear la preferencia:", error);
     }
   };
 
