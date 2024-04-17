@@ -3,12 +3,12 @@ const { Order, Product, PaymentMethod, OrderProduct } = require('../../db');
 const getOrdersUserController = async (idUser) => {
     const orders = await Order.findAll({
         where: { userId: idUser },
-        include: [{ model: Product, through:{ model: OrderProduct,attributes: ['quantity']}}, { model: PaymentMethod, attributes: ['type', 'status'] }],
+        include: [{ model: Product, through: { model: OrderProduct, attributes: ['quantity'] } }, { model: PaymentMethod, attributes: ['type', 'status'] }],
     });
 
     // Ordenar el array de órdenes
     const sortedOrders = orders.map(order => {
-        return {
+        const orderData = {
             id: order.id,
             userId: order.userId,
             total: order.total,
@@ -23,12 +23,18 @@ const getOrdersUserController = async (idUser) => {
                 image: product.image
                 // Otros campos del producto
                 // ...
-            })),
-            paymentMethod: {
+            }))
+        };
+
+        // Verificar si hay un método de pago asociado
+        if (order.paymentMethod) {
+            orderData.paymentMethod = {
                 type: order.paymentMethod.type,
                 status: order.paymentMethod.status
-            }
-        };
+            };
+        }
+
+        return orderData;
     });
 
     return sortedOrders;
