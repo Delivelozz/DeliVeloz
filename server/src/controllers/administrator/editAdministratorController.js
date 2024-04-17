@@ -1,13 +1,12 @@
 const {Administrator} = require ('../../db')
 
-const editAdministratorController = async ({id}, {name, lastName, email, password, image }) =>{
+const editAdministratorController = async ({id}, {name, lastName, email, password }) =>{
     
     const editAdministrator =await Administrator.update({
         name, 
         lastName,
         email,
-        password,
-        image,
+        password
     },{
         where: {
             id: parseInt(id, 10)
