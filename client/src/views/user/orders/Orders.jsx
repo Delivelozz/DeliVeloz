@@ -12,15 +12,18 @@ import axios from "axios";
 import { API_URL } from "../../../utils/constants.js";
 
 export default function Orders() {
+  useLocalStoreUserData();
+  useLocalStoreUserDataGoogle();
+  useGetShoppingDB();
   const { id } = useParams();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
   const [product, setProduct] = useState(null);
-  const [productInfo, setProductInfo] = useState(null); 
+  const [productInfo, setProductInfo] = useState(null);
   const userData = useSelector((state) => state.userData);
   const [modalOpen, setModalOpen] = useState(false);
 
-    useEffect(() => {
+  useEffect(() => {
     // Función para obtener la información del producto con ID 1
     const fetchProductInfo = async () => {
       try {
@@ -39,14 +42,13 @@ export default function Orders() {
     setRating((prevRating) => (prevRating === starRating ? 0 : starRating));
   };
 
- 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await axios.post(`${API_URL}/assessment/${1}`, {
         rating,
         comment,
-        email:userData.email
+        email: userData.email,
       });
 
       console.log("Valoración enviada");
@@ -55,10 +57,6 @@ export default function Orders() {
       console.error("Error al enviar la valoración:", error);
     }
   };
-
-  useLocalStoreUserData();
-  useLocalStoreUserDataGoogle();
-  useGetShoppingDB();
 
   useEffect(() => {
     dispatch(setMyOrders(user?.id));
@@ -82,12 +80,12 @@ export default function Orders() {
 
   useEffect(() => {
     if (modalOpen) {
-      document.body.classList.add('modal-open');
+      document.body.classList.add("modal-open");
     } else {
-      document.body.classList.remove('modal-open');
+      document.body.classList.remove("modal-open");
     }
   }, [modalOpen]);
-  
+
   const columns = [
     {
       name: "Número de pedido",
@@ -115,13 +113,16 @@ export default function Orders() {
                 <p>Nombre: {product.name}</p>
                 <p>Precio: ${product.price}</p>
               </div>
-              <span 
-                className="btn-bg cursor-pointer max-w-6 min-w-6" 
+              <span
+                className="btn-bg cursor-pointer max-w-6 min-w-6"
                 onClick={() => {
                   setSelectedProductId(product.id);
                   setIsModalOpen(true); // Abrir el modal al hacer clic en el botón "Valorar"
                 }}
-              > Valorar</span>
+              >
+                {" "}
+                Valorar
+              </span>
               <hr />
             </div>
           ))}
@@ -139,40 +140,39 @@ export default function Orders() {
       {selectedProductId && (
         <div className="modal">
           <div className="modal-content">
-          <button className="h-4" onClick={closeModal}>
-  <span
-    style={{
-      marginLeft: '345px',
-      width: '16px',
-      height: '16px',
-      color: '#000',
-      fontSize: '16px',
-      lineHeight: '1',
-      textAlign: 'center'
-    }}
-  >
-    X
-  </span>
-</button>
-                  <h1 className="ml-9 mb-7">¡Añade una valoración! </h1>
+            <button className="h-4" onClick={closeModal}>
+              <span
+                style={{
+                  marginLeft: "345px",
+                  width: "16px",
+                  height: "16px",
+                  color: "#000",
+                  fontSize: "16px",
+                  lineHeight: "1",
+                  textAlign: "center",
+                }}
+              >
+                X
+              </span>
+            </button>
+            <h1 className="ml-9 mb-7">¡Añade una valoración! </h1>
             {/* Renderiza la información del producto */}
             {productInfo && (
-        <>
-        <div className="container flex gap-1 lg:gap-3 lg:w-4/5 ml-2">
-          <div className="col-md-6">
-            <img
-              src={productInfo.image.jpg}
-              alt=""
-              className="w-50 rounded-md object-cover max-h-20 min-h-20"
-
-            />
-          </div>
-          <div className="col-md-6 d-flex flex-column justify-content-center align-items-start">
-            <p>{productInfo.name}</p>
-            <p>${productInfo.price}</p>
-          </div>
-        </div>
-      </>
+              <>
+                <div className="container flex gap-1 lg:gap-3 lg:w-4/5 ml-2">
+                  <div className="col-md-6">
+                    <img
+                      src={productInfo.image.jpg}
+                      alt=""
+                      className="w-50 rounded-md object-cover max-h-20 min-h-20"
+                    />
+                  </div>
+                  <div className="col-md-6 d-flex flex-column justify-content-center align-items-start">
+                    <p>{productInfo.name}</p>
+                    <p>${productInfo.price}</p>
+                  </div>
+                </div>
+              </>
             )}
             <div className="container pt-5">
               {!ratingSent ? (
@@ -201,7 +201,10 @@ export default function Orders() {
                         </span>
                       ))}
                     </div>
-                    <button type="submit" className="btn-bg btn-sm ml-auto mt-3">
+                    <button
+                      type="submit"
+                      className="btn-bg btn-sm ml-auto mt-3"
+                    >
                       Enviar Valoración
                     </button>
                   </div>
@@ -236,4 +239,4 @@ export default function Orders() {
       )}
     </section>
   );
-}  
+}

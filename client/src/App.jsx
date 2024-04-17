@@ -19,7 +19,6 @@ import EditUser from "./views/user/editUser/EditUser";
 
 // ? -------------------- Admin
 import Dashboard from "./views/admin/dashboard/Dashboard";
-import DashboardAdmin from "./views/admin/dashboardAdmin/DashboardAdmin";
 import ListProducts from "./views/admin/ListProducts/ListProducts";
 import ListUsers from "./views/admin/ListUsers/ListUsers";
 import ListNews from "./views/admin/listNews/ListNews";
@@ -121,11 +120,10 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/blog/:id" element={<Blog />} />
           <Route path="/carrito" element={<Carrito />} />
-          <Route path="/admin" element={<DashboardAdmin />} />
           {/* ----------- User ------------ */}
           <Route path="/profile" element={<DashboardUser />} />
-          <Route path="/editUser/:id" element={<EditUser />} />
-          <Route path="/orders" element={<Orders />} />
+          <Route path="/profile/editUser/:id" element={<EditUser />} />
+          <Route path="/profile/orders" element={<Orders />} />
           {/* ----------- Admin ------------ */}
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/products" element={<ListProducts />} />
