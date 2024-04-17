@@ -3,6 +3,7 @@
 import HomeIcon from "../icons/HomeIcon";
 import validation from "./validation";
 import CloseIcon from "../icons/CloseIcon";
+import { toast } from "react-toastify";
 
 // ?-------------------------- Imports Hooks
 
@@ -97,7 +98,8 @@ export default function FormRegister({ closeModal }) {
         password: "",
       });
       setRepeatPassword("");
-      alert("¡El usuario fue creado exitosamente!");
+      toast.success("¡El usuario fue creado exitosamente!");
+
       closeModal();
       // navigate("/login");
     }

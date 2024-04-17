@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { postBlog } from "../../../redux/actions/actions.js";
 import validationPost from "./validationPost.js";
 import Sidenav from "../../../components/admin/sidenav/Sidenav.jsx";
+import { toast } from "react-toastify";
 
 export default function AddNews() {
   useLocalStoreUserData();
@@ -69,7 +70,7 @@ export default function AddNews() {
           },
         });
         setFormSubmitted(false); // Restablecer la bandera
-        alert("¡Novedad creada con éxito!");
+        toast.success("¡Novedad creada con éxito!");
       } catch (error) {
         console.error("Error al enviar los datos: ", error);
       }
