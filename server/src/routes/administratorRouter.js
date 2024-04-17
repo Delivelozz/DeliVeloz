@@ -7,7 +7,7 @@ const getAdministratorByIdHandler= require("../handlers/administrator/getAdminis
 const createAdministratorHandler = require("../handlers/administrator/createAdministratorHandler")
 const editAdministratorHandler = require("../handlers/administrator/editAdministratorHandler")
 const desactAdministratorHandler = require ("../handlers/administrator/desactAdministratorHandler")
-const loginAdministratorHandler = require ("../handlers/administrator/loginAdministratorHandler")
+
 
 //obtner todos los administradores
 administratorRouter.get("/", getAdministratorsHandler)
@@ -19,7 +19,5 @@ administratorRouter.post("/", createAdministratorHandler)
 administratorRouter.patch("/:id", editAdministratorHandler)
 // desactivar administrador
 administratorRouter.delete("/:id/:value", desactAdministratorHandler)
-//login de adminstrador
-administratorRouter.post("/login", loginAdministratorHandler)
 
 module.exports = administratorRouter

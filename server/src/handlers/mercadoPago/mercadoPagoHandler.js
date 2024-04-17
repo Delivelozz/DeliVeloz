@@ -3,6 +3,7 @@ const mercadoPagoController = require('../../controllers/mercadoPago/mercadoPago
 const mercadoPagoHandler = async (req, res) => {
   const {product} = req.body;
   const {id_order} = req.body;
+  const {id_user} = req.body;
   try {
     const itemsNew = product.map((item)=>{
       return {
@@ -12,7 +13,7 @@ const mercadoPagoHandler = async (req, res) => {
         current_id: "ARS",
       }
     })
-    const response = await mercadoPagoController(itemsNew, id_order); 
+    const response = await mercadoPagoController(itemsNew, id_order, id_user); 
     res.json(response)
   } catch (error) {
     res.status(500).json({ error:error.message })

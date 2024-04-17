@@ -4,10 +4,17 @@ const { MercadoPagoConfig, Preference } = require("mercadopago");
 const client = new MercadoPagoConfig({
   accessToken: process.env.YOUR_ACCESS_TOKEN,
 });
-const mercadoPagoController = async (itemsNew, id_order) => {
+
+const mercadoPagoController = async (itemsNew, id_order, id_user) => {
+
+  const externalReference = JSON.stringify({
+    id_order: id_order, 
+    id_user: id_user,
+  });
+
   const body = {
     items: itemsNew,
-    external_reference: id_order,
+    external_reference: externalReference,
     back_urls: {
       success: "https://deliveloz.netlify.app/",
       failure: "https://deliveloz.netlify.app/",
