@@ -1,6 +1,6 @@
 import Sidenav from "../../../components/admin/sidenav/Sidenav";
 import { Chart as ChartJS } from "chart.js/auto";
-import { Bar, Doughnut, Line } from "react-chartjs-2";
+import { Bar, Doughnut, Line, Bubble, Pie } from "react-chartjs-2";
 import { useLocalStoreUserData } from "../../../hooks/useLocalStoreUserData.js";
 import { useLocalStoreUserDataGoogle } from "../../../hooks/useLocalStoreUserDataGoogle.js";
 import { useGetShoppingDB } from "../../../hooks/useGetShoppingDB.js";
@@ -13,9 +13,9 @@ export default function Dashboard() {
     <div>
       <Sidenav />
       <section className="container">
-        <h1>Dashboard</h1>
-        <div>
-          <div>
+        <h1 className="mb-16">Dashboard</h1>
+        <div className="flex gap-20 justify-between">
+          <div className="w-1/2 max-h-80">
             <Bar
               data={{
                 labels: ["A", "B", "C"],
@@ -32,8 +32,8 @@ export default function Dashboard() {
               }}
             />
           </div>
-          <div>
-            <Doughnut
+          <div className="w-1/2 max-h-80">
+            <Bubble
               data={{
                 labels: ["A", "B", "C"],
                 datasets: [
@@ -49,6 +49,19 @@ export default function Dashboard() {
               }}
             />
           </div>
+        </div>
+        <div className="max-h-80 mt-20">
+          <Pie
+            data={{
+              labels: ["A", "B", "C"],
+              datasets: [
+                {
+                  label: "Revenue",
+                  data: [200, 300, 400],
+                },
+              ],
+            }}
+          />
         </div>
       </section>
     </div>
