@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { Popper } from "@mui/base/Popper";
+import { useTheme } from "@mui/system";
 import axios from "axios";
 import Loader from "../../components/loader/Loader";
 import { useLocalStoreUserData } from "../../hooks/useLocalStoreUserData";
@@ -21,11 +23,15 @@ export default function Detail() {
   const dispatch = useDispatch();
   const [averageRating, setAverageRating] = useState(null);
   const [assessments, setAssessments] = useState([]);
-  const userData = useSelector(state => state.userData);
-  
+  const userData = useSelector((state) => state.userData);
+  const [popperOpen, setPopperOpen] = useState(false);
+  const [popperStock, setPopperStock] = useState(false);
+
   useLocalStoreUserData();
   useLocalStoreUserDataGoogle();
   useGetShoppingDB();
+
+  const anchorRef = useRef(null);
 
   useEffect(() => {
     setUserID(user?.user?.id);
@@ -45,7 +51,6 @@ export default function Detail() {
       .then((data) => setProduct(data));
   }, [id]);
 
-
   useEffect(() => {
     fetch(`${API_URL}/assessment/${id}`)
       .then((response) => response.json())
@@ -53,10 +58,10 @@ export default function Detail() {
         setAverageRating(data.averageRating);
         setAssessments(data.assessmentsWithUserNames);
       })
-      .catch((error) => console.error("Error al obtener las valoraciones:", error));
+      .catch((error) =>
+        console.error("Error al obtener las valoraciones:", error)
+      );
   }, [id]);
-
-
 
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
@@ -96,7 +101,7 @@ export default function Detail() {
   if (!product) {
     return (
       <section className="flex justify-center items-center">
-        <div class="custom-loader"></div>
+        <div className="custom-loader"></div>
       </section>
     );
   }
@@ -124,9 +129,23 @@ export default function Detail() {
     dispatch(getShoppingCart(userID));
   };
 
+  const handlePopperOpen = () => {
+    setPopperOpen(true);
+    setTimeout(() => {
+      setPopperOpen(false);
+    }, 3000);
+  };
+
+  const handlePopperStock = () => {
+    setPopperStock(true);
+    setTimeout(() => {
+      setPopperStock(false);
+    }, 3000);
+  };
+
   return (
-    <section className="flex flex-col">
-      <div className="container flex gap-10 lg:w-3/5">
+    <section className="flex flex-col container">
+      <div className="container flex gap-2 lg:gap-10 lg:w-3/5">
         <div className="w-1/2">
           <img
             src={product.image.jpg}
@@ -148,12 +167,36 @@ export default function Detail() {
               <span className="text-sundown-500 font-bold">Categoría: </span>
               {product.category}
             </p>
+            <p>
+              <span className="text-sundown-500 font-bold">Subcategoría: </span>
+              {product.subCategory}
+            </p>
             <p className="text-sundown-500 font-bold text-xl ">
               $ {product.price}
             </p>
           </div>
           <div className="flex w-full h-10">
-            {quantity > 0 ? (
+            {userID === undefined || userID === null ? (
+              <div className="flex justify-center">
+                <button
+                  ref={anchorRef}
+                  onClick={handlePopperOpen}
+                  className="btn-bg flex items-center justify-center"
+                >
+                  Agregar
+                </button>
+                <Popper
+                  className="mt-2"
+                  open={popperOpen}
+                  anchorEl={anchorRef.current}
+                  placement="bottom"
+                >
+                  <div className="p-2 bg-gray-200 text-gray-800 rounded-md">
+                    Iniciar sesión para agregar productos al carrito.
+                  </div>
+                </Popper>
+              </div>
+            ) : quantity > 0 ? (
               <div className="h-8 flex justify-center items-center gap-1">
                 <p className="mr-1 text-sundown-500 font-semibold text-md md:font-bold md:text-xl ">
                   Cantidad:
@@ -169,111 +212,108 @@ export default function Detail() {
                   value={quantity}
                   className="border border-sundown-500 border-solid rounded-md w-6 md:w-8 h-6 text-center "
                 />
-                <button
-                  onClick={() => handleAdd()}
-                  className="w-4 md:w-6 h-6 bg-sundown-500 rounded-md text-white"
-                >
-                  +
-                </button>
+                {product.quantity !== quantity && product.quantity !== 0 ? (
+                  <button
+                    onClick={() => handleAdd()}
+                    className="w-6 h-6 bg-sundown-500 rounded-md text-white"
+                  >
+                    +
+                  </button>
+                ) : (
+                  <div className="flex justify-center">
+                    <button
+                      ref={anchorRef}
+                      onClick={handlePopperStock}
+                      className="w-6 h-6 bg-sundown-500 rounded-md text-white"
+                    >
+                      +
+                    </button>
+                    <Popper
+                      open={popperStock}
+                      anchorEl={anchorRef.current}
+                      placement="bottom"
+                    >
+                      <div className="p-2 bg-gray-200 text-gray-800 rounded-md">
+                        No hay mas productos disponibles.
+                      </div>
+                    </Popper>
+                  </div>
+                )}
               </div>
             ) : (
-              <div
-                className=" w-20 h-8 flex justify-center mt-100"
-                onClick={() => handleAdd()}
-              >
-                <button className="absolute btn-bg flex items-center justify-center mb-100">
-                  Agregar
-                </button>
+              <div className=" w-20 h-8 flex justify-center mt-100">
+                {product.quantity !== quantity && product.quantity !== 0 ? (
+                  <button
+                    onClick={() => handleAdd()}
+                    className="btn-bg flex items-center justify-center"
+                  >
+                    {loading ? <Loader /> : "Agregar"}
+                  </button>
+                ) : (
+                  <div>
+                    <button
+                      ref={anchorRef}
+                      onClick={handlePopperStock}
+                      className="btn-bg flex items-center justify-center"
+                    >
+                      {loading ? <Loader /> : "Agregar"}
+                    </button>
+                    <Popper
+                      open={popperStock}
+                      anchorEl={anchorRef.current}
+                      placement="bottom"
+                    >
+                      <div className="p-2 bg-gray-200 text-gray-800 rounded-md">
+                        No hay mas productos disponibles.
+                      </div>
+                    </Popper>
+                  </div>
+                )}
               </div>
             )}
           </div>
         </div>
       </div>
-      {/* --------------- VALORACIONES ------------------ */}
 
-      <div className="container pt-10">
-        {!ratingSent ? (
-          <form onSubmit={handleSubmit} className="mt-1 flex flex-col">
-            <div className="textarea-container flex-grow pb-3">
-              <textarea
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-                placeholder="Añade un comentario"
-                required
-                className="w-full rounded-md bg-white border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 gray-border h-40 max-h-40 min-h-40 focus:outline-sundown-500"
-              ></textarea>
-            </div>
-            <div className="flex items-end mt-0">
-              <div className="star-rating">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <span
-                    key={star}
-                    className={`star ${star <= rating ? "star-filled" : ""}`}
-                    onClick={() => handleStarClick(star)}
-                    style={{ userSelect: "none" }}
-                  >
-                    ★
-                  </span>
-                ))}
-              </div>
-              <button type="submit" className="btn-bg btn-sm ml-auto">
-                Enviar Valoración
-              </button>
-            </div>
-          </form>
-        ) : (
-          <div className="alert mt-12">
-            <p>Tu valoración ha sido enviada!</p>
-          </div>
-        )}
-        <div className="flex flex-col gap-4 justify-center items-center">
-          {!ratingSent ? (
-            <form onSubmit={handleSubmit}>
-              <div className="star-rating">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <span
-                    key={star}
-                    className={`star ${star <= rating ? "star-filled" : ""}`}
-                    onClick={() => handleStarClick(star)}
-                  ></span>
-                ))}
-              </div>
-            </form>
-          ) : (
-            <div className="alert"></div>
-          )}
-        </div>
-      </div>
-{/* Tabla de Comentarios */}
-{assessments && assessments.length > 0 ? (
-  <>
-    <h2 className="mt-10 mb-4 text-xl font-bold ml-5">Comentarios:</h2>
-    <table className="ml-5" style={{ borderCollapse: 'collapse',  maxWidth: '300px'}}>
-  <tbody>
-    {assessments.map((assessment) => (
-      <tr key={assessment.id} style={{ border: '1px solid #ddd' }}>
-        <td style={{ textAlign: 'left', border: 'none', padding: '13px' }}>{assessment.comment}</td>
-        <td style={{ textAlign: 'left', padding: '13px' }}>
-          {Array.from({ length: assessment.rating }).map((_, index) => (
-            <span key={index} style={{ color: 'gold' }}>&#9733;</span> // Estrellas doradas
-          ))}
-        </td>
-      </tr>
-    ))}
-  </tbody>
-</table>
-
-  </>
-) : (
-  <p className="mt-10 mb-4 text-xl font-bold ml-5">No hay valoraciones aún</p>
-)}
-
+      {/* Tabla de Comentarios */}
+      {assessments && assessments.length > 0 ? (
+        <>
+          <h4 className="mt-20 mb-4 text-lg font-bold text-sundown-500">
+            Comentarios:
+          </h4>
+          <table className="w-full">
+            <tbody className="border border-gray-200">
+              {assessments.map((assessment) => (
+                <tr
+                  className="flex flex-col gap-4 p-6 border-b"
+                  key={assessment.id}
+                >
+                  <td>{assessment.comment}</td>
+                  <td>
+                    {Array.from({ length: assessment.rating }).map(
+                      (_, index) => (
+                        <span
+                          key={index}
+                          className="text-xl"
+                          style={{ color: "gold" }}
+                        >
+                          &#9733;
+                        </span> // Estrellas doradas
+                      )
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </>
+      ) : (
+        <p className="mt-20 mb-4 text-lg font-bold text-center text-sundown-500">
+          No hay valoraciones aún
+        </p>
+      )}
 
       {/* --------------- VALORACIONES ------------------ */}
     </section>
-    
   );
-  
 }
-
-

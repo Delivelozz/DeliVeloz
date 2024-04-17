@@ -141,7 +141,7 @@ export default function FormRegister({ closeModal }) {
                     name="name"
                     placeholder="Nombre"
                     onKeyDown={handleKeyDown}
-                    className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
+                    className="login-input p-2 text-sm  placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
                   />
                   {errors.name && <p className="error">{errors.name}</p>}
                 </div>
@@ -156,7 +156,7 @@ export default function FormRegister({ closeModal }) {
                     name="lastName"
                     placeholder="Apellido"
                     onKeyDown={handleKeyDown}
-                    className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
+                    className="login-input p-2 text-sm  placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
                   />
                   {errors.lastName && (
                     <p className="error">{errors.lastName}</p>
@@ -177,7 +177,7 @@ export default function FormRegister({ closeModal }) {
                     name="email"
                     placeholder="Correo electrónico"
                     onKeyDown={handleKeyDown}
-                    className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
+                    className="login-input p-2 text-sm  placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
                   />
                   {errors.email && <p className="error">{errors.email}</p>}
                 </div>
@@ -192,7 +192,7 @@ export default function FormRegister({ closeModal }) {
                     name="userAddress"
                     placeholder="Calle"
                     onKeyDown={handleKeyDown}
-                    className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
+                    className="login-input p-2 text-sm  placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
                   />
                   {errors.userAddress && (
                     <p className="error">{errors.userAddress}</p>
@@ -210,7 +210,7 @@ export default function FormRegister({ closeModal }) {
                   name="phone"
                   placeholder="Celular"
                   onKeyDown={handleKeyDown}
-                  className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
+                  className="login-input p-2 text-sm placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
                 />
                 {errors.phone && <p className="error">{errors.phone}</p>}
               </div>
@@ -227,7 +227,7 @@ export default function FormRegister({ closeModal }) {
                       name="password"
                       placeholder="Contraseña"
                       onKeyDown={handleKeyDown}
-                      className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
+                      className="login-input p-2 text-sm placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
                     />
                   </div>
                   <div className="flex-1">
@@ -238,7 +238,7 @@ export default function FormRegister({ closeModal }) {
                       name="repeatPassword"
                       placeholder="Repetir contraseña"
                       onKeyDown={handleKeyDown}
-                      className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
+                      className="login-input p-2 text-sm placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
                     />
                   </div>
                 </div>

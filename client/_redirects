@@ -2,9 +2,19 @@
 # This is a simple way to handle client-side routing
 /  /Home
 /home  /Home
-/products  /Products
 /about  /About
 /detail/*  /detail/:splat
-/blog  /Blog
+/products  /products
+/blog/*  /blog/splat
 /carrito  /Carrito
-/admin  /DashboardAdmin
+/profile        /profile
+/profile/editUser/* /profile/editUser/:splat
+/profile/orders /profile/orders
+/dashboard /dashboard
+/dashboard/products /dashboard/products
+/dashboard/users /dashboard/users
+/dashboard/news /dashboard/news
+/dashboard/news/editNews/* /dashboard/news/editNews/:splat
+/dashboard/products/editProduct/* /dashboard/products/editProduct/:splat
+/dashboard/products/addProduct /dashboard/products/addProduct
+/dashboard/news/addNew /dashboard/news/addNew

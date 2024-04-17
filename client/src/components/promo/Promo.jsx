@@ -15,16 +15,14 @@ export default function Promo({ id, title, image, description }) {
             />
           </figure>
           <div className="w-full h-1/2">
-            <div className="w-full flex flex-col my-2 gap-4">
+            <div className="w-full flex flex-col my-2 gap-4 px-6 py-3">
               <h4 className="w-full truncate font-bold text-xl">{title}</h4>
               <p className="line-clamp-3 lg:line-clamp-4">{description}</p>
-            </div>
-            <div className="flex justify-center mt-4">
               <Link to={`/blog/${id}`}>
                 {" "}
                 {/*agregue id yo*/}
                 <button
-                  className="btn-bg"
+                  className="btn-bg w-full"
                   onClick={() => {
                     smoothScrollToTop();
                   }}

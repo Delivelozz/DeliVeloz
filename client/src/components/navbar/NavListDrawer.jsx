@@ -258,7 +258,7 @@ export default function NavListDrawer({
           <ListItem disablePadding>
             <ListItemButton
               component={Link}
-              to="/admin"
+              to="/dashboard"
               onClick={() => setOpen(false)}
               sx={{
                 "& .MuiSvgIcon-root": { fontSize: 24 },
@@ -277,7 +277,9 @@ export default function NavListDrawer({
 
           <ListItem disablePadding>
             <ListItemButton
-              component="a"
+              component={Link}
+              to="/profile"
+              onClick={() => setOpen(false)}
               sx={{
                 "& .MuiSvgIcon-root": { fontSize: 24 },
                 "& .MuiTypography-root": {
@@ -289,7 +291,7 @@ export default function NavListDrawer({
               <ListItemIcon>
                 <DashboardIcon />
               </ListItemIcon>
-              <ListItemText primary="Dashboard de usuario" />
+              <ListItemText primary="Dashboard de Usuario" />
             </ListItemButton>
           </ListItem>
         </List>

@@ -22,7 +22,9 @@ import {
   EDIT_DISHES,
   DISABLED_DISHES,
   EDIT_USER,
-  SET_MY_ORDERS
+  POST_BLOG,
+  EDIT_NEWS,
+  SET_MY_ORDERS,
 } from "./types";
 import axios from "axios";
 import { API_URL } from "../../utils/constants";
@@ -34,7 +36,7 @@ import { API_URL } from "../../utils/constants";
 export function setDishes() {
   return async (dispatch) => {
     try {
-      const response = await fetch(`${API_URL}/products`);
+      const response = await fetch(`${API_URL}/products/active`);
       const data = await response.json();
       dispatch({
         type: SET_DISHES,
@@ -354,6 +356,41 @@ export function setBlogId(id) {
     }
   };
 }
+// ? ----------------------------- Post Blog
+export function postBlog(payload) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(
+        `https://deliveloz-ryfh.onrender.com/banners`,
+        payload
+      );
+      dispatch({
+        type: POST_BLOG,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Error al postear el plato: ", error);
+    }
+  };
+}
+// ? ----------------------------- Edit news
+export function editNews(payload) {
+  // console.log("esto es un payload:", payload.id)
+  return async function (dispatch) {
+    try {
+      const response = await axios.patch(
+        `https://deliveloz-ryfh.onrender.com/banners/${payload.id}`,
+        payload
+      );
+      dispatch({
+        type: EDIT_NEWS,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Error al editar la novedad: ", error);
+    }
+  };
+}
 
 // ! ----------------------------------------------- Set Errors
 
@@ -394,14 +431,15 @@ export const toggleSidebar = (left) => {
 export const setMyOrders = (id) => {
   return async (dispatch) => {
     try {
-      const response = await fetch(`http://deliveloz-ryfh.onrender.com/order/${id}`)
-      const data = await response.json()
+      const response = await axios.get(
+        `https://deliveloz-ryfh.onrender.com/order/${id}`
+      );
       dispatch({
         type: SET_MY_ORDERS,
-        payload: data,
-      })
-    } catch (error){
-      console.error("Error fetching your orders: ", error)
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Error fetching your orders: ", error);
     }
-  }
-}
+  };
+};

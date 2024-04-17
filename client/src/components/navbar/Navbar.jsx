@@ -127,13 +127,13 @@ export default function Header({ openLoginModal, openRegisterModal }) {
                   <div className="mb-6 text-center">
                     <p className="text-sm font-semilbold">
                       ¡Hola!<span> </span>
-                      {user.name}
+                      {user?.name}
                       <span> </span>
-                      {user.lastName}
+                      {user?.lastName}
                     </p>
                   </div>
                   <div className="text-center flex flex-col gap-2">
-                    <Link to={"/admin"} className="hover:text-white">
+                    <Link to={"/dashboard"} className="hover:text-white">
                       <p className="hover:text-slate-200 transition">
                         Ir al dashboard
                       </p>

@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from "react";
+import DataTable from "react-data-table-component";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import DataTable from "react-data-table-component";
-import { setDishes, disabledDishes } from "../../redux/actions/actions";
-import EditIcon from "../icons/EditIcon";
-import DeleteIcon from "../icons/DeleteIcon";
+import { setDishes, disabledDishes } from "../../../redux/actions/actions";
+import EditIcon from "../../../components/icons/EditIcon";
+import DeleteIcon from "../../../components/icons/DeleteIcon";
+import Sidenav from "../../../components/admin/sidenav/Sidenav";
+import { useLocalStoreUserData } from "../../../hooks/useLocalStoreUserData.js";
+import { useLocalStoreUserDataGoogle } from "../../../hooks/useLocalStoreUserDataGoogle.js";
+import { useGetShoppingDB } from "../../../hooks/useGetShoppingDB.js";
 
-export default function ProductsAdmin() {
+export default function ListProducts() {
+  useLocalStoreUserData();
+  useLocalStoreUserDataGoogle();
+  useGetShoppingDB();
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,10 +29,6 @@ export default function ProductsAdmin() {
     setFilterDishes(filterBySearch(dishes, filterText));
   }, [dishes, filterText]);
 
-  const onDisabled = ({ id, availability }) => {
-    dispatch(disabledDishes({ id, availability }));
-  };
-
   const handleChange = (e) => {
     setFilterText(e.target.value);
   };
@@ -33,6 +37,15 @@ export default function ProductsAdmin() {
     return dishes.filter((dish) =>
       dish.name.toLowerCase().includes(searchText.toLowerCase())
     );
+  };
+
+  const onDisabled = async ({ id, availability }) => {
+    try {
+      await dispatch(disabledDishes({ id, availability }));
+      await dispatch(setDishes());
+    } catch (error) {
+      console.error("Error al desactivar el producto:", error);
+    }
   };
 
   const columns = [
@@ -102,7 +115,7 @@ export default function ProductsAdmin() {
     {
       name: "Editar",
       cell: (row) => (
-        <Link to={`/editProduct/${row.id}`}>
+        <Link to={`/dashboard/products/editProduct/${row.id}`}>
           <EditIcon width={22} height={22} color={"#E74C4C"} />
         </Link>
       ),
@@ -120,27 +133,29 @@ export default function ProductsAdmin() {
   ];
 
   return (
-    <section className="container-left col-span-4">
-      <div className="mb-6 flex justify-between items-center">
-        <h1 className="">
-          Tabla de <span className="text-sundown-500">Productos</span>
-        </h1>
+    <div>
+      <Sidenav />
+      <section className=" container">
+        <div className=" border px-2 py-6 bg-white rounded-lg shadow-sm">
+          <div className="mb-6 flex justify-between items-center ">
+            <h4 className="font-medium">Lista de Productos</h4>
 
-        <input
-          type="text"
-          onChange={handleChange}
-          placeholder="Buscar..."
-          className="w-48 bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
-        />
-      </div>
+            <input
+              type="text"
+              onChange={handleChange}
+              placeholder="Buscar..."
+              className="min-w-64 bg-gray-50 border p-2 text-sm rounded-lg focus:outline-sundown-500 focus:border-transparent"
+            />
+          </div>
 
-      <DataTable
-        columns={columns}
-        data={filterDishes}
-        selectableRows
-        onSelectedRowsChange={(data) => console.log(data)}
-        pagination
-      />
-    </section>
+          <DataTable
+            columns={columns}
+            data={filterDishes}
+            onSelectedRowsChange={(data) => console.log(data)}
+            pagination
+          />
+        </div>
+      </section>
+    </div>
   );
 }
