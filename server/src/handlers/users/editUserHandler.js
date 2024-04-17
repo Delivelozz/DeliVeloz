@@ -1,7 +1,9 @@
 const editUserController = require('../../controllers/users/editUserController');
+const accessUser = require('../../functions/accessUser');
 
 // Maneja la edicion de los datos del Usuario en la Base de Datos
 const editUserHandler = async (req, res) => {
+    await accessUser(req)
     //obtenemos el id del usuario por params
     const id = req.params;
     //obtenemos los nuevos datos del usuario por body
