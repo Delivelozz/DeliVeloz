@@ -11,9 +11,10 @@ const mercadoPagoWebhookController = async (req, res) => {
                     'Authorization': `Bearer ${process.env.YOUR_ACCESS_TOKEN}`
                 }
             });
-            
+            const data = response.data;
+            console.log(data);
             const id_order = response.data.external_reference;
-            const order = await Order.findById(id_order);
+            const order = await Order.findByPk(id_order);
             order.update({
                 paid: true,
             });
@@ -22,15 +23,11 @@ const mercadoPagoWebhookController = async (req, res) => {
                 
             // });
             await PaymentMethod.create({
-                id: id_order,
                 type: data.payment_method.type,
                 status: data.status,
+                orderId: id_order,
                 // Incluir cualquier otra información relevante del pago
-            });
-
-            const data = response.data;
-            console.log(data);
-            
+            });  
 
             // // Buscar el pedido en la base de datos
             // const order = await Order.findOne({ where: { id: orderId } });

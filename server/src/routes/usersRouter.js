@@ -7,7 +7,6 @@ const getUserHandler = require("../handlers/users/getUserHandler");
 const createUserHandler = require("../handlers/users/createUserHandler");
 const editUserHandler = require("../handlers/users/editUserHandler");
 const desactUserHandler = require("../handlers/users/desactUserHandler");
-const loginUsersHandler = require("../handlers/users/loginUsersHandler");
 const closeUsersHandler = require("../handlers/users/closeUsersHandler");
 
 // use handlers
@@ -21,8 +20,6 @@ usersRouter.post("/", createUserHandler);
 usersRouter.patch("/:id", editUserHandler);
 // Desactivar Usuario
 usersRouter.put("/:id/:value", desactUserHandler);
-// login Usuario
-usersRouter.post("/login", loginUsersHandler);
 // Cerrar Seccion
 usersRouter.post("/close", closeUsersHandler);
 

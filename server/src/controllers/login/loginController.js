@@ -1,6 +1,6 @@
 const { User, Administrator } = require("../../db");
 
-const loginDashboardController = async (email, password) => {
+const loginController = async (email, password) => {
   
     const user = await User.findOne({ where: { email } });
   if(user){
@@ -24,4 +24,4 @@ const loginDashboardController = async (email, password) => {
 
 
 
-module.exports = loginDashboardController;
+module.exports = loginController;
