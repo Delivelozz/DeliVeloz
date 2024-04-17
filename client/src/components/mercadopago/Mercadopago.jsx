@@ -1,5 +1,5 @@
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { API_URL } from "../../utils/constants";
@@ -7,9 +7,8 @@ import { API_URL } from "../../utils/constants";
 const Mercadopago = ({ shoppingCartDB, onPaymentComplete }) => {
   //guardo el id en preferentceId y set me ayuda a guardar el estado
   console.log("shoppingCartDB in Mercadopago:", shoppingCartDB);
-  shoppingCartDB.forEach((item, index) => {
-    console.log(`Producto ${index}:`, item);
-  });
+
+  const idOrder = useSelector((state) => state.idOrder);
   const [preferenceId, setPreferenceId] = useState(null);
 
   useEffect(() => {
@@ -27,15 +26,17 @@ const Mercadopago = ({ shoppingCartDB, onPaymentComplete }) => {
         price: item.price,
       }));
 
-      console.log("productos a enviar", products);
-      console.log("shoppingCartDB in Mercadopago:", shoppingCartDB);
+      const dataToSend = {
+        product: products,
+        id_order: idOrder,
+      };
 
       const response = await axios.post(
         `${API_URL}/mercadopago/create_preference`,
-        products,
+        dataToSend,
         {
           headers: {
-            "Content-Type": "application/json", // Asegura que los datos se envíen como JSON
+            "Content-Type": "application/json",
           },
         }
       );

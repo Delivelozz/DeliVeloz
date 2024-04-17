@@ -9,7 +9,7 @@ import Mercadopago from "../../components/mercadopago/Mercadopago.jsx";
 export default function OrderUser() {
   const orderDetail = useSelector((state) => state.orderDetail);
   const shoppingCartDB = useSelector((state) => state.shoppingCartDB);
-  console.log("shoppingCartDB in OrderUser:", shoppingCartDB);
+  //console.log("shoppingCartDB in OrderUser:", shoppingCartDB);
   const user = useSelector((state) => state.user);
   const idOrder = useSelector((state) => state.idOrder);
   const [idUser, setIdUser] = useState(null);
@@ -32,7 +32,7 @@ export default function OrderUser() {
 
   const handlePaymentComplete = () => {
     console.log("Pago completado");
-    setShowMercadoPago(false); // Ocultar el componente de MercadoPago después de que se complete el pago
+    setShowMercadoPago(false); // Ocultar el componente de MercadoPago
   };
 
   console.log("ID de la user: ", idUser);
@@ -75,7 +75,7 @@ export default function OrderUser() {
       </div>
 
       <div className="mt-6 flex justify-center">
-        {!showMercadoPago && ( // Mostrar el botón de pago solo si no se muestra el componente de MercadoPago
+        {!showMercadoPago && (
           <button
             className="btn-bg flex items-center justify-center"
             onClick={handlePay}
