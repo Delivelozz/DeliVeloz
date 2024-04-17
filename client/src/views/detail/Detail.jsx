@@ -167,6 +167,10 @@ export default function Detail() {
               <span className="text-sundown-500 font-bold">Categoría: </span>
               {product.category}
             </p>
+            <p>
+              <span className="text-sundown-500 font-bold">Subcategoría: </span>
+              {product.subCategory}
+            </p>
             <p className="text-sundown-500 font-bold text-xl ">
               $ {product.price}
             </p>
