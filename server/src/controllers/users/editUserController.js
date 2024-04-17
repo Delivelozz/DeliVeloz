@@ -1,6 +1,6 @@
 const {User} = require('../../db');
 
-const editUserController = async ({id}, {name, lastName, email, userAddress, phone, password, image}) => {
+const editUserController = async ({id}, {name, lastName, email, userAddress, phone, password}) => {
     const editUser = await User.update({
         name,
         lastName,
@@ -8,7 +8,6 @@ const editUserController = async ({id}, {name, lastName, email, userAddress, pho
         userAddress,
         phone,
         password,
-        image,
     },{ 
         where: {
             id: parseInt(id, 10) // Asegúrate de que el ID sea un número
