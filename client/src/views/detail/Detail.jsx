@@ -25,6 +25,7 @@ export default function Detail() {
   const [assessments, setAssessments] = useState([]);
   const userData = useSelector((state) => state.userData);
   const [popperOpen, setPopperOpen] = useState(false);
+  const [popperStock, setPopperStock] = useState(false);
 
   useLocalStoreUserData();
   useLocalStoreUserDataGoogle();
@@ -135,6 +136,13 @@ export default function Detail() {
     }, 3000);
   };
 
+  const handlePopperStock = () => {
+    setPopperStock(true);
+    setTimeout(() => {
+      setPopperStock(false);
+    }, 3000);
+  };
+
   return (
     <section className="flex flex-col container">
       <div className="container flex gap-2 lg:gap-10 lg:w-3/5">
@@ -200,21 +208,63 @@ export default function Detail() {
                   value={quantity}
                   className="border border-sundown-500 border-solid rounded-md w-6 md:w-8 h-6 text-center "
                 />
-                <button
-                  onClick={() => handleAdd()}
-                  className="w-4 md:w-6 h-6 bg-sundown-500 rounded-md text-white"
-                >
-                  +
-                </button>
+                {product.quantity !== quantity && product.quantity !== 0 ? (
+                  <button
+                    onClick={() => handleAdd()}
+                    className="w-6 h-6 bg-sundown-500 rounded-md text-white"
+                  >
+                    +
+                  </button>
+                ) : (
+                  <div className="flex justify-center">
+                    <button
+                      ref={anchorRef}
+                      onClick={handlePopperStock}
+                      className="w-6 h-6 bg-sundown-500 rounded-md text-white"
+                    >
+                      +
+                    </button>
+                    <Popper
+                      open={popperStock}
+                      anchorEl={anchorRef.current}
+                      placement="bottom"
+                    >
+                      <div className="p-2 bg-gray-200 text-gray-800 rounded-md">
+                        No hay mas productos disponibles.
+                      </div>
+                    </Popper>
+                  </div>
+                )}
               </div>
             ) : (
-              <div
-                className=" w-20 h-8 flex justify-center mt-100"
-                onClick={() => handleAdd()}
-              >
-                <button className="absolute btn-bg flex items-center justify-center mb-100">
-                  Agregar
-                </button>
+              <div className=" w-20 h-8 flex justify-center mt-100">
+                {product.quantity !== quantity && product.quantity !== 0 ? (
+                  <button
+                    onClick={() => handleAdd()}
+                    className="btn-bg flex items-center justify-center"
+                  >
+                    {loading ? <Loader /> : "Agregar"}
+                  </button>
+                ) : (
+                  <div>
+                    <button
+                      ref={anchorRef}
+                      onClick={handlePopperStock}
+                      className="btn-bg flex items-center justify-center"
+                    >
+                      {loading ? <Loader /> : "Agregar"}
+                    </button>
+                    <Popper
+                      open={popperStock}
+                      anchorEl={anchorRef.current}
+                      placement="bottom"
+                    >
+                      <div className="p-2 bg-gray-200 text-gray-800 rounded-md">
+                        No hay mas productos disponibles.
+                      </div>
+                    </Popper>
+                  </div>
+                )}
               </div>
             )}
           </div>
