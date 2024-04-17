@@ -13,18 +13,34 @@ const loginHandler = async (req, res) => {
             email: user.email,
           },
           process.env.JWT_SECRET,
-          { expiresIn: "1h" } //opcional si se necesita un tiempo de expiracion 
+          // { expiresIn: "1h" } //opcional si se necesita un tiempo de expiracion 
         );
-        res.status(200).json({ message, user, token });
+        let userResponse = {
+          ...user.dataValues, // Asegúrate de que 'user' tenga una propiedad 'dataValues' si es una instancia de Sequelize
+          token
+        };
+        let response = {
+          message,
+          user: userResponse
+        }
+        res.status(200).json(response);
     } else if (admin){
          const token = jwt.sign(
            {
              email: admin.email,
            },
            process.env.JWT_SECRET,
-           { expiresIn: "1h" } //opcional si se necesita un tiempo de expiracion
+          //  { expiresIn: "1h" } //opcional si se necesita un tiempo de expiracion
          );
-         res.status(200).json({ message, admin, token });
+         let adminResponse = {
+          ...admin.dataValues, // Asegúrate de que 'admin' tenga una propiedad 'dataValues' si es una instancia de Sequelize
+          token
+        };
+        let response = {
+          message,
+          admin: adminResponse
+        }
+        res.status(200).json(response);
     }
   } catch (error) {
     res
