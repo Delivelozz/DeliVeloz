@@ -23,9 +23,9 @@ const mercadoPagoWebhookController = async (req, res) => {
                 
             // });
             await PaymentMethod.create({
-                id: id_order,
                 type: data.payment_method.type,
                 status: data.status,
+                orderId: id_order,
                 // Incluir cualquier otra información relevante del pago
             });  
 
