@@ -2,7 +2,8 @@ const { Order, Product, PaymentMethod, OrderProduct } = require('../../db');
 
 const getOrdersUserController = async (idUser) => {
     const orders = await Order.findAll({
-        where: { userId: idUser },
+        where: { userId: idUser,
+        paid: true },
         include: [{ model: Product, through: { model: OrderProduct, attributes: ['quantity'] } }, { model: PaymentMethod, attributes: ['type', 'status'] }],
     });
 
