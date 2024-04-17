@@ -1,7 +1,13 @@
 const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 //const regexIncludesNumber = /\d/;
 
-export default function validation({ name, lastName, userAddress, phone }) {
+export default function validation({
+  name,
+  lastName,
+  email,
+  userAddress,
+  phone,
+}) {
   const errors = {};
 
   // ? -------------------------------------- name
@@ -32,6 +38,14 @@ export default function validation({ name, lastName, userAddress, phone }) {
     errors.lastName = "No puede contener carácteres especiales.";
   }
 
+  // ? ---------------------------------------- Email
+
+  if (email.length === 0) {
+    errors.email = "Este campo no puede estar vacío.";
+  } else if (!regexEmail.test(email)) {
+    errors.email = "Debe ser un email";
+  }
+
   // ? ---------------------------------------- UserAddress
 
   if (userAddress.length === 0) {
@@ -47,6 +61,9 @@ export default function validation({ name, lastName, userAddress, phone }) {
   } else if (phone.length < 10) {
     errors.phone = "El número de teléfono debe tener al menos 10 dígitos";
   }
+
+
+
 
   // ? ---------------------------------------- Return
 
