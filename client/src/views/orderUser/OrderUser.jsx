@@ -11,6 +11,7 @@ export default function OrderUser() {
   const shoppingCartDB = useSelector((state) => state.shoppingCartDB);
   //console.log("shoppingCartDB in OrderUser:", shoppingCartDB);
   const user = useSelector((state) => state.user);
+  console.log("este es el user", user);
   const idOrder = useSelector((state) => state.idOrder);
   const [idUser, setIdUser] = useState(null);
   const dispatch = useDispatch();
