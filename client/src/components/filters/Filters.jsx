@@ -52,6 +52,15 @@ export default function Filters({ setCurrentPage }) {
     e.preventDefault();
     const selectedValue = e.target.value;
     setCategory(selectedValue);
+
+    if (selectedValue === "Categoría") {
+      setCategory("default");
+    } else {
+      setCategory(selectedValue);
+    }
+    if (subCategory !== "default") {
+      setSubCategory("default");
+    }
     setCurrentPage(1);
     return selectedValue;
   };
@@ -70,15 +79,17 @@ export default function Filters({ setCurrentPage }) {
   // ?--------------------------------------- Filtrar por categoría && precio
 
   const handleFilterCategoryPrice = () => {
-    console.log(category, subCategory, price);
+    //console.log(category, subCategory, price);
     dispatch(orderBy(category, subCategory, price));
   };
 
   useEffect(() => {
     if (
       category !== "default" ||
+      category == "default" ||
       subCategory !== "default" ||
-      price !== "default"
+      price !== "default" ||
+      price == "default"
     ) {
       handleFilterCategoryPrice();
     }
@@ -93,7 +104,7 @@ export default function Filters({ setCurrentPage }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Buscando por nombre:", name);
+    //console.log("Buscando por nombre:", name);
     dispatch(getByName(name));
     setCurrentPage(1);
   };
@@ -141,9 +152,7 @@ export default function Filters({ setCurrentPage }) {
           className="w-1/4 py-2  border border-sundown-500 rounded-lg text-sm focus:outline-sundown-500 font-semibold"
           onChange={handleFilterCategory}
         >
-          <option value="default" disabled={true}>
-            Categoría
-          </option>
+          <option value="default">Categoría</option>
           {categoryArray.map((item, index) => (
             <option key={index} value={item}>
               {item}
@@ -161,9 +170,7 @@ export default function Filters({ setCurrentPage }) {
           onChange={handleFilterSubCategory}
           disabled={category === "default"}
         >
-          <option value="default" disabled={true}>
-            Subcategorías
-          </option>
+          <option value="default">Subcategorías</option>
           {subCategoryArray.map((item, index) => (
             <option key={index} value={item}>
               {item}
@@ -178,9 +185,7 @@ export default function Filters({ setCurrentPage }) {
           placeholder="Precio"
           className="w-1/4 py-2  border border-sundown-500 rounded-lg text-sm focus:outline-sundown-500 font-semibold"
         >
-          <option value="default" disabled={true}>
-            Por Precio
-          </option>
+          <option value="default">Por Precio</option>
           <option value="asc">$ ↓</option>
           <option value="desc">$ ↑</option>
         </select>
