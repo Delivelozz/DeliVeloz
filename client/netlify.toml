@@ -32,36 +32,48 @@
   to = "/carrito"
 
 [[redirects]]
-  from = "/admin"
-  to = "/admin"
-
-  [[redirects]]
-    from = "/editProduct/:*"
-    to = "/editProduct/:splat"
-
-  [[redirects]]
-    from = "/addNew"
-    to = "/addNew"
-
-  [[redirects]]
-    from = "/addProduct"
-    to = "/addProduct"
-
-  [[redirects]]
-    from = "/editNews/:*"
-    to = "/editNews/:splat"
-
-  [[redirects]]
     from = "/profile"
     to = "/profile"
 
-  [[redirects]]
-    from = "/editUser/:*"
-    to = "/editUser/:splat"
+[[redirects]]
+    from = "/profile/editUser/:*"
+    to = "/profile/editUser/:splat"
 
-  [[redirects]]
-    from = "/orders"
-    to = "/orders"
+[[redirects]]
+    from = "/profile/orders"
+    to = "/profile/orders"
+
+[[redirects]]
+    from = "/dashboard"
+    to = "/dashboard"
+
+[[redirects]]
+    from = "/dashboard/products"
+    to = "/dashboard/products"
+
+[[redirects]]
+    from = "/dashboard/users"
+    to = "/dashboard/users"
+
+[[redirects]]
+    from = "/dashboard/news"
+    to = "/dashboard/news"
+
+[[redirects]]
+    from = "/dashboard/news/editNews/:*"
+    to = "/dashboard/news/editNews/:splat"
+
+[[redirects]]
+    from = "/dashboard/products/editProduct/:*"
+    to = "/dashboard/products/editProduct/:splat"
+
+[[redirects]]
+    from = "/dashboard/products/addProduct"
+    to = "/dashboard/products/addProduct"
+
+[[redirects]]
+    from = "/dashboard/news/addNew"
+    to = "/dashboard/news/addNew"
 
 [[redirects]]
   from = "/*"
