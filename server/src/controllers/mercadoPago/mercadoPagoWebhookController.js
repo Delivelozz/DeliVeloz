@@ -1,5 +1,5 @@
 const axios = require('axios');
-const {Order, PaymentMethod, Cart} = require('../../db');
+const {Order, PaymentMethod, Cart, Product} = require('../../db');
 const mercadoPagoWebhookController = async (req, res) => {
     const payment = req.query;
     try {
