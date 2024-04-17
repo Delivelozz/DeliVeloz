@@ -8,6 +8,7 @@ import { useGetShoppingDB } from "../../../hooks/useGetShoppingDB.js";
 import { editNews } from "../../../redux/actions/actions";
 import validation from "./validation";
 import Sidenav from "../../../components/admin/sidenav/Sidenav.jsx";
+import { useNavigate } from "react-router-dom";
 
 export default function EditNews() {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ export default function EditNews() {
   useLocalStoreUserDataGoogle();
   useGetShoppingDB();
   //const [New, setNew] = useState({});
-
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const blog = useSelector((state) => state.blog);
@@ -31,25 +32,12 @@ export default function EditNews() {
   useEffect(() => {
     if (blog) {
       setForm({
-        title: blog.title,
-        description: blog.description,
-        image: blog.image,
+        title: blog?.title,
+        description: blog?.description,
+        image: blog?.image,
       });
     }
   }, [blog]);
-
-  // const [blog, SetBlog] = useState({
-  //   name: "",
-  //   description: "",
-  //   price: "",
-  //   category: "",
-  //   subCategory: "",
-  //   image: {
-  //     jpg: "",
-  //     png: "",
-  //   },
-  //   quantity: "",
-  // });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -88,6 +76,8 @@ export default function EditNews() {
     console.log("Form antes de enviar:", form);
     dispatch(editNews({ ...form, id }));
     alert("¡La publicación fue editada exitosamente!");
+
+    navigate("/home");
   };
 
   const handleImageUpload = (imageUrl, imageType) => {
@@ -144,7 +134,7 @@ export default function EditNews() {
                   name="description"
                   cols="30"
                   rows="10"
-                  value={form.description}
+                  value={form?.description}
                   className="bg-white border max-h-60 min-h-60 border-gray-600 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
                 ></textarea>
                 {errors.description && (
@@ -158,7 +148,7 @@ export default function EditNews() {
                 <label className="font-semibold text-sm text-gray-800 mb-1">
                   Imagen:
                 </label>
-                <img src={form.image.jpg} alt="" />
+                <img src={form.image?.jpg} alt="" />
                 <UploadWidget
                   onImageUpload={(url) => handleImageUpload(url, "jpg")}
                   imageType="jpg"

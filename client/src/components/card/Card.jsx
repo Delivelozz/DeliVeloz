@@ -93,7 +93,6 @@ export default function Card(props) {
         <div className="w-full flex justify-between ">
           <p className="w-4/6 truncate font-bold">{name}</p>
           <p className="text-sundown-500 font-bold ">$ {price}</p>
-          <p>{stock}</p>
         </div>
         {userID === undefined || userID === null ? (
           <div className="flex justify-center">
