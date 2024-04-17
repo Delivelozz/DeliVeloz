@@ -1,16 +1,38 @@
 const { where } = require('sequelize');
 const {User, Cart, Product, CartProduct} = require('../../db');
 
-const addProductCartController = async (idUser, idProduct) => {
-    // Verificar si el usuario existe
-    const user = await User.findByPk(idUser);
-    if (!user) {
-        throw new Error('Usuario no encontrado');
-    }
 
-    // Ahora que sabemos que el usuario existe, procedemos a crear o actualizar el carrito
-    const newCart = await Cart.findOne({
-        where: { userId: idUser }
+const addProductCartController = async (idUser, idProduct) => {
+  // Verificar si el usuario existe
+  const user = await User.findByPk(idUser);
+  if (!user) {
+    throw new Error("Usuario no encontrado");
+  }
+
+  // Ahora que sabemos que el usuario existe, procedemos a crear o actualizar el carrito
+  const newCart = await Cart.findOne({
+    where: { userId: idUser },
+  });
+
+  if (!newCart) {
+    throw new Error("Producto no encontrado");
+  } else {
+    // // Crear una asociación entre el producto y el carrito
+    // // Asegúrate de que el producto exista y esté correctamente definido
+    // const product = await Product.findByPk(idProduct);
+    // if (!product) {
+    //     throw new Error('Producto no encontrado');
+    // }
+    // await newCart.addProduct(product, { through: { quantity: 1 } });
+    const product = await Product.findByPk(idProduct);
+    if (!product) {
+      throw new Error("Producto no encontrado");
+    }
+    const cartProduct = await CartProduct.findOne({
+      where: {
+        cartId: newCart.id,
+        productId: product.id,
+      },
     });
 
     if(!newCart){
@@ -32,29 +54,30 @@ const addProductCartController = async (idUser, idProduct) => {
                 await product.update({
                     quantity: product.quantity - 1
                 });
-                if(product.quantity === 0){
-                    await product.update({
-                        availability: false
-                    });
-                }
+                // if(product.quantity === 0){
+                //     await product.update({
+                //         availability: false
+                //     });
+                // }
 
             }else{
                 await newCart.addProduct(product, { through: { quantity: 1 } });
                 await product.update({
                     quantity: product.quantity - 1
                 });
-                if(product.quantity === 0){
-                    await product.update({
-                        availability: false
-                    });
-                }
+                // if(product.quantity === 0){
+                //     await product.update({
+                //         availability: false
+                //     });
+                // }
             }
         }else{
             return "Alcanzo el numero de productos disponibles";
         }
     }
-   
-    return "Producto añadido";
-}
+  }
+
+  return "Producto añadido";
+};
 
 module.exports = addProductCartController;

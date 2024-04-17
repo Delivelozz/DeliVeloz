@@ -1,36 +1,44 @@
-import blog from "../../../img/imgBlog.jpg";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import { setBlogId } from "../../redux/actions/actions.js";
+
 import { useLocalStoreUserData } from "../../hooks/useLocalStoreUserData.js";
 import { useLocalStoreUserDataGoogle } from "../../hooks/useLocalStoreUserDataGoogle.js";
+import { useGetShoppingDB } from "../../hooks/useGetShoppingDB.js";
 
 function Blog() {
   useLocalStoreUserData();
   useLocalStoreUserDataGoogle();
+  useGetShoppingDB();
+
+  //mi codigo:
+  const { id } = useParams();
+  const blog = useSelector((state) => state.blog);
+  const dispatch = useDispatch();
+
+  //traer la accion
+
+  useEffect(() => {
+    dispatch(setBlogId(id));
+  }, [dispatch, id]);
 
   return (
-    <div className="container lg:mb-56">
+    <section className="container lg:mb-56">
       <div className="relative h-64">
         <img
           className="absolute top-0 w-full h-full object-cover py-5"
-          src={blog}
-          alt="imagen de blog"
+          src={blog?.image?.jpg}
+          alt={blog?.title}
         />
       </div>
-
       <div className="flex flex-col py-5">
         <h1 className="py-5 text-center text-xl font-semibold pb-6">
-          <span className="text-sundown-500">Blog</span> Promos
+          {blog?.title}
         </h1>
-        <p className="text-base">
-          Id consequat deserunt eu mollit sint amet velit sunt minim veniam.
-          Amet cillum aliqua est sunt nulla pariatur enim ullamco aute occaecat
-          sint ea enim ad. Sint ut qui cillum commodo enim nostrud ea minim duis
-          labore nisi consequat non adipisicing. Proident tempor proident
-          laboris mollit labore nulla excepteur fugiat fugiat laborum officia
-          minim pariatur deserunt. Sunt ex mollit Lorem pariatur ipsum excepteur
-          nisi incididunt mollit.
-        </p>
+        <p className="text-base">{blog?.description}</p>
       </div>
-    </div>
+    </section>
   );
 }
 

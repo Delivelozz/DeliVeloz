@@ -25,11 +25,11 @@ export default function SliderHome() {
             alt=""
             className="object-cover max-h-96 min-h-96 w-full"
           />
-          <div className="absolute inset-0 flex items-center justify-center flex-col text-white gap-3">
-            <h1 className="text-5xl font-bold text-center">
+          <div className="absolute inset-0 flex items-center justify-center flex-col text-white gap-3 w-3/4 mx-auto">
+            <h1 className="text-4xl md:text-5xl font-bold text-center">
               Las pizzas mas calientes llegan por DeliVeloz
             </h1>
-            <p className="text-xl text-center">
+            <p className="text-lg md:text-xl text-center">
               ¿Qué esperas para pedir el tuyo?
             </p>
           </div>
@@ -40,11 +40,11 @@ export default function SliderHome() {
             alt=""
             className="object-cover max-h-96 min-h-96 w-full"
           />
-          <div className="absolute inset-0 flex items-center justify-center flex-col text-white gap-3">
-            <h1 className="text-5xl font-bold text-center">
+          <div className="absolute inset-0 flex items-center justify-center flex-col text-white gap-3 w-3/4 mx-auto">
+            <h1 className="text-4xl md:text-5xl font-bold text-center">
               Los sándwichs mas calientes llegan por DeliVeloz
             </h1>
-            <p className="text-xl text-center">
+            <p className="text-lg md:text-xl text-center">
               ¿Qué esperas para pedir el tuyo?
             </p>
           </div>
@@ -55,11 +55,11 @@ export default function SliderHome() {
             alt=""
             className="h-full object-cover max-h-96 min-h-96 w-full"
           />
-          <div className="absolute inset-0 flex items-center justify-center flex-col text-white gap-3">
-            <h1 className="text-5xl font-bold text-center">
+          <div className="absolute inset-0 flex items-center justify-center flex-col text-white gap-3 w-3/4 mx-auto">
+            <h1 className="text-4xl md:text-5xl font-bold text-center">
               Las Hamburguesas mas calientes llegan por DeliVeloz
             </h1>
-            <p className="text-xl text-center">
+            <p className="text-lg md:text-xl text-center">
               ¿Qué esperas para pedir el tuyo?
             </p>
           </div>

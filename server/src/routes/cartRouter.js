@@ -1,5 +1,5 @@
-const { Router } = require ("express");
-const cartRouter = Router(); 
+const { Router } = require("express");
+const cartRouter = Router();
 
 // Importar handlers
 const getUserCartHandler = require("../handlers/cart/getUserCartHandler");
@@ -12,8 +12,14 @@ cartRouter.get("/user/:idUser", getUserCartHandler);
 // Add product
 cartRouter.put("/addproduct/:idUser/:idProduct", addProductCartHandler);
 // Decrease product
-cartRouter.put("/decreaseproduct/:idUser/:idProduct", decreaseProductCartHandler);
+cartRouter.put(
+  "/decreaseproduct/:idUser/:idProduct",
+  decreaseProductCartHandler
+);
 // Remove product
-cartRouter.delete("/removeproduct/:idUser/:idProduct", removeProductCartHandler);
-    
+cartRouter.delete(
+  "/removeproduct/:idUser/:idProduct",
+  removeProductCartHandler
+);
+
 module.exports = cartRouter;
