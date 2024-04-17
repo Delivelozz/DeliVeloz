@@ -2,13 +2,14 @@ const jwt = require('jsonwebtoken');
 const { User } = require('../db');
 
 const accessUser = async (req) => {
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1];
+ const authHeader = req.headers['authorization'];
+ const token = authHeader && authHeader.split(' ')[1];
 
-  if (!token) {
-      throw new Error('Token no proporcionado');
-  }
-  try {
+ if (!token) {
+    console.error('Token no proporcionado');
+    return null;
+ }
+ try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const { email } = decoded;
 
@@ -17,13 +18,15 @@ const accessUser = async (req) => {
     });
 
     if (!UserByToken) {
-        throw new Error('Acceso denegado');
+      console.error('Acceso denegado');
+      return null;
     }
 
-    return UserByToken
-  } catch (error) {
-    throw error;
-  }
+    return UserByToken;
+ } catch (error) {
+    console.error('Se produjo un error al acceder al usuario:', error);
+    return null;
+ }
 }
 
-module.exports = accessUser
+module.exports = accessUser;
