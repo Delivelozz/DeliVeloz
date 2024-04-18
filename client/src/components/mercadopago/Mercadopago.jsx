@@ -8,6 +8,9 @@ const Mercadopago = ({ shoppingCartDB, onPaymentComplete }) => {
   //guardo el id en preferentceId y set me ayuda a guardar el estado
   console.log("shoppingCartDB in Mercadopago:", shoppingCartDB);
 
+  const user = useSelector((state) => state.user);
+  console.log("este es el user", user.user.id);
+  const idUser = user.user.id;
   const idOrder = useSelector((state) => state.idOrder);
   const [preferenceId, setPreferenceId] = useState(null);
 
@@ -29,6 +32,7 @@ const Mercadopago = ({ shoppingCartDB, onPaymentComplete }) => {
       const dataToSend = {
         product: products,
         id_order: idOrder,
+        id_user: idUser,
       };
 
       const response = await axios.post(
