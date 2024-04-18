@@ -252,7 +252,7 @@ export function editUser(payload) {
 export function loginUser(payload) {
   return async function (dispatch) {
     try {
-      const response = await axios.post(`${API_URL}/users/login`, payload);
+      const response = await axios.post(`${API_URL}/login`, payload);
       dispatch({
         type: LOGIN_USER,
         payload: response.data,
