@@ -276,7 +276,7 @@ export function loginUser(payload) {
         type: LOGIN_USER,
         payload: response.data,
       });
-      console.log("Respuesta de la API:", response.data);
+      //console.log("Respuesta de la API:", response.data);
       return response;
     } catch (error) {
       if (error.response && error.response.status === 500) {
@@ -324,7 +324,7 @@ export function postUsers(payload) {
 // ? ----------------------------- Set User Data
 
 export function setUserData(userData) {
-  console.log(userData);
+  //console.log(userData);
   localStorage.setItem("userData", JSON.stringify(userData));
   return {
     type: "SET_USER_DATA",

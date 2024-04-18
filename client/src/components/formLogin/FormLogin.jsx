@@ -83,8 +83,10 @@ export default function FormLogin({ closeModal }) {
 
   const onChange = (e) => {
     const { name, value } = e.target;
+    //console.log(name, value);
     setFormData({ ...formData, [name]: value });
   };
+  //console.log(formData);
 
   // ?------------------------------------------- OnSubmit
 
@@ -99,6 +101,7 @@ export default function FormLogin({ closeModal }) {
       formData.password
     ) {
       try {
+        //console.log("Formulario de datos: ", formData);
         await dispatch(setUserData(formData));
         await dispatch(loginUser(formData));
         closeModal();

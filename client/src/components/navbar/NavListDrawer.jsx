@@ -74,7 +74,7 @@ export default function NavListDrawer({
             <img
               src="https://res.cloudinary.com/derot8znd/image/upload/v1713113177/png/a5xd2b9zcl7orbclcgnr.png"
               alt="isologo"
-              class="w-15 h-8 object-cover pl-3"
+              className="w-15 h-8 object-cover pl-3"
             />
             <ListItemButton
               component={Link}
@@ -191,7 +191,7 @@ export default function NavListDrawer({
           <img
             src="https://res.cloudinary.com/derot8znd/image/upload/v1713113177/png/a5xd2b9zcl7orbclcgnr.png"
             alt="isologo"
-            class="w-15 h-8 object-cover pl-3"
+            className="w-15 h-8 object-cover pl-3"
           />
           <ListItemButton
             component={Link}

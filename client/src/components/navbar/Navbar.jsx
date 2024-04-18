@@ -44,7 +44,7 @@ export default function Header({ openLoginModal, openRegisterModal }) {
     }
     return false;
   };
-  console.log(handleIsAdmin());
+  //console.log(handleIsAdmin());
 
   const onClick = () => {
     dispatch(logoutUser());

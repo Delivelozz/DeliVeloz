@@ -13,7 +13,7 @@ export default function FloatButtonCard() {
     setUserEmailD(user?.user?.email);
   }, [user]);
 
-  console.log("userEmail", userEmail);
+  //console.log("userEmail", userEmail);
 
   const shoppingCartCounterItem = useShoppingCartCounterItem();
   return (
