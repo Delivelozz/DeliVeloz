@@ -28,12 +28,14 @@ export default function Orders() {
   const [productInfo, setProductInfo] = useState(null);
   const userData = useSelector((state) => state.userData);
   const [modalOpen, setModalOpen] = useState(false);
+  const [selectedProductId, setSelectedProductId] = useState(null);
 
   useEffect(() => {
+    console.log("id:", selectedProductId)
     // Función para obtener la información del producto con ID 1
     const fetchProductInfo = async () => {
       try {
-        const response = await axios.get(`${API_URL}/products/${id}`); // Sustituye "API_URL" por la URL de tu API
+        const response = await axios.get(`${API_URL}/products/${selectedProductId}`); // Sustituye "API_URL" por la URL de tu API
         setProductInfo(response.data);
       } catch (error) {
         console.error("Error al obtener la información del producto:", error);
@@ -42,7 +44,7 @@ export default function Orders() {
 
     // Llama a la función para obtener la información del producto al cargar el componente
     fetchProductInfo();
-  }, [id]);
+  }, [selectedProductId]);
 
   const handleStarClick = (starRating) => {
     setRating((prevRating) => (prevRating === starRating ? 0 : starRating));
@@ -51,7 +53,7 @@ export default function Orders() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${API_URL}/assessment/${id}`, {
+      await axios.post(`${API_URL}/assessment/${selectedProductId}`, {
         rating,
         comment,
         email: userData.email,
@@ -71,7 +73,6 @@ export default function Orders() {
   const myOrders = useSelector((state) => state.myOrders);
   console.log(myOrders);
 
-  const [selectedProductId, setSelectedProductId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [rating, setRating] = useState(0);

@@ -1,11 +1,12 @@
 import { useSelector, useDispatch } from "react-redux";
-import { getUsers } from "../../../redux/actions/actions";
+import { getUsers, disabledUsers } from "../../../redux/actions/actions";
 import { useEffect } from "react";
 import DataTable from "react-data-table-component";
 import Sidenav from "../../../components/admin/sidenav/Sidenav";
 import { useLocalStoreUserData } from "../../../hooks/useLocalStoreUserData.js";
 import { useLocalStoreUserDataGoogle } from "../../../hooks/useLocalStoreUserDataGoogle.js";
 import { useGetShoppingDB } from "../../../hooks/useGetShoppingDB.js";
+import DeleteIcon from "../../../components/icons/DeleteIcon";
 
 export default function ListUsers() {
   useLocalStoreUserData();
@@ -19,13 +20,22 @@ export default function ListUsers() {
     dispatch(getUsers());
   }, [dispatch]);
 
-  console.log(allUsers);
+  const onDisabled = async ({ id, active }) => {
+    try {
+      await dispatch(disabledUsers({ id, active }));
+      await dispatch(getUsers());
+      // console.log("Se desactivo la cuenta");
+    } catch (error) {
+      console.error("Error al desactivar el usuario :", error);
+    }
+  };
 
   const columns = [
     {
       name: "Id",
       selector: (row) => row.id,
       width: "100px",
+      sortable: true,
     },
     {
       name: "Nombre",
@@ -52,6 +62,15 @@ export default function ListUsers() {
     {
       name: "Activo",
       selector: (row) => (row.active ? "Sí" : "No"),
+      width: "100px",
+    },
+    {
+      name: "Desactivar",
+      cell: (row) => (
+        <button onClick={() => onDisabled(row)}>
+          <DeleteIcon width={22} height={22} color={"#E74C4C"} />
+        </button>
+      ),
       width: "100px",
     },
   ];
