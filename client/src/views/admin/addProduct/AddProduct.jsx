@@ -7,6 +7,7 @@ import { useLocalStoreUserData } from "../../../hooks/useLocalStoreUserData.js";
 import { useLocalStoreUserDataGoogle } from "../../../hooks/useLocalStoreUserDataGoogle.js";
 import { useGetShoppingDB } from "../../../hooks/useGetShoppingDB.js";
 import Sidenav from "../../../components/admin/sidenav/Sidenav.jsx";
+import { toast } from "react-toastify";
 
 export default function AddProduct() {
   const dispatch = useDispatch();
@@ -85,7 +86,12 @@ export default function AddProduct() {
         availability: "",
         quantity: "",
       });
-      alert("¡El producto fue creado exitosamente!");
+      toast.success("¡El producto fue creado exitosamente!", {
+        style: {
+          backgroundColor: "#55B938",
+          color: "white",
+        },
+      });
     }
   };
 

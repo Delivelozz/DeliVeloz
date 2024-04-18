@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useLocalStoreUserData } from "../../../hooks/useLocalStoreUserData.js";
 import { useLocalStoreUserDataGoogle } from "../../../hooks/useLocalStoreUserDataGoogle.js";
 import { useGetShoppingDB } from "../../../hooks/useGetShoppingDB.js";
+import { toast } from "react-toastify";
 
 export default function EditUser() {
   const dispatch = useDispatch();
@@ -66,22 +67,13 @@ export default function EditUser() {
     // Envia los datos a través de la acción editUser
     try {
       await dispatch(editUser({ id: user.id, ...userData }));
-      alert("¡Usuario editado con éxito!");
-      // Si la actualización es exitosa, restablece los datos del formulario
-      setUserData({
-        name: "",
-        lastName: "",
-        email: "",
-        userAddress: "",
-        phone: "",
+      toast.success("¡El producto fue creado exitosamente!", {
+        style: {
+          backgroundColor: "#55B938",
+          color: "white",
+        },
       });
-      setErrors({
-        name: "",
-        lastName: "",
-        email: "",
-        userAddress: "",
-        phone: "",
-      });
+      //alert("¡Usuario editado con éxito!");
     } catch (error) {
       console.error("Error al editar el usuario:", error);
       alert(
