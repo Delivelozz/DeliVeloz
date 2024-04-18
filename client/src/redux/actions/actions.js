@@ -21,6 +21,7 @@ import {
   TOGGLE_SIDEBAR,
   EDIT_DISHES,
   DISABLED_DISHES,
+  DISABLED_USER,
   EDIT_USER,
   POST_BLOG,
   EDIT_NEWS,
@@ -35,6 +36,25 @@ import axios from "axios";
 import { API_URL } from "../../utils/constants";
 
 // ! ----------------------------------------------- Dishes
+
+export function disabledUsers(payload) {
+  const invertedAvailability = !payload.active;
+
+  return async function (dispatch) {
+    try {
+      const response = await axios.put(
+        `https://deliveloz-ryfh.onrender.com/users/${payload.id}/${invertedAvailability}`,
+        payload
+      );
+      dispatch({
+        type: DISABLED_USER,
+        payload: { ...response.data, active: invertedAvailability }, // Actualizar availability con el valor invertido
+      });
+    } catch (error) {
+      console.error("Error al desactivar el producto: ", error);
+    }
+  };
+}
 
 // ? ----------------------------- Set All Dishes
 
@@ -126,6 +146,8 @@ export function disabledDishes(payload) {
     }
   };
 }
+
+
 
 // ! ----------------------------------------------- Promos
 

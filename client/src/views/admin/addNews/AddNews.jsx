@@ -1,7 +1,7 @@
 import { useLocalStoreUserData } from "../../../hooks/useLocalStoreUserData.js";
 import { useLocalStoreUserDataGoogle } from "../../../hooks/useLocalStoreUserDataGoogle.js";
 import { useGetShoppingDB } from "../../../hooks/useGetShoppingDB.js";
-
+import UploadWidget from "../../../components/cloudinary/UploadWidget";
 import { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
@@ -16,7 +16,6 @@ export default function AddNews() {
   useGetShoppingDB();
 
   const dispatch = useDispatch();
-  const [urlJpg, setUrlJpg] = useState("");
 
   const [blog, setBlog] = useState({
     title: "",
@@ -34,22 +33,16 @@ export default function AddNews() {
     image: "",
   });
 
-  const changeUploadImageJpg = async (e) => {
-    const file = e.target.files[0];
-    const data = new FormData();
-    data.append("file", file);
-    data.append("upload_preset", "deliveloz");
+  // ? -------------------------------------- Cloudinary
 
-    const response = await axios.post(
-      "https://api.cloudinary.com/v1_1/derot8znd/image/upload",
-      data
-    );
-
-    setUrlJpg(response.data.secure_url);
-    setBlog({
-      ...blog,
-      image: { ...blog.image, jpg: response.data.secure_url },
-    });
+  const handleImageUpload = (imageUrl, imageType) => {
+    setBlog((prevBlog) => ({
+      ...prevBlog,
+      image: {
+        ...prevBlog.image,
+        [imageType]: imageUrl,
+      },
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -125,15 +118,11 @@ export default function AddNews() {
                   <label className="font-semibold text-sm text-gray-800 mb-1">
                     Imagen jpg:
                   </label>
-                  <div className="flex flex-col gap-2">
-                    <input
-                      value={blog.jpg}
-                      type="file"
-                      name="images"
-                      accept="image/*"
-                      onChange={changeUploadImageJpg}
-                    />
-                  </div>
+                  <UploadWidget
+                    onImageUpload={(url) => handleImageUpload(url, "jpg")}
+                    imageType="jpg"
+                    texto="Añadir imagen"
+                  />
                 </div>
               </div>
             </div>
