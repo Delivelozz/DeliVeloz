@@ -1,5 +1,6 @@
 const axios = require('axios');
 const {Order, PaymentMethod, Cart, Product} = require('../../db');
+const emailNotifications = require('../../functions/emailNotifications');
 const mercadoPagoWebhookController = async (req, res) => {
     const payment = req.query;
     try {
@@ -52,6 +53,8 @@ const mercadoPagoWebhookController = async (req, res) => {
                     }
                 ]
             });
+
+            await emailNotifications(id_user);
 
         }
         res.sendStatus(204);

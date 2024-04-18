@@ -1,7 +1,8 @@
-const userOrderController = require("../../controllers/order/userOrderController");
-const emailOrderController = require("../../controllers/order/emailOrderController");
+const emailOrderController = require("../controllers/order/emailOrderController");
+const userOrderController = require("../controllers/order/userOrderController");
 
-const emailOrderHandler = async (idUser) => {
+
+const emailNotifications = async (idUser) => {
   try {
     const user = await userOrderController(idUser);
     if (idUser) {
@@ -36,4 +37,4 @@ const emailOrderHandler = async (idUser) => {
   }
 };
 
-module.exports = emailOrderHandler;
+module.exports = emailNotifications;
