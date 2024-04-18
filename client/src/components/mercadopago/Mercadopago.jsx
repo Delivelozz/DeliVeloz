@@ -15,7 +15,7 @@ const Mercadopago = ({ shoppingCartDB, onPaymentComplete }) => {
   const [preferenceId, setPreferenceId] = useState(null);
 
   useEffect(() => {
-    initMercadoPago("TEST-bc727f75-9789-4717-9b6a-636604e99203", {
+    initMercadoPago("TEST-50ce70c7-4413-4798-8726-e8857f2da0ae", {
       locale: "es-AR",
     });
   }, []);
