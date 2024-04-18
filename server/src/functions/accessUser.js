@@ -7,7 +7,7 @@ const accessUser = async (req) => {
 
  if (!token) {
     console.error('Token no proporcionado');
-    return null;
+    return false;
  }
  try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
@@ -19,13 +19,13 @@ const accessUser = async (req) => {
 
     if (!UserByToken) {
       console.error('Acceso denegado');
-      return null;
+      return false;
     }
 
     return UserByToken;
  } catch (error) {
-    console.error('Se produjo un error al acceder al usuario:', error);
-    return null;
+    console.error('Se produjo un error al acceder al usuario:');
+    return false;
  }
 }
 
