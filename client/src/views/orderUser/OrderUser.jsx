@@ -26,7 +26,6 @@ export default function OrderUser() {
   const productsArray = shoppingCartDB.products || [];
 
   const handlePay = () => {
-    //console.log(showMercadoPago);
     setShowMercadoPago(true);
   };
 

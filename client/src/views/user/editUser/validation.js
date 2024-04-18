@@ -62,10 +62,7 @@ export default function validation({
     errors.phone = "El número de teléfono debe tener al menos 10 dígitos";
   }
 
-
-
-
-  // ? ---------------------------------------- Return
+// ? ---------------------------------------- Return
 
   return errors;
 }
