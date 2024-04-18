@@ -1,13 +1,13 @@
 const getUsersByNameController = require('../../controllers/users/getUsersByNameController');
 const getUsersController = require('../../controllers/users/getUsersController');
-const accessAdmin = require('../../functions/accessAdmin');
+// const accessAdmin = require('../../functions/accessAdmin');
 // Devuelve todos los Usuarios o los Usuarios por nombre
 const getUsersHandler = async (req, res) => {
     try {
-        const access = await accessAdmin(req);
-        if (!access){
-            return res.status(403).json({ error: 'Acceso denegado' })
-        }
+        // const access = await accessAdmin(req);
+        // if (!access){
+        //     return res.status(403).json({ error: 'Acceso denegado' })
+        // }
         const {name} = req.query;
         try {
             if(name){
