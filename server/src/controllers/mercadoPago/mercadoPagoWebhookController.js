@@ -20,7 +20,7 @@ const mercadoPagoWebhookController = async (req, res) => {
             const id_user = dataId.id_user;
             console.log(id_order);
             console.log(id_user);
-
+            const status = data.status;
 
             const order = await Order.findByPk(id_order);
             order.update({
@@ -54,7 +54,7 @@ const mercadoPagoWebhookController = async (req, res) => {
                 ]
             });
 
-            await emailNotifications(id_user);
+            await emailNotifications(id_user, status);
 
         }
         res.sendStatus(204);
