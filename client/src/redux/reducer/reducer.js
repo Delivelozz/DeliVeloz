@@ -28,6 +28,9 @@ import {
   POST_ORDER,
   GET_ORDER,
   SET_ORDER_ID,
+  SET_ALL_DISHES,
+  GET_ADMIN_USERS,
+  DISABLED_USER,
 } from "../actions/types";
 
 const initialState = {
@@ -45,6 +48,7 @@ const initialState = {
   userData: JSON.parse(localStorage.getItem("userData")) || {
     email: "",
     password: "",
+    token: "",
   },
   errors: {
     email: "",
@@ -60,10 +64,13 @@ const initialState = {
   },
   dishEdited: [],
   dishDisabled: [],
+  userDisabled: [],
   myOrders: [],
   order: [],
   orderDetail: [],
   idOrder: JSON.parse(localStorage.getItem("idOrder")) || "",
+  allDishes: [],
+  adminUsers: [],
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -72,10 +79,18 @@ export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
     // ? ----------------------------- Set Dishes
 
+    case SET_ALL_DISHES:
+      return {
+        ...state,
+        allDishes: payload,
+      };
+
+    // ? ----------------------------- Set Dishes
+
     case SET_DISHES:
       return {
         ...state,
-        dishes: payload, // Actualiza el arreglo de platos original
+        dishes: payload,
       };
 
     // ? ----------------------------- Post Dishes
@@ -109,6 +124,12 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         dishDisabled: [...state.dishDisabled, payload],
+      };
+
+    case DISABLED_USER:
+      return {
+        ...state,
+        userDisabled: [...state.userDisabled, payload],
       };
 
     // ! ----------------------------------------------- Promos
@@ -322,6 +343,12 @@ export default function reducer(state = initialState, { type, payload }) {
         idOrder: payload,
       };
 
+    // ! ------------------------------------------------ Admin
+    case GET_ADMIN_USERS:
+      return {
+        ...state,
+        adminUsers: payload,
+      };
     // ! ------------------------------------------------ Default
 
     default:
