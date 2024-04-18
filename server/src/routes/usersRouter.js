@@ -13,7 +13,9 @@ const closeUsersHandler = require("../handlers/users/closeUsersHandler");
 // Obtener todos los Usuarios
 usersRouter.get("/", getUsersHandler);
 // Obtener Usuario
-usersRouter.get("/user", getUserHandler);
+// usersRouter.get("/user", getUserHandler);
+// Obtener Usuario
+usersRouter.get("/user/:id", getUserHandler);
 // Crear Usuario
 usersRouter.post("/", createUserHandler);
 // Editar Usuario
