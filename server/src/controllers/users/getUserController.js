@@ -2,8 +2,12 @@ const accessUser = require('../../functions/accessUser');
 
 const getUserController = async (req) => {
     try {
-        const userByToken = await accessUser(req)
-        return userByToken;
+        const access = await accessUser(req);
+        if (!access){
+            console.error('No tienes acceso');
+            return false;
+        }
+        return access;
     } catch (error) {
         throw error;
     }

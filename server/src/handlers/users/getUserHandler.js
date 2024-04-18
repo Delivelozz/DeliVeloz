@@ -3,6 +3,9 @@ const getUserController = require('../../controllers/users/getUserController');
 const getUserHandler = async (req, res) => {
     try {
         const response = await getUserController(req);
+        if (!response){
+            return res.status(403).json({ error: 'Acceso denegado' })
+        }
         res.status(200).json(response);
     } catch (error) {
         res.status(400).json({error: error.message});
