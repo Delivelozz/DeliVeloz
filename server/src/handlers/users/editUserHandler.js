@@ -3,7 +3,10 @@ const accessUser = require('../../functions/accessUser');
 
 // Maneja la edicion de los datos del Usuario en la Base de Datos
 const editUserHandler = async (req, res) => {
-    await accessUser(req)
+    const response = await accessUser(req)
+    if (!response){
+        return res.status(400).json({ error: "Acceso denegado" })
+    }
     //obtenemos el id del usuario por params
     const id = req.params;
     //obtenemos los nuevos datos del usuario por body
