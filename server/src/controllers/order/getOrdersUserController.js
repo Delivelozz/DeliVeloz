@@ -1,4 +1,4 @@
-const { Order, Product, PaymentMethod } = require('../../db');
+const { Order, Product, PaymentMethod, OrderProduct } = require('../../db');
 
 const getOrdersUserController = async (idUser) => {
     const orders = await Order.findAll({

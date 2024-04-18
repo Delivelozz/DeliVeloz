@@ -3,11 +3,11 @@ const { User, Administrator } = require("../../db");
 const loginController = async (email, password) => {
   
     const user = await User.findOne({ where: { email } });
-  if(user){
-      if (user.password !== password) {
-        throw new Error("Contraseña incorrecta");
-      }
-      return { message: "Inicio de sesión exitoso para user", user };
+    if(user){
+        if (user.password !== password) {
+            throw new Error("Contraseña incorrecta");
+        }
+    return { message: "Inicio de sesión exitoso para user", user };
       
   } else {
       const admin = await Administrator.findOne({where: {email}})
