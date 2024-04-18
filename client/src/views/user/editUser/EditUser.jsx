@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { useLocalStoreUserData } from "../../../hooks/useLocalStoreUserData.js";
 import { useLocalStoreUserDataGoogle } from "../../../hooks/useLocalStoreUserDataGoogle.js";
 import { useGetShoppingDB } from "../../../hooks/useGetShoppingDB.js";
-import { toast } from "react-toastify";
+//import { toast } from "react-toastify";
 
 export default function EditUser() {
   const dispatch = useDispatch();
@@ -67,12 +67,13 @@ export default function EditUser() {
     // Envia los datos a través de la acción editUser
     try {
       await dispatch(editUser({ id: user.id, ...userData }));
-      toast.success("¡Usuario editado con éxito!", {
-        style: {
-          backgroundColor: "green",
-          color: "black",
-        },
-      });
+      alert("¡Usuario editado con éxito!");
+      // toast.success("¡Usuario editado con éxito!", {
+      //   style: {
+      //     backgroundColor: "green",
+      //     color: "black",
+      //   },
+      // });
 
       // Si la actualización es exitosa, restablece los datos del formulario
       setUserData({
@@ -91,15 +92,18 @@ export default function EditUser() {
       });
     } catch (error) {
       console.error("Error al editar el usuario:", error);
-      toast.error(
-        "¡Ocurrió un error al editar el usuario. Por favor, inténtalo de nuevo.!",
-        {
-          style: {
-            backgroundColor: "red",
-            color: "black",
-          },
-        }
+      alert(
+        "Ocurrió un error al editar el usuario. Por favor, inténtalo de nuevo."
       );
+      // toast.error(
+      //   "¡Ocurrió un error al editar el usuario. Por favor, inténtalo de nuevo.!",
+      //   {
+      //     style: {
+      //       backgroundColor: "red",
+      //       color: "black",
+      //     },
+      //   }
+      // );
       // alert(
       //   "Ocurrió un error al editar el usuario. Por favor, inténtalo de nuevo."
       // );
