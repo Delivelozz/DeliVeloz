@@ -45,6 +45,14 @@ const mercadoPagoWebhookController = async (req, res) => {
                 await cart.removeProduct(cart.products[index]);
             }
 
+            const cart2 = await Cart.findByPk(id_user, {
+                include: [
+                    {
+                        model: Product,
+                    }
+                ]
+            });
+
         }
         res.sendStatus(204);
     } catch (error) {
