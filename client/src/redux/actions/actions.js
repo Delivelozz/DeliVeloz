@@ -28,11 +28,30 @@ import {
   POST_ORDER,
   GET_ORDER,
   SET_ORDER_ID,
+  SET_ALL_DISHES,
+  GET_ADMIN_USERS,
 } from "./types";
 import axios from "axios";
 import { API_URL } from "../../utils/constants";
 
 // ! ----------------------------------------------- Dishes
+
+// ? ----------------------------- Set All Dishes
+
+export function setAllDishes() {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(`${API_URL}/products`);
+      const data = await response.json();
+      dispatch({
+        type: SET_ALL_DISHES,
+        payload: data,
+      });
+    } catch (error) {
+      console.error("Error fetching all dishes: ", error);
+    }
+  };
+}
 
 // ? ----------------------------- Set Dishes
 
@@ -151,7 +170,7 @@ export const orderBy = (category, subCategory, orderType) => {
 export function getByName(name) {
   return async (dispatch) => {
     try {
-      const response = await fetch(`${API_URL}/products?name=${name}`);
+      const response = await fetch(`${API_URL}/products/active?name=${name}`);
       if (!response.ok) {
         throw new Error("No hay ningún plato en el menu con ese nombre");
       }
@@ -257,6 +276,8 @@ export function loginUser(payload) {
         type: LOGIN_USER,
         payload: response.data,
       });
+      console.log("Respuesta de la API:", response.data);
+      return response;
     } catch (error) {
       if (error.response && error.response.status === 500) {
         console.error("Usuario no encontrado");
@@ -489,5 +510,20 @@ export const setOrderIdAppi = (payload) => {
   return {
     type: SET_ORDER_ID,
     payload,
+  };
+};
+
+// ! ------------------------------------------------ Admin
+export const getAdminUsers = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`${API_URL}/administrator`);
+      dispatch({
+        type: GET_ADMIN_USERS,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error("Error fetching admin users: ", error);
+    }
   };
 };

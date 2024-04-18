@@ -6,11 +6,16 @@ import Cart from "../icons/Cart";
 
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { logoutUser, setUserData } from "../../redux/actions/actions";
+import {
+  logoutUser,
+  setUserData,
+  getAdminUsers,
+} from "../../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
 import { useShoppingCartCounterItem } from "../../hooks/useShoppingCartCounterItem";
 import { Tooltip } from "react-tooltip";
 import { smoothScrollToTop } from "../../functions/SmoothScroll";
+import { useEffect, useState } from "react";
 
 export default function Header({ openLoginModal, openRegisterModal }) {
   const navigate = useNavigate();
@@ -18,11 +23,28 @@ export default function Header({ openLoginModal, openRegisterModal }) {
   const login = useSelector((state) => state.login);
   const user = useSelector((state) => state.user.user);
   const userData = useSelector((state) => state.userData);
+  const adminUsers = useSelector((state) => state.adminUsers);
+  const shoppingCartCounterItem = useShoppingCartCounterItem();
 
-  // console.log("Este es el LocalStore", userData);
+  // console.log("Este es el LocalStore", userData.email);
   // console.log("Estas logeado?", login);
   // console.log("Este es el usuario?", user);
-  const shoppingCartCounterItem = useShoppingCartCounterItem();
+
+  useEffect(() => {
+    dispatch(getAdminUsers());
+  }, [dispatch]);
+  //console.log(adminUsers);
+
+  const handleIsAdmin = () => {
+    const isAdmin = adminUsers.find(
+      (element) => element.email === userData.email
+    );
+    if (isAdmin) {
+      return true;
+    }
+    return false;
+  };
+  console.log(handleIsAdmin());
 
   const onClick = () => {
     dispatch(logoutUser());
@@ -133,11 +155,15 @@ export default function Header({ openLoginModal, openRegisterModal }) {
                     </p>
                   </div>
                   <div className="text-center flex flex-col gap-2">
-                    <Link to={"/dashboard"} className="hover:text-white">
-                      <p className="hover:text-slate-200 transition">
-                        Ir al dashboard
-                      </p>
-                    </Link>
+                    {handleIsAdmin() == true ? (
+                      <Link to={"/dashboard"} className="hover:text-white">
+                        <p className="hover:text-slate-200 transition">
+                          Ir al dashboard
+                        </p>
+                      </Link>
+                    ) : (
+                      <div></div>
+                    )}
                     <Link to={"/profile"} className="hover:text-white">
                       <p className="hover:text-slate-200 transition">
                         Perfil de usuario

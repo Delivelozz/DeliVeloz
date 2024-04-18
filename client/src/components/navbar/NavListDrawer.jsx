@@ -16,9 +16,13 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LogoutIcon from "@mui/icons-material/Logout";
 import LoginIcon from "@mui/icons-material/Login";
 import { Link } from "react-router-dom";
-
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { logoutUser, setUserData } from "../../redux/actions/actions";
+import {
+  logoutUser,
+  setUserData,
+  getAdminUsers,
+} from "../../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
 
 export default function NavListDrawer({
@@ -31,6 +35,22 @@ export default function NavListDrawer({
   const login = useSelector((state) => state.login);
   const user = useSelector((state) => state.user.user);
   const userData = useSelector((state) => state.userData);
+  const adminUsers = useSelector((state) => state.adminUsers);
+
+  useEffect(() => {
+    dispatch(getAdminUsers());
+  }, [dispatch]);
+
+  const handleIsAdmin = () => {
+    const isAdmin = adminUsers.find(
+      (element) => element.email === userData.email
+    );
+    if (isAdmin) {
+      return true;
+    }
+    return false;
+  };
+  //console.log(handleIsAdmin());
 
   const logOut = () => {
     dispatch(logoutUser());
@@ -255,25 +275,29 @@ export default function NavListDrawer({
       <Divider />
       <nav>
         <List>
-          <ListItem disablePadding>
-            <ListItemButton
-              component={Link}
-              to="/dashboard"
-              onClick={() => setOpen(false)}
-              sx={{
-                "& .MuiSvgIcon-root": { fontSize: 24 },
-                "& .MuiTypography-root": {
-                  fontSize: ".95rem",
-                  fontWeight: "normal",
-                },
-              }}
-            >
-              <ListItemIcon>
-                <DashboardIcon />
-              </ListItemIcon>
-              <ListItemText primary="Dashboard de administrador" />
-            </ListItemButton>
-          </ListItem>
+          {handleIsAdmin() == true ? (
+            <ListItem disablePadding>
+              <ListItemButton
+                component={Link}
+                to="/dashboard"
+                onClick={() => setOpen(false)}
+                sx={{
+                  "& .MuiSvgIcon-root": { fontSize: 24 },
+                  "& .MuiTypography-root": {
+                    fontSize: ".95rem",
+                    fontWeight: "normal",
+                  },
+                }}
+              >
+                <ListItemIcon>
+                  <DashboardIcon />
+                </ListItemIcon>
+                <ListItemText primary="Dashboard de administrador" />
+              </ListItemButton>
+            </ListItem>
+          ) : (
+            <div></div>
+          )}
 
           <ListItem disablePadding>
             <ListItemButton
