@@ -33,6 +33,35 @@ export default function FormLogin({ closeModal }) {
     password: "",
   });
 
+  const user = useSelector((state) => state.user);
+  const [emailUser, setEmailUser] = useState(null);
+  const [passwordUser, setPasswordUser] = useState(null);
+  const [tokenUser, setTokenUser] = useState(null);
+
+  useEffect(() => {
+    setEmailUser(user?.user?.email);
+    setPasswordUser(user?.user?.password);
+  }, [user]);
+
+  const [localUser, setLocalUser] = useState({
+    email: "",
+    password: "",
+    token: "",
+  });
+
+  const logInKey = async () => {
+    console.log("email: ", emailUser);
+    console.log("password:", passwordUser);
+
+    try {
+      const response = await dispatch(loginUser());
+      setTokenUser(response?.user?.token);
+    } catch (error) {
+      console.error("Error token: ", error);
+    }
+  };
+  //console.log(logInKey());
+
   const errors = useSelector((state) => state.errors);
   const dispatch = useDispatch();
 
@@ -54,8 +83,10 @@ export default function FormLogin({ closeModal }) {
 
   const onChange = (e) => {
     const { name, value } = e.target;
+    //console.log(name, value);
     setFormData({ ...formData, [name]: value });
   };
+  //console.log(formData);
 
   // ?------------------------------------------- OnSubmit
 
@@ -70,6 +101,7 @@ export default function FormLogin({ closeModal }) {
       formData.password
     ) {
       try {
+        //console.log("Formulario de datos: ", formData);
         await dispatch(setUserData(formData));
         await dispatch(loginUser(formData));
         closeModal();

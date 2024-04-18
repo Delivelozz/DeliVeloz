@@ -37,7 +37,7 @@ export default function EditUser() {
     }
   }, [user]);
 
-  console.log(setUserData);
+  //console.log(setUserData);
 
   const [errors, setErrors] = useState({
     name: "",

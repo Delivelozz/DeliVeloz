@@ -23,6 +23,8 @@ export default function Card(props) {
     setUserID(user?.user?.id);
   }, [user]);
 
+  //console.log(user?.user);
+
   useEffect(() => {
     const existingItem = shoppingCartDB?.products?.find(
       (item) => item.id == id
