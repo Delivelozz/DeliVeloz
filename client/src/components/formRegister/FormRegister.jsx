@@ -98,7 +98,12 @@ export default function FormRegister({ closeModal }) {
         password: "",
       });
       setRepeatPassword("");
-      toast.success("¡El usuario fue creado exitosamente!");
+      toast.success("¡El usuario fue creado exitosamente!", {
+        style: {
+          backgroundColor: "#55B938",
+          color: "white",
+        },
+      });
 
       closeModal();
       // navigate("/login");

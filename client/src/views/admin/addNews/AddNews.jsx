@@ -70,7 +70,12 @@ export default function AddNews() {
           },
         });
         setFormSubmitted(false); // Restablecer la bandera
-        toast.success("¡Novedad creada con éxito!");
+        toast.success("¡Novedad creada con éxito!", {
+          style: {
+            backgroundColor: "#55B938",
+            color: "white",
+          },
+        });
       } catch (error) {
         console.error("Error al enviar los datos: ", error);
       }

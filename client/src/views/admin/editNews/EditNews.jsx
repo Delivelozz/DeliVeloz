@@ -87,8 +87,8 @@ export default function EditNews() {
     dispatch(editNews({ ...form, id }));
     toast.success("¡La publicación fue editada exitosamente!", {
       style: {
-        backgroundColor: "green",
-        color: "black",
+        backgroundColor: "#55B938",
+        color: "white",
       },
     });
 

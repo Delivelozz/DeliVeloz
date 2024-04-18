@@ -86,7 +86,12 @@ export default function AddProduct() {
         availability: "",
         quantity: "",
       });
-      toast.success("¡El producto fue creado exitosamente!");
+      toast.success("¡El producto fue creado exitosamente!", {
+        style: {
+          backgroundColor: "#55B938",
+          color: "white",
+        },
+      });
     }
   };
 
