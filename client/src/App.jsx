@@ -33,6 +33,8 @@ import OrderUser from "./views/orderUser/OrderUser";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css"; //toastify
+import { ToastContainer } from "react-toastify";
 
 // ? ------------------- Firebase
 
@@ -95,6 +97,8 @@ function App() {
     }
   }, [login, pathname, navigate]);
 
+  //  ? ---------------- configuracion toast
+
   return (
     <AuthProvider>
       <main className="bg-alabaster-50 relative overflow.x">
@@ -148,6 +152,7 @@ function App() {
         {isRegisterModalOpen && (
           <FormRegister closeModal={closeRegisterModal} />
         )}
+        <ToastContainer position="top-center" />
       </main>
     </AuthProvider>
   );
