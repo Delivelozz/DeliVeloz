@@ -5,7 +5,7 @@ const userOrderController = require("../controllers/order/userOrderController");
 const emailNotifications = async (idUser) => {
   try {
     const user = await userOrderController(idUser);
-    if (idUser) {
+    if (user) {
       const historyURL = `https://deliveloz-ryfh.onrender.com/order/${idUser}`;
 
       const info = {
@@ -30,8 +30,8 @@ const emailNotifications = async (idUser) => {
                 `,
       };
       // await emailOrderController(info);
+      return emailOrderController(info);
     }
-    return emailOrderController(info);
   } catch (error) {
     console.error("Error al enviar el correo electrónico:", error);
   }
