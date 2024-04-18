@@ -11,7 +11,7 @@ import { useGetShoppingDB } from "../../../hooks/useGetShoppingDB.js";
 export default function DashboardUser() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
-  console.log(user);
+  //console.log(user);
 
   useLocalStoreUserData();
   useLocalStoreUserDataGoogle();

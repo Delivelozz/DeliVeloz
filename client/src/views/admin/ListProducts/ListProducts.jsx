@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { setDishes, disabledDishes } from "../../../redux/actions/actions";
+import { setAllDishes, disabledDishes } from "../../../redux/actions/actions";
 import EditIcon from "../../../components/icons/EditIcon";
 import DeleteIcon from "../../../components/icons/DeleteIcon";
 import Sidenav from "../../../components/admin/sidenav/Sidenav";
@@ -18,23 +18,24 @@ export default function ListProducts() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setDishes());
+    dispatch(setAllDishes());
   }, [dispatch]);
 
-  const dishes = useSelector((state) => state.dishes);
+  const allDishes = useSelector((state) => state.allDishes);
+  console.log(allDishes);
   const [filterText, setFilterText] = useState("");
-  const [filterDishes, setFilterDishes] = useState(dishes);
+  const [filterDishes, setFilterDishes] = useState(allDishes);
 
   useEffect(() => {
-    setFilterDishes(filterBySearch(dishes, filterText));
-  }, [dishes, filterText]);
+    setFilterDishes(filterBySearch(allDishes, filterText));
+  }, [allDishes, filterText]);
 
   const handleChange = (e) => {
     setFilterText(e.target.value);
   };
 
-  const filterBySearch = (dishes, searchText) => {
-    return dishes.filter((dish) =>
+  const filterBySearch = (allDishes, searchText) => {
+    return allDishes.filter((dish) =>
       dish.name.toLowerCase().includes(searchText.toLowerCase())
     );
   };
@@ -42,7 +43,7 @@ export default function ListProducts() {
   const onDisabled = async ({ id, availability }) => {
     try {
       await dispatch(disabledDishes({ id, availability }));
-      await dispatch(setDishes());
+      await dispatch(setAllDishes());
     } catch (error) {
       console.error("Error al desactivar el producto:", error);
     }

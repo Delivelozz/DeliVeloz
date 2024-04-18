@@ -27,3 +27,5 @@ export const EDIT_NEWS = `EDIT_NEWS`;
 export const POST_ORDER = `POST_ORDER`;
 export const GET_ORDER = `GET_ORDER`;
 export const SET_ORDER_ID = `SET_ORDER_ID`;
+export const SET_ALL_DISHES = `SET_ALL_DISHES`;
+export const GET_ADMIN_USERS = `GET_ADMIN_USERS`;
