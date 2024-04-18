@@ -67,7 +67,7 @@ export default function EditUser() {
     // Envia los datos a través de la acción editUser
     try {
       await dispatch(editUser({ id: user.id, ...userData }));
-      toast.success("¡El producto fue creado exitosamente!", {
+      toast.success("¡El usuario fue editado exitosamente!", {
         style: {
           backgroundColor: "#55B938",
           color: "white",
