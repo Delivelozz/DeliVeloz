@@ -30,6 +30,7 @@ import {
   SET_ORDER_ID,
   SET_ALL_DISHES,
   GET_ADMIN_USERS,
+  DISABLED_USER,
 } from "../actions/types";
 
 const initialState = {
@@ -63,6 +64,7 @@ const initialState = {
   },
   dishEdited: [],
   dishDisabled: [],
+  userDisabled: [],
   myOrders: [],
   order: [],
   orderDetail: [],
@@ -122,6 +124,12 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         dishDisabled: [...state.dishDisabled, payload],
+      };
+
+    case DISABLED_USER:
+      return {
+        ...state,
+        userDisabled: [...state.userDisabled, payload],
       };
 
     // ! ----------------------------------------------- Promos
