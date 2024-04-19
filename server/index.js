@@ -21,7 +21,7 @@ const server = require("./src/app.js");
 const startDatabase = require("./src/functions/startDatabase.js");
 const { conn } = require("./src/db.js");
 // Syncing all the models at once.
-conn.sync({ force : true }).then(() => {
+conn.sync({ alter:true }).then(() => {
   startDatabase()
     .then(() => {
       server.listen(3001, () => {
