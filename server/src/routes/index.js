@@ -7,11 +7,15 @@ const subcategoriesRouter = require("./subcategoriesRouter");
 const usersRouter = require("./usersRouter");
 const assessmentRouter = require("./assessmentRouter");
 const filterRouter = require("./filterRouter");
-const addressRouter = require("./addressRouter");
+// const addressRouter = require("./addressRouter");
 const administratorRouter = require("./administratorRouter");
 const orderRouter = require("./orderRouter");
 const paymentMethodRouter = require("./paymentMethodRouter");
 const mercadoPagoRouter = require("./mercadoPagoRouter");
+const cartRouter = require("./cartRouter");
+const bannersRouter = require("./bannersRouter");
+const loginRouter = require("./loginRouter");
+
 
 // router PRODUCTOS
 router.use("/products", productsRouter);
@@ -26,7 +30,7 @@ router.use("/assessment", assessmentRouter);
 // Router FILTROS
 router.use("/filter", filterRouter);
 // Router ADDRESS
-router.use("/address", addressRouter);
+// router.use("/address", addressRouter);
 // Router ADMINISTRATOR
 router.use("/administrator", administratorRouter);
 // Router ORDERS
@@ -35,4 +39,12 @@ router.use("/order", orderRouter);
 router.use("/payment", paymentMethodRouter);
 //Router METODO DE PAGO
 router.use("/mercadopago", mercadoPagoRouter);
+//Router CART
+router.use("/cart", cartRouter);
+//Router Banners
+router.use("/banners", bannersRouter);
+//Router Login
+router.use("/login", loginRouter);
+
 module.exports = router;
+

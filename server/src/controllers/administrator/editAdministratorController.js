@@ -20,4 +20,4 @@ const editAdministratorController = async ({id}, {name, lastName, email, passwor
     }
 }
 
-module.exports = editAdministratorController
+module.exports = editAdministratorController;

@@ -1,42 +1,71 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { setShoppingCart } from "../../redux/actions/actions.js";
-import { useShoppingCartDelete } from "../../hooks/useShoppingCartDelete.js";
-import { useShoppingCartAdd } from "../../hooks/useShoppingCartAdd.js";
+import React, { useState, useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { Popper } from "@mui/base/Popper";
+import { useTheme } from "@mui/system";
+import { API_URL } from "../../utils/constants.js";
+import { getShoppingCart } from "../../redux/actions/actions.js";
 
-const shoppingCartCard = ({ id, name, price, image, qty, priceTotal }) => {
-  const shoppingCart = useSelector((state) => state.shoppingCart);
+const shoppingCartCard = ({ id, name, price, image, qty, stock }) => {
+  const shoppingCartDB = useSelector((state) => state.shoppingCartDB);
+  const user = useSelector((state) => state.user);
+  const [total, setTotal] = useState(0);
+  const [userID, setUserID] = useState(user?.user?.id);
   const dispatch = useDispatch();
-  console.log(shoppingCart);
+  const [popperStock, setPopperStock] = useState(false);
+  const anchorRef = useRef(null);
 
-  const deleteFromCart = useShoppingCartDelete();
-  const handleDelete = () => {
-    deleteFromCart(id, price);
-  };
+  useEffect(() => {
+    const total = price * qty;
+    setTotal(total.toFixed(2));
+  }, [shoppingCartDB]);
 
-  const addToCart = useShoppingCartAdd();
-  const handleAdd = () => {
-    addToCart(id, name, price, priceTotal);
-  };
-
-  const deleteItem = (id) => {
-    const dataItem = { id, name, price, image, qty: 1, priceTotal: price };
-    const addRes = [...shoppingCart];
-    //console.log(addRes);
-    const existingItem = addRes.find((item) => item.id == id);
-    //console.log(existingItem);
-    if (existingItem) {
-      const index = addRes.findIndex((item) => item.id == id);
-      addRes.splice(index, 1);
+  const handleDelete = async () => {
+    const response = await fetch(
+      `${API_URL}/cart/removeproduct/${userID}/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
+    if (!response.ok) {
+      throw new Error("Error al eliminar el producto");
     }
-    //console.log(addRes);
-    dispatch(setShoppingCart(addRes));
+    dispatch(getShoppingCart(userID));
+  };
+
+  const handleDecrease = async () => {
+    const response = await fetch(
+      `${API_URL}/cart/decreaseproduct/${userID}/${id}`,
+      {
+        method: "PUT",
+      }
+    );
+    if (!response.ok) {
+      throw new Error("Error al disminuir la cantidad del producto");
+    }
+    dispatch(getShoppingCart(userID));
+  };
+
+  const handleAdd = async () => {
+    const response = await fetch(`${API_URL}/cart/addproduct/${userID}/${id}`, {
+      method: "PUT",
+    });
+    if (!response.ok) {
+      throw new Error("Error al aumentar la cantidad del producto");
+    }
+    dispatch(getShoppingCart(userID));
+  };
+
+  const handlePopperStock = () => {
+    setPopperStock(true);
+    setTimeout(() => {
+      setPopperStock(false);
+    }, 3000);
   };
 
   return (
-    <article id={id} className="w-full h-36 ">
-      <div className="w-full h-36 flex   justify-between bg-white rounded-lg border p-4 relative">
+    <article id={id} className="w-full h-44 sm:h-36">
+      <div className="w-full h-44 flex flex-wrap justify-center bg-white rounded-lg border p-4 relative sm:justify-between sm:h-36 md:flex-row">
         <div className="flex">
           <Link to={`/detail/${id}`}>
             <figure className="w-28 h-28 mr-3 rounded-md cursor-pointer hover:text-black">
@@ -47,13 +76,13 @@ const shoppingCartCard = ({ id, name, price, image, qty, priceTotal }) => {
               />
             </figure>
           </Link>
-          <div className=" flex flex-col justify-center align-center gap-1">
+          <div className=" flex flex-col justify-center align-center gap-1 ">
             <p className="text-sundown-500 font-semibold">{name}</p>
             <p>Precio unitario: ${price}</p>
             <div className="h-8 flex items-center gap-1">
               <p>Cantidad: </p>
               <button
-                onClick={handleDelete}
+                onClick={() => handleDecrease()}
                 className="w-6 h-6 bg-sundown-500 rounded-md text-white"
               >
                 -
@@ -63,20 +92,41 @@ const shoppingCartCard = ({ id, name, price, image, qty, priceTotal }) => {
                 value={qty}
                 className="border border-sundown-500 border-solid rounded-md w-8 h-6 text-center "
               />
-              <button
-                onClick={handleAdd}
-                className="w-6 h-6 bg-sundown-500 rounded-md text-white"
-              >
-                +
-              </button>
+              {stock !== qty && stock !== 0 ? (
+                <button
+                  onClick={() => handleAdd()}
+                  className="w-6 h-6 bg-sundown-500 rounded-md text-white"
+                >
+                  +
+                </button>
+              ) : (
+                <div className="flex justify-center">
+                  <button
+                    ref={anchorRef}
+                    onClick={handlePopperStock}
+                    className="w-6 h-6 bg-sundown-500 rounded-md text-white"
+                  >
+                    +
+                  </button>
+                  <Popper
+                    open={popperStock}
+                    anchorEl={anchorRef.current}
+                    placement="bottom"
+                  >
+                    <div className="p-2 bg-gray-200 text-gray-800 rounded-md">
+                      No hay mas productos disponibles.
+                    </div>
+                  </Popper>
+                </div>
+              )}
             </div>
           </div>
         </div>
-        <div className="flex flex-col justify-center align-center text-sundown-500 font-bold">
-          <p>Precio total: ${priceTotal}</p>
+        <div className="flex flex-col justify-center align-center mx-10 text-sundown-500 font-bold sm:mx-0">
+          <p>Precio total: ${total}</p>
         </div>
         <button
-          onClick={() => deleteItem(id)}
+          onClick={() => handleDelete()}
           className="cursor-pointer absolute top-0 right-0 flex justify-center items-center bg-sundown-500 w-8 h-8 rounded-full text-white font-semibold -mr-3 -mt-3 "
         >
           X

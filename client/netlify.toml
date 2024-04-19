@@ -1,0 +1,81 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/home"
+  to = "/"
+
+[[redirects]]
+  from = "/about"
+  to = "/about"
+
+[[redirects]]
+  from = "/detail/*"
+  to = "/detail/:splat"
+
+[[redirects]]
+  from = "/products"
+  to = "/products"
+
+[[redirects]]
+  from = "/blog/*"
+  to = "/blog/splat"
+
+[[redirects]]
+  from = "/carrito"
+  to = "/carrito"
+
+[[redirects]]
+    from = "/profile"
+    to = "/profile"
+
+[[redirects]]
+    from = "/profile/editUser/:*"
+    to = "/profile/editUser/:splat"
+
+[[redirects]]
+    from = "/profile/orders"
+    to = "/profile/orders"
+
+[[redirects]]
+    from = "/dashboard"
+    to = "/dashboard"
+
+[[redirects]]
+    from = "/dashboard/products"
+    to = "/dashboard/products"
+
+[[redirects]]
+    from = "/dashboard/users"
+    to = "/dashboard/users"
+
+[[redirects]]
+    from = "/dashboard/news"
+    to = "/dashboard/news"
+
+[[redirects]]
+    from = "/dashboard/news/editNews/:*"
+    to = "/dashboard/news/editNews/:splat"
+
+[[redirects]]
+    from = "/dashboard/products/editProduct/:*"
+    to = "/dashboard/products/editProduct/:splat"
+
+[[redirects]]
+    from = "/dashboard/products/addProduct"
+    to = "/dashboard/products/addProduct"
+
+[[redirects]]
+    from = "/dashboard/news/addNew"
+    to = "/dashboard/news/addNew"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

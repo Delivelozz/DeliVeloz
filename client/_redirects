@@ -1,0 +1,20 @@
+# Redirects from what the browser requests to what we serve
+# This is a simple way to handle client-side routing
+/  /Home
+/home  /Home
+/about  /About
+/detail/*  /detail/:splat
+/products  /products
+/blog/*  /blog/splat
+/carrito  /Carrito
+/profile        /profile
+/profile/editUser/* /profile/editUser/:splat
+/profile/orders /profile/orders
+/dashboard /dashboard
+/dashboard/products /dashboard/products
+/dashboard/users /dashboard/users
+/dashboard/news /dashboard/news
+/dashboard/news/editNews/* /dashboard/news/editNews/:splat
+/dashboard/products/editProduct/* /dashboard/products/editProduct/:splat
+/dashboard/products/addProduct /dashboard/products/addProduct
+/dashboard/news/addNew /dashboard/news/addNew

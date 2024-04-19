@@ -5,14 +5,13 @@ import { getDishes } from "../../data/index.js";
 import Promos from "../../components/promos/Promos.jsx";
 import SliderHome from "../../components/sliderHome/Slider";
 import { useLocalStoreUserData } from "../../hooks/useLocalStoreUserData.js";
+import { useLocalStoreUserDataGoogle } from "../../hooks/useLocalStoreUserDataGoogle.js";
+import { useGetShoppingDB } from "../../hooks/useGetShoppingDB.js";
+
 
 export default function Home() {
   const promos = useSelector((state) => state.promos);
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(setCategories());
-  // }, [dispatch]);
 
   //Function that calls data
   useEffect(() => {
@@ -25,6 +24,8 @@ export default function Home() {
   }, [dispatch]);
 
   useLocalStoreUserData();
+  useLocalStoreUserDataGoogle();
+  useGetShoppingDB();
 
   return (
     <section>
@@ -34,6 +35,8 @@ export default function Home() {
           Nuestras <span className="text-sundown-500">Novedades</span>
         </h1>
         <Promos dishes={promos} />
+       
+      
       </div>
     </section>
   );

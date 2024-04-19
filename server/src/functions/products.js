@@ -2,8 +2,12 @@
 const axios = require("axios");
 const { Product, SubCategoryProduct, CategoryProduct } = require("../db.js");
 
+const generateRandomQuantity = () => {
+  return Math.floor(Math.random() * 11) + 10; // Genera un número entre 10 y 20
+}
+
 const fetchProducts = async () => {
- const endPointProducts = "http://localhost:5000/products";
+ const endPointProducts = "https://delivelozapi.onrender.com/products";
  const { data: productsData } = await axios.get(endPointProducts);
  // Iteramos sobre cada producto y sus subcategorías
   // Iteamos primero sobre los productos
@@ -36,6 +40,7 @@ const fetchProducts = async () => {
           subCategoryProductId: subcategory.id, 
           image: product.image || {},
           availability: product.availability || false,
+          quantity: generateRandomQuantity() || 1
         });
       } else {
         // Si la subcategoría no existe, imprime un mensaje de error.
@@ -70,3 +75,4 @@ const fetchProducts = async () => {
 };
 
 module.exports = { fetchProducts };
+

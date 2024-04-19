@@ -4,17 +4,14 @@
 
 /* ?--------------------------------- ScrollBar ---------------------------------- */
 
-/* Estilos para el scrollbar */
 ::-webkit-scrollbar {
   width: 12px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: #E74C4C;
   border-radius: 10px;
@@ -30,11 +27,12 @@ body {
   /* font-size: .9rem; */
   font-family: "DM Sans", sans-serif;
   font-optical-sizing: auto;
-  overflow-x: hidden;
 }
 
 section {
+  overflow-x: hidden;
   padding: 4rem 0;
+  min-height: 100vh;
 }
 
 * {
@@ -49,7 +47,7 @@ section {
 }
 
 .container-left {
-  width: 75%;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -79,7 +77,7 @@ input:-webkit-autofill {
 }
 
 input, select {
-  background-color: #fff;
+  background-color: #fff
 }
 
 /* ?--------------------------------- Slider Header ------------------------------------ */
@@ -170,4 +168,63 @@ h1 {
   /* Para que el texto haga saltos de línea */
   word-wrap: break-word;
   /* Por si es necesario para compatibilidad */
+}
+
+textarea {
+  background-color: #fff;
+}
+
+.dinvisible {
+  display: none;
+}
+
+.dblock {
+  display: block;
+}
+
+.sideBar {
+  @apply bg-white w-72 h-full fixed z-40 shadow-xl -left-full transition md:hidden;
+}
+
+.invisibleSidebar {
+  transition: all .3s ease;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+}
+
+.visibleSidebar {
+  left: 0;
+  transition: all .3s ease;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+}
+
+.custom-loader {
+  margin-top: -10%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: conic-gradient(#0000 10%, #D32F2F);
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+  animation: s3 1s infinite linear;
+}
+
+@keyframes s3 {
+  to {
+    transform: rotate(1turn)
+  }
+}
+
+.login-input {
+  border: none !important;
+  border-bottom: 1px solid !important;
+  border-color: #adadad !important;
+}
+
+.login-input:focus {
+  border-bottom: 1px solid transparent !important;
 }

@@ -5,13 +5,20 @@ const client = new MercadoPagoConfig({
   accessToken: process.env.YOUR_ACCESS_TOKEN,
 });
 
-const mercadoPagoController = async (itemsNew) => {
+const mercadoPagoController = async (itemsNew, id_order, id_user) => {
+
+  const externalReference = JSON.stringify({
+    id_order: id_order, 
+    id_user: id_user,
+  });
+
   const body = {
     items: itemsNew,
+    external_reference: externalReference,
     back_urls: {
-      success: "http://localhost:5173/",
-      failure: "http://localhost:5173/",
-      pending: "http://localhost:5173/",
+      success: "https://deliveloz.netlify.app/",
+      failure: "https://deliveloz.netlify.app/",
+      pending: "https://deliveloz.netlify.app/",
     },
     payment_methods: {
       excluded_payment_methods: [
@@ -48,6 +55,7 @@ const mercadoPagoController = async (itemsNew) => {
       installments: 1,
     },
     auto_return: "approved",
+    notification_url: "https://deliveloz-ryfh.onrender.com/mercadopago/webhook"
   };
   const preference = new Preference(client);
   const result = await preference.create({ body });

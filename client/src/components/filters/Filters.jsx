@@ -52,6 +52,15 @@ export default function Filters({ setCurrentPage }) {
     e.preventDefault();
     const selectedValue = e.target.value;
     setCategory(selectedValue);
+
+    if (selectedValue === "Categoría") {
+      setCategory("default");
+    } else {
+      setCategory(selectedValue);
+    }
+    if (subCategory !== "default") {
+      setSubCategory("default");
+    }
     setCurrentPage(1);
     return selectedValue;
   };
@@ -70,15 +79,17 @@ export default function Filters({ setCurrentPage }) {
   // ?--------------------------------------- Filtrar por categoría && precio
 
   const handleFilterCategoryPrice = () => {
-    console.log(category, subCategory, price);
+    //console.log(category, subCategory, price);
     dispatch(orderBy(category, subCategory, price));
   };
 
   useEffect(() => {
     if (
       category !== "default" ||
+      category == "default" ||
       subCategory !== "default" ||
-      price !== "default"
+      price !== "default" ||
+      price == "default"
     ) {
       handleFilterCategoryPrice();
     }
@@ -93,7 +104,7 @@ export default function Filters({ setCurrentPage }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Buscando por nombre:", name);
+    //console.log("Buscando por nombre:", name);
     dispatch(getByName(name));
     setCurrentPage(1);
   };
@@ -118,18 +129,30 @@ export default function Filters({ setCurrentPage }) {
   };
 
   return (
-    <div className="flex w-full justify-between mb-10">
-      <div className="flex gap-2">
+    <div className="flex w-full justify-center flex-wrap mb-10 gap-2 lg:justify-between">
+      <div className="w-full font-semibold sm:w-auto md:w-auto">
+        <form onSubmit={handleSubmit} className="flex justify-between gap-3">
+          <input
+            type="search"
+            value={name}
+            placeholder="Buscar..."
+            onChange={search}
+            className="w-3/4 bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
+          />
+          <button type="submit" className="btn-bg">
+            Buscar
+          </button>
+        </form>
+      </div>
+      <div className="flex  gap-2">
         <select
           name=""
           value={category}
           placeholder="Categorías"
-          className="py-2 px-4 border border-sundown-500 rounded-lg text-sm focus:outline-sundown-500 font-semibold"
+          className="w-1/4 py-2  border border-sundown-500 rounded-lg text-sm focus:outline-sundown-500 font-semibold"
           onChange={handleFilterCategory}
         >
-          <option value="default" disabled={true}>
-            Categoría
-          </option>
+          <option value="default">Categoría</option>
           {categoryArray.map((item, index) => (
             <option key={index} value={item}>
               {item}
@@ -141,15 +164,13 @@ export default function Filters({ setCurrentPage }) {
           name=""
           value={subCategory}
           placeholder="Subcategorías"
-          className={`py-2 px-4 border ${
+          className={`w-1/4 py-2  border ${
             category === "default" ? "border-gray-500" : "border-sundown-500"
           } rounded-lg text-sm focus:outline-sundown-500 font-semibold`}
           onChange={handleFilterSubCategory}
           disabled={category === "default"}
         >
-          <option value="default" disabled={true}>
-            Subcategorías
-          </option>
+          <option value="default">Subcategorías</option>
           {subCategoryArray.map((item, index) => (
             <option key={index} value={item}>
               {item}
@@ -162,32 +183,15 @@ export default function Filters({ setCurrentPage }) {
           name=""
           value={price}
           placeholder="Precio"
-          className="py-2 px-4 border border-sundown-500 rounded-lg text-sm focus:outline-sundown-500 font-semibold"
+          className="w-1/4 py-2  border border-sundown-500 rounded-lg text-sm focus:outline-sundown-500 font-semibold"
         >
-          <option value="default" disabled={true}>
-            Por Precio
-          </option>
+          <option value="default">Por Precio</option>
           <option value="asc">$ ↓</option>
           <option value="desc">$ ↑</option>
         </select>
         <button onClick={handleClick} className="btn-bg">
           Limpiar
         </button>
-      </div>
-
-      <div className="font-semibold">
-        <form onSubmit={handleSubmit} className="flex gap-3">
-          <input
-            type="search"
-            value={name}
-            placeholder="Buscar..."
-            onChange={search}
-            className="w-48 bg-gray-50 border border-sundown-500 p-2 rounded-lg text-sm focus:outline-sundown-500 focus:border-transparent"
-          />
-          <button type="submit" className="btn-bg">
-            Buscar
-          </button>
-        </form>
       </div>
     </div>
   );

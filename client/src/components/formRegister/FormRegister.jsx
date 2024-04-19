@@ -3,6 +3,7 @@
 import HomeIcon from "../icons/HomeIcon";
 import validation from "./validation";
 import CloseIcon from "../icons/CloseIcon";
+import { toast } from "react-toastify";
 
 // ?-------------------------- Imports Hooks
 
@@ -25,9 +26,14 @@ export default function FormRegister({ closeModal }) {
   // ? ----------------------------------- Scroll hidden
 
   useEffect(() => {
+    const scrollBarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = "hidden";
+    document.body.style.marginRight = `${scrollBarWidth}px`;
+
     return () => {
       document.body.style.overflow = "auto";
+      document.body.style.marginRight = "0px";
     };
   }, []);
 
@@ -74,6 +80,7 @@ export default function FormRegister({ closeModal }) {
   // ? ---------------------------------------- onSubmit
 
   const onSubmit = async (e) => {
+    console.log(user);
     e.preventDefault();
 
     const errors = validation({ ...user, repeatPassword }); // Utilizar repeatPassword en la llamada a la función de validación
@@ -91,9 +98,21 @@ export default function FormRegister({ closeModal }) {
         password: "",
       });
       setRepeatPassword("");
-      alert("¡El usuario fue creado exitosamente!");
+      toast.success("¡El usuario fue creado exitosamente!", {
+        style: {
+          backgroundColor: "#55B938",
+          color: "white",
+        },
+      });
+
       closeModal();
       // navigate("/login");
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      onSubmit(e);
     }
   };
 
@@ -105,14 +124,6 @@ export default function FormRegister({ closeModal }) {
           style={{ maxWidth: "500px", width: "500px" }}
           onSubmit={onSubmit}
         >
-          {/* ------------------ Boton de Home -------------------- */}
-
-          {/* <button
-            className="transition absolute -top-4 -right-4 bg-sundown-500 rounded-full shadow-xl flex justify-center items-center w-10 h-10 hover:scale-110"
-            onClick={closeModal}
-          >
-            <CloseIcon width={22} color={"#fff"} />
-          </button> */}
           {/* ------------------ Formulario --------------------- */}
 
           <div className="flex-1 p-6 space-y-6 flex flex-col">
@@ -136,7 +147,8 @@ export default function FormRegister({ closeModal }) {
                     onChange={onChange}
                     name="name"
                     placeholder="Nombre"
-                    className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
+                    onKeyDown={handleKeyDown}
+                    className="login-input p-2 text-sm  placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
                   />
                   {errors.name && <p className="error">{errors.name}</p>}
                 </div>
@@ -150,7 +162,8 @@ export default function FormRegister({ closeModal }) {
                     onChange={onChange}
                     name="lastName"
                     placeholder="Apellido"
-                    className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
+                    onKeyDown={handleKeyDown}
+                    className="login-input p-2 text-sm  placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
                   />
                   {errors.lastName && (
                     <p className="error">{errors.lastName}</p>
@@ -170,7 +183,8 @@ export default function FormRegister({ closeModal }) {
                     onChange={onChange}
                     name="email"
                     placeholder="Correo electrónico"
-                    className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
+                    onKeyDown={handleKeyDown}
+                    className="login-input p-2 text-sm  placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
                   />
                   {errors.email && <p className="error">{errors.email}</p>}
                 </div>
@@ -184,7 +198,8 @@ export default function FormRegister({ closeModal }) {
                     onChange={onChange}
                     name="userAddress"
                     placeholder="Calle"
-                    className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
+                    onKeyDown={handleKeyDown}
+                    className="login-input p-2 text-sm  placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
                   />
                   {errors.userAddress && (
                     <p className="error">{errors.userAddress}</p>
@@ -201,7 +216,8 @@ export default function FormRegister({ closeModal }) {
                   onChange={onChange}
                   name="phone"
                   placeholder="Celular"
-                  className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
+                  onKeyDown={handleKeyDown}
+                  className="login-input p-2 text-sm placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
                 />
                 {errors.phone && <p className="error">{errors.phone}</p>}
               </div>
@@ -217,7 +233,8 @@ export default function FormRegister({ closeModal }) {
                       onChange={onChange}
                       name="password"
                       placeholder="Contraseña"
-                      className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
+                      onKeyDown={handleKeyDown}
+                      className="login-input p-2 text-sm placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
                     />
                   </div>
                   <div className="flex-1">
@@ -227,7 +244,8 @@ export default function FormRegister({ closeModal }) {
                       onChange={(e) => setRepeatPassword(e.target.value)}
                       name="repeatPassword"
                       placeholder="Repetir contraseña"
-                      className="border-b p-2 text-sm border-b-gray-400 placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
+                      onKeyDown={handleKeyDown}
+                      className="login-input p-2 text-sm placeholder-gray-500 focus:outline-sundown-500 w-full mb-2"
                     />
                   </div>
                 </div>
