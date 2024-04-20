@@ -66,7 +66,7 @@ export default function OrderUser() {
         <ul>
           {orderDetail?.products?.map((product, index) => (
             <li key={index}>
-              {product?.name} - Cantidad: {product?.quantity} - Precio: $
+              {product?.name} - Cantidad: {product?.quantity} - Precio: $$$
               {product?.price}
             </li>
           ))}
