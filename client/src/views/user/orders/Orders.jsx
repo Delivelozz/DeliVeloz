@@ -63,7 +63,7 @@ export default function Orders() {
   }, [dispatch]);
 
   const myOrders = useSelector((state) => state.myOrders);
-  console.log(myOrders);
+  // console.log(myOrders);
 
   const [selectedProductId, setSelectedProductId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
