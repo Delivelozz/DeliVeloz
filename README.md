@@ -18,6 +18,7 @@ Backend:
 
 + Render (*Deploy*)
 + PostgreSQL
++ Cloudinary
 + Sequelize
 + Express
 + NodeJs
