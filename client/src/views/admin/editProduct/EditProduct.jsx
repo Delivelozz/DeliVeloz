@@ -8,6 +8,7 @@ import { useLocalStoreUserData } from "../../../hooks/useLocalStoreUserData.js";
 import { useLocalStoreUserDataGoogle } from "../../../hooks/useLocalStoreUserDataGoogle.js";
 import { useGetShoppingDB } from "../../../hooks/useGetShoppingDB.js";
 import Sidenav from "../../../components/admin/sidenav/Sidenav.jsx";
+import { toast } from "react-toastify";
 
 export default function EditProduct() {
   const dispatch = useDispatch();
@@ -85,7 +86,12 @@ export default function EditProduct() {
       setErrors(errors);
     } else {
       await dispatch(editDishes(dish, id));
-      alert("¡El producto fue editado exitosamente!");
+      toast.success("¡El producto fue editado exitosamente!", {
+        style: {
+          backgroundColor: "green",
+          color: "black",
+        },
+      });
     }
   };
 

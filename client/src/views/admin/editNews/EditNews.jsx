@@ -9,6 +9,7 @@ import { editNews } from "../../../redux/actions/actions";
 import validation from "./validation";
 import Sidenav from "../../../components/admin/sidenav/Sidenav.jsx";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function EditNews() {
   const dispatch = useDispatch();
@@ -70,12 +71,26 @@ export default function EditNews() {
     const validationErrors = validation(form);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
-      alert("Corrige los errores en el formulario antes de continuar.");
+      toast.warning(
+        "Corrige los errores en el formulario antes de continuar.",
+        {
+          style: {
+            backgroundColor: "yellow",
+            color: "black",
+          },
+        }
+      );
+
       return;
     }
     console.log("Form antes de enviar:", form);
     dispatch(editNews({ ...form, id }));
-    alert("¡La publicación fue editada exitosamente!");
+    toast.success("¡La publicación fue editada exitosamente!", {
+      style: {
+        backgroundColor: "#55B938",
+        color: "white",
+      },
+    });
 
     navigate("/home");
   };

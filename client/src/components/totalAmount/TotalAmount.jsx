@@ -8,7 +8,7 @@ import { postOrder } from "../../redux/actions/actions";
 
 const TotalAmount = () => {
   const shoppingCartDB = useSelector((state) => state.shoppingCartDB);
-  console.log(shoppingCartDB);
+  //console.log(shoppingCartDB);
   const user = useSelector((state) => state.user);
   const [idUser, setIdUser] = useState(null);
   const [orderId, setOrderId] = useState(null);

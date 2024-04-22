@@ -1,15 +1,21 @@
+// !---------------------------- Hooks
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { setMyOrders } from "../../../redux/actions/actions";
 import DataTable from "react-data-table-component";
 import { useLocalStoreUserData } from "../../../hooks/useLocalStoreUserData.js";
 import { useLocalStoreUserDataGoogle } from "../../../hooks/useLocalStoreUserDataGoogle.js";
 import { useGetShoppingDB } from "../../../hooks/useGetShoppingDB.js";
-import "../../../views/user/orders/modal.css";
 import axios from "axios";
+
+// !---------------------------- Imports
+import { setMyOrders } from "../../../redux/actions/actions";
+import "../../../views/user/orders/modal.css";
 import { API_URL } from "../../../utils/constants.js";
+
+// !---------------------------- Exports
+
 
 export default function Orders() {
   useLocalStoreUserData();
@@ -22,12 +28,14 @@ export default function Orders() {
   const [productInfo, setProductInfo] = useState(null);
   const userData = useSelector((state) => state.userData);
   const [modalOpen, setModalOpen] = useState(false);
+  const [selectedProductId, setSelectedProductId] = useState(null);
 
   useEffect(() => {
+    console.log("id:", selectedProductId)
     // Función para obtener la información del producto con ID 1
     const fetchProductInfo = async () => {
       try {
-        const response = await axios.get(`${API_URL}/products/${1}`); // Sustituye "API_URL" por la URL de tu API
+        const response = await axios.get(`${API_URL}/products/${selectedProductId}`); // Sustituye "API_URL" por la URL de tu API
         setProductInfo(response.data);
       } catch (error) {
         console.error("Error al obtener la información del producto:", error);
@@ -36,7 +44,7 @@ export default function Orders() {
 
     // Llama a la función para obtener la información del producto al cargar el componente
     fetchProductInfo();
-  }, [id]);
+  }, [selectedProductId]);
 
   const handleStarClick = (starRating) => {
     setRating((prevRating) => (prevRating === starRating ? 0 : starRating));
@@ -45,7 +53,7 @@ export default function Orders() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${API_URL}/assessment/${1}`, {
+      await axios.post(`${API_URL}/assessment/${selectedProductId}`, {
         rating,
         comment,
         email: userData.email,
@@ -65,7 +73,6 @@ export default function Orders() {
   const myOrders = useSelector((state) => state.myOrders);
   // console.log(myOrders);
 
-  const [selectedProductId, setSelectedProductId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [rating, setRating] = useState(0);
@@ -88,33 +95,39 @@ export default function Orders() {
 
   const columns = [
     {
+      name: "",
+      width: "160px",
+    },
+    {
       name: "Número de pedido",
       selector: (row) => row.id,
       sortable: true,
       width: "160px",
     },
     {
-      name: "Estado de la orden",
-      selector: (row) => row.orderStatus,
-      width: "150px",
-    },
-    {
-      name: "Precio total",
-      selector: (row) => `$${row.total}`,
-      width: "150px",
-    },
-    {
       name: "Productos",
       cell: (row) => (
-        <div>
+        <div className="flex flex-col gap-3 my-8">
           {row.products.map((product) => (
-            <div key={product.id} className="flex flex-col gap-3">
+            <div key={product.id} className="flex flex-row items-center gap-10">
               <div>
                 <p>Nombre: {product.name}</p>
                 <p>Precio: ${product.price}</p>
               </div>
+            </div>
+          ))}
+        </div>
+      ),
+      width: "350px",
+    },
+    {
+      name: "",
+      cell: (row) => (
+        <div className="flex flex-col gap-6">
+          {row.products.map((product) => (
+            <div>
               <span
-                className="btn-bg cursor-pointer max-w-6 min-w-6"
+                className="btn-bg cursor-pointer max-w-6 min-w-6 max-h-8"
                 onClick={() => {
                   setSelectedProductId(product.id);
                   setIsModalOpen(true); // Abrir el modal al hacer clic en el botón "Valorar"
@@ -128,7 +141,22 @@ export default function Orders() {
           ))}
         </div>
       ),
-      width: "250px",
+      width: "150px",
+    },
+    {
+      name: "Metodo de Pago",
+      selector: (row) => `${row.paymentMethod.type}`,
+      width: "150px",
+    },
+    {
+      name: "Estado",
+      selector: (row) => `${row.paymentMethod.status}`,
+      width: "150px",
+    },
+    {
+      name: "Precio total",
+      selector: (row) => `$${row.total}`,
+      width: "150px",
     },
   ];
   return (

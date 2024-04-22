@@ -1,5 +1,6 @@
 const axios = require('axios');
 const {Order, PaymentMethod, Cart, Product} = require('../../db');
+const emailNotifications = require('../../functions/emailNotifications');
 const mercadoPagoWebhookController = async (req, res) => {
     const payment = req.query;
     try {
@@ -19,7 +20,7 @@ const mercadoPagoWebhookController = async (req, res) => {
             const id_user = dataId.id_user;
             console.log(id_order);
             console.log(id_user);
-
+            const status = data.status;
 
             const order = await Order.findByPk(id_order);
             order.update({
@@ -44,6 +45,16 @@ const mercadoPagoWebhookController = async (req, res) => {
             for (let index = 0; index < cart.products.length; index++) {
                 await cart.removeProduct(cart.products[index]);
             }
+
+            const cart2 = await Cart.findByPk(id_user, {
+                include: [
+                    {
+                        model: Product,
+                    }
+                ]
+            });
+
+            await emailNotifications(id_user, status);
 
         }
         res.sendStatus(204);

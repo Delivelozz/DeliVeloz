@@ -1,13 +1,10 @@
 const userOrderController = require("../../controllers/order/userOrderController");
 const emailOrderController = require("../../controllers/order/emailOrderController");
 
-const emailOrderHandler = async (req, res) => {
+const emailOrderHandler = async (idUser) => {
   try {
-    const { idUser, orderStatus } = req.params;
-    console.log(idUser, orderStatus);
     const user = await userOrderController(idUser);
-
-    if (orderStatus === "delivered") {
+    if (idUser) {
       const historyURL = `https://deliveloz-ryfh.onrender.com/order/${idUser}`;
 
       const info = {
@@ -31,16 +28,11 @@ const emailOrderHandler = async (req, res) => {
                   DeliVeloz
                 `,
       };
-      await emailOrderController(info);
+      // await emailOrderController(info);
     }
-    res
-      .status(201)
-      .json({ message: "Correo electrónico enviado correctamente" });
+    return emailOrderController(info);
   } catch (error) {
     console.error("Error al enviar el correo electrónico:", error);
-    res.status(500).json({
-      message: "Error interno del servidor al enviar el correo electrónico",
-    });
   }
 };
 
