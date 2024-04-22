@@ -18,13 +18,13 @@ Backend:
 
 + Render (*Deploy*)
 + PostgreSQL
-+ Cloudinary
 + Sequelize
 + Express
 + NodeJs
 + Json Server 
 + Json Web Token
 + Mercado Pago
++ Cloudinary
 
 [![Render](https://res.cloudinary.com/dpk2wmbsb/image/upload/v1713661284/IconsTecnologies50x50/render_kgifty.png)](https://render.com)
 [![PostgreSql](https://res.cloudinary.com/dpk2wmbsb/image/upload/v1713660428/IconsTecnologies50x50/Pq_cciibq.png)](https://www.postgresql.org) 
