@@ -5,6 +5,7 @@ import { useLocalStoreUserData } from "../../hooks/useLocalStoreUserData.js";
 import { useLocalStoreUserDataGoogle } from "../../hooks/useLocalStoreUserDataGoogle.js";
 import { useGetShoppingDB } from "../../hooks/useGetShoppingDB.js";
 import Mercadopago from "../../components/mercadopago/Mercadopago.jsx";
+import "./OrderUser.css";
 
 export default function OrderUser() {
   const orderDetail = useSelector((state) => state.orderDetail);
@@ -52,31 +53,58 @@ export default function OrderUser() {
   //console.log(orderDetail);
 
   return (
-    <section className="container">
-      <div>
-        <h1 className="mb-6">
-          <span className="text-sundown-500">Detalle del</span> Pago
+    <section className="section-container">
+      <div className="container-titulo">
+        <h1>
+          <span className="titulo-span">Detalle del</span> Pago
         </h1>
       </div>
 
-      <div className="bg-white shadow-lg p-7 rounded w-3/4">
-        {/* <p>User ID: {orderDetail?.userId}</p> */}
-        <p>Total a pagar: ${orderDetail?.total}</p>
-        <h3 className="font-semibold mt-4">Productos:</h3>
-        <ul>
-          {orderDetail?.products?.map((product, index) => (
-            <li key={index}>
-              {product?.name} - Cantidad: {product?.quantity} - Precio: $
-              {product?.price}
-            </li>
-          ))}
-        </ul>
+      <div className="container-ordertotal">
+        <div className="container-order">
+          <div className="container-row-order-product">
+            <h3 className="row-order"><span>Productos</span></h3>
+            <ul className="">
+              {orderDetail?.products?.map((product, index) => (
+                <li className="row-order-li" key={index}>
+                  {product?.name} 
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="container-row-order">
+            <h3 className="row-order"><span>Cantidad</span></h3>
+            <ul>
+              {orderDetail?.products?.map((product, index) => (
+                <li className="row-order-li" key={index}>
+                  {product?.quantity} 
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="container-row-order">
+            <h3 className="row-order"><span>Total</span></h3>
+            <div className="productos-order">
+            <ul>
+              {orderDetail?.products?.map((product, index) => (
+                <li className="row-order-li" key={index}>
+                  ${product?.price * product?.quantity}
+                </li>
+              ))}
+            </ul>
+            </div>
+          </div>
+        </div>
+        <div className="container-total">
+          <span>Total a pagar:</span>
+          <span>${orderDetail?.total}</span>
+        </div>
       </div>
 
-      <div className="mt-6 flex justify-center">
+      <div className="button-pagar">
         {!showMercadoPago && (
           <button
-            className="btn-bg flex items-center justify-center"
+            className=""
             onClick={handlePay}
           >
             Pagar
@@ -89,8 +117,6 @@ export default function OrderUser() {
           onPaymentComplete={handlePaymentComplete}
         />
       )}
-      {/* <p>Estado del pago: {orderDetail?.paid ? "Pagado" : "No pagado"}</p>
-      <p>Estado del pedido: {orderDetail?.orderStatus}</p> */}
     </section>
   );
 }
