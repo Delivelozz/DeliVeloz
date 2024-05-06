@@ -4,7 +4,9 @@
 
 Hola! Bienvenido(a), nos complace presentar nuestro **Proyecto Final**, un trabajo en grupo que se nos fue asignado en nuestro casi ultimo tramo durante nuestra aventura de aprendizaje en el bootcamp ***Henry***. 
 
-Durante el proceso de este proyecto pasamos por muchas cosas, errores y aciertos que nos sirvieron de mucho para poder crecer personalmente, aprender nuevas cosas, nuevas tecnologias y recursos que no habiamos visto antes. Fue realmente grato poder cumplir con este maravilloso reto. 
+Durante el proceso de este proyecto pasamos por muchas cosas, errores y aciertos que nos sirvieron de mucho para poder crecer personalmente, aprender nuevas cosas, nuevas tecnologias y recursos que no habiamos visto antes. Fue realmente grato poder cumplir con este maravilloso reto.
+
+Link a la pagina: https://deliveloz.netlify.app/home
 
 ---
 
